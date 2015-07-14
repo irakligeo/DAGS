@@ -1,14 +1,19 @@
 package geolab.graphitefinder;
 
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.squareup.picasso.Picasso;
 
+import geolab.graphitefinder.fragment.MapFragment;
 import geolab.graphitefinder.model.GraphiteItemModel;
 
 
@@ -36,6 +41,20 @@ public class GraphiteItemDetail extends ActionBarActivity {
                 .resize(400,400)
                 .centerCrop()
                 .into(imgView);
+
+        onMapBtnClick();
+    }
+
+    public void onMapBtnClick(){
+        Button mapBtn = (Button) findViewById(R.id.showMapBtn);
+        mapBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(getApplicationContext(), "clicked", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(GraphiteItemDetail.this, MapFragment.class);
+                startActivity(intent);
+            }
+        });
     }
 
 

@@ -30,8 +30,6 @@ public class ItemsListFragment extends Fragment {
         super.onActivityCreated(savedInstanceState);
         Toast.makeText(getActivity(),"Created",Toast.LENGTH_SHORT).show();
 
-        onMapBtnClick();
-
         graphiteListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -45,6 +43,7 @@ public class ItemsListFragment extends Fragment {
         });
     }
 
+    Button btn;
 
     @Override
     public void onAttach(Activity activity){
@@ -67,24 +66,10 @@ public class ItemsListFragment extends Fragment {
 
         graphiteListView.setAdapter(new ListViewAdapter(getActivity(), listContact));
 
-        fragmentView = inflater.inflate(R.layout.graphite_cardview_layout,container,false);
-
         return rootView;
     }
 
-    View fragmentView;
 
-    public void onMapBtnClick(){
-        Button mapBtn = (Button) fragmentView.findViewById(R.id.showMapBtn);
-        mapBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(getActivity(),"clicked",Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(getActivity(),MapFragment.class);
-                startActivity(intent);
-            }
-        });
-    }
 
     public ArrayList<GraphiteItemModel> getGraphiteItems(){
         ArrayList<GraphiteItemModel> graphiteItems = new ArrayList<>();
