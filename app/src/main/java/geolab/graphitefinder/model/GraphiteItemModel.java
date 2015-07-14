@@ -1,7 +1,9 @@
 package geolab.graphitefinder.model;
 
 
-public class GraphiteItemModel {
+import java.io.Serializable;
+
+public class GraphiteItemModel implements Serializable{
     private String title;
     private String description;
     private String imgURL;
