@@ -35,7 +35,7 @@ public class ItemsListFragment extends Fragment {
                 Intent intent = new Intent(getActivity(),GraphiteItemDetail.class);
 
                 GraphiteItemModel graphiteItem = (GraphiteItemModel) parent.getAdapter().getItem(position);
-                intent.putExtra("GraphitItem", graphiteItem);
+                intent.putExtra("GraphiteItem", graphiteItem);
                 startActivity(intent);
 
             }
@@ -71,11 +71,21 @@ public class ItemsListFragment extends Fragment {
     public ArrayList<GraphiteItemModel> getGraphiteItems(){
         ArrayList<GraphiteItemModel> graphiteItems = new ArrayList<>();
 
-        graphiteItems.add(new GraphiteItemModel("jemo","blab","sdf","sdfsdF","sdfsdf",13.345,44.3345));
-        graphiteItems.add(new GraphiteItemModel("gio","TTT","sdf","JJJ","OOOO",13.345,44.3345));
-        graphiteItems.add(new GraphiteItemModel("lasha","AAA","sdf","sdfsdF",")))",13.345,44.3345));
-        graphiteItems.add(new GraphiteItemModel("oto","JJJ","sdf","HH234","QQQ",13.345,44.3345));
-        graphiteItems.add(new GraphiteItemModel("lana","LLL","sdf","sdfsdF","sdfsdf",13.345,44.3345));
+        graphiteItems.add(new GraphiteItemModel("Android","Description Description Description" +
+                "Description Description Description Description Description Description Description Description Description" +
+                "Description Description Description Description Description","URL","Jemo","13-02-2015",13.345,44.3345));
+        graphiteItems.add(new GraphiteItemModel("PHP-server","Description Description Description" +
+                "Description Description Description Description Description Description Description Description Description" +
+                "Description Description Description Description Description","URL","Lasha","14-07-2015",13.345,44.3345));
+        graphiteItems.add(new GraphiteItemModel("web-design","Description Description Description" +
+                "Description Description Description Description Description Description Description Description Description" +
+                "Description Description Description Description Description","URL","Gio","29-07-2015",13.345,44.3345));
+        graphiteItems.add(new GraphiteItemModel("PHP-Map","Description Description Description" +
+                "Description Description Description Description Description Description Description Description Description" +
+                "Description Description Description Description Description","URL","Oto","8-07-2013",13.345,44.3345));
+        graphiteItems.add(new GraphiteItemModel("design","Description Description Description" +
+                "Description Description Description Description Description Description Description Description Description" +
+                "Description Description Description Description Description","URL","Lana","18-07-2014",13.345,44.3345));
 
 
         return graphiteItems;

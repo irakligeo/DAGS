@@ -4,6 +4,12 @@ import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+import com.squareup.picasso.Picasso;
+
+import geolab.graphitefinder.model.GraphiteItemModel;
 
 
 public class GraphiteItemDetail extends ActionBarActivity {
@@ -12,6 +18,24 @@ public class GraphiteItemDetail extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_graphite_item_detail);
+
+        GraphiteItemModel  graphiteItem = (GraphiteItemModel) getIntent().getSerializableExtra("GraphiteItem");
+        TextView imgTitle = (TextView) findViewById(R.id.imgTitle);
+        ImageView imgView = (ImageView) findViewById(R.id.peaceOfArtImg);
+        TextView descriptionView = (TextView) findViewById(R.id.little_description);
+        TextView createDateView = (TextView) findViewById(R.id.createDate);
+        TextView authorView = (TextView) findViewById(R.id.author);
+
+        imgTitle.setText(graphiteItem.getTitle());
+        createDateView.setText(graphiteItem.getCreateDate());
+        authorView.setText(graphiteItem.getAuthor());
+        descriptionView.setText(graphiteItem.getDescription());
+
+        Picasso.with(this)
+                .load(graphiteItem.getImgURL())
+                .resize(400,400)
+                .centerCrop()
+                .into(imgView);
     }
 
 
