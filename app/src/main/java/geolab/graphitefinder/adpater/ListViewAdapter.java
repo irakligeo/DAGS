@@ -50,7 +50,7 @@ public class ListViewAdapter extends BaseAdapter {
         ViewHolder viewHolder;
 
         if(convertView == null) {
-            itemView = inflater.inflate(R.layout.fragment_graphiteitemslist,null);
+            itemView = inflater.inflate(R.layout.graphite_cardview_layout,null);
             viewHolder = new ViewHolder();
 
             TextView imgTitleView = (TextView) itemView.findViewById(R.id.imgTitle);
