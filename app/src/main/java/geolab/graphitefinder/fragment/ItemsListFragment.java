@@ -25,6 +25,7 @@ public class ItemsListFragment extends Fragment {
         Toast.makeText(getActivity(),"Created",Toast.LENGTH_SHORT).show();
     }
 
+
     @Override
     public void onAttach(Activity activity){
         super.onAttach(activity);
