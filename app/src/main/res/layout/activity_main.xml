@@ -12,4 +12,5 @@
         android:id="@+id/listFragment"
         class="geolab.graphitefinder.fragment.ItemsListFragment" />
 
+
 </RelativeLayout>

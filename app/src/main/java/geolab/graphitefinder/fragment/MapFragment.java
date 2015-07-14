@@ -86,7 +86,7 @@ public class MapFragment extends FragmentActivity implements GoogleApiClient.Con
     @Override
     protected void onResume() {
         super.onResume();
-        setUpMapIfNeeded();
+//        setUpMapIfNeeded();
         mGoogleApiClient.connect();
     }
 
@@ -165,9 +165,10 @@ public class MapFragment extends FragmentActivity implements GoogleApiClient.Con
 
     @Override
     public void onConnected(Bundle bundle) {
+        LocationListener locationListener = null;
         Location location = LocationServices.FusedLocationApi.getLastLocation(mGoogleApiClient);
         if (location == null) {
-            LocationServices.FusedLocationApi.requestLocationUpdates(mGoogleApiClient, mLocationRequest, (LocationListener) this);
+//            LocationServices.FusedLocationApi.requestLocationUpdates(mGoogleApiClient, mLocationRequest, locationListener);
         }
         else {
             handleNewLocation(location);
