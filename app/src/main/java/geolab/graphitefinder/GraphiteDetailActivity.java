@@ -12,7 +12,7 @@ import com.squareup.picasso.Picasso;
 import geolab.graphitefinder.model.GraphiteItemModel;
 
 
-public class GraphiteItemDetail extends ActionBarActivity {
+public class GraphiteDetailActivity extends ActionBarActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
