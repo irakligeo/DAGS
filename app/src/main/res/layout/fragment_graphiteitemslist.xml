@@ -6,7 +6,6 @@
     <ListView
         android:id="@+id/graphiteList"
         android:layout_width="wrap_content"
-        android:layout_marginTop="?android:attr/actionBarSize"
         android:layout_height="wrap_content"/>
 
 </LinearLayout>

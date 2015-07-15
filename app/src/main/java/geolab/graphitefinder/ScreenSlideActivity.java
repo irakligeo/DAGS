@@ -21,6 +21,7 @@ import java.util.ArrayList;
 import geolab.graphitefinder.adpater.ListViewAdapter;
 import geolab.graphitefinder.animation.DepthPageTransformer;
 import geolab.graphitefinder.animation.ZoomOutPageTransformer;
+import geolab.graphitefinder.fragment.TestFrag;
 import geolab.graphitefinder.fragment.ViewPagerFragment;
 import geolab.graphitefinder.model.GraphiteItemModel;
 
@@ -82,6 +83,11 @@ public class ScreenSlideActivity extends FragmentActivity {
 
         @Override
         public Fragment getItem(int position) {
+            switch (position){
+//                case 0: return ViewPagerFragment.newInstance("viewPager");
+                case 1: return TestFrag.newInstance("testFrag");
+
+            }
             return new ViewPagerFragment();
         }
 

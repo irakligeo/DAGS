@@ -1,6 +1,5 @@
 package geolab.graphitefinder.fragment;
 
-import android.app.ActivityOptions;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -80,5 +79,14 @@ public class ViewPagerFragment extends android.support.v4.app.Fragment {
 
     }
 
+    public static ViewPagerFragment newInstance(String text) {
 
+        ViewPagerFragment f = new ViewPagerFragment();
+        Bundle b = new Bundle();
+        b.putString("msg", text);
+
+        f.setArguments(b);
+
+        return f;
+    }
 }

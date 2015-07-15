@@ -25,6 +25,7 @@ public class GraphiteItemDetail extends ActionBarActivity {
         setContentView(R.layout.activity_graphite_item_detail);
 
         GraphiteItemModel  graphiteItem = (GraphiteItemModel) getIntent().getSerializableExtra("GraphiteItem");
+
         TextView imgTitle = (TextView) findViewById(R.id.imgTitle);
         ImageView imgView = (ImageView) findViewById(R.id.peaceOfArtImg);
         TextView descriptionView = (TextView) findViewById(R.id.little_description);
@@ -42,20 +43,9 @@ public class GraphiteItemDetail extends ActionBarActivity {
                 .centerCrop()
                 .into(imgView);
 
-        onMapBtnClick();
     }
 
-    public void onMapBtnClick(){
-        Button mapBtn = (Button) findViewById(R.id.showMapBtn);
-        mapBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(getApplicationContext(), "clicked", Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(GraphiteItemDetail.this, MapFragment.class);
-                startActivity(intent);
-            }
-        });
-    }
+
 
 
     @Override
