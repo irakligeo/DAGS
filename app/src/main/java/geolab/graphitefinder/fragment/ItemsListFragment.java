@@ -17,6 +17,7 @@ import java.util.ArrayList;
 
 import geolab.graphitefinder.GraphiteItemDetail;
 import geolab.graphitefinder.R;
+import geolab.graphitefinder.ScreenSlideActivity;
 import geolab.graphitefinder.adpater.ListViewAdapter;
 import geolab.graphitefinder.model.GraphiteItemModel;
 
@@ -28,7 +29,6 @@ public class ItemsListFragment extends Fragment {
     public void onActivityCreated(Bundle savedInstanceState)
     {
         super.onActivityCreated(savedInstanceState);
-        Toast.makeText(getActivity(),"Created",Toast.LENGTH_SHORT).show();
 
         graphiteListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
