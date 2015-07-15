@@ -17,8 +17,16 @@ public class MyResponceParcer {
         {
             try {
                 JSONObject object = response.getJSONObject(i);
-                GraphiteItemModel graphite = new GraphiteItemModel();
-                // parse logic goes here :)
+
+                String imgUrl = object.getString("imgUrl");
+                String imgTitle = object.getString("imgTitle");
+                String imgDescription = object.getString("imgDescription");
+                String imgAuthor = object.getString("author");
+                String imgUploadDate = object.getString("uploadDate");
+                double longitude = object.getDouble("longitude");
+                double latitude = object.getDouble("latitude");
+
+                GraphiteItemModel graphite = new GraphiteItemModel(imgTitle,imgDescription,imgUrl,imgAuthor,imgUploadDate,longitude,latitude);
                 data.add(graphite);
             } catch (JSONException e) {
                 e.printStackTrace();
