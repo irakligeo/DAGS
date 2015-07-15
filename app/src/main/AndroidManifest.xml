@@ -45,6 +45,10 @@
             android:name=".ScreenSlideActivity"
             android:label="@string/title_activity_screen_slide" >
         </activity>
+        <activity
+            android:name=".MapActivity"
+            android:label="@string/title_activity_map" >
+        </activity>
     </application>
 
 </manifest>
