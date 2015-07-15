@@ -19,6 +19,8 @@ import android.widget.ListView;
 import java.util.ArrayList;
 
 import geolab.graphitefinder.adpater.ListViewAdapter;
+import geolab.graphitefinder.animation.DepthPageTransformer;
+import geolab.graphitefinder.animation.ZoomOutPageTransformer;
 import geolab.graphitefinder.fragment.ViewPagerFragment;
 import geolab.graphitefinder.model.GraphiteItemModel;
 
@@ -48,6 +50,8 @@ public class ScreenSlideActivity extends FragmentActivity {
 
         // Instantiate a ViewPager and a PagerAdapter.
         mPager = (ViewPager) findViewById(R.id.pager);
+//        mPager.setPageTransformer(true, new ZoomOutPageTransformer());
+        mPager.setPageTransformer(true, new DepthPageTransformer());
         mPagerAdapter = new ScreenSlidePagerAdapter(getSupportFragmentManager());
         mPager.setAdapter(mPagerAdapter);
 
