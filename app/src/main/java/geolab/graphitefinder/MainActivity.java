@@ -73,8 +73,8 @@ public class MainActivity extends ActionBarActivity {
         @Override
         public Fragment getItem(int position) {
             switch (position){
-                case 1: return MapFragment.newInstance("viewPager");
-                case 2: return TestFrag.newInstance("testFrag");
+                case 2: return MapFragment.newInstance("viewPager");
+                case 1: return TestFrag.newInstance("testFrag");
 
             }
             return new ViewPagerFragment();
