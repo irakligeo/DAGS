@@ -6,6 +6,11 @@ import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.util.Log;
 
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonArrayRequest;
+import com.android.volley.toolbox.Volley;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.LocationListener;
@@ -18,7 +23,12 @@ import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
+import org.json.JSONArray;
+
+import java.util.ArrayList;
+
 import geolab.graphitefinder.R;
+import geolab.graphitefinder.model.GraphiteItemModel;
 
 
 public class MapFragment extends FragmentActivity implements GoogleApiClient.ConnectionCallbacks,
@@ -53,6 +63,7 @@ public class MapFragment extends FragmentActivity implements GoogleApiClient.Con
         setContentView(R.layout.fragment_map);
         setUpMapIfNeeded();
 
+        mLocationRequest = new LocationRequest();
         // retrieve JSONArray from server
 //        getDataFromServer(url + sightsURL);
 
@@ -112,33 +123,33 @@ public class MapFragment extends FragmentActivity implements GoogleApiClient.Con
         }
     }
 
-    //function retrieve jsonarray of map coords.
-//    public void getDataFromServer(String url) {
-//        RequestQueue queue = Volley.newRequestQueue(this);
-//
-//        // Add the request to the RequestQueue.
-//        JsonArrayRequest stringRequest = new JsonArrayRequest(url,
-//                new Response.Listener<JSONArray>() {
-//                    @Override
-//                    public void onResponse(JSONArray response) {
-//                        System.out.println(response);
-//                        ArrayList<Point>Points = ParseData.getData(response);
-//                        getCoords(Points);
-//                    }
-//                }, new Response.ErrorListener() {
-//            @Override
-//            public void onErrorResponse(VolleyError error) {
-//                System.out.println(error+" :(((((");
-//            }
-//        });
-//        queue.add(stringRequest);
-//    }
+//    function retrieve jsonarray of map coords.
+    public void getDataFromServer(String url) {
+        RequestQueue queue = Volley.newRequestQueue(this);
 
-//    private void getCoords(ArrayList<Point> points){
-//        for( int i = 0; i < points.size(); ++i) {
-//            setUpMap(points.get(i).lonT, points.get(i).latT, points.get(i).title);
-//        }
-//    }
+        // Add the request to the RequestQueue.
+        JsonArrayRequest stringRequest = new JsonArrayRequest(url,
+                new Response.Listener<JSONArray>() {
+                    @Override
+                    public void onResponse(JSONArray response) {
+                        System.out.println(response);
+                        ArrayList<GraphiteItemModel> Points = ParseData.getData(response);
+                        getCoords(Points);
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                System.out.println(error+" :(((((");
+            }
+        });
+        queue.add(stringRequest);
+    }
+
+    private void getCoords(ArrayList<GraphiteItemModel> points){
+        for( int i = 0; i < points.size(); ++i) {
+            setUpMap(points.get(i).getLongitude(), points.get(i).getLatitude(), points.get(i).getTitle());
+        }
+    }
 
     public void setUpMap(double lonT, double latT, String title) {
         mMap.addMarker(new MarkerOptions().position(new LatLng(lonT, latT)).title(title));
@@ -155,7 +166,7 @@ public class MapFragment extends FragmentActivity implements GoogleApiClient.Con
         double currentLatitude = location.getLatitude();
         double currentLongitude = location.getLongitude();
         LatLng latLng = new LatLng(currentLatitude, currentLongitude);
-        //mMap.addMarker(new MarkerOptions().position(new LatLng(currentLatitude, currentLongitude)).title("Current Location"));
+        mMap.addMarker(new MarkerOptions().position(new LatLng(currentLatitude, currentLongitude)).title("Current Location"));
         MarkerOptions options = new MarkerOptions()
                 .position(latLng)
                 .title("You are here!");
@@ -165,10 +176,9 @@ public class MapFragment extends FragmentActivity implements GoogleApiClient.Con
 
     @Override
     public void onConnected(Bundle bundle) {
-        LocationListener locationListener = null;
         Location location = LocationServices.FusedLocationApi.getLastLocation(mGoogleApiClient);
         if (location == null) {
-//            LocationServices.FusedLocationApi.requestLocationUpdates(mGoogleApiClient, mLocationRequest, locationListener);
+            LocationServices.FusedLocationApi.requestLocationUpdates(mGoogleApiClient, mLocationRequest, this);
         }
         else {
             handleNewLocation(location);
