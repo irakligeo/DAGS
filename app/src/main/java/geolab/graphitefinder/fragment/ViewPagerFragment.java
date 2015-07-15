@@ -10,7 +10,7 @@ import android.widget.ListView;
 
 import java.util.ArrayList;
 
-import geolab.graphitefinder.GraphiteItemDetail;
+import geolab.graphitefinder.GraphiteDetailActivity;
 import geolab.graphitefinder.R;
 import geolab.graphitefinder.adpater.ListViewAdapter;
 import geolab.graphitefinder.model.GraphiteItemModel;
@@ -26,7 +26,7 @@ public class ViewPagerFragment extends android.support.v4.app.Fragment {
         graphiteListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent intent = new Intent(getActivity(),GraphiteItemDetail.class);
+                Intent intent = new Intent(getActivity(),GraphiteDetailActivity.class);
 
                 GraphiteItemModel graphiteItem = (GraphiteItemModel) parent.getAdapter().getItem(position);
                 intent.putExtra("GraphiteItem", graphiteItem);

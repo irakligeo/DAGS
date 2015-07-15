@@ -2,7 +2,6 @@ package geolab.graphitefinder.fragment;
 
 import android.app.Activity;
 import android.app.Fragment;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -11,13 +10,11 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 
-import geolab.graphitefinder.GraphiteItemDetail;
+import geolab.graphitefinder.GraphiteDetailActivity;
 import geolab.graphitefinder.R;
-import geolab.graphitefinder.ScreenSlideActivity;
 import geolab.graphitefinder.adpater.ListViewAdapter;
 import geolab.graphitefinder.model.GraphiteItemModel;
 
@@ -33,7 +30,7 @@ public class ItemsListFragment extends Fragment {
         graphiteListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent intent = new Intent(getActivity(),GraphiteItemDetail.class);
+                Intent intent = new Intent(getActivity(),GraphiteDetailActivity.class);
 
                 GraphiteItemModel graphiteItem = (GraphiteItemModel) parent.getAdapter().getItem(position);
                 intent.putExtra("GraphiteItem", graphiteItem);

@@ -38,7 +38,7 @@
             android:value="@string/google_maps_key" />
 
         <activity
-            android:name=".GraphiteItemDetail"
+            android:name=".GraphiteDetailActivity"
             android:label="@string/title_activity_graphite_item_detail" >
         </activity>
         <activity
