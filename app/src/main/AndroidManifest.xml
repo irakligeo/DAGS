@@ -42,10 +42,6 @@
             android:label="@string/title_activity_graphite_item_detail" >
         </activity>
         <activity
-            android:name=".fragment.MapFragment"
-            android:label="map" >
-        </activity>
-        <activity
             android:name=".ScreenSlideActivity"
             android:label="@string/title_activity_screen_slide" >
         </activity>

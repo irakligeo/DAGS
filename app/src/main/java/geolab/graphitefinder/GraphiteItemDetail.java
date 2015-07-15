@@ -1,19 +1,14 @@
 package geolab.graphitefinder;
 
-import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.squareup.picasso.Picasso;
 
-import geolab.graphitefinder.fragment.MapFragment;
 import geolab.graphitefinder.model.GraphiteItemModel;
 
 

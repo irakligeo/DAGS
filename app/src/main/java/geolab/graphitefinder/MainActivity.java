@@ -15,6 +15,7 @@ public class MainActivity extends ActionBarActivity {
         setContentView(R.layout.activity_main);
 
         Intent sliderIntent = new Intent(MainActivity.this, ScreenSlideActivity.class);
+//        Intent sliderIntent = new Intent(MainActivity.this, MapFragment.class);
         startActivity(sliderIntent);
     }
 
