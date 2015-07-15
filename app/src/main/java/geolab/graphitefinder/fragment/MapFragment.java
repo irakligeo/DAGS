@@ -29,6 +29,7 @@ import java.util.ArrayList;
 
 import geolab.graphitefinder.R;
 import geolab.graphitefinder.model.GraphiteItemModel;
+import geolab.graphitefinder.parsers.MyResponceParcer;
 
 
 public class MapFragment extends FragmentActivity implements GoogleApiClient.ConnectionCallbacks,
@@ -97,7 +98,7 @@ public class MapFragment extends FragmentActivity implements GoogleApiClient.Con
     @Override
     protected void onResume() {
         super.onResume();
-//        setUpMapIfNeeded();
+        setUpMapIfNeeded();
         mGoogleApiClient.connect();
     }
 
@@ -117,9 +118,9 @@ public class MapFragment extends FragmentActivity implements GoogleApiClient.Con
             mMap = ((SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map))
                     .getMap();
             // Check if we were successful in obtaining the map.
-            /*if (mMap != null) {
-                setUpMap(lonT,latT);
-            }*/
+            if (mMap != null) {
+                setUpMap(44.5, 44.234,"ups");
+            }
         }
     }
 
@@ -133,7 +134,7 @@ public class MapFragment extends FragmentActivity implements GoogleApiClient.Con
                     @Override
                     public void onResponse(JSONArray response) {
                         System.out.println(response);
-                        ArrayList<GraphiteItemModel> Points = ParseData.getData(response);
+                        ArrayList<GraphiteItemModel> Points = MyResponceParcer.getData(response);
                         getCoords(Points);
                     }
                 }, new Response.ErrorListener() {
@@ -178,7 +179,7 @@ public class MapFragment extends FragmentActivity implements GoogleApiClient.Con
     public void onConnected(Bundle bundle) {
         Location location = LocationServices.FusedLocationApi.getLastLocation(mGoogleApiClient);
         if (location == null) {
-            LocationServices.FusedLocationApi.requestLocationUpdates(mGoogleApiClient, mLocationRequest, this);
+//            LocationServices.FusedLocationApi.requestLocationUpdates(mGoogleApiClient, mLocationRequest, this);
         }
         else {
             handleNewLocation(location);

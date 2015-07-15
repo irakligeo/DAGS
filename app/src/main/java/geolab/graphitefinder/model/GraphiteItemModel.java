@@ -22,6 +22,7 @@ public class GraphiteItemModel implements Serializable{
         this.latitude = latitude;
     }
 
+    public GraphiteItemModel(){}
     public String getTitle() {
         return title;
     }
