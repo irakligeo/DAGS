@@ -19,6 +19,7 @@ import android.widget.ListView;
 import java.util.ArrayList;
 
 import geolab.graphitefinder.adpater.ListViewAdapter;
+import geolab.graphitefinder.adpater.ScreenSlidePagerAdapter;
 import geolab.graphitefinder.animation.DepthPageTransformer;
 import geolab.graphitefinder.animation.ZoomOutPageTransformer;
 import geolab.graphitefinder.fragment.MapFragment;
@@ -29,22 +30,12 @@ import geolab.graphitefinder.model.GraphiteItemModel;
 
 public class ScreenSlideActivity extends FragmentActivity {
 
-    /**
-     * The number of pages (wizard steps) to show in this demo.
-     */
-    private static final int NUM_PAGES = 2;
-
-    /**
-     * The pager widget, which handles animation and allows swiping horizontally to access previous
-     * and next wizard steps.
-     */
     private ViewPager mPager;
 
     /**
      * The pager adapter, which provides the pages to the view pager widget.
      */
     private PagerAdapter mPagerAdapter;
-    Context context;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -72,31 +63,5 @@ public class ScreenSlideActivity extends FragmentActivity {
             mPager.setCurrentItem(mPager.getCurrentItem() - 1);
         }
     }
-
-    /**
-     * A simple pager adapter that represents 2 ScreenSlidePageFragment objects, in
-     * sequence.
-     */
-    private class ScreenSlidePagerAdapter extends FragmentStatePagerAdapter {
-        public ScreenSlidePagerAdapter(FragmentManager fm) {
-            super(fm);
-        }
-
-        @Override
-        public Fragment getItem(int position) {
-            switch (position){
-                case 1: return MapFragment.newInstance("viewPager");
-//                case 1: return TestFrag.newInstance("testFrag");
-
-            }
-            return new ViewPagerFragment();
-        }
-
-        @Override
-        public int getCount() {
-            return NUM_PAGES;
-        }
-    }
-
 
 }
