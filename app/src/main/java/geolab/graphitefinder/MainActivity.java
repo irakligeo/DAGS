@@ -1,5 +1,6 @@
 package geolab.graphitefinder;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v4.app.Fragment;
@@ -11,6 +12,10 @@ import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+
+import com.android.volley.RequestQueue;
+import com.android.volley.toolbox.JsonArrayRequest;
+import com.android.volley.toolbox.Volley;
 
 import geolab.graphitefinder.animation.DepthPageTransformer;
 import geolab.graphitefinder.fragment.MapFragment;
@@ -46,7 +51,6 @@ public class MainActivity extends ActionBarActivity {
 
 
     }
-
 
     @Override
     public void onBackPressed() {

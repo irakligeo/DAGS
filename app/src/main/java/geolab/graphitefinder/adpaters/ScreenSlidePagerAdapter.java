@@ -1,4 +1,4 @@
-package geolab.graphitefinder.adpater;
+package geolab.graphitefinder.adpaters;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;

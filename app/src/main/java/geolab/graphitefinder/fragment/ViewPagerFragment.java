@@ -12,7 +12,7 @@ import java.util.ArrayList;
 
 import geolab.graphitefinder.GraphiteDetailActivity;
 import geolab.graphitefinder.R;
-import geolab.graphitefinder.adpater.ListViewAdapter;
+import geolab.graphitefinder.adpaters.ListViewAdapter;
 import geolab.graphitefinder.model.GraphiteItemModel;
 
 

@@ -2,6 +2,7 @@ package geolab.graphitefinder.fragment;
 
 import android.app.Activity;
 import android.app.Fragment;
+import android.content.ContentValues;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -11,11 +12,15 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 
+import com.android.volley.RequestQueue;
+import com.android.volley.toolbox.JsonArrayRequest;
+import com.android.volley.toolbox.Volley;
+
 import java.util.ArrayList;
 
 import geolab.graphitefinder.GraphiteDetailActivity;
 import geolab.graphitefinder.R;
-import geolab.graphitefinder.adpater.ListViewAdapter;
+import geolab.graphitefinder.adpaters.ListViewAdapter;
 import geolab.graphitefinder.model.GraphiteItemModel;
 
 
@@ -66,7 +71,14 @@ public class ItemsListFragment extends Fragment {
         return rootView;
     }
 
-
+    private JsonArrayRequest jsonArrayRequest;
+    private ContentValues contentValues;
+    private RequestQueue requestQueue;
+    public void getDataFromServer(String URL){
+        if(requestQueue == null){
+//            requestQueue = new Volley.newRequestQueue(getActivity());
+        }
+    }
 
     public ArrayList<GraphiteItemModel> getGraphiteItems(){
         ArrayList<GraphiteItemModel> graphiteItems = new ArrayList<>();

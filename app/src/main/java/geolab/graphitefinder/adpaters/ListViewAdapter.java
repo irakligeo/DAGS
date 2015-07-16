@@ -1,4 +1,4 @@
-package geolab.graphitefinder.adpater;
+package geolab.graphitefinder.adpaters;
 
 import android.content.Context;
 import android.view.LayoutInflater;
