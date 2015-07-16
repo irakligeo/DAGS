@@ -1,5 +1,6 @@
 package geolab.graphitefinder;
 
+import android.app.ActionBar;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
@@ -17,6 +18,7 @@ import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
 
+import geolab.graphitefinder.adpaters.TabsPagerAdapter;
 import geolab.graphitefinder.animation.DepthPageTransformer;
 import geolab.graphitefinder.fragment.MapFragment;
 import geolab.graphitefinder.fragment.TestFrag;
@@ -33,6 +35,10 @@ public class MainActivity extends ActionBarActivity {
      */
     private ViewPager mPager;
 
+
+    private ViewPager mTPager;
+    private TabsPagerAdapter mAdapter;
+    private ActionBar actionBar;
     /**
      * The pager adapter, which provides the pages to the view pager widget.
      */
@@ -48,7 +54,6 @@ public class MainActivity extends ActionBarActivity {
         mPager.setPageTransformer(true, new DepthPageTransformer());
         mPagerAdapter = new ScreenSlidePagerAdapter(getSupportFragmentManager());
         mPager.setAdapter(mPagerAdapter);
-
 
     }
 

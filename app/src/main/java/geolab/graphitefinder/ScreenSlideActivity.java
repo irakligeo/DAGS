@@ -1,18 +1,23 @@
 package geolab.graphitefinder;
 
+import android.app.ActionBar;
+import android.app.FragmentTransaction;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 
 import geolab.graphitefinder.adpaters.ScreenSlidePagerAdapter;
+import geolab.graphitefinder.adpaters.TabsPagerAdapter;
 import geolab.graphitefinder.animation.DepthPageTransformer;
 
 
-public class ScreenSlideActivity extends FragmentActivity {
+public class ScreenSlideActivity extends FragmentActivity implements ActionBar.TabListener{
 
     private ViewPager mPager;
-
+    private ViewPager mTPager;
+    private TabsPagerAdapter mAdapter;
+    private ActionBar actionBar;
     /**
      * The pager adapter, which provides the pages to the view pager widget.
      */
@@ -29,20 +34,38 @@ public class ScreenSlideActivity extends FragmentActivity {
         mPagerAdapter = new ScreenSlidePagerAdapter(getSupportFragmentManager());
         mPager.setAdapter(mPagerAdapter);
 
+        actionBar = getActionBar();
+        mTPager = (ViewPager)findViewById(R.id.pager);
+        this.mAdapter = new TabsPagerAdapter(getSupportFragmentManager());
+        mTPager.setAdapter(mAdapter);
+        actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
+
+        actionBar.addTab(actionBar.newTab().setText("გრაფიტები").setTabListener(this));
+        actionBar.addTab(actionBar.newTab().setText("რუკა").setTabListener(this));
 
     }
-
 
     @Override
     public void onBackPressed() {
         if (mPager.getCurrentItem() == 0) {
-            // If the user is currently looking at the first step, allow the system to handle the
-            // Back button. This calls finish() on this activity and pops the back stack.
             super.onBackPressed();
         } else {
-            // Otherwise, select the previous step.
             mPager.setCurrentItem(mPager.getCurrentItem() - 1);
         }
     }
 
+    @Override
+    public void onTabSelected(ActionBar.Tab tab, FragmentTransaction fragmentTransaction) {
+
+    }
+
+    @Override
+    public void onTabUnselected(ActionBar.Tab tab, FragmentTransaction fragmentTransaction) {
+
+    }
+
+    @Override
+    public void onTabReselected(ActionBar.Tab tab, FragmentTransaction fragmentTransaction) {
+
+    }
 }
