@@ -2,6 +2,7 @@ package geolab.graphitefinder;
 
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ImageView;
@@ -32,9 +33,14 @@ public class GraphiteDetailActivity extends ActionBarActivity {
         authorView.setText(graphiteItem.getAuthor());
         descriptionView.setText(graphiteItem.getDescription());
 
+        DisplayMetrics dm = new DisplayMetrics();
+        getWindowManager().getDefaultDisplay().getMetrics(dm);
+        int width=dm.widthPixels;
+        int height=dm.heightPixels;
+
         Picasso.with(this)
                 .load(graphiteItem.getImgURL())
-                .resize(400,400)
+                .resize(width,height/2)
                 .centerCrop()
                 .into(imgView);
 
