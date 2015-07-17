@@ -82,22 +82,22 @@ public class ItemsListFragment extends Fragment {
     public ArrayList<GraphiteItemModel> getGraphiteItems(){
         ArrayList<GraphiteItemModel> graphiteItems = new ArrayList<>();
 
-        graphiteItems.add(new GraphiteItemModel("Android","Description Description Description" +
-                "Description Description Description Description Description Description Description Description Description" +
-                "Description Description Description Description Description","URL","Jemo","13-02-2015",13.345,44.3345));
-        graphiteItems.add(new GraphiteItemModel("PHP-server","Description Description Description" +
-                "Description Description Description Description Description Description Description Description Description" +
-                "Description Description Description Description Description","URL","Lasha","14-07-2015",13.345,44.3345));
-        graphiteItems.add(new GraphiteItemModel("web-design","Description Description Description" +
-                "Description Description Description Description Description Description Description Description Description" +
-                "Description Description Description Description Description","URL","Gio","29-07-2015",13.345,44.3345));
-        graphiteItems.add(new GraphiteItemModel("PHP-Map","Description Description Description" +
-                "Description Description Description Description Description Description Description Description Description" +
-                "Description Description Description Description Description","URL","Oto","8-07-2013",13.345,44.3345));
-        graphiteItems.add(new GraphiteItemModel("design","Description Description Description" +
-                "Description Description Description Description Description Description Description Description Description" +
-                "Description Description Description Description Description","URL","Lana","18-07-2014",13.345,44.3345));
-
+//        graphiteItems.add(new GraphiteItemModel("Android","Description Description Description" +
+//                "Description Description Description Description Description Description Description Description Description" +
+//                "Description Description Description Description Description","http://www.wallfoz.com/wp-content/uploads/2015/05/3d_graffiti_wallpapers_49_design_photo_for_dekstop_wfz.jpg","giorgi","13-02-2015",13.345,44.3345));
+//        graphiteItems.add(new GraphiteItemModel("PHP-server","Description Description Description" +
+//                "Description Description Description Description Description Description Description Description Description" +
+//                "Description Description Description Description Description","http://theartmad.com/wp-content/uploads/2015/03/3d-Graffiti-Wallpapers-Free-Download-3.jpg","Lasha","14-07-2015",13.345,44.3345));
+//        graphiteItems.add(new GraphiteItemModel("web-design","Description Description Description" +
+//                "Description Description Description Description Description Description Description Description Description" +
+//                "Description Description Description Description Description","http://www.homefurniture-ideas.com/wp-content/uploads/2014/06/inspiring-imaginative-blue-graffiti-wallpaper-mural-room-1.jpg","Gio","29-07-2015",13.345,44.3345));
+//        graphiteItems.add(new GraphiteItemModel("PHP-Map","Description Description Description" +
+//                "Description Description Description Description Description Description Description Description Description" +
+//                "Description Description Description Description Description","http://www.wallfoz.com/wp-content/uploads/2015/05/best_graffiti_wallpapers_cool_14_design_backgrunds_for_dekstop_wfz.jpg","Oto","8-07-2013",13.345,44.3345));
+//        graphiteItems.add(new GraphiteItemModel("design","Description Description Description" +
+//                "Description Description Description Description Description Description Description Description Description" +
+//                "Description Description Description Description Description","http://hdwallpapersfit.com/wp-content/uploads/2015/02/cool-graffiti-bedroom-wallpapers-design.jpg","Lana","18-07-2014",13.345,44.3345));
+//
 
         return graphiteItems;
 

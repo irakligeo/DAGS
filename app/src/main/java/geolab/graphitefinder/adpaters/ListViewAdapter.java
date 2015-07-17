@@ -72,9 +72,9 @@ public class ListViewAdapter extends BaseAdapter {
 
         viewHolder.imgTitleView.setText(graphiteItem.getTitle());
         viewHolder.imgDescriptionView.setText(graphiteItem.getDescription());
-
+        String url = graphiteItem.getImgURL();
         Picasso.with(context)
-                .load(graphiteItem.getImgURL())
+                .load(url)
                 .resize(200, 200)
                 .centerCrop()
                 .into(viewHolder.imgView);

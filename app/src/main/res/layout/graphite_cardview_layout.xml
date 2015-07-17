@@ -26,13 +26,13 @@
                 android:textSize="30sp"
                 android:text="jemo" />
 
+            android:layout_marginRight="16dp"
             <ImageView
                 android:layout_width="fill_parent"
                 android:layout_height="200dp"
                 android:id="@+id/peaceOfArtImg"
                 android:layout_below="@+id/imgTitle"
-                android:layout_marginRight="16dp"
-                android:background="@mipmap/ic_launcher" />
+                android:background="@drawable/graphite" />
 
 
             <TextView
