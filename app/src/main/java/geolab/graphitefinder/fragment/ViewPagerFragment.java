@@ -90,6 +90,7 @@ public class ViewPagerFragment extends android.support.v4.app.Fragment {
         graphiteListView = (ListView)rootView.findViewById(R.id.graphiteList);
         graphiteListView.setAdapter(new ListViewAdapter(getActivity(), graphiteItems));
 
+        progressDialog.dismiss();
 
         return rootView;
     }
@@ -139,7 +140,7 @@ public class ViewPagerFragment extends android.support.v4.app.Fragment {
         graphiteItems1.add(new GraphiteItemModel("PHP-Map","გრაფიტი აგრაფიტებულა საგრაფიტეში ჩაგრაფიტებულა, საგრაფიტედან ამოგრაფიტებულა","http://www.wallfoz.com/wp-content/uploads/2015/05/best_graffiti_wallpapers_cool_14_design_backgrunds_for_dekstop_wfz.jpg","Oto","8-07-2013",13.345,44.3345));
         graphiteItems1.add(new GraphiteItemModel("design","გრაფიტი აგრაფიტებულა საგრაფიტეში ჩაგრაფიტებულა, საგრაფიტედან ამოგრაფიტებულა","http://hdwallpapersfit.com/wp-content/uploads/2015/02/cool-graffiti-bedroom-wallpapers-design.jpg","Lana","18-07-2014",13.345,44.3345));
 
-        progressDialog.dismiss();
+//        progressDialog.dismiss();
         return graphiteItems1;
 
     }

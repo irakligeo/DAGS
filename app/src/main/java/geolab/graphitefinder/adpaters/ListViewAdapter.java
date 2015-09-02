@@ -13,6 +13,7 @@ import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 
 import geolab.graphitefinder.R;
+import geolab.graphitefinder.animation.BlurTransformation;
 import geolab.graphitefinder.model.GraphiteItemModel;
 
 
@@ -73,9 +74,13 @@ public class ListViewAdapter extends BaseAdapter {
         viewHolder.imgTitleView.setText(graphiteItem.getTitle());
         viewHolder.imgDescriptionView.setText(graphiteItem.getDescription());
         String url = graphiteItem.getImgURL();
+
         Picasso.with(context)
                 .load(url)
-                .resize(600,400)
+                .resize(600, 400)
+                .onlyScaleDown()
+                   // blur effect
+//                .transform(new BlurTransformation(context))
                 .centerCrop()
                 .into(viewHolder.imgView);
 
