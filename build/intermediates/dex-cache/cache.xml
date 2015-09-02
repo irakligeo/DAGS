@@ -2,6 +2,13 @@
 <items version="2" >
 
     <item
+        jar="/Users/Owl/GraphiteFinder/app/build/intermediates/exploded-aar/com.android.support/design/22.2.0/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="fc63b820d54c8a27a3a614bdd93920e0076581c2">
+        <dex dex="/Users/Owl/GraphiteFinder/app/build/intermediates/pre-dexed/debug/classes-28207f95e045139d7601f29242d7822b3a4c486a.jar" />
+    </item>
+    <item
         jar="/Users/Owl/GraphiteFinder/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-nearby/7.3.0/classes.jar"
         jumboMode="false"
         revision="21.1.2"

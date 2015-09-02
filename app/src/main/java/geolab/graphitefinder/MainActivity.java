@@ -1,28 +1,28 @@
 package geolab.graphitefinder;
 
-import android.app.ActionBar;
-import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
+import android.widget.Toast;
 
-import geolab.graphitefinder.adpaters.TabsPagerAdapter;
 import geolab.graphitefinder.animation.DepthPageTransformer;
 import geolab.graphitefinder.fragment.MapFragment;
 import geolab.graphitefinder.fragment.TestFrag;
 import geolab.graphitefinder.fragment.ViewPagerFragment;
 
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends ActionBarActivity implements NavigationView.OnNavigationItemSelectedListener{
 
     private static final int NUM_PAGES = 3;
 
@@ -32,21 +32,27 @@ public class MainActivity extends AppCompatActivity {
      */
     private ViewPager mPager;
 
-
-    private ViewPager mTPager;
-    private TabsPagerAdapter mAdapter;
-    private ActionBar actionBar;
     /**
      * The pager adapter, which provides the pages to the view pager widget.
      */
     private PagerAdapter mPagerAdapter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_screen_slide);
-//        setContentView(R.layout.activity_main);
 
-       
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
+        NavigationView navigationView = (NavigationView) findViewById(R.id.navigation_view);
+        navigationView.setNavigationItemSelectedListener(this);
+
+        DrawerLayout mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+        mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout, toolbar, R.string.open,
+                R.string.close);
+        mDrawerLayout.setDrawerListener(mDrawerToggle);
+        mDrawerToggle.syncState();
 
         // Instantiate a ViewPager and a PagerAdapter.
         mPager = (ViewPager) findViewById(R.id.pager);
@@ -69,6 +75,24 @@ public class MainActivity extends AppCompatActivity {
             // Otherwise, select the previous step.
             mPager.setCurrentItem(mPager.getCurrentItem() - 1);
         }
+    }
+
+    private ActionBarDrawerToggle mDrawerToggle;
+
+    @Override
+    public boolean onNavigationItemSelected(MenuItem menuItem) {
+        switch(menuItem.getItemId()){
+            case R.id.navigation_item_1:
+                Toast.makeText(getApplicationContext(), "Item 1", Toast.LENGTH_LONG).show();
+                mDrawerToggle.setHomeAsUpIndicator(R.drawable.abc_ic_ab_back_mtrl_am_alpha);
+                break;
+            case R.id.navigation_item_2:
+                Toast.makeText(getApplicationContext(), "Item 2", Toast.LENGTH_LONG).show();
+                break;
+            default:
+                break;
+        }
+        return true;
     }
 
     /**
