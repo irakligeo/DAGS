@@ -1,5 +1,6 @@
 package geolab.graphitefinder.adpaters;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
