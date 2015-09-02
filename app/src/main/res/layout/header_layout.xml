@@ -3,7 +3,7 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="200dp"
-    android:background="@color/material_blue_grey_950">
+    android:background="@drawable/nav_bg">
 
     <TextView
         android:id="@+id/txt"
