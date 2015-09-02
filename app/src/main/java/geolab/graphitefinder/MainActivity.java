@@ -50,6 +50,8 @@ public class MainActivity extends ActionBarActivity {
 
         // Instantiate a ViewPager and a PagerAdapter.
         mPager = (ViewPager) findViewById(R.id.pager);
+
+        // animation styles
 //        mPager.setPageTransformer(true, new ZoomOutPageTransformer());
         mPager.setPageTransformer(true, new DepthPageTransformer());
         mPagerAdapter = new ScreenSlidePagerAdapter(getSupportFragmentManager());
