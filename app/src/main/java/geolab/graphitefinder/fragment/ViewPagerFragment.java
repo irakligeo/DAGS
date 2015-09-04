@@ -52,18 +52,7 @@ public class ViewPagerFragment extends android.support.v4.app.Fragment {
         //onSprayClick();
     }
 
-    View cardView;
-    public void onSprayClick(){
-        ImageView sprayBtn = (ImageView) cardView.findViewById(R.id.sprayImgViewId);
-        sprayBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(getActivity(),"spray clicked", Toast.LENGTH_SHORT).show();
-            }
-        });
-
-    }
-
+    private View cardView;
 
     private ProgressDialog progressDialog;
     private ListView graphiteListView;
