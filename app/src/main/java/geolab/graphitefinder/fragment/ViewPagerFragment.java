@@ -38,22 +38,12 @@ public class ViewPagerFragment extends android.support.v4.app.Fragment {
     {
         super.onActivityCreated(savedInstanceState);
 
-        graphiteListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent intent = new Intent(getActivity(),GraphiteDetailActivity.class);
-
-                GraphiteItemModel graphiteItem = (GraphiteItemModel) parent.getAdapter().getItem(position);
-                intent.putExtra("GraphiteItem", graphiteItem);
-                startActivity(intent);
-
-            }
-        });
     }
 
     private ProgressDialog progressDialog;
     private ListView graphiteListView;
     private View rootView;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -67,21 +57,33 @@ public class ViewPagerFragment extends android.support.v4.app.Fragment {
         progressDialog.show();
 
         // get data from server
-//        getGraphiteDatas(URL);
+        getGraphiteDatas(URL);
 
+        graphiteListView = (ListView) rootView.findViewById(R.id.graphiteList);
+
+        graphiteListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent = new Intent(getActivity(),GraphiteDetailActivity.class);
+
+                GraphiteItemModel graphiteItem = (GraphiteItemModel) parent.getAdapter().getItem(position);
+                intent.putExtra("GraphiteItem", graphiteItem);
+                startActivity(intent);
+
+            }
+        });
         // for dummy data
-        ArrayList<GraphiteItemModel> graphiteItems = getGraphiteItems();
+//        ArrayList<GraphiteItemModel> graphiteItems = getGraphiteItems();
+//
+//        graphiteListView = (ListView)rootView.findViewById(R.id.graphiteList);
+//        graphiteListView.setAdapter(new ListViewAdapter(getActivity(), graphiteItems));
 
-        graphiteListView = (ListView)rootView.findViewById(R.id.graphiteList);
-        graphiteListView.setAdapter(new ListViewAdapter(getActivity(), graphiteItems));
-
-        progressDialog.dismiss();
 
         return rootView;
     }
 
 
-    private String URL = "";
+    private String URL = "http://geolab.club/streetart/json/peaceofart/";
     private JsonArrayRequest jsonArrayRequest;
     private RequestQueue requestQueue;
     private ArrayList<GraphiteItemModel> graphiteItems;

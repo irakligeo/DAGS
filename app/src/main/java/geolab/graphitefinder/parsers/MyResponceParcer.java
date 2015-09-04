@@ -18,11 +18,11 @@ public class MyResponceParcer {
             try {
                 JSONObject object = response.getJSONObject(i);
 
-                String imgUrl = object.getString("imgUrl");
-                String imgTitle = object.getString("imgTitle");
-                String imgDescription = object.getString("imgDescription");
-                String imgAuthor = object.getString("author");
-                String imgUploadDate = object.getString("uploadDate");
+                String imgUrl = object.getString("pic_url");
+                String imgTitle = object.getString("title");
+                String imgDescription = object.getString("description");
+                String imgAuthor = object.getString("user_id");
+                String imgUploadDate = object.getString("create_date");
                 double longitude = object.getDouble("longitude");
                 double latitude = object.getDouble("latitude");
 
