@@ -42,6 +42,7 @@ public class MainActivity extends ActionBarActivity implements NavigationView.On
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_screen_slide);
 
+        //Burger menu
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 

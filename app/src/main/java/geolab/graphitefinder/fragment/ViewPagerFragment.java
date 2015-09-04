@@ -49,10 +49,7 @@ public class ViewPagerFragment extends android.support.v4.app.Fragment {
 
             }
         });
-        //onSprayClick();
     }
-
-    private View cardView;
 
     private ProgressDialog progressDialog;
     private ListView graphiteListView;
@@ -62,7 +59,6 @@ public class ViewPagerFragment extends android.support.v4.app.Fragment {
                              Bundle savedInstanceState) {
 
         rootView = inflater.inflate(R.layout.fragment_graphiteitemslist, container, false);
-        cardView = inflater.inflate(R.layout.graphite_cardview_layout,container,false);
 
         // progressDialog for nice loading
         progressDialog = new ProgressDialog(getActivity());
