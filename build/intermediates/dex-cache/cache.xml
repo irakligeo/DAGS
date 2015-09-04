@@ -2,214 +2,214 @@
 <items version="2" >
 
     <item
-        jar="C:\Users\Development\AndroidStudioProjects\GraphiteFinder\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-panorama\7.3.0\jars\classes.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="565a01f90f1529f73362707c4c185d0623a68782">
-        <dex dex="C:\Users\Development\AndroidStudioProjects\GraphiteFinder\app\build\intermediates\pre-dexed\debug\classes-d027487e7305a8f0c08298930731940e32495b4e.jar" />
-    </item>
-    <item
-        jar="C:\Users\Development\AndroidStudioProjects\GraphiteFinder\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-safetynet\7.3.0\jars\classes.jar"
+        jar="/Users/GeoLabOwl/GraphiteFinder/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-safetynet/7.3.0/jars/classes.jar"
         jumboMode="false"
         revision="21.1.2"
         sha1="0708ef60917bf94913fe9ef972a655b99462dca7">
-        <dex dex="C:\Users\Development\AndroidStudioProjects\GraphiteFinder\app\build\intermediates\pre-dexed\debug\classes-352abf43bb666da2e9e4aaa54ba80c00e296f51f.jar" />
+        <dex dex="/Users/GeoLabOwl/GraphiteFinder/app/build/intermediates/pre-dexed/debug/classes-83414bb97c29adc3c24aa1865b643b1267dbe950.jar" />
     </item>
     <item
-        jar="C:\Users\Development\AndroidStudioProjects\GraphiteFinder\app\build\intermediates\exploded-aar\com.facebook.android\facebook-android-sdk\4.1.0\jars\classes.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="a78bfd2ec508b123ee7c03f4006ba7996ef9a8dc">
-        <dex dex="C:\Users\Development\AndroidStudioProjects\GraphiteFinder\app\build\intermediates\pre-dexed\debug\classes-e204506adb0987541a4838cee3d6f4e5322e14f1.jar" />
-    </item>
-    <item
-        jar="C:\Users\Development\AndroidStudioProjects\GraphiteFinder\app\build\intermediates\exploded-aar\com.android.support\support-v4\22.2.0\jars\libs\internal_impl-22.2.0.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="57f2ab85c164ff1676ec64dee787981c046fab79">
-        <dex dex="C:\Users\Development\AndroidStudioProjects\GraphiteFinder\app\build\intermediates\pre-dexed\debug\internal_impl-22.2.0-2efdcd04cac6596fe896d113877a161e251a361f.jar" />
-    </item>
-    <item
-        jar="C:\Users\Development\AndroidStudioProjects\GraphiteFinder\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-nearby\7.3.0\jars\classes.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="5ea948d825957be6c4358c48422bee60eef2d487">
-        <dex dex="C:\Users\Development\AndroidStudioProjects\GraphiteFinder\app\build\intermediates\pre-dexed\debug\classes-a0f787bf3ed907a2806a386ff548aaa2cf48edda.jar" />
-    </item>
-    <item
-        jar="C:\Users\Development\AndroidStudioProjects\GraphiteFinder\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-plus\7.3.0\jars\classes.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="59652857a825fff0de62166fca1bc9553cc01abb">
-        <dex dex="C:\Users\Development\AndroidStudioProjects\GraphiteFinder\app\build\intermediates\pre-dexed\debug\classes-f51f82858dffb38837e9587f9eb241912f87fcf4.jar" />
-    </item>
-    <item
-        jar="C:\Users\Development\AndroidStudioProjects\GraphiteFinder\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-ads\7.3.0\jars\classes.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="3988694bf9d8186ff97ad5cdfa4ed88b5010fe08">
-        <dex dex="C:\Users\Development\AndroidStudioProjects\GraphiteFinder\app\build\intermediates\pre-dexed\debug\classes-3e071d601eb5af82dc3453e3bea2a7a228c1f0ba.jar" />
-    </item>
-    <item
-        jar="C:\Users\Development\AndroidStudioProjects\GraphiteFinder\app\build\intermediates\exploded-aar\com.android.support\support-v4\22.2.0\jars\classes.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="1ee588ff2c4daf7b97c1cbf922a6c7f027285c2f">
-        <dex dex="C:\Users\Development\AndroidStudioProjects\GraphiteFinder\app\build\intermediates\pre-dexed\debug\classes-f31caf5fe356ff213e842cc462c74f8c76783ac6.jar" />
-    </item>
-    <item
-        jar="C:\Users\Development\AndroidStudioProjects\GraphiteFinder\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-location\7.3.0\jars\classes.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="b2c07cdb814fe988ad05f7b4d767a841514a5991">
-        <dex dex="C:\Users\Development\AndroidStudioProjects\GraphiteFinder\app\build\intermediates\pre-dexed\debug\classes-731ab62b6d39931a9db4422623d8ad78229bff20.jar" />
-    </item>
-    <item
-        jar="C:\Users\Development\AndroidStudioProjects\GraphiteFinder\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-wearable\7.3.0\jars\classes.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="e5bf453b070c1e39297986144960e45afa0fdfad">
-        <dex dex="C:\Users\Development\AndroidStudioProjects\GraphiteFinder\app\build\intermediates\pre-dexed\debug\classes-98f719307287002f0e8b23dbd5463e18c4182251.jar" />
-    </item>
-    <item
-        jar="C:\Users\Development\AndroidStudioProjects\GraphiteFinder\app\build\intermediates\exploded-aar\com.github.erd\android-volley\1.0.0\jars\classes.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="24c7ec1ecd41d65b24a76cef274fdd5f0805e98b">
-        <dex dex="C:\Users\Development\AndroidStudioProjects\GraphiteFinder\app\build\intermediates\pre-dexed\debug\classes-aaa041613445b5ef5f6859b893a0d22310bb2ac7.jar" />
-    </item>
-    <item
-        jar="C:\Users\Development\AndroidStudioProjects\GraphiteFinder\app\build\intermediates\exploded-aar\com.android.support\cardview-v7\21.0.3\jars\classes.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="00b0b7233e1ec64acebfac40d4983d32d4712426">
-        <dex dex="C:\Users\Development\AndroidStudioProjects\GraphiteFinder\app\build\intermediates\pre-dexed\debug\classes-1be7601a6ac8f3c0963f7957d89449e71004b8ec.jar" />
-    </item>
-    <item
-        jar="C:\Users\Development\AndroidStudioProjects\GraphiteFinder\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-appstate\7.3.0\jars\classes.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="0180d031a7b54dabb93b4af3869468b55dc938bd">
-        <dex dex="C:\Users\Development\AndroidStudioProjects\GraphiteFinder\app\build\intermediates\pre-dexed\debug\classes-ce7201cdf4043ddaa9e86b7dac8b17f3084b53b6.jar" />
-    </item>
-    <item
-        jar="C:\Users\Development\AndroidStudioProjects\GraphiteFinder\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\22.2.0\jars\classes.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="73753982da6bde518f3a4c6b372749981d14d1a0">
-        <dex dex="C:\Users\Development\AndroidStudioProjects\GraphiteFinder\app\build\intermediates\pre-dexed\debug\classes-dfa7e7738e4f2f7e43e1d22b4f415368aabeb360.jar" />
-    </item>
-    <item
-        jar="C:\Users\Development\.gradle\caches\modules-2\files-2.1\com.parse.bolts\bolts-android\1.2.0\6ee2953ccf51ce72b6d548c30c4633b99eb4f9dd\bolts-android-1.2.0.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="6ee2953ccf51ce72b6d548c30c4633b99eb4f9dd">
-        <dex dex="C:\Users\Development\AndroidStudioProjects\GraphiteFinder\app\build\intermediates\pre-dexed\debug\bolts-android-1.2.0-fd333e2a0f92396c9de28182afa8eb738830d83e.jar" />
-    </item>
-    <item
-        jar="C:\Users\Development\AndroidStudioProjects\GraphiteFinder\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-analytics\7.3.0\jars\classes.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="9c9dea9e85aceb09d95df5e6f7bc8a43fc286068">
-        <dex dex="C:\Users\Development\AndroidStudioProjects\GraphiteFinder\app\build\intermediates\pre-dexed\debug\classes-c2647470b61c0de990b064804a7691a05e34db79.jar" />
-    </item>
-    <item
-        jar="C:\Users\Development\AndroidStudioProjects\GraphiteFinder\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-wallet\7.3.0\jars\classes.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="6046e5cdaf799120b7c56a5a061d80e8854c4d34">
-        <dex dex="C:\Users\Development\AndroidStudioProjects\GraphiteFinder\app\build\intermediates\pre-dexed\debug\classes-eeffa50f120e0d58ec0cf30ff684cfa4be419468.jar" />
-    </item>
-    <item
-        jar="C:\Users\Development\AndroidStudioProjects\GraphiteFinder\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-fitness\7.3.0\jars\classes.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="4f4fe3c23776540625f3c2844152a7510fddf9f1">
-        <dex dex="C:\Users\Development\AndroidStudioProjects\GraphiteFinder\app\build\intermediates\pre-dexed\debug\classes-225e335f80f35b6c898d8859fcf09e3d7648440a.jar" />
-    </item>
-    <item
-        jar="C:\Users\Development\.gradle\caches\modules-2\files-2.1\com.squareup.picasso\picasso\2.5.2\7446d06ec8d4f7ffcc53f1da37c95f200dcb9387\picasso-2.5.2.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="7446d06ec8d4f7ffcc53f1da37c95f200dcb9387">
-        <dex dex="C:\Users\Development\AndroidStudioProjects\GraphiteFinder\app\build\intermediates\pre-dexed\debug\picasso-2.5.2-7d9f38ef09a68a328a438c3f59ca2e77f034c32f.jar" />
-    </item>
-    <item
-        jar="C:\Users\Development\AndroidStudioProjects\GraphiteFinder\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-maps\7.3.0\jars\classes.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="fe3e0c6de7cceed888b277487238b6af9a1cc299">
-        <dex dex="C:\Users\Development\AndroidStudioProjects\GraphiteFinder\app\build\intermediates\pre-dexed\debug\classes-6343ec4ac01de8378be6931bb925d183a34d3672.jar" />
-    </item>
-    <item
-        jar="C:\Users\Development\AndroidStudioProjects\GraphiteFinder\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-identity\7.3.0\jars\classes.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="b48d5c51a9a9e329005106b4667f54948de4d4d8">
-        <dex dex="C:\Users\Development\AndroidStudioProjects\GraphiteFinder\app\build\intermediates\pre-dexed\debug\classes-f5b6409b06ab3c89393c18dc68fec90ca5081ef2.jar" />
-    </item>
-    <item
-        jar="C:\Users\Development\AndroidStudioProjects\GraphiteFinder\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-cast\7.3.0\jars\classes.jar"
+        jar="/Users/GeoLabOwl/GraphiteFinder/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-cast/7.3.0/jars/classes.jar"
         jumboMode="false"
         revision="21.1.2"
         sha1="e5b9f5b0aa8dee788beb63d23832cb29ce771343">
-        <dex dex="C:\Users\Development\AndroidStudioProjects\GraphiteFinder\app\build\intermediates\pre-dexed\debug\classes-fdec9b1248d20936cecd989cbfa3a3bc83cdb456.jar" />
+        <dex dex="/Users/GeoLabOwl/GraphiteFinder/app/build/intermediates/pre-dexed/debug/classes-cc998ef379371af50e5ac8696baac2c481b90478.jar" />
     </item>
     <item
-        jar="C:\Users\Development\AndroidStudioProjects\GraphiteFinder\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-gcm\7.3.0\jars\classes.jar"
+        jar="/Users/GeoLabOwl/.gradle/caches/modules-2/files-2.1/com.parse.bolts/bolts-android/1.2.0/6ee2953ccf51ce72b6d548c30c4633b99eb4f9dd/bolts-android-1.2.0.jar"
         jumboMode="false"
         revision="21.1.2"
-        sha1="7215ac1f2fca947b9415a6ee2a1bf991364aab24">
-        <dex dex="C:\Users\Development\AndroidStudioProjects\GraphiteFinder\app\build\intermediates\pre-dexed\debug\classes-5ab9e61e701d006f903a5cd52c3d07722aa8be1b.jar" />
+        sha1="6ee2953ccf51ce72b6d548c30c4633b99eb4f9dd">
+        <dex dex="/Users/GeoLabOwl/GraphiteFinder/app/build/intermediates/pre-dexed/debug/bolts-android-1.2.0-594d15d2621b38c96a8dea1470ae4133e89a4bfd.jar" />
     </item>
     <item
-        jar="C:\Users\Development\AndroidStudioProjects\GraphiteFinder\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-games\7.3.0\jars\classes.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="3b4ff5c39dace8f3b4ab4cab8191785547a0815f">
-        <dex dex="C:\Users\Development\AndroidStudioProjects\GraphiteFinder\app\build\intermediates\pre-dexed\debug\classes-beb804088facef583ce1f5601650d8c4d6691c63.jar" />
-    </item>
-    <item
-        jar="C:\Users\Development\AndroidStudioProjects\GraphiteFinder\app\build\intermediates\exploded-aar\com.android.support\design\22.2.0\jars\classes.jar"
+        jar="/Users/GeoLabOwl/GraphiteFinder/app/build/intermediates/exploded-aar/com.android.support/design/22.2.0/jars/classes.jar"
         jumboMode="false"
         revision="21.1.2"
         sha1="fc63b820d54c8a27a3a614bdd93920e0076581c2">
-        <dex dex="C:\Users\Development\AndroidStudioProjects\GraphiteFinder\app\build\intermediates\pre-dexed\debug\classes-1340079ee87ddd6fec0d9fc4eed4e37751a3a057.jar" />
+        <dex dex="/Users/GeoLabOwl/GraphiteFinder/app/build/intermediates/pre-dexed/debug/classes-c5682542df3841dd86586bb1ec5d4a34627a6098.jar" />
     </item>
     <item
-        jar="C:\Users\Development\AndroidStudioProjects\GraphiteFinder\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-base\7.3.0\jars\classes.jar"
+        jar="/Users/GeoLabOwl/GraphiteFinder/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.0/jars/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="73753982da6bde518f3a4c6b372749981d14d1a0">
+        <dex dex="/Users/GeoLabOwl/GraphiteFinder/app/build/intermediates/pre-dexed/debug/classes-31b750f77cbd027a8164eb412163e3b6097d20e3.jar" />
+    </item>
+    <item
+        jar="/Users/GeoLabOwl/GraphiteFinder/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/7.3.0/jars/classes.jar"
         jumboMode="false"
         revision="21.1.2"
         sha1="f2f7ec211ce4d244ee97a57523eeb4526dc3cf8a">
-        <dex dex="C:\Users\Development\AndroidStudioProjects\GraphiteFinder\app\build\intermediates\pre-dexed\debug\classes-94f901a35d227689468f2ae77d5c56e09b289efb.jar" />
+        <dex dex="/Users/GeoLabOwl/GraphiteFinder/app/build/intermediates/pre-dexed/debug/classes-cb44177b6cb9567f9df6d32ebd1edcd2b46f2c38.jar" />
     </item>
     <item
-        jar="C:\Users\Development\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\22.2.0\support-annotations-22.2.0.jar"
+        jar="/Users/GeoLabOwl/GraphiteFinder/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-identity/7.3.0/jars/classes.jar"
         jumboMode="false"
         revision="21.1.2"
-        sha1="66b42a1f3eb7676070b7ef7f14b603483aecbee1">
-        <dex dex="C:\Users\Development\AndroidStudioProjects\GraphiteFinder\app\build\intermediates\pre-dexed\debug\support-annotations-22.2.0-ea06de8dfdf8f1f70fafe2a0bd1b8e97e5c69272.jar" />
+        sha1="b48d5c51a9a9e329005106b4667f54948de4d4d8">
+        <dex dex="/Users/GeoLabOwl/GraphiteFinder/app/build/intermediates/pre-dexed/debug/classes-4826614e7db50c3e14e6b4f4c99bed17ef1a19f3.jar" />
     </item>
     <item
-        jar="C:\Users\Development\AndroidStudioProjects\GraphiteFinder\app\build\intermediates\exploded-aar\com.android.support\recyclerview-v7\21.0.3\jars\classes.jar"
+        jar="/Users/GeoLabOwl/GraphiteFinder/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-wallet/7.3.0/jars/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="6046e5cdaf799120b7c56a5a061d80e8854c4d34">
+        <dex dex="/Users/GeoLabOwl/GraphiteFinder/app/build/intermediates/pre-dexed/debug/classes-2e699b0daac86b478bff4218e33676457406dde4.jar" />
+    </item>
+    <item
+        jar="/Users/GeoLabOwl/GraphiteFinder/app/build/intermediates/exploded-aar/com.android.support/cardview-v7/21.0.3/jars/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="00b0b7233e1ec64acebfac40d4983d32d4712426">
+        <dex dex="/Users/GeoLabOwl/GraphiteFinder/app/build/intermediates/pre-dexed/debug/classes-fe6e7bb503fb75cbca4cb21fb07c0e4cd3e210ac.jar" />
+    </item>
+    <item
+        jar="/Users/GeoLabOwl/GraphiteFinder/app/build/intermediates/exploded-aar/com.android.support/recyclerview-v7/21.0.3/jars/classes.jar"
         jumboMode="false"
         revision="21.1.2"
         sha1="4b8945fc23a7461c6fdde15753456d64b0a9358b">
-        <dex dex="C:\Users\Development\AndroidStudioProjects\GraphiteFinder\app\build\intermediates\pre-dexed\debug\classes-3a8cad946c3853cb9dff3279ec753bcead56e3f9.jar" />
+        <dex dex="/Users/GeoLabOwl/GraphiteFinder/app/build/intermediates/pre-dexed/debug/classes-5d6d2c3e20e300d99b7cb4e6c0aebd46275a7f62.jar" />
     </item>
     <item
-        jar="C:\Users\Development\AndroidStudioProjects\GraphiteFinder\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-appindexing\7.3.0\jars\classes.jar"
+        jar="/Users/GeoLabOwl/GraphiteFinder/app/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.1.0/jars/classes.jar"
         jumboMode="false"
         revision="21.1.2"
-        sha1="e35fae1b377c23aa5fd2d309a190c2d0f73d54ec">
-        <dex dex="C:\Users\Development\AndroidStudioProjects\GraphiteFinder\app\build\intermediates\pre-dexed\debug\classes-82c378a50da3961f4318c380503ab00f2cce31ef.jar" />
+        sha1="a78bfd2ec508b123ee7c03f4006ba7996ef9a8dc">
+        <dex dex="/Users/GeoLabOwl/GraphiteFinder/app/build/intermediates/pre-dexed/debug/classes-38a506f6f931558d0a5de46c72efb3f27adbc9b7.jar" />
     </item>
     <item
-        jar="C:\Users\Development\AndroidStudioProjects\GraphiteFinder\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-drive\7.3.0\jars\classes.jar"
+        jar="/Users/GeoLabOwl/GraphiteFinder/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-ads/7.3.0/jars/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="3988694bf9d8186ff97ad5cdfa4ed88b5010fe08">
+        <dex dex="/Users/GeoLabOwl/GraphiteFinder/app/build/intermediates/pre-dexed/debug/classes-8ec4a1794000ab2ca81593ec3d0f83289a23274d.jar" />
+    </item>
+    <item
+        jar="/Users/GeoLabOwl/GraphiteFinder/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-analytics/7.3.0/jars/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="9c9dea9e85aceb09d95df5e6f7bc8a43fc286068">
+        <dex dex="/Users/GeoLabOwl/GraphiteFinder/app/build/intermediates/pre-dexed/debug/classes-97f8c00237ea38efc5ef6a99828081f9637fc6b6.jar" />
+    </item>
+    <item
+        jar="/Users/GeoLabOwl/GraphiteFinder/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-panorama/7.3.0/jars/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="565a01f90f1529f73362707c4c185d0623a68782">
+        <dex dex="/Users/GeoLabOwl/GraphiteFinder/app/build/intermediates/pre-dexed/debug/classes-be3ac1136a25445e53d702fb5378559e35618e67.jar" />
+    </item>
+    <item
+        jar="/Users/GeoLabOwl/GraphiteFinder/app/build/intermediates/exploded-aar/com.android.support/support-v4/22.2.0/jars/libs/internal_impl-22.2.0.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="57f2ab85c164ff1676ec64dee787981c046fab79">
+        <dex dex="/Users/GeoLabOwl/GraphiteFinder/app/build/intermediates/pre-dexed/debug/internal_impl-22.2.0-266080d7aea44589a02179be569b684bbb97cdd4.jar" />
+    </item>
+    <item
+        jar="/Users/GeoLabOwl/GraphiteFinder/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-appstate/7.3.0/jars/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="0180d031a7b54dabb93b4af3869468b55dc938bd">
+        <dex dex="/Users/GeoLabOwl/GraphiteFinder/app/build/intermediates/pre-dexed/debug/classes-9cb900a71971ada7fe1411e96d0d2644e8996da5.jar" />
+    </item>
+    <item
+        jar="/Users/GeoLabOwl/.gradle/caches/modules-2/files-2.1/com.squareup.picasso/picasso/2.5.2/7446d06ec8d4f7ffcc53f1da37c95f200dcb9387/picasso-2.5.2.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="7446d06ec8d4f7ffcc53f1da37c95f200dcb9387">
+        <dex dex="/Users/GeoLabOwl/GraphiteFinder/app/build/intermediates/pre-dexed/debug/picasso-2.5.2-ad2de994ed2352e06752e63d0500a782aba6ced9.jar" />
+    </item>
+    <item
+        jar="/Users/GeoLabOwl/GraphiteFinder/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-nearby/7.3.0/jars/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="5ea948d825957be6c4358c48422bee60eef2d487">
+        <dex dex="/Users/GeoLabOwl/GraphiteFinder/app/build/intermediates/pre-dexed/debug/classes-b49e37297f18e33ac5981cfc201c10dc8d6ef2ea.jar" />
+    </item>
+    <item
+        jar="/Users/GeoLabOwl/GraphiteFinder/app/build/intermediates/exploded-aar/com.github.erd/android-volley/1.0.0/jars/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="24c7ec1ecd41d65b24a76cef274fdd5f0805e98b">
+        <dex dex="/Users/GeoLabOwl/GraphiteFinder/app/build/intermediates/pre-dexed/debug/classes-390c3e8f53f424465d74c7d438c5b12f2283640e.jar" />
+    </item>
+    <item
+        jar="/Users/GeoLabOwl/GraphiteFinder/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-games/7.3.0/jars/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="3b4ff5c39dace8f3b4ab4cab8191785547a0815f">
+        <dex dex="/Users/GeoLabOwl/GraphiteFinder/app/build/intermediates/pre-dexed/debug/classes-ae1962d53542e3138154679c153c5f3e41892e18.jar" />
+    </item>
+    <item
+        jar="/Users/GeoLabOwl/GraphiteFinder/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-wearable/7.3.0/jars/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="e5bf453b070c1e39297986144960e45afa0fdfad">
+        <dex dex="/Users/GeoLabOwl/GraphiteFinder/app/build/intermediates/pre-dexed/debug/classes-ddebc0c419d3d294ae006aad015c610a61c93339.jar" />
+    </item>
+    <item
+        jar="/Users/GeoLabOwl/GraphiteFinder/app/build/intermediates/exploded-aar/com.android.support/support-v4/22.2.0/jars/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="1ee588ff2c4daf7b97c1cbf922a6c7f027285c2f">
+        <dex dex="/Users/GeoLabOwl/GraphiteFinder/app/build/intermediates/pre-dexed/debug/classes-10f280d7e69d37750cd74013e5044450fb556785.jar" />
+    </item>
+    <item
+        jar="/Users/GeoLabOwl/GraphiteFinder/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-fitness/7.3.0/jars/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="4f4fe3c23776540625f3c2844152a7510fddf9f1">
+        <dex dex="/Users/GeoLabOwl/GraphiteFinder/app/build/intermediates/pre-dexed/debug/classes-d326bf9ff5c875fdf473c57f6a7032a8dd8ad923.jar" />
+    </item>
+    <item
+        jar="/Users/GeoLabOwl/GraphiteFinder/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-drive/7.3.0/jars/classes.jar"
         jumboMode="false"
         revision="21.1.2"
         sha1="a0ce76dfaccbfbd6c551ed2174280aaabe60fe47">
-        <dex dex="C:\Users\Development\AndroidStudioProjects\GraphiteFinder\app\build\intermediates\pre-dexed\debug\classes-0ecacf3cdc8140a5dcc02a6fae952850880264c0.jar" />
+        <dex dex="/Users/GeoLabOwl/GraphiteFinder/app/build/intermediates/pre-dexed/debug/classes-af7b75c6962cf8e819d79cca398e8559a32bc01f.jar" />
+    </item>
+    <item
+        jar="/Users/GeoLabOwl/GraphiteFinder/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-location/7.3.0/jars/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="b2c07cdb814fe988ad05f7b4d767a841514a5991">
+        <dex dex="/Users/GeoLabOwl/GraphiteFinder/app/build/intermediates/pre-dexed/debug/classes-3e8fef78516143433acda9bf660a5b3352dec731.jar" />
+    </item>
+    <item
+        jar="/Users/GeoLabOwl/GraphiteFinder/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-appindexing/7.3.0/jars/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="e35fae1b377c23aa5fd2d309a190c2d0f73d54ec">
+        <dex dex="/Users/GeoLabOwl/GraphiteFinder/app/build/intermediates/pre-dexed/debug/classes-12fbb959d185bc1ce850fd68d925c99838918f25.jar" />
+    </item>
+    <item
+        jar="/Users/GeoLabOwl/GraphiteFinder/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-gcm/7.3.0/jars/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="7215ac1f2fca947b9415a6ee2a1bf991364aab24">
+        <dex dex="/Users/GeoLabOwl/GraphiteFinder/app/build/intermediates/pre-dexed/debug/classes-54253ebf9e2fcfd615685e71eaf51c7828e8c012.jar" />
+    </item>
+    <item
+        jar="/Users/GeoLabOwl/GraphiteFinder/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-maps/7.3.0/jars/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="fe3e0c6de7cceed888b277487238b6af9a1cc299">
+        <dex dex="/Users/GeoLabOwl/GraphiteFinder/app/build/intermediates/pre-dexed/debug/classes-946287e7c214e1a24e126ea9b8c7fb863c62085f.jar" />
+    </item>
+    <item
+        jar="/Users/GeoLabOwl/GraphiteFinder/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-plus/7.3.0/jars/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="59652857a825fff0de62166fca1bc9553cc01abb">
+        <dex dex="/Users/GeoLabOwl/GraphiteFinder/app/build/intermediates/pre-dexed/debug/classes-0759971a8777ebdd12cacf16570c212871522968.jar" />
+    </item>
+    <item
+        jar="/Users/GeoLabOwl/Library/Android/sdk/extras/android/m2repository/com/android/support/support-annotations/22.2.0/support-annotations-22.2.0.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="66b42a1f3eb7676070b7ef7f14b603483aecbee1">
+        <dex dex="/Users/GeoLabOwl/GraphiteFinder/app/build/intermediates/pre-dexed/debug/support-annotations-22.2.0-623971d35035f9c0663d71457e90081262ff7116.jar" />
     </item>
 
 </items>
