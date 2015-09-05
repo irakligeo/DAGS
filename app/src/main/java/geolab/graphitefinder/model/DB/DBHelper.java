@@ -18,8 +18,8 @@ public class DBHelper extends SQLiteOpenHelper{
             + TableGraphite.imgDescription + " text,"
             + TableGraphite.longitude + " real,"
             + TableGraphite.latitude + " real,"
-            + TableGraphite.uploadDateTime + " text"
-            + ")";
+            + TableGraphite.uploadDateTime + " text "
+            + ");";
 
 
     public DBHelper(Context context) {
@@ -33,6 +33,6 @@ public class DBHelper extends SQLiteOpenHelper{
 
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i2) {
-
+        onUpgrade(sqLiteDatabase,i,i2);
     }
 }

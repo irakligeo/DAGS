@@ -110,7 +110,6 @@ public class MainActivity extends ActionBarActivity implements NavigationView.On
             switch (position){
                 case 1: return MapFragment.newInstance("viewPager");
 //                case 1: return TestFrag.newInstance("testFrag");
-
             }
             return new ViewPagerFragment();
         }

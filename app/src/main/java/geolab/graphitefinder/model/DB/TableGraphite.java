@@ -4,12 +4,12 @@ public class TableGraphite {
 
     public static String TABLE_NAME = "graphiteItem";
 
-    public static String id;
-    public static String imgTitle;
-    public static String imgAuthor;
-    public static String imgDescription;
-    public static String imgURL;
-    public static double latitude;
-    public static double longitude;
-    public static String uploadDateTime;
+    public static String id = "ID";
+    public static String imgTitle = "imgTitle";
+    public static String imgAuthor = "imgAuthor";
+    public static String imgDescription = "imgDescription";
+    public static String imgURL = "imgURL";
+    public static String latitude = "latitude";
+    public static String longitude = "longitude";
+    public static String uploadDateTime = "uploadDateTime";
 }

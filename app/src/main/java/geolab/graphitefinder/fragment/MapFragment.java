@@ -1,5 +1,6 @@
 package geolab.graphitefinder.fragment;
 
+import android.database.Cursor;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,7 +15,11 @@ import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
+import java.util.ArrayList;
+
 import geolab.graphitefinder.R;
+import geolab.graphitefinder.model.Coords;
+import geolab.graphitefinder.model.DB.TableGraphite;
 
 public class MapFragment extends android.support.v4.app.Fragment {
     MapView mMapView;
@@ -23,9 +28,10 @@ public class MapFragment extends android.support.v4.app.Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
         // inflat and return the layout
-        View v = inflater.inflate(R.layout.fragment_map, container,
-                false);
+        View v = inflater.inflate(R.layout.fragment_map, container, false);
+
         mMapView = (MapView) v.findViewById(R.id.mapView);
         mMapView.onCreate(savedInstanceState);
 
@@ -38,29 +44,59 @@ public class MapFragment extends android.support.v4.app.Fragment {
         }
 
         googleMap = mMapView.getMap();
-        // latitude and longitude
-        double latitude = 17.385044;
-        double longitude = 78.486671;
 
+
+
+        MarkerOptions marker = new MarkerOptions();
+
+        ArrayList<Coords> coordsList;
+        //ArrayList of longitude, latitude, title;
+        coordsList = getCoordsFromDB();
 
         // create marker
-        MarkerOptions marker = new MarkerOptions().position(
-                new LatLng(latitude, longitude)).title("Hello Maps");
+        for( int i = 0; i < coordsList.size(); ++i ) {
+            double longitude = coordsList.get(i).getLongitude();
+            double latitude = coordsList.get(i).getLatitude();
+            String title = coordsList.get(i).getTitle();
 
+            marker = new MarkerOptions().position(
+                    new LatLng(latitude, longitude)).title(title);
+            // adding marker
+            googleMap.addMarker(marker);
+        }
         // Changing marker icon
         marker.icon(BitmapDescriptorFactory
                 .defaultMarker(BitmapDescriptorFactory.HUE_ROSE));
 
-        // adding marker
-        googleMap.addMarker(marker);
         CameraPosition cameraPosition = new CameraPosition.Builder()
-                .target(new LatLng(17.385044, 78.486671)).zoom(12).build();
+                .target(new LatLng(coordsList.get(3).getLongitude(), coordsList.get(3).getLatitude())).zoom(5).build();
         googleMap.animateCamera(CameraUpdateFactory
                 .newCameraPosition(cameraPosition));
 
         // Perform any camera updates here
         return v;
     }
+
+
+    private ArrayList<Coords> getCoordsFromDB(){
+        ArrayList<Coords> tmpList = new ArrayList<>();
+        for(int i = 0; i < 8; ++i){
+            Cursor cursor = ViewPagerFragment.db.query(TableGraphite.TABLE_NAME,null,TableGraphite.id +" ="+ i,null,null,null,null,null);
+            if(cursor.moveToFirst()){
+                do{
+                    double longitude = Double.parseDouble(cursor.getString(cursor.getColumnIndex(String.valueOf(TableGraphite.longitude))));
+                    double latitude = Double.parseDouble(cursor.getString(cursor.getColumnIndex(String.valueOf(TableGraphite.latitude))));
+                    String title = cursor.getString(cursor.getColumnIndex(TableGraphite.imgTitle));
+                    Coords coords = new Coords(longitude,latitude,title);
+
+                    tmpList.add(coords);
+
+                }while (cursor.moveToNext());
+            }
+        }
+        return tmpList;
+    }
+
 
     public static MapFragment newInstance(String text) {
 

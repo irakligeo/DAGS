@@ -11,6 +11,7 @@ public class GraphiteItemModel implements Serializable{
     private String createDate;
     private double longitude;
     private double latitude;
+    private int id;
 
     public GraphiteItemModel(String title, String description, String imgURL, String author, String createDate, double longitude, double latitude) {
         this.title = title;
@@ -79,6 +80,10 @@ public class GraphiteItemModel implements Serializable{
         this.latitude = latitude;
     }
 
+    public int getId() {
+        return this.id;
+    }
+
     @Override
     public String toString() {
         return "GraphiteItemModel{" +
@@ -91,4 +96,5 @@ public class GraphiteItemModel implements Serializable{
                 ", latitude=" + latitude +
                 '}';
     }
+
 }
