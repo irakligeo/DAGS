@@ -34,10 +34,8 @@ public class ViewPagerFragment extends android.support.v4.app.Fragment {
 
 
     @Override
-    public void onActivityCreated(Bundle savedInstanceState)
-    {
+    public void onActivityCreated(Bundle savedInstanceState){
         super.onActivityCreated(savedInstanceState);
-
     }
 
     private ProgressDialog progressDialog;
@@ -72,12 +70,6 @@ public class ViewPagerFragment extends android.support.v4.app.Fragment {
 
             }
         });
-        // for dummy data
-//        ArrayList<GraphiteItemModel> graphiteItems = getGraphiteItems();
-//
-//        graphiteListView = (ListView)rootView.findViewById(R.id.graphiteList);
-//        graphiteListView.setAdapter(new ListViewAdapter(getActivity(), graphiteItems));
-
 
         return rootView;
     }
@@ -118,19 +110,6 @@ public class ViewPagerFragment extends android.support.v4.app.Fragment {
         requestQueue.add(jsonArrayRequest);
     }
 
-    public ArrayList<GraphiteItemModel> getGraphiteItems(){
-        ArrayList<GraphiteItemModel> graphiteItems1 = new ArrayList<>();
-
-        graphiteItems1.add(new GraphiteItemModel("Android","გრაფიტი აგრაფიტებულა საგრაფიტეში ჩაგრაფიტებულა, საგრაფიტედან ამოგრაფიტებულა ","http://www.wallfoz.com/wp-content/uploads/2015/05/3d_graffiti_wallpapers_49_design_photo_for_dekstop_wfz.jpg","giorgi","13-02-2015",13.345,44.3345));
-        graphiteItems1.add(new GraphiteItemModel("PHP-server","ჰიდროელექტროსადგური გაყიდროელექტროსადგურებულა საჰიდროელექტროსადგურში ჩაყიდროელექტროსადგურებულა ","http://theartmad.com/wp-content/uploads/2015/03/3d-Graffiti-Wallpapers-Free-Download-3.jpg","Lasha","14-07-2015",13.345,44.3345));
-        graphiteItems1.add(new GraphiteItemModel("web-design","გრაფიტი აგრაფიტებულა საგრაფიტეში ჩაგრაფიტებულა, საგრაფიტედან ამოგრაფიტებულა","http://www.homefurniture-ideas.com/wp-content/uploads/2014/06/inspiring-imaginative-blue-graffiti-wallpaper-mural-room-1.jpg","Gio","29-07-2015",13.345,44.3345));
-        graphiteItems1.add(new GraphiteItemModel("PHP-Map","გრაფიტი აგრაფიტებულა საგრაფიტეში ჩაგრაფიტებულა, საგრაფიტედან ამოგრაფიტებულა","http://www.wallfoz.com/wp-content/uploads/2015/05/best_graffiti_wallpapers_cool_14_design_backgrunds_for_dekstop_wfz.jpg","Oto","8-07-2013",13.345,44.3345));
-        graphiteItems1.add(new GraphiteItemModel("design","გრაფიტი აგრაფიტებულა საგრაფიტეში ჩაგრაფიტებულა, საგრაფიტედან ამოგრაფიტებულა","http://hdwallpapersfit.com/wp-content/uploads/2015/02/cool-graffiti-bedroom-wallpapers-design.jpg","Lana","18-07-2014",13.345,44.3345));
-
-//        progressDialog.dismiss();
-        return graphiteItems1;
-
-    }
 
     public static ViewPagerFragment newInstance(String text) {
 

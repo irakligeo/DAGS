@@ -42,6 +42,7 @@ public class MapFragment extends android.support.v4.app.Fragment {
         double latitude = 17.385044;
         double longitude = 78.486671;
 
+
         // create marker
         MarkerOptions marker = new MarkerOptions().position(
                 new LatLng(latitude, longitude)).title("Hello Maps");
