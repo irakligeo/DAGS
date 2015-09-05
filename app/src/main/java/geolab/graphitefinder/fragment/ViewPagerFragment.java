@@ -5,6 +5,7 @@ import android.content.ContentValues;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -47,12 +48,26 @@ public class ViewPagerFragment extends android.support.v4.app.Fragment {
     private View rootView;
 
     public static SQLiteDatabase db;
-
+    private SwipeRefreshLayout mSwipeRefreshLayout;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
         rootView = inflater.inflate(R.layout.fragment_graphiteitemslist, container, false);
+
+        //swipe refresh
+        mSwipeRefreshLayout = (SwipeRefreshLayout) rootView.findViewById(R.id.swipe_refresh_layout);
+        mSwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+
+            @Override
+            public void onRefresh() {
+                graphiteItems = null;
+                getGraphiteDatas(URL);
+                Toast.makeText(getActivity(), "updating...", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+
 
         //Database instance
         DBHelper dbHelper = new DBHelper(getActivity());
@@ -131,6 +146,7 @@ public class ViewPagerFragment extends android.support.v4.app.Fragment {
 
                     //dismiss progressDialog after loading data
                     progressDialog.dismiss();
+                    mSwipeRefreshLayout.setRefreshing(false);
                 }
             },
             new Response.ErrorListener() {
