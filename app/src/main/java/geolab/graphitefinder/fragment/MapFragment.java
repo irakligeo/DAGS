@@ -1,6 +1,11 @@
 package geolab.graphitefinder.fragment;
 
 import android.database.Cursor;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Paint;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -53,35 +58,68 @@ public class MapFragment extends android.support.v4.app.Fragment {
         //ArrayList of longitude, latitude, title;
         coordsList = getCoordsFromDB();
 
+        ////
+        Bitmap.Config conf = Bitmap.Config.ARGB_8888;
+        Bitmap bmp = Bitmap.createBitmap(80, 80, conf);
+        Canvas canvas1 = new Canvas(bmp);
+
+// paint defines the text color,
+// stroke width, size
+        Paint color = new Paint();
+        color.setTextSize(35);
+        color.setColor(Color.BLACK);
+
+//modify canvas
+        canvas1.drawBitmap(BitmapFactory.decodeResource(getResources(),
+                R.mipmap.ic_launcher1), 0,0, color);
+        canvas1.drawText("User Name!", 30, 40, color);
+
+        ////
+
+
         // create marker
         for( int i = 0; i < coordsList.size(); ++i ) {
             double longitude = coordsList.get(i).getLongitude();
             double latitude = coordsList.get(i).getLatitude();
             String title = coordsList.get(i).getTitle();
 
+            //add marker to Map
+//            LatLng latLng = new LatLng(longitude, latitude);
+//            marker = new MarkerOptions().position(latLng)
+//                    .icon(BitmapDescriptorFactory.fromBitmap(bmp)).title(title)
+//                            // Specifies the anchor to be at a particular point in the marker image.
+//                    .anchor(0.5f, 1);
+
             marker = new MarkerOptions().position(
                     new LatLng(latitude, longitude)).title(title);
-            // adding marker
+//            // adding marker
             googleMap.addMarker(marker);
         }
-        // Changing marker icon
-        marker.icon(BitmapDescriptorFactory
-                .defaultMarker(BitmapDescriptorFactory.HUE_ROSE));
 
         CameraPosition cameraPosition = new CameraPosition.Builder()
-                .target(new LatLng(coordsList.get(3).getLongitude(), coordsList.get(3).getLatitude())).zoom(5).build();
+                .target(new LatLng(coordsList.get(3).getLongitude(), coordsList.get(3).getLatitude())).zoom(12).build();
         googleMap.animateCamera(CameraUpdateFactory
                 .newCameraPosition(cameraPosition));
+
+
+
+
+
+
 
         // Perform any camera updates here
         return v;
     }
+    //end of onCreateView
 
 
+
+
+
+    //function gets coordinates and title from database
     private ArrayList<Coords> getCoordsFromDB(){
         ArrayList<Coords> tmpList = new ArrayList<>();
-        for(int i = 0; i < 8; ++i){
-            Cursor cursor = ViewPagerFragment.db.query(TableGraphite.TABLE_NAME,null,TableGraphite.id +" ="+ i,null,null,null,null,null);
+            Cursor cursor = ViewPagerFragment.db.rawQuery("SELECT * FROM " + TableGraphite.TABLE_NAME, null);
             if(cursor.moveToFirst()){
                 do{
                     double longitude = Double.parseDouble(cursor.getString(cursor.getColumnIndex(String.valueOf(TableGraphite.longitude))));
@@ -93,9 +131,9 @@ public class MapFragment extends android.support.v4.app.Fragment {
 
                 }while (cursor.moveToNext());
             }
-        }
         return tmpList;
     }
+
 
 
     public static MapFragment newInstance(String text) {
