@@ -1,25 +1,24 @@
 package geolab.graphitefinder;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
+import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
-import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Toast;
 
 import geolab.graphitefinder.animation.DepthPageTransformer;
 import geolab.graphitefinder.fragment.MapFragment;
-import geolab.graphitefinder.fragment.TestFrag;
 import geolab.graphitefinder.fragment.ViewPagerFragment;
 
 
@@ -43,6 +42,44 @@ public class MainActivity extends ActionBarActivity implements NavigationView.On
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_screen_slide);
 
+        final TabLayout tabLayout = (TabLayout) findViewById(R.id.tab_layout);
+        tabLayout.addTab(tabLayout.newTab().setText("მთავარი"));
+        tabLayout.addTab(tabLayout.newTab().setText("რუკა"));
+        tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
+
+        final ViewPager viewPager = (ViewPager) findViewById(R.id.pager);
+
+        final PagerAdapter adapter = new PagerAdapter() {
+            @Override
+            public int getCount() {
+                return tabLayout.getTabCount();
+            }
+
+            @Override
+            public boolean isViewFromObject(View view, Object object) {
+                return false;
+            }
+        };
+
+        viewPager.setAdapter(adapter);
+        viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
+
+        tabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+                viewPager.setCurrentItem(tab.getPosition());
+            }
+
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+
+            }
+        });
 
         //Burger menu
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);

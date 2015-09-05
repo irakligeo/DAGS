@@ -56,10 +56,6 @@
             android:label="@string/title_activity_graphite_item_detail" >
         </activity>
         <activity
-            android:name=".ScreenSlideActivity"
-            android:label="@string/title_activity_screen_slide" >
-        </activity>
-        <activity
             android:name=".MapActivity"
             android:label="@string/title_activity_map" >
         </activity>

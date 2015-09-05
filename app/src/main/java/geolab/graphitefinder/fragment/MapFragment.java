@@ -113,9 +113,6 @@ public class MapFragment extends android.support.v4.app.Fragment {
     //end of onCreateView
 
 
-
-
-
     //function gets coordinates and title from database
     private ArrayList<Coords> getCoordsFromDB(){
         ArrayList<Coords> tmpList = new ArrayList<>();

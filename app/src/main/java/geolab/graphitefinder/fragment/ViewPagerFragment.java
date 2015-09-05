@@ -47,6 +47,7 @@ public class ViewPagerFragment extends android.support.v4.app.Fragment {
     private ListView graphiteListView;
     private View rootView;
 
+
     public static SQLiteDatabase db;
     private SwipeRefreshLayout mSwipeRefreshLayout;
     @Override
@@ -63,7 +64,7 @@ public class ViewPagerFragment extends android.support.v4.app.Fragment {
             public void onRefresh() {
                 graphiteItems = null;
                 getGraphiteDatas(URL);
-                Toast.makeText(getActivity(), "updating...", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(getActivity(), "updating...", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -72,12 +73,6 @@ public class ViewPagerFragment extends android.support.v4.app.Fragment {
         //Database instance
         DBHelper dbHelper = new DBHelper(getActivity());
         db = dbHelper.getWritableDatabase();
-
-        // progressDialog for nice loading
-        progressDialog = new ProgressDialog(getActivity());
-        progressDialog.setTitle("Please Wait");
-        progressDialog.setMessage("Loading Graphites...");
-        progressDialog.show();
 
 
 
@@ -111,6 +106,12 @@ public class ViewPagerFragment extends android.support.v4.app.Fragment {
     // function gets data from server
 
     public void getGraphiteDatas(String url){
+        // progressDialog for nice loading
+        progressDialog = new ProgressDialog(getActivity());
+        progressDialog.setTitle("Please Wait");
+        progressDialog.setMessage("Loading Graphites...");
+        progressDialog.show();
+
         if(contentValues == null){
             contentValues = new ContentValues();
         }

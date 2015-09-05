@@ -36,54 +36,34 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="MapFragment.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/geolab/graphitefinder/fragment/MapFragment.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="132" column="13" selection-start-line="132" selection-start-column="13" selection-end-line="132" selection-end-column="13" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="activity_screen_slide.xml" pinned="false" current-in-tab="false">
+      <file leaf-file-name="activity_screen_slide.xml" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_screen_slide.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-3.6206896">
-              <caret line="7" column="0" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-          <provider editor-type-id="android-designer">
-            <state />
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ViewPagerFragment.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/geolab/graphitefinder/fragment/ViewPagerFragment.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="1.6016042">
-              <caret line="148" column="61" selection-start-line="148" selection-start-column="61" selection-end-line="148" selection-end-column="61" />
+          <provider editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="34" column="16" selection-start-line="34" selection-start-column="16" selection-end-line="34" selection-end-column="16" />
               <folding>
-                <element signature="e#2003#2298#0" expanded="true" />
-                <element signature="e#2297#2298#0" expanded="true" />
-                <element signature="e#4128#5790#0" expanded="true" />
-                <element signature="e#5789#5790#0" expanded="true" />
+                <element signature="e#688#735#0" expanded="true" />
+                <element signature="e#2120#2155#0" expanded="true" />
+                <element signature="e#2193#2228#0" expanded="true" />
               </folding>
             </state>
           </provider>
+          <provider selected="true" editor-type-id="android-designer">
+            <state />
+          </provider>
         </entry>
       </file>
-      <file leaf-file-name="fragment_graphiteitemslist.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_graphiteitemslist.xml">
+      <file leaf-file-name="PagerAdapter.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/geolab/graphitefinder/adpaters/PagerAdapter.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-8.793103">
-              <caret line="17" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
-              <folding />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="18" column="43" selection-start-line="18" selection-start-column="43" selection-end-line="18" selection-end-column="43" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#876#877#0" expanded="true" />
+                <element signature="e#909#910#0" expanded="true" />
+              </folding>
             </state>
-          </provider>
-          <provider editor-type-id="android-designer">
-            <state />
           </provider>
         </entry>
       </file>
@@ -91,9 +71,17 @@
         <entry file="file://$PROJECT_DIR$/app/src/main/java/geolab/graphitefinder/MainActivity.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="39" column="0" selection-start-line="39" selection-start-column="0" selection-end-line="39" selection-end-column="0" />
+              <caret line="46" column="57" selection-start-line="46" selection-start-column="57" selection-end-line="46" selection-end-column="57" />
               <folding>
-                <element signature="e#2044#2058#0" expanded="true" />
+                <element signature="imports" expanded="true" />
+                <element signature="e#1958#1959#0" expanded="true" />
+                <element signature="e#2020#2021#0" expanded="true" />
+                <element signature="e#2115#2116#0" expanded="true" />
+                <element signature="e#2159#2160#0" expanded="true" />
+                <element signature="e#3211#3224#0" expanded="true" />
+                <element signature="e#3242#3256#0" expanded="true" />
+                <element signature="e#5525#5526#0" expanded="true" />
+                <element signature="e#5565#5566#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -1855,11 +1843,12 @@
         <option value="$PROJECT_DIR$/app/src/main/java/geolab/graphitefinder/model/Coords.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/geolab/graphitefinder/model/DB/DBHelper.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/geolab/graphitefinder/model/DB/TableGraphite.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/geolab/graphitefinder/fragment/MapFragment.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/geolab/graphitefinder/MainActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_screen_slide.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_graphiteitemslist.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/geolab/graphitefinder/fragment/ViewPagerFragment.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/geolab/graphitefinder/fragment/MapFragment.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/geolab/graphitefinder/adpaters/PagerAdapter.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/geolab/graphitefinder/MainActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_screen_slide.xml" />
       </list>
     </option>
   </component>
@@ -2104,6 +2093,28 @@
               <option name="myItemId" value="app" />
               <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
             </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidSourceTypeNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="graphitefinder" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="adpaters" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="GraphiteFinder" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
+            </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
@@ -2127,6 +2138,8 @@
     <property name="android.project.structure.proportion" value="0.15" />
     <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.Font" />
     <property name="settings.editor.splitter.proportion" value="0.2" />
+    <property name="OverrideImplement.combined" value="true" />
+    <property name="OverrideImplement.overriding.sorted" value="false" />
   </component>
   <component name="RecentsManager">
     <key name="android.template.packageName">
@@ -2373,15 +2386,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/app/src/main/java/geolab/graphitefinder/fragment/ViewPagerFragment.java</url>
-          <line>52</line>
-          <properties class="geolab.graphitefinder.fragment.ViewPagerFragment" method="onCreateView" />
-          <option name="timeStamp" value="12" />
-        </line-breakpoint>
-      </breakpoints>
-      <option name="time" value="21" />
+      <option name="time" value="23" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -2410,7 +2415,15 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#2044#2058#0" expanded="true" />
+            <element signature="imports" expanded="true" />
+            <element signature="e#1958#1959#0" expanded="true" />
+            <element signature="e#2020#2021#0" expanded="true" />
+            <element signature="e#2115#2116#0" expanded="true" />
+            <element signature="e#2159#2160#0" expanded="true" />
+            <element signature="e#3211#3224#0" expanded="true" />
+            <element signature="e#3242#3256#0" expanded="true" />
+            <element signature="e#5525#5526#0" expanded="true" />
+            <element signature="e#5565#5566#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -2440,14 +2453,6 @@
       </provider>
       <provider editor-type-id="android-designer">
         <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/geolab/graphitefinder/ScreenSlideActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.32085562">
-          <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
-          <folding />
-        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/geolab/graphitefinder/parsers/MyResponceParcer.java">
@@ -2513,38 +2518,31 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/geolab/graphitefinder/fragment/MapFragment.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/geolab/graphitefinder/fragment/ViewPagerFragment.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="132" column="13" selection-start-line="132" selection-start-column="13" selection-end-line="132" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/geolab/graphitefinder/MainActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="39" column="0" selection-start-line="39" selection-start-column="0" selection-end-line="39" selection-end-column="0" />
+        <state vertical-scroll-proportion="-1.2834225">
+          <caret line="62" column="21" selection-start-line="62" selection-start-column="21" selection-end-line="62" selection-end-column="21" />
           <folding>
-            <element signature="e#2044#2058#0" expanded="true" />
+            <element signature="e#2300#2301#0" expanded="true" />
+            <element signature="e#4131#5793#0" expanded="true" />
+            <element signature="e#5792#5793#0" expanded="true" />
+            <element signature="e#5807#6060#0" expanded="true" />
+            <element signature="e#6059#6060#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_screen_slide.xml">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/geolab/graphitefinder/fragment/MapFragment.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-3.6206896">
-          <caret line="7" column="0" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.3181818">
+          <caret line="114" column="0" selection-start-line="114" selection-start-column="0" selection-end-line="114" selection-end-column="0" />
           <folding />
         </state>
-      </provider>
-      <provider editor-type-id="android-designer">
-        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_graphiteitemslist.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-8.793103">
+        <state vertical-scroll-proportion="0.73913044">
           <caret line="17" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
           <folding />
         </state>
@@ -2553,17 +2551,49 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/geolab/graphitefinder/fragment/ViewPagerFragment.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/geolab/graphitefinder/adpaters/PagerAdapter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.6016042">
-          <caret line="148" column="61" selection-start-line="148" selection-start-column="61" selection-end-line="148" selection-end-column="61" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="18" column="43" selection-start-line="18" selection-start-column="43" selection-end-line="18" selection-end-column="43" />
           <folding>
-            <element signature="e#2003#2298#0" expanded="true" />
-            <element signature="e#2297#2298#0" expanded="true" />
-            <element signature="e#4128#5790#0" expanded="true" />
-            <element signature="e#5789#5790#0" expanded="true" />
+            <element signature="imports" expanded="true" />
+            <element signature="e#876#877#0" expanded="true" />
+            <element signature="e#909#910#0" expanded="true" />
           </folding>
         </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/geolab/graphitefinder/MainActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="46" column="57" selection-start-line="46" selection-start-column="57" selection-end-line="46" selection-end-column="57" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1958#1959#0" expanded="true" />
+            <element signature="e#2020#2021#0" expanded="true" />
+            <element signature="e#2115#2116#0" expanded="true" />
+            <element signature="e#2159#2160#0" expanded="true" />
+            <element signature="e#3211#3224#0" expanded="true" />
+            <element signature="e#3242#3256#0" expanded="true" />
+            <element signature="e#5525#5526#0" expanded="true" />
+            <element signature="e#5565#5566#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_screen_slide.xml">
+      <provider editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="34" column="16" selection-start-line="34" selection-start-column="16" selection-end-line="34" selection-end-column="16" />
+          <folding>
+            <element signature="e#688#735#0" expanded="true" />
+            <element signature="e#2120#2155#0" expanded="true" />
+            <element signature="e#2193#2228#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+      <provider selected="true" editor-type-id="android-designer">
+        <state />
       </provider>
     </entry>
   </component>

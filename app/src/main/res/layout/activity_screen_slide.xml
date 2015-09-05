@@ -7,6 +7,7 @@
         android:fitsSystemWindows="true">
 
 
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -19,6 +20,20 @@
                 android:background="?attr/colorPrimary"
                 android:minHeight="?attr/actionBarSize" />
 
+            <android.support.design.widget.TabLayout
+                android:id="@+id/tab_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="?attr/colorPrimaryDark"
+                android:elevation="6dp"
+                android:minHeight="?attr/actionBarSize"
+                android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"/>
+
+            <android.support.v4.view.ViewPager
+                xmlns:android="http://schemas.android.com/apk/res/android"
+                android:id="@+id/pager"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
             <!-- Real content goes here -->
             <FrameLayout
                 android:id="@+id/content"
@@ -36,11 +51,6 @@
                 tools:context="geolab.graphitefinder.ScreenSlideActivity">
 
             <!-- activity_screen_slide.xml -->
-            <android.support.v4.view.ViewPager
-                xmlns:android="http://schemas.android.com/apk/res/android"
-                android:id="@+id/pager"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
 
             <ListView
                 android:id="@+id/graphiteList"
