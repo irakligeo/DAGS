@@ -100,6 +100,7 @@ public class MainActivity extends ActionBarActivity implements NavigationView.On
         // animation styles
 //        mPager.setPageTransformer(true, new ZoomOutPageTransformer());
         mPager.setPageTransformer(true, new DepthPageTransformer());
+
         mPagerAdapter = new ScreenSlidePagerAdapter(getSupportFragmentManager());
         mPager.setAdapter(mPagerAdapter);
 

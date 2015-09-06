@@ -7,15 +7,22 @@ public class Coords {
     private double longitude;
     private double latitude;
     private String title;
+    private String imgURL;
 
-    public Coords(double longitude, double latitude, String title) {
+
+    public Coords(double longitude, double latitude, String title, String imgURL) {
         this.longitude = longitude;
         this.latitude = latitude;
         this.title = title;
+        this.imgURL = imgURL;
     }
 
     public String getTitle() {
         return title;
+    }
+
+    public String getImgURL() {
+        return imgURL;
     }
 
     public void setTitle(String title) {

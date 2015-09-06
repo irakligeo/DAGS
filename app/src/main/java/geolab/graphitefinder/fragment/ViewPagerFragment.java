@@ -10,9 +10,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.Button;
-import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -121,6 +118,7 @@ public class ViewPagerFragment extends android.support.v4.app.Fragment {
         if(graphiteItems == null){
             graphiteItems = new ArrayList<>();
         }
+
         if(jsonArrayRequest == null){
             jsonArrayRequest = new JsonArrayRequest(url,new Response.Listener<JSONArray>() {
                 @Override
