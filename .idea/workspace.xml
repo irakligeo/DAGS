@@ -39,11 +39,11 @@
       <file leaf-file-name="MapFragment.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/geolab/graphitefinder/fragment/MapFragment.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.7457627">
-              <caret line="94" column="50" selection-start-line="94" selection-start-column="50" selection-end-line="94" selection-end-column="50" />
+            <state vertical-scroll-proportion="0.5762712">
+              <caret line="92" column="8" selection-start-line="92" selection-start-column="8" selection-end-line="92" selection-end-column="8" />
               <folding>
-                <element signature="e#2660#2907#0" expanded="true" />
-                <element signature="e#2906#2907#0" expanded="true" />
+                <element signature="e#2717#2964#0" expanded="true" />
+                <element signature="e#2963#2964#0" expanded="true" />
                 <element signature="method#onResume#0;class#MapFragment#0" expanded="false" />
                 <element signature="method#onPause#0;class#MapFragment#0" expanded="false" />
                 <element signature="method#onDestroy#0;class#MapFragment#0" expanded="false" />
@@ -2261,19 +2261,19 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/geolab/graphitefinder/fragment/MapFragment.java</url>
-          <line>159</line>
+          <line>157</line>
           <properties />
           <option name="timeStamp" value="23" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/geolab/graphitefinder/fragment/MapFragment.java</url>
-          <line>166</line>
+          <line>164</line>
           <properties />
           <option name="timeStamp" value="24" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/geolab/graphitefinder/fragment/MapFragment.java</url>
-          <line>169</line>
+          <line>167</line>
           <properties />
           <option name="timeStamp" value="25" />
         </line-breakpoint>
@@ -2288,8 +2288,8 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="78" column="0" selection-start-line="78" selection-start-column="0" selection-end-line="78" selection-end-column="0" />
           <folding>
-            <element signature="e#2660#2907#0" expanded="true" />
-            <element signature="e#2906#2907#0" expanded="true" />
+            <element signature="e#2717#2964#0" expanded="true" />
+            <element signature="e#2963#2964#0" expanded="true" />
             <element signature="method#onResume#0;class#MapFragment#0" expanded="false" />
             <element signature="method#onPause#0;class#MapFragment#0" expanded="false" />
             <element signature="method#onDestroy#0;class#MapFragment#0" expanded="false" />
@@ -2445,11 +2445,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/geolab/graphitefinder/fragment/MapFragment.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7457627">
-          <caret line="94" column="50" selection-start-line="94" selection-start-column="50" selection-end-line="94" selection-end-column="50" />
+        <state vertical-scroll-proportion="0.5762712">
+          <caret line="92" column="8" selection-start-line="92" selection-start-column="8" selection-end-line="92" selection-end-column="8" />
           <folding>
-            <element signature="e#2660#2907#0" expanded="true" />
-            <element signature="e#2906#2907#0" expanded="true" />
+            <element signature="e#2717#2964#0" expanded="true" />
+            <element signature="e#2963#2964#0" expanded="true" />
             <element signature="method#onResume#0;class#MapFragment#0" expanded="false" />
             <element signature="method#onPause#0;class#MapFragment#0" expanded="false" />
             <element signature="method#onDestroy#0;class#MapFragment#0" expanded="false" />

@@ -14,6 +14,7 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.GoogleMap.OnMarkerClickListener;
 import com.google.android.gms.maps.MapView;
 import com.google.android.gms.maps.MapsInitializer;
+import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
@@ -85,14 +86,11 @@ public class MapFragment extends android.support.v4.app.Fragment implements OnMa
             }
         });
 
-//        CameraPosition cameraPosition = new CameraPosition.Builder()
-//                .target(new LatLng(coordsList.get(0).getLongitude(), coordsList.get(0).getLatitude())).zoom(10).build();
-//        googleMap.animateCamera(CameraUpdateFactory
-//                .newCameraPosition(cameraPosition));
-
-        LatLng latLng  = new LatLng(coordsList.get(0).getLongitude(),coordsList.get(0).getLatitude());
-
-        CameraUpdateFactory.newLatLngZoom(latLng,99);
+        CameraPosition cameraPosition = new CameraPosition.Builder()
+                .target(new LatLng(coordsList.get(5).getLongitude(), coordsList.get(5).getLatitude())).zoom(10).build();
+        googleMap.animateCamera(CameraUpdateFactory
+                .newCameraPosition(cameraPosition));
+        
 
         // Perform any camera updates here
         return v;
