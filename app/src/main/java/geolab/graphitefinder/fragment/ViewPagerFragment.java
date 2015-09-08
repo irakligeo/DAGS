@@ -61,7 +61,6 @@ public class ViewPagerFragment extends android.support.v4.app.Fragment {
             public void onRefresh() {
                 graphiteItems = null;
                 getGraphiteDatas(URL);
-//                Toast.makeText(getActivity(), "updating...", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -151,22 +150,12 @@ public class ViewPagerFragment extends android.support.v4.app.Fragment {
             new Response.ErrorListener() {
                 @Override
                 public void onErrorResponse(VolleyError volleyError) {
-                    Toast.makeText(getActivity(),"Error Response",Toast.LENGTH_SHORT).show();
+                    progressDialog.dismiss();
+                    mSwipeRefreshLayout.setRefreshing(false);
+                    Toast.makeText(getActivity(),"Please check your internet connection",Toast.LENGTH_LONG).show();
                 }
             });
         }
         requestQueue.add(jsonArrayRequest);
-    }
-
-
-    public static ViewPagerFragment newInstance(String text) {
-
-        ViewPagerFragment f = new ViewPagerFragment();
-        Bundle b = new Bundle();
-        b.putString("msg", text);
-
-        f.setArguments(b);
-
-        return f;
     }
 }
