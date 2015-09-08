@@ -1,5 +1,6 @@
 package geolab.graphitefinder;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
@@ -18,6 +19,7 @@ import android.view.View;
 import android.widget.Toast;
 
 import geolab.graphitefinder.animation.DepthPageTransformer;
+import geolab.graphitefinder.fileUpload.UploadFileActivity;
 import geolab.graphitefinder.fragment.MapFragment;
 import geolab.graphitefinder.fragment.ViewPagerFragment;
 
@@ -124,6 +126,9 @@ public class MainActivity extends ActionBarActivity implements NavigationView.On
     public boolean onNavigationItemSelected(MenuItem menuItem) {
         switch(menuItem.getItemId()){
             case R.id.navigation_item_1:
+                Intent intent = new Intent(MainActivity.this, UploadFileActivity.class);
+                startActivity(intent);
+
                 Toast.makeText(getApplicationContext(), "Item 1", Toast.LENGTH_LONG).show();
                 mDrawerToggle.setHomeAsUpIndicator(R.drawable.abc_ic_ab_back_mtrl_am_alpha);
                 break;
