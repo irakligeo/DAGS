@@ -170,12 +170,12 @@ public class UploadActivity extends ActionBarActivity {
                 // Extra parameters if you want to pass to server
                 try {
                     entity.addPart("website",
-                            new StringBody("www.androidhive.info"));
+                            new StringBody("www.geolab.edu.ge"));
                 } catch (UnsupportedEncodingException e) {
                     e.printStackTrace();
                 }
                 try {
-                    entity.addPart("email", new StringBody("abc@gmail.com"));
+                    entity.addPart("email", new StringBody("jemo.mgebrishvili@gmail.com"));
                 } catch (UnsupportedEncodingException e) {
                     e.printStackTrace();
                 }

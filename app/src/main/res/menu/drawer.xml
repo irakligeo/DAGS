@@ -6,10 +6,10 @@
             android:id="@+id/navigation_item_1"
             android:checked="true"
             android:icon="@mipmap/ic_launcher"
-            android:title="First Item" />
+            android:title="ფოტოს ატვირთვა" />
         <item
             android:id="@+id/navigation_item_2"
             android:icon="@mipmap/ic_launcher"
-            android:title="Second Item" />
+            android:title="რაღაც იქნება :)" />
     </group>
 </menu>

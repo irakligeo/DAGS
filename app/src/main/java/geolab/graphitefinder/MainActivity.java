@@ -128,12 +128,10 @@ public class MainActivity extends ActionBarActivity implements NavigationView.On
             case R.id.navigation_item_1:
                 Intent intent = new Intent(MainActivity.this, UploadFileActivity.class);
                 startActivity(intent);
-
-                Toast.makeText(getApplicationContext(), "Item 1", Toast.LENGTH_LONG).show();
                 mDrawerToggle.setHomeAsUpIndicator(R.drawable.abc_ic_ab_back_mtrl_am_alpha);
                 break;
             case R.id.navigation_item_2:
-                Toast.makeText(getApplicationContext(), "Item 2", Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), "ჯერ არაფერია", Toast.LENGTH_LONG).show();
                 break;
             default:
                 break;

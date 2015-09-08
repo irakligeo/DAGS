@@ -21,13 +21,13 @@
 
 
 
-    <string name="btnTakePicture">Capture Image</string>
-    <string name="btnRecordVideo">Record Video</string>
-    <string name="or">(or)</string>
-    <string name="btnUploadToServer">Upload to Server</string>
+    <string name="btnTakePicture">ფოტო</string>
+    <string name="btnRecordVideo">ვიდეო</string>
+    <string name="or">(ან)</string>
+    <string name="btnUploadToServer">ატვირთვა</string>
+
     <string name="title_activity_upload_file">UploadFileActivity</string>
 
-    <string name="hello_world">Hello world!</string>
     <string name="title_activity_upload">UploadActivity</string>
 
 
