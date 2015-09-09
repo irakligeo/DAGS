@@ -86,10 +86,10 @@ public class MapFragment extends android.support.v4.app.Fragment implements OnMa
             }
         });
 
-        CameraPosition cameraPosition = new CameraPosition.Builder()
-                .target(new LatLng(coordsList.get(5).getLongitude(), coordsList.get(5).getLatitude())).zoom(9).build();
-        googleMap.animateCamera(CameraUpdateFactory
-                .newCameraPosition(cameraPosition));
+//        CameraPosition cameraPosition = new CameraPosition.Builder()
+//                .target(new LatLng(coordsList.get(5).getLongitude(), coordsList.get(5).getLatitude())).zoom(9).build();
+//        googleMap.animateCamera(CameraUpdateFactory
+//                .newCameraPosition(cameraPosition));
         
 
         // Perform any camera updates here
