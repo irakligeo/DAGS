@@ -43,6 +43,83 @@
         android:layout_marginBottom="35dp"
         android:visibility="gone"/>
 
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/text1"
+            android:layout_marginTop="10dp"
+            android:paddingLeft="10dp"
+            android:id="@+id/title"
+            android:clickable="true"
+            android:text="სათაური"
+            android:gravity="center"
+            android:autoLink="all"
+            android:fontFamily="Arial"
+            android:typeface="serif"
+            android:textSize="20sp"
+            />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:inputType="text|number"
+            android:ems="10"
+            android:id="@+id/title_ET"
+            android:layout_gravity="center_horizontal"
+            android:hint="სათაური"
+            android:elegantTextHeight="true"
+            android:editable="false"
+            />
+
+
+    </LinearLayout>
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/title_TV"
+            android:clickable="true"
+            android:text="აღწერა"
+            android:autoLink="all"
+            android:fontFamily="Arial"
+            android:typeface="serif"
+            android:textSize="20sp"
+            android:paddingLeft="10dp"
+            android:layout_centerVertical="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"/>
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="text|number"
+            android:ems="10"
+            android:id="@+id/editText"
+            android:hint="აღწერა"
+            android:elegantTextHeight="true"
+            android:editable="false"
+            android:textAlignment="center"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginRight="25dp"
+            android:layout_marginEnd="25dp"/>
+
+
+    </RelativeLayout>
+
+
+
+
     <Button
         android:id="@+id/btnUpload"
         android:layout_width="wrap_content"
