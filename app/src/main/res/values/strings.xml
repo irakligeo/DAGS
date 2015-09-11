@@ -29,7 +29,7 @@
     <string name="title_activity_upload_file">Upload</string>
 
     <string name="title_activity_upload">UploadActivity</string>
-
+    <string name="post_description">აღწერა</string>
 
 
 </resources>

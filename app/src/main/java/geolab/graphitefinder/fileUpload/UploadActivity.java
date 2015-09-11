@@ -11,6 +11,7 @@ import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.AsyncTask;
+import android.provider.Settings;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
@@ -63,11 +64,13 @@ public class UploadActivity extends ActionBarActivity{
     private Button btnUpload;
     long totalSize = 0;
 
+    TextView longitude, latitude;
 
     LocationListener locationListener = new LocationListener() {
         @Override
         public void onLocationChanged(Location location) {
-                   Toast.makeText(getApplicationContext(), " " + location.getLongitude() + " " + location.getLatitude(), Toast.LENGTH_LONG).show();
+                    longitude.setText(location.getLongitude() + "");
+                    latitude.setText(location.getLatitude() + "");
         }
 
         @Override
@@ -91,12 +94,52 @@ public class UploadActivity extends ActionBarActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_upload);
 
+        final Context context = this;
+        longitude = (TextView) findViewById(R.id.longitude);
+        latitude = (TextView) findViewById(R.id.latitude);
+
         LocationManager locationManager = (LocationManager)getSystemService(Context.LOCATION_SERVICE);
 
-        locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER,1000L,500.0f, locationListener);
+//        locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER,1000L,500.0f, locationListener);
 
         locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0, 0, locationListener);
         locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER,0,0,locationListener);
+
+
+        boolean gps_enabled = false;
+        boolean network_enabled = false;
+
+        try {
+            gps_enabled = locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER);
+        } catch(Exception ex) {}
+
+        try {
+            network_enabled = locationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER);
+        } catch(Exception ex) {}
+
+        if(!gps_enabled && !network_enabled) {
+            // notify user
+            AlertDialog.Builder dialog = new AlertDialog.Builder(this);
+            dialog.setMessage("GPS სერვისი არაა გააქტიურებული");
+            dialog.setPositiveButton("გააქტიურება", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface paramDialogInterface, int paramInt) {
+                    Intent myIntent = new Intent( Settings.ACTION_LOCATION_SOURCE_SETTINGS);
+                    context.startActivity(myIntent);
+                    //get gps
+                }
+            });
+            dialog.setNegativeButton("გაუქმება", new DialogInterface.OnClickListener() {
+
+                @Override
+                public void onClick(DialogInterface paramDialogInterface, int paramInt) {
+                    // TODO Auto-generated method stub
+
+                }
+            });
+            dialog.show();
+        }
+
 
         txtPercentage = (TextView) findViewById(R.id.txtPercentage);
         btnUpload = (Button) findViewById(R.id.btnUpload);
@@ -223,14 +266,17 @@ public class UploadActivity extends ActionBarActivity{
                 try {
                     entity.addPart("website",
                             new StringBody(postTitle));
+                    entity.addPart("email",
+                            new StringBody(postDescription));
+                    entity.addPart("longitude",
+                            new StringBody(longitude.getText().toString()));
+                    entity.addPart("latitude",
+                            new StringBody(latitude.getText().toString()));
+
                 } catch (UnsupportedEncodingException e) {
                     e.printStackTrace();
                 }
-                try {
-                    entity.addPart("email", new StringBody(postDescription));
-                } catch (UnsupportedEncodingException e) {
-                    e.printStackTrace();
-                }
+
 
                 totalSize = entity.getContentLength();
                 httppost.setEntity(entity);
