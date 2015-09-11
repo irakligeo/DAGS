@@ -80,7 +80,7 @@
 
     </LinearLayout>
     <RelativeLayout
-        android:layout_width="fill_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content">
 
         <TextView
@@ -113,7 +113,7 @@
             android:layout_alignParentEnd="true"
             android:layout_marginRight="25dp"
             android:layout_marginEnd="25dp"
-            android:layout_marginLeft="10dp"/>
+            android:layout_marginLeft="30dp"/>
 
 
     </RelativeLayout>
@@ -132,5 +132,12 @@
         android:text="@string/btnUploadToServer"
         android:textColor="@color/white"
         android:layout_marginBottom="20dp"/>
+
+    <com.google.android.gms.maps.MapView
+        android:id="@+id/map"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+
 
 </LinearLayout>
