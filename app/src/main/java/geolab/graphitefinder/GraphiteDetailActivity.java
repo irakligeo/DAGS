@@ -16,6 +16,7 @@ import android.widget.Toast;
 
 import com.squareup.picasso.Picasso;
 
+import geolab.graphitefinder.fileUpload.UploadFileActivity;
 import geolab.graphitefinder.model.GraphiteItemModel;
 
 
@@ -73,7 +74,8 @@ public class GraphiteDetailActivity extends ActionBarActivity implements Navigat
     public boolean onNavigationItemSelected(MenuItem menuItem) {
         switch(menuItem.getItemId()){
             case R.id.navigation_item_1:
-                Toast.makeText(getApplicationContext(), "Item 1", Toast.LENGTH_LONG).show();
+                Intent intent = new Intent(GraphiteDetailActivity.this, UploadFileActivity.class);
+                startActivity(intent);
                 mDrawerToggle.setHomeAsUpIndicator(R.drawable.abc_ic_ab_back_mtrl_am_alpha);
                 break;
             case R.id.navigation_item_2:
@@ -97,9 +99,6 @@ public class GraphiteDetailActivity extends ActionBarActivity implements Navigat
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement

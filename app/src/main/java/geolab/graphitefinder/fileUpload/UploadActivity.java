@@ -15,6 +15,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -153,6 +154,13 @@ public class UploadActivity extends ActionBarActivity {
             HttpPost httppost = new HttpPost(Config.FILE_UPLOAD_URL);
 
             try {
+
+                EditText title = (EditText) findViewById(R.id.title_ET);
+                String postTitle = title.getText().toString();
+
+                EditText description = (EditText) findViewById(R.id.description);
+                String postDescription = description.getText().toString();
+
                 AndroidMultiPartEntity entity = new AndroidMultiPartEntity(
                         new AndroidMultiPartEntity.ProgressListener() {
 
@@ -170,12 +178,12 @@ public class UploadActivity extends ActionBarActivity {
                 // Extra parameters if you want to pass to server
                 try {
                     entity.addPart("website",
-                            new StringBody("www.geolab.edu.ge"));
+                            new StringBody(postTitle));
                 } catch (UnsupportedEncodingException e) {
                     e.printStackTrace();
                 }
                 try {
-                    entity.addPart("email", new StringBody("jemo.mgebrishvili@gmail.com"));
+                    entity.addPart("email", new StringBody(postDescription));
                 } catch (UnsupportedEncodingException e) {
                     e.printStackTrace();
                 }

@@ -68,7 +68,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
-            android:inputType="text|number"
+            android:inputType="text"
             android:ems="10"
             android:id="@+id/title_ET"
             android:layout_gravity="center_horizontal"
@@ -101,9 +101,9 @@
         <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:inputType="text|number"
+            android:inputType="text"
             android:ems="10"
-            android:id="@+id/editText"
+            android:id="@+id/description"
             android:hint="აღწერა"
             android:elegantTextHeight="true"
             android:editable="false"
@@ -112,7 +112,8 @@
             android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true"
             android:layout_marginRight="25dp"
-            android:layout_marginEnd="25dp"/>
+            android:layout_marginEnd="25dp"
+            android:layout_marginLeft="10dp"/>
 
 
     </RelativeLayout>
