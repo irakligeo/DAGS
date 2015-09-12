@@ -110,9 +110,9 @@ public class UploadActivity extends ActionBarActivity{
             @Override
             public void onFocusChange(View view, boolean b) {
                 if (b) {
-                    titleEditText.setError(null);
+                    titleInputLayout.setError(null);
                 } else {
-                    titleEditText.setError("სავალდებულოა ;)");
+                    titleInputLayout.setError("სავალდებულოა ;)");
                 }
             }
         });
@@ -122,9 +122,9 @@ public class UploadActivity extends ActionBarActivity{
             @Override
             public void onFocusChange(View view, boolean b) {
                 if (b) {
-                    descriptionEditText.setError(null);
+                    descriptionInputLayout.setError(null);
                 } else {
-                    descriptionEditText.setError("სავალდებულოა ;)");
+                    descriptionInputLayout.setError("სავალდებულოა ;)");
                 }
             }
         });
