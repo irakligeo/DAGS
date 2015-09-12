@@ -264,9 +264,9 @@ public class UploadActivity extends ActionBarActivity{
 
                 // Extra parameters if you want to pass to server
                 try {
-                    entity.addPart("website",
+                    entity.addPart("title",
                             new StringBody(postTitle));
-                    entity.addPart("email",
+                    entity.addPart("description",
                             new StringBody(postDescription));
                     entity.addPart("longitude",
                             new StringBody(longitude.getText().toString()));
