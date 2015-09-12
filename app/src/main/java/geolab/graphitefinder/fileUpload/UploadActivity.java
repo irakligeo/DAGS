@@ -12,6 +12,7 @@ import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.AsyncTask;
 import android.provider.Settings;
+import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
@@ -97,6 +98,38 @@ public class UploadActivity extends ActionBarActivity{
         final Context context = this;
         longitude = (TextView) findViewById(R.id.longitude);
         latitude = (TextView) findViewById(R.id.latitude);
+
+        final EditText titleEditText = (EditText) findViewById(R.id.titleEditText);
+        final EditText descriptionEditText = (EditText) findViewById(R.id.descriptionEditText);
+
+        final TextInputLayout titleInputLayout = (TextInputLayout) findViewById(R.id.textInputLayoutTitle);
+        final TextInputLayout descriptionInputLayout = (TextInputLayout) findViewById(R.id.textInputLayoutTitle);
+
+        titleInputLayout.setErrorEnabled(true);
+        titleEditText.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View view, boolean b) {
+                if (b) {
+                    titleEditText.setError(null);
+                } else {
+                    titleEditText.setError("სავალდებულოა ;)");
+                }
+            }
+        });
+
+        descriptionInputLayout.setErrorEnabled(true);
+        descriptionEditText.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View view, boolean b) {
+                if (b) {
+                    descriptionEditText.setError(null);
+                } else {
+                    descriptionEditText.setError("სავალდებულოა ;)");
+                }
+            }
+        });
+
+
 
         LocationManager locationManager = (LocationManager)getSystemService(Context.LOCATION_SERVICE);
 
@@ -242,10 +275,10 @@ public class UploadActivity extends ActionBarActivity{
 
             try {
 
-                EditText title = (EditText) findViewById(R.id.title_ET);
+                EditText title = (EditText) findViewById(R.id.titleEditText);
                 String postTitle = title.getText().toString();
 
-                EditText description = (EditText) findViewById(R.id.description);
+                EditText description = (EditText) findViewById(R.id.descriptionEditText);
                 String postDescription = description.getText().toString();
 
                 AndroidMultiPartEntity entity = new AndroidMultiPartEntity(
