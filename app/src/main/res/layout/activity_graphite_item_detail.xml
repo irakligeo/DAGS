@@ -14,12 +14,17 @@
     tools:context="geolab.graphitefinder.GraphiteDetailActivity">
 
 
-        <android.support.v7.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/abc_action_bar_default_height_material"
-            android:background="@color/primary_material_light"
-            android:minHeight="?attr/actionBarSize" />
+        <!--<android.support.v7.widget.Toolbar-->
+            <!--android:id="@+id/toolbar"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="@dimen/abc_action_bar_default_height_material"-->
+            <!--android:background="@color/primary_material_light"-->
+            <!--android:minHeight="?attr/actionBarSize" />-->
+
+    <include
+        layout="@layout/toolbar"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"/>
 
         <ScrollView
             android:layout_below="@+id/toolbar"

@@ -50,6 +50,7 @@ import java.io.File;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 
+import geolab.graphitefinder.MainActivity;
 import geolab.graphitefinder.R;
 
 public class UploadActivity extends ActionBarActivity{
@@ -62,7 +63,7 @@ public class UploadActivity extends ActionBarActivity{
     private TextView txtPercentage;
     private ImageView imgPreview;
     private VideoView vidPreview;
-    private Button btnUpload;
+    private Button btnUpload, btnDone;
     long totalSize = 0;
 
     TextView longitude, latitude;
@@ -90,20 +91,23 @@ public class UploadActivity extends ActionBarActivity{
         }
     };
 
+    private EditText titleEditText,descriptionEditText;
+    private TextInputLayout titleInputLayout,descriptionInputLayout;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_upload);
 
+
         final Context context = this;
         longitude = (TextView) findViewById(R.id.longitude);
         latitude = (TextView) findViewById(R.id.latitude);
 
-        final EditText titleEditText = (EditText) findViewById(R.id.titleEditText);
-        final EditText descriptionEditText = (EditText) findViewById(R.id.descriptionEditText);
+        titleEditText = (EditText) findViewById(R.id.titleEditText);
+        descriptionEditText = (EditText) findViewById(R.id.descriptionEditText);
 
-        final TextInputLayout titleInputLayout = (TextInputLayout) findViewById(R.id.textInputLayoutTitle);
-        final TextInputLayout descriptionInputLayout = (TextInputLayout) findViewById(R.id.textInputLayoutTitle);
+        titleInputLayout = (TextInputLayout) findViewById(R.id.textInputLayoutTitle);
+        descriptionInputLayout = (TextInputLayout) findViewById(R.id.textInputLayoutTitle);
 
         titleInputLayout.setErrorEnabled(true);
         titleEditText.setOnFocusChangeListener(new View.OnFocusChangeListener() {
@@ -176,6 +180,7 @@ public class UploadActivity extends ActionBarActivity{
 
         txtPercentage = (TextView) findViewById(R.id.txtPercentage);
         btnUpload = (Button) findViewById(R.id.btnUpload);
+        btnDone = (Button) findViewById(R.id.doneBtn);
         progressBar = (ProgressBar) findViewById(R.id.progressBar);
         imgPreview = (ImageView) findViewById(R.id.imgPreview);
         vidPreview = (VideoView) findViewById(R.id.videoPreview);
@@ -205,6 +210,13 @@ public class UploadActivity extends ActionBarActivity{
             public void onClick(View v) {
                 // uploading the file to server
                 new UploadFileToServer().execute();
+            }
+        });
+        btnDone.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(UploadActivity.this, MainActivity.class);
+                startActivity(intent);
             }
         });
 
@@ -350,6 +362,16 @@ public class UploadActivity extends ActionBarActivity{
             showAlert(result);
 
             super.onPostExecute(result);
+
+//            btnDone.setVisibility(btnDone.VISIBLE);
+//
+//            btnUpload.setVisibility(btnUpload.GONE);
+//            descriptionEditText.setVisibility(descriptionEditText.GONE);
+//            titleEditText.setVisibility(titleEditText.GONE);
+//            titleInputLayout.setVisibility(titleInputLayout.GONE);
+//            descriptionInputLayout.setVisibility(descriptionInputLayout.GONE);
+//            longitude.setVisibility(longitude.GONE);
+//            latitude.setVisibility(latitude.GONE);
         }
 
     }

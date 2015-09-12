@@ -26,10 +26,11 @@
     <string name="or">(ან)</string>
     <string name="btnUploadToServer">ატვირთვა</string>
 
-    <string name="title_activity_upload_file">Upload</string>
+    <string name="title_activity_upload_file"></string>
 
     <string name="title_activity_upload">UploadActivity</string>
     <string name="post_description">აღწერა</string>
+    <string name="doneButton">აიტვირთა !</string>
 
 
 </resources>
