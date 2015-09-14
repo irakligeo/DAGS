@@ -19,6 +19,7 @@ import android.view.View;
 import android.widget.Toast;
 
 import geolab.graphitefinder.animation.DepthPageTransformer;
+import geolab.graphitefinder.facebook.FacebookLoginActivity;
 import geolab.graphitefinder.fileUpload.UploadFileActivity;
 import geolab.graphitefinder.fragment.MapFragment;
 import geolab.graphitefinder.fragment.ViewPagerFragment;
@@ -132,6 +133,8 @@ public class MainActivity extends ActionBarActivity implements NavigationView.On
                 mDrawerToggle.setHomeAsUpIndicator(R.drawable.abc_ic_ab_back_mtrl_am_alpha);
                 break;
             case R.id.navigation_item_2:
+                Intent fbIntent = new Intent(MainActivity.this, FacebookLoginActivity.class);
+                startActivity(fbIntent);
                 Toast.makeText(getApplicationContext(), "ჯერ არაფერია", Toast.LENGTH_LONG).show();
                 break;
             default:
