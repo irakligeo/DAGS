@@ -26,7 +26,7 @@ import geolab.graphitefinder.fragment.ViewPagerFragment;
 
 public class MainActivity extends ActionBarActivity implements NavigationView.OnNavigationItemSelectedListener{
 
-    private static final int NUM_PAGES = 3;
+    private static final int NUM_PAGES = 2;
 
     /**
      * The pager widget, which handles animation and allows swiping horizontally to access previous
