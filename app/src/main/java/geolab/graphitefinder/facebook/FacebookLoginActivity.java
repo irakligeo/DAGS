@@ -43,9 +43,7 @@ public class FacebookLoginActivity extends AppCompatActivity {
         FacebookSdk.sdkInitialize(getApplicationContext());
         setContentView(R.layout.activity_facebook_login);
 
-
         context = this;
-        textView = (TextView) findViewById(R.id.LoginResult);
         loginButton = (LoginButton) findViewById(R.id.login_button);
         loginButton.setReadPermissions("user_friends");
 
