@@ -68,6 +68,15 @@
                 android:layout_below="@id/peaceOfArtImg"
                 android:layout_alignParentRight="true" />
 
+            <com.facebook.share.widget.ShareButton
+                android:layout_below="@+id/createDate"
+                android:id="@+id/fb_share_button"
+                android:layout_width="wrap_content"
+                android:gravity="right"
+                android:layout_alignRight="@+id/createDate"
+                android:layout_height="wrap_content"
+                android:text="share" />
+
             <ScrollView
                 android:layout_below="@id/author"
                 android:layout_width="fill_parent"
@@ -81,9 +90,11 @@
                     android:layout_below="@+id/author"
                     android:text="little description" />
 
+
             </ScrollView>
 
         </RelativeLayout>
+
         </ScrollView>
 
         <TextView

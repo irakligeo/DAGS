@@ -1,6 +1,7 @@
 package geolab.graphitefinder;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.widget.DrawerLayout;
@@ -8,6 +9,7 @@ import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -15,19 +17,63 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.facebook.AccessToken;
+import com.facebook.FacebookSdk;
+import com.facebook.GraphRequest;
+import com.facebook.GraphResponse;
+import com.facebook.HttpMethod;
+import com.facebook.login.LoginManager;
+import com.facebook.share.model.ShareLinkContent;
+import com.facebook.share.widget.ShareButton;
 import com.squareup.picasso.Picasso;
 
+import java.util.Arrays;
+
+import geolab.graphitefinder.facebook.FacebookLoginActivity;
 import geolab.graphitefinder.fileUpload.UploadFileActivity;
 import geolab.graphitefinder.model.GraphiteItemModel;
 
 
 public class GraphiteDetailActivity extends ActionBarActivity implements NavigationView.OnNavigationItemSelectedListener{
 
+
+    private TextView descriptionView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        FacebookSdk.sdkInitialize(getApplicationContext());
         setContentView(R.layout.activity_graphite_item_detail);
 
+        //get selected item detail
+        GraphiteItemModel  graphiteItem = (GraphiteItemModel) getIntent().getSerializableExtra("GraphiteItem");
+
+
+        //share link content
+        ShareLinkContent content = new ShareLinkContent.Builder()
+                .setContentUrl(Uri.parse(graphiteItem.getImgURL()))
+                .setContentTitle(graphiteItem.getTitle())
+                .setContentDescription(graphiteItem.getDescription())
+                .build();
+        ShareButton shareButton = (ShareButton)findViewById(R.id.fb_share_button);
+        shareButton.setShareContent(content);
+
+
+        GraphRequest graphRequest = new GraphRequest(
+                AccessToken.getCurrentAccessToken(),
+                "/me/picture",
+                null,
+                HttpMethod.GET,
+                new GraphRequest.Callback() {
+                    public void onCompleted(GraphResponse response) {
+                     /* handle the result */
+                        descriptionView.setText(response.getJSONObject().toString());
+                        Log.d("xaxa",response.toString());
+                    }
+                }
+        );
+        Bundle params = new Bundle();
+        params.putBoolean("redirect", false);
+        graphRequest.executeAsync();
 
         //Set Toolbar
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -52,12 +98,11 @@ public class GraphiteDetailActivity extends ActionBarActivity implements Navigat
         mDrawerLayout.setDrawerListener(mDrawerToggle);
         mDrawerToggle.syncState();
 
-        //get selected item detail
-        GraphiteItemModel  graphiteItem = (GraphiteItemModel) getIntent().getSerializableExtra("GraphiteItem");
+
 
         TextView imgTitle = (TextView) findViewById(R.id.imgTitle);
         ImageView imgView = (ImageView) findViewById(R.id.peaceOfArtImg);
-        TextView descriptionView = (TextView) findViewById(R.id.little_description);
+        descriptionView = (TextView) findViewById(R.id.little_description);
         TextView createDateView = (TextView) findViewById(R.id.createDate);
         TextView authorView = (TextView) findViewById(R.id.author);
 
@@ -90,7 +135,9 @@ public class GraphiteDetailActivity extends ActionBarActivity implements Navigat
                 mDrawerToggle.setHomeAsUpIndicator(R.drawable.abc_ic_ab_back_mtrl_am_alpha);
                 break;
             case R.id.navigation_item_2:
-                Toast.makeText(getApplicationContext(), "Item 2", Toast.LENGTH_LONG).show();
+                Intent fbIntent = new Intent(GraphiteDetailActivity.this, FacebookLoginActivity.class);
+                startActivity(fbIntent);
+                mDrawerToggle.setHomeAsUpIndicator(R.drawable.abc_ic_ab_back_mtrl_am_alpha);
                 break;
             default:
                 break;

@@ -135,7 +135,6 @@ public class MainActivity extends ActionBarActivity implements NavigationView.On
             case R.id.navigation_item_2:
                 Intent fbIntent = new Intent(MainActivity.this, FacebookLoginActivity.class);
                 startActivity(fbIntent);
-                Toast.makeText(getApplicationContext(), "ჯერ არაფერია", Toast.LENGTH_LONG).show();
                 break;
             default:
                 break;
