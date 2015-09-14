@@ -4,7 +4,6 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/navigation_item_1"
-            android:checked="true"
             android:icon="@drawable/add_button"
             android:title="ფოტოს ატვირთვა" />
         <item

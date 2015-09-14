@@ -8,10 +8,8 @@
     android:theme="@style/ThemeOverlay.AppCompat.Dark"
     android:background="@drawable/nav_bg">
 
-
-
     <TextView
-        android:id="@+id/txt"
+        android:id="@+id/fb_user_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="User"

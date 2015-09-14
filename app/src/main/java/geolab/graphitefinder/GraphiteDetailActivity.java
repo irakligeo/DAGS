@@ -10,6 +10,7 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
 import android.util.DisplayMetrics;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -26,6 +27,9 @@ import com.facebook.login.LoginManager;
 import com.facebook.share.model.ShareLinkContent;
 import com.facebook.share.widget.ShareButton;
 import com.squareup.picasso.Picasso;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.Arrays;
 
@@ -58,22 +62,27 @@ public class GraphiteDetailActivity extends ActionBarActivity implements Navigat
         shareButton.setShareContent(content);
 
 
-        GraphRequest graphRequest = new GraphRequest(
-                AccessToken.getCurrentAccessToken(),
-                "/me/picture",
-                null,
-                HttpMethod.GET,
-                new GraphRequest.Callback() {
-                    public void onCompleted(GraphResponse response) {
-                     /* handle the result */
-                        descriptionView.setText(response.getJSONObject().toString());
-                        Log.d("xaxa",response.toString());
+        GraphRequest.newMeRequest(AccessToken.getCurrentAccessToken(), new GraphRequest.GraphJSONObjectCallback() {
+            @Override
+            public void onCompleted(JSONObject jsonObject, GraphResponse graphResponse) {
+                if (graphResponse.getError() != null) {
+                    System.out.println("ERROR");
+                } else {
+                    try {
+                        String jsonresult = String.valueOf(jsonObject);
+                        descriptionView.setText(jsonObject.toString());
+                        String str_email = jsonObject.getString("email");
+                        String str_id = jsonObject.getString("id");
+                        String str_firstname = jsonObject.getString("first_name");
+                        String str_lastname = jsonObject.getString("last_name");
+
+                    } catch (JSONException e) {
+                        e.printStackTrace();
                     }
                 }
-        );
-        Bundle params = new Bundle();
-        params.putBoolean("redirect", false);
-        graphRequest.executeAsync();
+
+            }
+        }).executeAsync();
 
         //Set Toolbar
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
