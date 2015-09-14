@@ -9,7 +9,7 @@
             android:title="ფოტოს ატვირთვა" />
         <item
             android:id="@+id/navigation_item_2"
-            android:icon="@mipmap/ic_launcher"
+            android:icon="@drawable/fb_icon"
             android:title="ავტორიზაცია" />
     </group>
 </menu>

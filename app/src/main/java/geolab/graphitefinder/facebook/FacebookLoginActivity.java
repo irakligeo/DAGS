@@ -1,5 +1,6 @@
 package geolab.graphitefinder.facebook;
 
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
@@ -35,12 +36,15 @@ public class FacebookLoginActivity extends AppCompatActivity {
     CallbackManager callbackManager;
     LoginButton loginButton;
     TextView textView;
+    Context context;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         FacebookSdk.sdkInitialize(getApplicationContext());
         setContentView(R.layout.activity_facebook_login);
 
+
+        context = this;
         textView = (TextView) findViewById(R.id.LoginResult);
         loginButton = (LoginButton) findViewById(R.id.login_button);
         loginButton.setReadPermissions("user_friends");
@@ -50,9 +54,10 @@ public class FacebookLoginActivity extends AppCompatActivity {
                 new FacebookCallback<LoginResult>() {
                     @Override
                     public void onSuccess(LoginResult loginResult) {
-                        new AlertDialog.Builder(getApplicationContext())
-                                .setTitle("ავტორიზაცია წარმატებით დასრულდა")
+                        new AlertDialog.Builder(context)
+                                .setTitle("Success...")
                                 .setMessage("გსურთ დარჩეთ ავტორიზებული")
+                                .setCancelable(false)
                                 .setNegativeButton("არა", new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialogInterface, int i) {
