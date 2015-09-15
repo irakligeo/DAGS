@@ -5,6 +5,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 import geolab.graphitefinder.model.GraphiteItemModel;
 
@@ -30,6 +31,9 @@ public class MyResponceParcer {
                 data.add(graphite);
             } catch (JSONException e) {
                 e.printStackTrace();
+            }
+            finally {
+                Collections.reverse(data);
             }
         }
         return data;

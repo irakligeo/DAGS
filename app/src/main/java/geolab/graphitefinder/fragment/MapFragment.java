@@ -37,7 +37,6 @@ public class MapFragment extends android.support.v4.app.Fragment implements OnMa
 
         // inflat and return the layout
         View v = inflater.inflate(R.layout.fragment_map, container, false);
-
         mMapView = (MapView) v.findViewById(R.id.mapView);
         mMapView.onCreate(savedInstanceState);
 
@@ -78,13 +77,17 @@ public class MapFragment extends android.support.v4.app.Fragment implements OnMa
         }
 
         //OnMarkerClickListener
-        googleMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
-            @Override
-            public boolean onMarkerClick(com.google.android.gms.maps.model.Marker marker) {
-                marker.showInfoWindow();
-                return true;
-            }
-        });
+        if(googleMap != null) {
+            googleMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
+                @Override
+                public boolean onMarkerClick(com.google.android.gms.maps.model.Marker marker) {
+                    marker.showInfoWindow();
+                    return true;
+                }
+            });
+        }else{
+            Toast.makeText(getActivity(),"nullPointer ex",Toast.LENGTH_SHORT).show();
+        }
 
 //        CameraPosition cameraPosition = new CameraPosition.Builder()
 //                .target(new LatLng(coordsList.get(5).getLongitude(), coordsList.get(5).getLatitude())).zoom(9).build();

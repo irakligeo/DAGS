@@ -18,7 +18,7 @@ public class TabsPagerAdapter extends FragmentStatePagerAdapter {
     public Fragment getItem(int position) {
         switch (position){
             case 2: return MapFragment.newInstance("map");
-            case 1: return TestFrag.newInstance("testFrag");
+//            case 1: return TestFrag.newInstance("testFrag");
         }
         return new ViewPagerFragment();
     }
