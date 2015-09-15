@@ -17,4 +17,4 @@
             android:text="გრაფიტი"
             android:layout_gravity="center"/>
 
-        </android.support.v7.widget.Toolbar>
+</android.support.v7.widget.Toolbar>
