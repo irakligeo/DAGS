@@ -10,7 +10,7 @@
     android:layout_height="match_parent"
     android:padding="16dp"
     tools:context="geolab.peaceofartfinder.fragments.ItemsListFragment"
-    android:orientation="horizontal">
+    android:orientation="vertical">
 
     <android.support.v4.widget.SwipeRefreshLayout
         android:id="@+id/swipe_refresh_layout"
@@ -25,14 +25,15 @@
 
     </android.support.v4.widget.SwipeRefreshLayout>
 
+</LinearLayout>
+
     <android.support.design.widget.FloatingActionButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/fab"
+        android:id="@+id/fab_scrollBottom"
         android:src="@drawable/down_scrolling"
         android:layout_margin="16dp"
         android:layout_gravity="end|bottom"
         app:fabSize="normal" />
-</LinearLayout>
 
 </FrameLayout>

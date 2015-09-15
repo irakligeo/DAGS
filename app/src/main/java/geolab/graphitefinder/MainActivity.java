@@ -66,9 +66,8 @@ public class MainActivity extends ActionBarActivity implements NavigationView.On
     private PagerAdapter mPagerAdapter;
     private Context context;
     private LayoutInflater inflater;
-    private View view, viewPagerFragmentView;
+    private View view;
     private TextView fbUserName;
-    ListView graphiteListView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -79,9 +78,7 @@ public class MainActivity extends ActionBarActivity implements NavigationView.On
 
         inflater = (LayoutInflater)getApplicationContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         view = inflater.inflate(R.layout.header_layout, null);
-        viewPagerFragmentView = inflater.inflate(R.layout.fragment_graphiteitemslist,null);
         fbUserName = (TextView) view.findViewById(R.id.fb_user_name);
-        graphiteListView  = (ListView) viewPagerFragmentView.findViewById(R.id.graphiteList);
 
 
         final TabLayout tabLayout = (TabLayout) findViewById(R.id.tab_layout);
@@ -147,34 +144,7 @@ public class MainActivity extends ActionBarActivity implements NavigationView.On
         mPagerAdapter = new ScreenSlidePagerAdapter(getSupportFragmentManager());
         mPager.setAdapter(mPagerAdapter);
 
-//        scrollBottom();
-
     }
-
-
-//    private void scrollBottom(){
-//        final FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab_scrollBottom);
-//        fab.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                scrollMyListViewToBottom();
-//            }
-//        });
-//    }
-
-
-    // for specific item selecting in list
-    private void scrollMyListViewToBottom() {
-        graphiteListView.post(new Runnable() {
-            @Override
-            public void run() {
-                Toast.makeText(getApplicationContext(),"blah",Toast.LENGTH_SHORT).show();
-                // Select the last row so it will scroll into view...
-                graphiteListView.setSelection(graphiteListView.getCount() - 1);
-            }
-        });
-    }
-
 
     @Override
     public void onBackPressed() {

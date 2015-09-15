@@ -5,6 +5,7 @@ import android.content.ContentValues;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -29,7 +30,7 @@ import geolab.graphitefinder.adpaters.ListViewAdapter;
 import geolab.graphitefinder.model.DB.DBHelper;
 import geolab.graphitefinder.model.DB.TableGraphite;
 import geolab.graphitefinder.model.GraphiteItemModel;
-import geolab.graphitefinder.parsers.MyResponceParcer;
+import geolab.graphitefinder.parsers.MyResponseParser;
 
 
 public class ViewPagerFragment extends android.support.v4.app.Fragment {
@@ -47,6 +48,8 @@ public class ViewPagerFragment extends android.support.v4.app.Fragment {
 
     public static SQLiteDatabase db;
     private SwipeRefreshLayout mSwipeRefreshLayout;
+
+    //onCreateView
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -91,9 +94,41 @@ public class ViewPagerFragment extends android.support.v4.app.Fragment {
 
 
         //scroll in list and select last item
+        scrollBottom();
+
         return rootView;
     }
 
+    FloatingActionButton fab;
+    static int k = 0;
+    private void scrollBottom(){
+        fab = (FloatingActionButton) rootView.findViewById(R.id.fab_scrollBottom);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                scrollMyListViewToBottom();
+            }
+        });
+    }
+
+
+    // for specific item selecting in list
+    private void scrollMyListViewToBottom() {
+        graphiteListView.post(new Runnable() {
+            @Override
+            public void run() {
+                if(k % 2 == 0) {
+                    // Select the last row so it will scroll into view...
+                    graphiteListView.setSelection(graphiteListView.getCount() - 1);
+                }else{
+                    graphiteListView.setSelection(0);
+                    fab.destroyDrawingCache();
+                }
+                ++k;
+            }
+
+        });
+    }
 
 
 
@@ -129,7 +164,7 @@ public class ViewPagerFragment extends android.support.v4.app.Fragment {
                 @Override
                 public void onResponse(JSONArray jsonArray) {
 
-                    graphiteItems = MyResponceParcer.getData(jsonArray);
+                    graphiteItems = MyResponseParser.getData(jsonArray);
 
                     //insert graphiteItems arrayList into database
                     for(int i = 0; i < graphiteItems.size(); ++i){

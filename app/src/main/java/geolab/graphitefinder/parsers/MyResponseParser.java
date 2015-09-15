@@ -9,7 +9,7 @@ import java.util.Collections;
 
 import geolab.graphitefinder.model.GraphiteItemModel;
 
-public class MyResponceParcer {
+public class MyResponseParser {
 
     public static ArrayList<GraphiteItemModel> getData(JSONArray response){
         ArrayList<GraphiteItemModel> data = new ArrayList<>();
