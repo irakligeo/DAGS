@@ -89,7 +89,22 @@ public class ViewPagerFragment extends android.support.v4.app.Fragment {
             }
         });
 
+
+        //scroll in list and select last item
+        scrollMyListViewToBottom();
         return rootView;
+    }
+
+    
+    // for specific item selecting in list
+    private void scrollMyListViewToBottom() {
+        graphiteListView.post(new Runnable() {
+            @Override
+            public void run() {
+                // Select the last row so it will scroll into view...
+                graphiteListView.setSelection(graphiteListView.getCount() - 1);
+            }
+        });
     }
 
     private ContentValues contentValues;

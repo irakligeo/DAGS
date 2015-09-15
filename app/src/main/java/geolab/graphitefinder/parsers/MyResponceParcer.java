@@ -33,6 +33,7 @@ public class MyResponceParcer {
                 e.printStackTrace();
             }
             finally {
+                //reverse ArrayList for displaying current uploaded post
                 Collections.reverse(data);
             }
         }
