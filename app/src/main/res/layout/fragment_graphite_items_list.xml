@@ -3,13 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragment_graphiteitemslist">
+    tools:context=".fragment_graphite_items_list">
 
 <LinearLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="16dp"
-    tools:context="geolab.peaceofartfinder.fragments.ItemsListFragment"
     android:orientation="vertical">
 
     <android.support.v4.widget.SwipeRefreshLayout

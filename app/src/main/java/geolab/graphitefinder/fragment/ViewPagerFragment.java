@@ -54,7 +54,7 @@ public class ViewPagerFragment extends android.support.v4.app.Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        rootView = inflater.inflate(R.layout.fragment_graphiteitemslist, container, false);
+        rootView = inflater.inflate(R.layout.fragment_graphite_items_list, container, false);
 
         //swipe refresh
         mSwipeRefreshLayout = (SwipeRefreshLayout) rootView.findViewById(R.id.swipe_refresh_layout);

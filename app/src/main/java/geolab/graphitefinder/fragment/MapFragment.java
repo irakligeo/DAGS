@@ -98,7 +98,6 @@ public class MapFragment extends android.support.v4.app.Fragment implements OnMa
         // Perform any camera updates here
         return v;
     }
-    //end of onCreateView
 
 
     //function gets coordinates and title from database
@@ -173,6 +172,14 @@ public class MapFragment extends android.support.v4.app.Fragment implements OnMa
 //            markerIcon.setImageResource(R.drawable.spray);
 
             markerLabel.setText(myMarker.getTitle());
+
+            markerIcon.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+
+                }
+            });
+
             return v;
         }
     }
