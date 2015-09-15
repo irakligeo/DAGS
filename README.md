@@ -1,4 +1,4 @@
-# GraphiteFinder
+# DUGS
 geolab project
 
 find peace of arts ( graphites, inscriptions )
