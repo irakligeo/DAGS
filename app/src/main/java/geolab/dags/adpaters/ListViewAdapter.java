@@ -1,6 +1,5 @@
 package geolab.dags.adpaters;
 
-import android.app.ProgressDialog;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,7 +15,6 @@ import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 
 import geolab.dags.R;
-import geolab.dags.animation.BlurTransformation;
 import geolab.dags.model.GraphiteItemModel;
 
 
@@ -59,6 +57,8 @@ public class ListViewAdapter extends BaseAdapter {
             itemView = inflater.inflate(R.layout.graphite_cardview_layout,null);
             viewHolder = new ViewHolder();
 
+
+            //scrolling animation
             Animation animation = AnimationUtils.loadAnimation(context, (index > lastPosition) ? R.anim.up_from_bottom : R.anim.down_from_top);
             itemView.startAnimation(animation);
             lastPosition = index;
@@ -79,6 +79,7 @@ public class ListViewAdapter extends BaseAdapter {
         else{
             itemView = convertView;
 
+            //scrolling animation
             Animation animation = AnimationUtils.loadAnimation(context, (index > lastPosition) ? R.anim.up_from_bottom : R.anim.down_from_top);
             itemView.startAnimation(animation);
             lastPosition = index;

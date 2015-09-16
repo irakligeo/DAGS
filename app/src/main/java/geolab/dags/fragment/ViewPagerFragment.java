@@ -5,7 +5,6 @@ import android.content.ContentValues;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -25,12 +24,12 @@ import org.json.JSONArray;
 import java.util.ArrayList;
 
 import geolab.dags.GraphiteDetailActivity;
-import geolab.dags.model.DB.TableGraphite;
+import geolab.dags.DB.TableGraphite;
 import geolab.dags.model.GraphiteItemModel;
 import geolab.dags.parsers.MyResponseParser;
 import geolab.dags.R;
 import geolab.dags.adpaters.ListViewAdapter;
-import geolab.dags.model.DB.DBHelper;
+import geolab.dags.DB.DBHelper;
 
 
 public class ViewPagerFragment extends android.support.v4.app.Fragment {
@@ -83,7 +82,7 @@ public class ViewPagerFragment extends android.support.v4.app.Fragment {
         graphiteListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent intent = new Intent(getActivity(),GraphiteDetailActivity.class);
+                Intent intent = new Intent(getActivity(), GraphiteDetailActivity.class);
 
                 GraphiteItemModel graphiteItem = (GraphiteItemModel) parent.getAdapter().getItem(position);
                 intent.putExtra("GraphiteItem", graphiteItem);
@@ -94,41 +93,40 @@ public class ViewPagerFragment extends android.support.v4.app.Fragment {
 
 
         //scroll in list and select last item
-        scrollBottom();
 
         return rootView;
     }
 
-    FloatingActionButton fab;
-    static int k = 0;
-    private void scrollBottom(){
-        fab = (FloatingActionButton) rootView.findViewById(R.id.fab_scrollBottom);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                scrollMyListViewToBottom();
-            }
-        });
-    }
+//    FloatingActionButton fab;
+//    static int k = 0;
+//    private void scrollBottom(){
+//        fab = (FloatingActionButton) rootView.findViewById(R.id.fab_scrollBottom);
+//        fab.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                scrollMyListViewToBottom();
+//            }
+//        });
+//    }
 
 
     // for specific item selecting in list
-    private void scrollMyListViewToBottom() {
-        graphiteListView.post(new Runnable() {
-            @Override
-            public void run() {
-                if(k % 2 == 0) {
-                    // Select the last row so it will scroll into view...
-                    graphiteListView.setSelection(graphiteListView.getCount() - 1);
-                }else{
-                    graphiteListView.setSelection(0);
-                    fab.destroyDrawingCache();
-                }
-                ++k;
-            }
-
-        });
-    }
+//    private void scrollMyListViewToBottom() {
+//        graphiteListView.post(new Runnable() {
+//            @Override
+//            public void run() {
+//                if(k % 2 == 0) {
+//                    // Select the last row so it will scroll into view...
+//                    graphiteListView.setSelection(graphiteListView.getCount() - 1);
+//                }else{
+//                    graphiteListView.setSelection(0);
+//                    fab.destroyDrawingCache();
+//                }
+//                ++k;
+//            }
+//
+//        });
+//    }
 
 
 

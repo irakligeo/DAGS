@@ -1,7 +1,12 @@
 package geolab.dags.fragment;
 
+import android.app.Dialog;
+import android.app.DialogFragment;
+import android.content.DialogInterface;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.support.v4.app.FragmentManager;
+import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,7 +28,7 @@ import java.util.HashMap;
 
 import geolab.dags.R;
 import geolab.dags.model.Coords;
-import geolab.dags.model.DB.TableGraphite;
+import geolab.dags.DB.TableGraphite;
 
 public class MapFragment extends android.support.v4.app.Fragment implements OnMarkerClickListener{
     MapView mMapView;
@@ -75,7 +80,7 @@ public class MapFragment extends android.support.v4.app.Fragment implements OnMa
         }
 
         //OnMarkerClickListener
-        if(googleMap != null) {
+        try {
             googleMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
                 @Override
                 public boolean onMarkerClick(com.google.android.gms.maps.model.Marker marker) {
@@ -83,8 +88,8 @@ public class MapFragment extends android.support.v4.app.Fragment implements OnMa
                     return true;
                 }
             });
-        }else{
-            Toast.makeText(getActivity(),"nullPointer ex",Toast.LENGTH_SHORT).show();
+        }catch (NullPointerException ex){
+            Toast.makeText(getActivity(),ex.getMessage(),Toast.LENGTH_SHORT).show();
         }
 
 //        CameraPosition cameraPosition = new CameraPosition.Builder()
@@ -135,7 +140,7 @@ public class MapFragment extends android.support.v4.app.Fragment implements OnMa
 
 
 
-    private HashMap<String, Coords> mMarkersHashMap;
+    private static HashMap<String, Coords> mMarkersHashMap;
 
 
     public class MarkerInfoWindowAdapter implements GoogleMap.InfoWindowAdapter
@@ -155,7 +160,7 @@ public class MapFragment extends android.support.v4.app.Fragment implements OnMa
         {
             View v  = getActivity().getLayoutInflater().inflate(R.layout.infowindow_layout, null);
 
-            Coords myMarker = mMarkersHashMap.get(marker.getTitle());
+            final Coords myMarker = mMarkersHashMap.get(marker.getTitle());
 
             ImageView markerIcon = (ImageView) v.findViewById(R.id.marker_icon);
 
@@ -163,29 +168,63 @@ public class MapFragment extends android.support.v4.app.Fragment implements OnMa
 
             Picasso.with(getActivity())
                     .load(myMarker.getImgURL())
-                    .resize(250,250)
+                    .resize(440,550)
                     .centerCrop()
                     .into(markerIcon);
-
-//            markerIcon.setImageResource(R.drawable.spray);
-
-            markerLabel.setText(myMarker.getTitle());
 
             markerIcon.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
+                    Toast.makeText(getActivity(),"blah",Toast.LENGTH_LONG).show();
+                    CustomDialogFragment detailFragment = new CustomDialogFragment();
+                    Bundle arg = new Bundle();
+                    arg.putParcelable("id",myMarker);
+                    arg.putString("graphite", String.valueOf(myMarker));
 
+                    detailFragment.setArguments(arg);
+                    detailFragment.show(getActivity().getFragmentManager(), "detail-fragment");
                 }
             });
+
+//            markerIcon.setImageResource(R.drawable.spray);
+
+            markerLabel.setText(myMarker.getTitle());
 
             return v;
         }
     }
 
 
+    //dialog
+    public static class CustomDialogFragment extends DialogFragment {
+        String key = "";
 
+        @Override
+        public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                                 Bundle savedInstanceState){
 
+            View view = inflater.inflate(R.layout.custom_info_fragment,null);
+            TextView imgTitleView = (TextView) view.findViewById(R.id.imgTitle);
+            TextView imgDescriptionView = (TextView) view.findViewById(R.id.imgDescription);
+            TextView imgUploadDateTimeView = (TextView) view.findViewById(R.id.uploadDateTime);
+            ImageView imgView = (ImageView) view.findViewById(R.id.imgView);
 
+            Bundle bundle = this.getArguments();
+            key = bundle.getString("id");
+            HashMap<String,Coords> tmpHashMap = MapFragment.mMarkersHashMap;
+
+            if(tmpHashMap.containsKey(key)) {
+                imgTitleView.setText(tmpHashMap.get(key).getTitle());
+
+                Picasso.with(getActivity().getApplicationContext())
+                        .load(tmpHashMap.get(key).getImgURL())
+                        .resize(200, 200)
+                        .centerCrop()
+                        .into(imgView);
+            }
+            return view;
+        }
+    }
     @Override
     public void onResume() {
         super.onResume();

@@ -33,6 +33,7 @@
         android:src="@drawable/down_scrolling"
         android:layout_margin="16dp"
         android:layout_gravity="end|bottom"
-        app:fabSize="normal" />
+        app:fabSize="normal"
+        android:visibility="gone"/>
 
 </FrameLayout>

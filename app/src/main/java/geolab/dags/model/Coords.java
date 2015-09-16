@@ -1,9 +1,12 @@
 package geolab.dags.model;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 /**
  * Created by geolabedu on 05.09.15.
  */
-public class Coords {
+public class Coords implements Parcelable {
     private double longitude;
     private double latitude;
     private String title;
@@ -43,5 +46,15 @@ public class Coords {
 
     public void setLatitude(double latitude) {
         this.latitude = latitude;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+
     }
 }
