@@ -27,6 +27,17 @@ public class GraphiteItemModel implements Serializable, Parcelable {
     }
 
     public GraphiteItemModel(){}
+
+    public GraphiteItemModel(Parcel in) {
+        this.title = in.readString();
+        this.description = in.readString();
+        this.imgURL = in.readString();
+        this.author = in.readString();
+        this.createDate = in.readString();
+        this.longitude = in.readDouble();
+        this.latitude = in.readDouble();
+    }
+
     public String getTitle() {
         return title;
     }
@@ -107,6 +118,23 @@ public class GraphiteItemModel implements Serializable, Parcelable {
 
     @Override
     public void writeToParcel(Parcel parcel, int i) {
+        parcel.writeString(this.title);
+        parcel.writeString(this.description);
+        parcel.writeString(this.imgURL);
+        parcel.writeString(this.author);
+        parcel.writeString(this.createDate);
+        parcel.writeDouble(this.longitude);
+        parcel.writeDouble(this.latitude);
 
     }
+
+    public static final Parcelable.Creator CREATOR = new Parcelable.Creator() {
+        public GraphiteItemModel createFromParcel(Parcel in) {
+            return new GraphiteItemModel(in);
+        }
+
+        public GraphiteItemModel[] newArray(int size) {
+            return new GraphiteItemModel[size];
+        }
+    };
 }
