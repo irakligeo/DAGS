@@ -21,6 +21,7 @@ import com.android.volley.toolbox.Volley;
 
 import org.json.JSONArray;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 import geolab.dags.GraphiteDetailActivity;
@@ -85,7 +86,7 @@ public class ViewPagerFragment extends android.support.v4.app.Fragment {
                 Intent intent = new Intent(getActivity(), GraphiteDetailActivity.class);
 
                 GraphiteItemModel graphiteItem = (GraphiteItemModel) parent.getAdapter().getItem(position);
-                intent.putExtra("GraphiteItem", graphiteItem);
+                intent.putExtra("GraphiteItem", (Serializable) graphiteItem);
                 startActivity(intent);
 
             }

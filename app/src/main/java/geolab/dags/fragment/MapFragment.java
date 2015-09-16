@@ -1,12 +1,8 @@
 package geolab.dags.fragment;
 
-import android.app.Dialog;
 import android.app.DialogFragment;
-import android.content.DialogInterface;
 import android.database.Cursor;
 import android.os.Bundle;
-import android.support.v4.app.FragmentManager;
-import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,9 +22,10 @@ import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import geolab.dags.DB.TableGraphite;
 import geolab.dags.R;
 import geolab.dags.model.Coords;
-import geolab.dags.DB.TableGraphite;
+import geolab.dags.model.GraphiteItemModel;
 
 public class MapFragment extends android.support.v4.app.Fragment implements OnMarkerClickListener{
     MapView mMapView;
@@ -57,7 +54,7 @@ public class MapFragment extends android.support.v4.app.Fragment implements OnMa
         mMarkersHashMap = new HashMap<>();
 
 
-        ArrayList<Coords> coordsList;
+        ArrayList<GraphiteItemModel> coordsList;
         //ArrayList of longitude, latitude, title, imgURL;
         coordsList = getCoordsFromDB();
 
@@ -92,17 +89,18 @@ public class MapFragment extends android.support.v4.app.Fragment implements OnMa
             Toast.makeText(getActivity(),ex.getMessage(),Toast.LENGTH_SHORT).show();
         }
 
+
+
+        //on imgClick (googleMap marker Bitmap)
         googleMap.setOnInfoWindowClickListener(new GoogleMap.OnInfoWindowClickListener() {
             @Override
             public void onInfoWindowClick(Marker marker) {
-                Toast.makeText(getActivity(),"blaj",Toast.LENGTH_SHORT).show();
 
-                final Coords myMarker = mMarkersHashMap.get(marker.getTitle());
+                final GraphiteItemModel myMarker = mMarkersHashMap.get(marker.getTitle());
 
                 CustomDialogFragment detailFragment = new CustomDialogFragment();
                 Bundle arg = new Bundle();
                 arg.putParcelable("id", myMarker);
-//                arg.putString("graphite", String.valueOf(myMarker));
 
                 detailFragment.setArguments(arg);
                 detailFragment.show(getActivity().getFragmentManager(), "detail-fragment");
@@ -121,8 +119,8 @@ public class MapFragment extends android.support.v4.app.Fragment implements OnMa
 
 
     //function gets coordinates and title from database
-    private ArrayList<Coords> getCoordsFromDB(){
-        ArrayList<Coords> tmpList = new ArrayList<>();
+    private ArrayList<GraphiteItemModel> getCoordsFromDB(){
+        ArrayList<GraphiteItemModel> tmpList = new ArrayList<>();
             Cursor cursor = ViewPagerFragment.db.rawQuery("SELECT * FROM " + TableGraphite.TABLE_NAME, null);
             if(cursor.moveToFirst()){
                 do{
@@ -130,9 +128,13 @@ public class MapFragment extends android.support.v4.app.Fragment implements OnMa
                     double latitude = Double.parseDouble(cursor.getString(cursor.getColumnIndex(String.valueOf(TableGraphite.latitude))));
                     String title = cursor.getString(cursor.getColumnIndex(TableGraphite.imgTitle));
                     String imgURL = cursor.getString(cursor.getColumnIndex(TableGraphite.imgURL));
-                    Coords coords = new Coords(longitude,latitude,title,imgURL);
+                    String imgDescription = cursor.getString(cursor.getColumnIndex(TableGraphite.imgDescription));
+                    String uploadDateTime = cursor.getString(cursor.getColumnIndex(TableGraphite.uploadDateTime));
+                    String author = cursor.getString(cursor.getColumnIndex(TableGraphite.imgAuthor));
 
-                    tmpList.add(coords);
+                    GraphiteItemModel model = new GraphiteItemModel(title,imgDescription,imgURL,author,uploadDateTime, longitude,latitude);
+
+                    tmpList.add(model);
 
                 }while (cursor.moveToNext());
             }
@@ -155,7 +157,7 @@ public class MapFragment extends android.support.v4.app.Fragment implements OnMa
 
 
 
-    private static HashMap<String, Coords> mMarkersHashMap;
+    private static HashMap<String,GraphiteItemModel> mMarkersHashMap;
 
 
     public class MarkerInfoWindowAdapter implements GoogleMap.InfoWindowAdapter
@@ -175,7 +177,7 @@ public class MapFragment extends android.support.v4.app.Fragment implements OnMa
         {
             View v  = getActivity().getLayoutInflater().inflate(R.layout.infowindow_layout, null);
 
-            final Coords myMarker = mMarkersHashMap.get(marker.getTitle());
+            final GraphiteItemModel myMarker = mMarkersHashMap.get(marker.getTitle());
 
             ImageView markerIcon = (ImageView) v.findViewById(R.id.marker_icon);
 
@@ -187,8 +189,6 @@ public class MapFragment extends android.support.v4.app.Fragment implements OnMa
                     .centerCrop()
                     .into(markerIcon);
 
-//            markerIcon.setImageResource(R.drawable.spray);
-
             markerLabel.setText(myMarker.getTitle());
 
             return v;
@@ -198,7 +198,6 @@ public class MapFragment extends android.support.v4.app.Fragment implements OnMa
 
     //dialog
     public static class CustomDialogFragment extends DialogFragment {
-        String key = "";
 
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -211,17 +210,19 @@ public class MapFragment extends android.support.v4.app.Fragment implements OnMa
             ImageView imgView = (ImageView) view.findViewById(R.id.imgView);
 
             Bundle bundle = this.getArguments();
-            Coords coords = new Coords();
-            coords = bundle.getParcelable("id");
+            GraphiteItemModel graphiteItemModel = new GraphiteItemModel();
+            graphiteItemModel = bundle.getParcelable("id");
 
-            imgTitleView.setText(coords.getTitle());
-//
+            imgTitleView.setText(graphiteItemModel.getTitle());
+            imgDescriptionView.setText(graphiteItemModel.getDescription());
+            imgUploadDateTimeView.setText(graphiteItemModel.getCreateDate());
 
-                Picasso.with(getActivity().getApplicationContext())
-                        .load(coords.getImgURL())
-                        .resize(600, 800)
-                        .centerCrop()
-                        .into(imgView);
+            Picasso.with(getActivity().getApplicationContext())
+                    .load(graphiteItemModel.getImgURL())
+                    .resize(600, 800)
+                    .centerCrop()
+                    .into(imgView);
+
             return view;
         }
     }

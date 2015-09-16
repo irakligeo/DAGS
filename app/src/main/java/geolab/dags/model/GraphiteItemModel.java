@@ -1,9 +1,12 @@
 package geolab.dags.model;
 
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import java.io.Serializable;
 
-public class GraphiteItemModel implements Serializable{
+public class GraphiteItemModel implements Serializable, Parcelable {
     private String title;
     private String description;
     private String imgURL;
@@ -97,4 +100,13 @@ public class GraphiteItemModel implements Serializable{
                 '}';
     }
 
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+
+    }
 }
