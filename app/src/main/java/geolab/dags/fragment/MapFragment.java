@@ -92,6 +92,23 @@ public class MapFragment extends android.support.v4.app.Fragment implements OnMa
             Toast.makeText(getActivity(),ex.getMessage(),Toast.LENGTH_SHORT).show();
         }
 
+        googleMap.setOnInfoWindowClickListener(new GoogleMap.OnInfoWindowClickListener() {
+            @Override
+            public void onInfoWindowClick(Marker marker) {
+                Toast.makeText(getActivity(),"blaj",Toast.LENGTH_SHORT).show();
+
+                final Coords myMarker = mMarkersHashMap.get(marker.getTitle());
+
+                CustomDialogFragment detailFragment = new CustomDialogFragment();
+                Bundle arg = new Bundle();
+                arg.putParcelable("id", myMarker);
+//                arg.putString("graphite", String.valueOf(myMarker));
+
+                detailFragment.setArguments(arg);
+                detailFragment.show(getActivity().getFragmentManager(), "detail-fragment");
+            }
+        });
+
 //        CameraPosition cameraPosition = new CameraPosition.Builder()
 //                .target(new LatLng(coordsList.get(5).getLongitude(), coordsList.get(5).getLatitude())).zoom(9).build();
 //        googleMap.animateCamera(CameraUpdateFactory
@@ -138,8 +155,6 @@ public class MapFragment extends android.support.v4.app.Fragment implements OnMa
 
 
 
-
-
     private static HashMap<String, Coords> mMarkersHashMap;
 
 
@@ -168,23 +183,9 @@ public class MapFragment extends android.support.v4.app.Fragment implements OnMa
 
             Picasso.with(getActivity())
                     .load(myMarker.getImgURL())
-                    .resize(440,550)
+                    .resize(200,300)
                     .centerCrop()
                     .into(markerIcon);
-
-            markerIcon.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Toast.makeText(getActivity(),"blah",Toast.LENGTH_LONG).show();
-                    CustomDialogFragment detailFragment = new CustomDialogFragment();
-                    Bundle arg = new Bundle();
-                    arg.putParcelable("id",myMarker);
-                    arg.putString("graphite", String.valueOf(myMarker));
-
-                    detailFragment.setArguments(arg);
-                    detailFragment.show(getActivity().getFragmentManager(), "detail-fragment");
-                }
-            });
 
 //            markerIcon.setImageResource(R.drawable.spray);
 
@@ -210,18 +211,17 @@ public class MapFragment extends android.support.v4.app.Fragment implements OnMa
             ImageView imgView = (ImageView) view.findViewById(R.id.imgView);
 
             Bundle bundle = this.getArguments();
-            key = bundle.getString("id");
-            HashMap<String,Coords> tmpHashMap = MapFragment.mMarkersHashMap;
+            Coords coords = new Coords();
+            coords = bundle.getParcelable("id");
 
-            if(tmpHashMap.containsKey(key)) {
-                imgTitleView.setText(tmpHashMap.get(key).getTitle());
+            imgTitleView.setText(coords.getTitle());
+//
 
                 Picasso.with(getActivity().getApplicationContext())
-                        .load(tmpHashMap.get(key).getImgURL())
-                        .resize(200, 200)
+                        .load(coords.getImgURL())
+                        .resize(600, 800)
                         .centerCrop()
                         .into(imgView);
-            }
             return view;
         }
     }

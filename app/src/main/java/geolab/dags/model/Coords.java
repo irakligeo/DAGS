@@ -20,6 +20,10 @@ public class Coords implements Parcelable {
         this.imgURL = imgURL;
     }
 
+    public Coords() {
+
+    }
+
     public String getTitle() {
         return title;
     }
