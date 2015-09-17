@@ -20,6 +20,7 @@ import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -37,6 +38,9 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.Arrays;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
 
 import geolab.dags.fileUpload.UploadFileActivity;
 import geolab.dags.fragment.MapFragment;
@@ -66,7 +70,7 @@ public class MainActivity extends ActionBarActivity implements NavigationView.On
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         FacebookSdk.sdkInitialize(getApplicationContext());
-        setContentView(R.layout.activity_screen_slide);
+        setContentView(R.layout.activity_main);
 
         context = this;
 
@@ -135,10 +139,12 @@ public class MainActivity extends ActionBarActivity implements NavigationView.On
 //        mPager.setPageTransformer(true, new ZoomOutPageTransformer());
         mPager.setPageTransformer(true, new DepthPageTransformer());
 
+
         mPagerAdapter = new ScreenSlidePagerAdapter(getSupportFragmentManager());
         mPager.setAdapter(mPagerAdapter);
 
     }
+
 
     @Override
     public void onBackPressed() {

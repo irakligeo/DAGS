@@ -29,6 +29,7 @@ import org.apache.http.HttpResponse;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpPost;
+import org.apache.http.entity.mime.content.ContentBody;
 import org.apache.http.entity.mime.content.FileBody;
 import org.apache.http.entity.mime.content.StringBody;
 import org.apache.http.impl.client.DefaultHttpClient;
@@ -37,6 +38,8 @@ import org.apache.http.util.EntityUtils;
 import java.io.File;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
+import java.util.Calendar;
+import java.util.Date;
 
 import geolab.dags.MainActivity;
 import geolab.dags.R;
@@ -277,7 +280,6 @@ public class UploadActivity extends ActionBarActivity{
 
                 EditText title = (EditText) findViewById(R.id.titleEditText);
                 String postTitle = title.getText().toString();
-
                 EditText description = (EditText) findViewById(R.id.descriptionEditText);
                 String postDescription = description.getText().toString();
 
@@ -305,6 +307,8 @@ public class UploadActivity extends ActionBarActivity{
                             new StringBody(longitude.getText().toString()));
                     entity.addPart("latitude",
                             new StringBody(latitude.getText().toString()));
+                    entity.addPart("uploadDateTime",
+                            new StringBody(new Date().toString()));
 
                 } catch (UnsupportedEncodingException e) {
                     e.printStackTrace();

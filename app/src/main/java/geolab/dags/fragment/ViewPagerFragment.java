@@ -69,6 +69,8 @@ public class ViewPagerFragment extends android.support.v4.app.Fragment {
 
 
 
+
+
         //Database instance
         DBHelper dbHelper = new DBHelper(getActivity());
         db = dbHelper.getWritableDatabase();
@@ -163,6 +165,8 @@ public class ViewPagerFragment extends android.support.v4.app.Fragment {
                 @Override
                 public void onResponse(JSONArray jsonArray) {
 
+                    db.execSQL("DELETE FROM " + TableGraphite.TABLE_NAME);
+                    db.execSQL("VACUUM");
                     graphiteItems = MyResponseParser.getData(jsonArray);
 
                     //insert graphiteItems arrayList into database

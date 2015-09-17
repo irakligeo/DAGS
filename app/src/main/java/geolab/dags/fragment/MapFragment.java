@@ -24,7 +24,6 @@ import java.util.HashMap;
 
 import geolab.dags.DB.TableGraphite;
 import geolab.dags.R;
-import geolab.dags.model.Coords;
 import geolab.dags.model.GraphiteItemModel;
 
 public class MapFragment extends android.support.v4.app.Fragment implements OnMarkerClickListener{
