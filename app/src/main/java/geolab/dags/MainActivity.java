@@ -20,7 +20,6 @@ import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -38,9 +37,6 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.Arrays;
-import java.util.concurrent.Executors;
-import java.util.concurrent.ScheduledExecutorService;
-import java.util.concurrent.TimeUnit;
 
 import geolab.dags.fileUpload.UploadFileActivity;
 import geolab.dags.fragment.MapFragment;
@@ -48,7 +44,7 @@ import geolab.dags.fragment.ViewPagerFragment;
 import geolab.dags.animation.DepthPageTransformer;
 
 
-public class MainActivity extends ActionBarActivity implements NavigationView.OnNavigationItemSelectedListener{
+public class MainActivity extends ActionBarActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     private static final int NUM_PAGES = 2;
 
@@ -66,6 +62,7 @@ public class MainActivity extends ActionBarActivity implements NavigationView.On
     private LayoutInflater inflater;
     private View view;
     private TextView fbUserName;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -75,6 +72,7 @@ public class MainActivity extends ActionBarActivity implements NavigationView.On
         context = this;
 
         inflater = (LayoutInflater)getApplicationContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+
         view = inflater.inflate(R.layout.header_layout, null);
         fbUserName = (TextView) view.findViewById(R.id.fb_user_name);
 
@@ -149,8 +147,6 @@ public class MainActivity extends ActionBarActivity implements NavigationView.On
     @Override
     public void onBackPressed() {
         if (mPager.getCurrentItem() == 0) {
-            // If the user is currently looking at the first step, allow the system to handle the
-            // Back button. This calls finish() on this activity and pops the back stack.
             super.onBackPressed();
         } else {
             // Otherwise, select the previous step.
@@ -238,6 +234,9 @@ public class MainActivity extends ActionBarActivity implements NavigationView.On
                     LoginManager.getInstance().logInWithReadPermissions(this, Arrays.asList("public_profile", "user_friends"));
                     break;
                 }
+            case R.id.navigation_item_3:
+                Toast.makeText(MainActivity.this, "filter", Toast.LENGTH_SHORT).show();
+                break;
             default:
                 break;
         }
@@ -286,16 +285,14 @@ public class MainActivity extends ActionBarActivity implements NavigationView.On
         return true;
     }
 
+
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
+        switch (item.getItemId()) {
+            case R.id.listColor:
 
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
+                return true;
         }
 
         return super.onOptionsItemSelected(item);

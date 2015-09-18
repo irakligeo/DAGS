@@ -2,15 +2,20 @@ package geolab.dags.fragment;
 
 import android.app.ProgressDialog;
 import android.content.ContentValues;
+import android.content.Context;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.widget.CardView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.RequestQueue;
@@ -35,7 +40,8 @@ import geolab.dags.DB.DBHelper;
 
 public class ViewPagerFragment extends android.support.v4.app.Fragment {
 
-
+    private View cardViewInflater;
+    private CardView cardView;
     @Override
     public void onActivityCreated(Bundle savedInstanceState){
         super.onActivityCreated(savedInstanceState);
@@ -55,6 +61,8 @@ public class ViewPagerFragment extends android.support.v4.app.Fragment {
                              Bundle savedInstanceState) {
 
         rootView = inflater.inflate(R.layout.fragment_graphite_items_list, container, false);
+//        cardViewInflater = inflater.inflate(R.layout.graphite_cardview_layout,null);
+//        cardView = (CardView) cardViewInflater.findViewById(R.id.cardview);
 
         //swipe refresh
         mSwipeRefreshLayout = (SwipeRefreshLayout) rootView.findViewById(R.id.swipe_refresh_layout);
@@ -64,6 +72,7 @@ public class ViewPagerFragment extends android.support.v4.app.Fragment {
             public void onRefresh() {
                 graphiteItems = null;
                 getGraphiteDatas(URL);
+
             }
         });
 
@@ -183,8 +192,11 @@ public class ViewPagerFragment extends android.support.v4.app.Fragment {
                         db.insert(TableGraphite.TABLE_NAME,null,contentValues);
                     }
 
+
                     graphiteListView = (ListView)rootView.findViewById(R.id.graphiteList);
                     graphiteListView.setAdapter(new ListViewAdapter(getActivity(), graphiteItems));
+
+
 
                     //dismiss progressDialog after loading data
                     progressDialog.dismiss();

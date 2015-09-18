@@ -33,7 +33,21 @@
     <string name="doneButton">აიტვირთა !</string>
     <string name="title_activity_facebook_login">FacebookLoginActivity</string>
 
-    <string name="hello_world">Hello world!</string>
+    <string name="list_color_dialog_title">აირჩიეთ ფერი</string>
 
+    <string-array name="list_colors" translatable="false">
+        <item>#ffffff</item>
+        <item>#ff7474</item>
+        <item>#ff80ab</item>
+        <item>#ffd740</item>
+        <item>#cfd8dc</item>
+        <item>#64b5f6</item>
+        <item>#00e676</item>
+        <item>#9933cc</item>
+    </string-array>
+
+    <!-- ShoppingList MenuItems -->
+    <string name="listColor">ფერი</string>
+    <string name="action_filter">ფილტრაცია</string>
 
 </resources>

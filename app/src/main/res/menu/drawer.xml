@@ -10,5 +10,9 @@
             android:id="@+id/navigation_item_2"
             android:icon="@drawable/fb_icon"
             android:title="ავტორიზაცია" />
+        <item
+            android:id="@+id/navigation_item_3"
+            android:icon="@drawable/filter_icon"
+            android:title="ფილტრაცია" />
     </group>
 </menu>
