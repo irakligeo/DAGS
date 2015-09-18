@@ -24,6 +24,7 @@ import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -49,6 +50,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+import geolab.dags.custom_DialogFragments.FilterDialogFragment;
 import geolab.dags.fileUpload.UploadFileActivity;
 import geolab.dags.fragment.MapFragment;
 import geolab.dags.fragment.ViewPagerFragment;
@@ -74,7 +76,7 @@ public class MainActivity extends ActionBarActivity implements NavigationView.On
     private LayoutInflater inflater;
     private View view;
     private TextView fbUserName;
-    private View customView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -86,10 +88,10 @@ public class MainActivity extends ActionBarActivity implements NavigationView.On
         inflater = (LayoutInflater)getApplicationContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
         view = inflater.inflate(R.layout.header_layout, null);
-        //inflating custom view for filter
-        customView = inflater.inflate(R.layout.custom_info_fragment,null);
-
         fbUserName = (TextView) view.findViewById(R.id.fb_user_name);
+
+
+
 
 
         final TabLayout tabLayout = (TabLayout) findViewById(R.id.tab_layout);
@@ -261,6 +263,7 @@ public class MainActivity extends ActionBarActivity implements NavigationView.On
         return true;
     }
 
+
     /**
      * A simple pager adapter that represents 2 ScreenSlidePageFragment objects, in
      * sequence.
@@ -303,19 +306,7 @@ public class MainActivity extends ActionBarActivity implements NavigationView.On
         return true;
     }
 
-    public double distanceFrom(double lat1, double lng1, double lat2, double lng2) {
-        double earthRadius = 3958.75;
-        double dLat = Math.toRadians(lat2-lat1);
-        double dLng = Math.toRadians(lng2-lng1);
-        double a = Math.sin(dLat/2) * Math.sin(dLat/2) + Math.cos(Math.toRadians(lat1)) * Math.cos(Math.toRadians(lat2)) * Math.sin(dLng/2) * Math.sin(dLng/2);
-        double c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
-        double dist = earthRadius * c;
-        int meterConversion = 1609;
-        return new Double(dist * meterConversion).floatValue();    // this will return distance
-    }
 
-    private ArrayList<GraphiteItemModel> data;
-    private double longitude, latitude;
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
@@ -323,86 +314,9 @@ public class MainActivity extends ActionBarActivity implements NavigationView.On
 
                 return true;
             case R.id.action_filter:
-
-                data = new ArrayList<>();
-                for (String key: MapFragment.mMarkersHashMap.keySet()) {
-                    data.add(MapFragment.mMarkersHashMap.get(key));
-                }
-
-                // location listener
-                LocationListener locationListener = new LocationListener() {
-                    @Override
-                    public void onLocationChanged(Location location) {
-                        longitude = location.getLongitude();
-                        latitude = location.getLatitude();
-                    }
-
-                    @Override
-                    public void onStatusChanged(String s, int i, Bundle bundle) {
-
-                    }
-
-                    @Override
-                    public void onProviderEnabled(String s) {
-
-                    }
-
-                    @Override
-                    public void onProviderDisabled(String s) {
-
-                    }
-                };
-
-                LocationManager locationManager = (LocationManager)getSystemService(Context.LOCATION_SERVICE);
-
-                locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0, 0, locationListener);
-                locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, locationListener);
-
-                //spinner
-                Spinner spinner = (Spinner) customView.findViewById(R.id.spinnerCategory);
-                // Create an ArrayAdapter using the string array and a default spinner layout
-                ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(context,
-                        R.array.graphite_categories, android.R.layout.simple_spinner_item);
-                // Specify the layout to use when the list of choices appears
-                adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-//                spinner.setAdapter(adapter);
-
-
-                //dialogFragment
-                final Dialog dialog = new Dialog(context);
-                dialog.setContentView(R.layout.filter_dialog_fragment);
-                Button bt_ok = (Button) dialog.findViewById(R.id.button1);
-                dialog.setTitle("Category");
-
-
-                //on button click
-                bt_ok.setOnClickListener(new View.OnClickListener() {
-
-                    @Override
-                    public void onClick(View arg0) {
-                        MapFragment.googleMap.clear();
-                        //get markers with this distance
-                        double distance;
-                        for(int i = 0; i < data.size(); ++i) {
-                            distance = distanceFrom(longitude, latitude, data.get(i).getLongitude(),data.get(i).getLatitude());
-                            MarkerOptions marker = new MarkerOptions().position(
-                                    new LatLng(data.get(i).getLongitude(), data.get(i).getLatitude())).title(data.get(i).getTitle());
-
-                            if(distance > 1000){
-                                MapFragment.googleMap.addMarker(marker);
-                            }else{
-                                Toast.makeText(MainActivity.this, "naklebia " + distance, Toast.LENGTH_SHORT).show();
-                            }
-
-                        }
-                        dialog.dismiss();
-                    }
-
-                });
-                //show dialog
-                dialog.show();
-
-            return true;
+                FilterDialogFragment filterDialogFragment = new FilterDialogFragment();
+                filterDialogFragment.show(MainActivity.this.getFragmentManager(),"filter_fragment");
+                return true;
         }
 
         return super.onOptionsItemSelected(item);

@@ -52,6 +52,7 @@
     <string name="დისტანცია">დისტანცია (მ)</string>
     <string name="distance">დისტანცია</string>
     <string name="categoryTextView">კატეგორია</string>
+    <string name="distanceNumberTextView">100</string>
 
     <!-- spinner data (it's temporary)-->
     <string-array name="graphite_categories">
