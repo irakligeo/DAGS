@@ -1,7 +1,6 @@
 package geolab.dags.custom_DialogFragments;
 
 import android.app.DialogFragment;
-import android.app.ProgressDialog;
 import android.content.Context;
 import android.location.Location;
 import android.location.LocationListener;
@@ -68,7 +67,7 @@ public class FilterDialogFragment extends DialogFragment implements AdapterView.
 
         LocationManager locationManager = (LocationManager)getActivity().getSystemService(Context.LOCATION_SERVICE);
 
-//        locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, locationListener);
+        locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, locationListener);
         locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0, 0, locationListener);
 
         spinner = (Spinner) customView.findViewById(R.id.spinnerCategory);
@@ -160,14 +159,18 @@ public class FilterDialogFragment extends DialogFragment implements AdapterView.
         return new Double(dist * meterConversion).floatValue();    // this will return distance
     }
 
+
+    private String category;
+    int catPosition;
     @Override
     public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-        adapterView.getItemAtPosition(i);
+        this.category = adapterView.getItemAtPosition(i).toString();
+        this.catPosition = i;
     }
+
 
     @Override
     public void onNothingSelected(AdapterView<?> adapterView) {
-
     }
 
 

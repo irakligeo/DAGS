@@ -14,6 +14,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.facebook.AccessToken;
 import com.facebook.FacebookSdk;
@@ -117,6 +118,8 @@ public class GraphiteDetailActivity extends ActionBarActivity implements Navigat
         getWindowManager().getDefaultDisplay().getMetrics(dm);
         int width=dm.widthPixels;
         int height=dm.heightPixels;
+
+        Toast.makeText(getApplicationContext(),width + " " + height, Toast.LENGTH_SHORT).show();
 
         Picasso.with(this)
                 .load(graphiteItem.getImgURL())

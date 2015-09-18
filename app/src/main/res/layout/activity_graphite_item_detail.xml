@@ -13,14 +13,6 @@
     android:layout_height="match_parent"
     tools:context="geolab.dags.GraphiteDetailActivity">
 
-
-        <!--<android.support.v7.widget.Toolbar-->
-            <!--android:id="@+id/toolbar"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="@dimen/abc_action_bar_default_height_material"-->
-            <!--android:background="@color/primary_material_light"-->
-            <!--android:minHeight="?attr/actionBarSize" />-->
-
     <include
         layout="@layout/toolbar"
         android:layout_width="fill_parent"
@@ -47,7 +39,7 @@
 
             <ImageView
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="290dp"
                 android:id="@+id/peaceOfArtImg"
                 android:layout_below="@+id/imgTitle"
                 android:layout_centerHorizontal="true"
@@ -57,6 +49,7 @@
                 android:id="@+id/author"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
                 android:text="author"
                 android:layout_below="@+id/peaceOfArtImg"/>
 
@@ -65,6 +58,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="createDate"
+                android:layout_marginTop="15dp"
                 android:layout_below="@id/peaceOfArtImg"
                 android:layout_alignParentRight="true" />
 
@@ -87,6 +81,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/little_description"
+                    android:layout_marginTop="15dp"
                     android:layout_below="@+id/author"
                     android:text="little description" />
 
