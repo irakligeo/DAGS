@@ -1,6 +1,7 @@
 package geolab.dags.custom_DialogFragments;
 
 import android.app.DialogFragment;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.location.Location;
 import android.location.LocationListener;
@@ -22,6 +23,7 @@ import com.google.android.gms.maps.model.MarkerOptions;
 
 import java.util.ArrayList;
 
+import geolab.dags.MainActivity;
 import geolab.dags.R;
 import geolab.dags.fragment.MapFragment;
 import geolab.dags.model.GraphiteItemModel;
@@ -66,8 +68,8 @@ public class FilterDialogFragment extends DialogFragment implements AdapterView.
 
         LocationManager locationManager = (LocationManager)getActivity().getSystemService(Context.LOCATION_SERVICE);
 
+//        locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, locationListener);
         locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0, 0, locationListener);
-        locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, locationListener);
 
         spinner = (Spinner) customView.findViewById(R.id.spinnerCategory);
         spinner.setOnItemSelectedListener(this);
@@ -106,48 +108,41 @@ public class FilterDialogFragment extends DialogFragment implements AdapterView.
         bt_ok.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View arg0) {
-//                Toast.makeText(getActivity(), "naklebia " + longitude + " " +latitude, Toast.LENGTH_SHORT).show();
-                //cleare markers from map
-                MapFragment.googleMap.clear();
-
 
                 data = new ArrayList<>();
                 for (String key: MapFragment.mMarkersHashMap.keySet()) {
                     data.add(MapFragment.mMarkersHashMap.get(key));
                 }
                 if(longitude > 0 || latitude > 0 ) {
+                    //cleare markers from map
+                    MapFragment.googleMap.clear();
                     checkCoords(data);
                     Toast.makeText(getActivity(), "if shesrulda " + longitude + " " + latitude, Toast.LENGTH_SHORT).show();
                 }
-                else
-                    try {
-                        Thread.sleep(5000);
-                        checkCoords(data);
-                        Toast.makeText(getActivity(), "sleep morcha " + longitude + " " +latitude, Toast.LENGTH_SHORT).show();
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
 
+                Toast.makeText(getActivity(), longitude + " " +latitude, Toast.LENGTH_SHORT).show();
+                MainActivity.filterDialogFragment.dismiss();
             }
 
         });
 
-
-
-
         return  customView;
     }
 
+
+    //filter markers
     private void checkCoords(ArrayList<GraphiteItemModel> data){
+
+        double radius = Double.parseDouble(String.valueOf(distanceNumberTextView.getText()));
         for (int i = 0; i < data.size(); ++i) {
             distance = distanceFrom(longitude, latitude, data.get(i).getLongitude(), data.get(i).getLatitude());
             MarkerOptions marker = new MarkerOptions().position(
                     new LatLng(data.get(i).getLatitude(), data.get(i).getLongitude())).title(data.get(i).getTitle());
             //get markers with this distance
-            if (distance > 1000) {
+            if (distance >= radius) {
                 MapFragment.googleMap.addMarker(marker);
             } else {
-                Toast.makeText(getActivity(), "naklebia " + distance, Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), "გაქრა " +  data.get(i).getTitle(), Toast.LENGTH_SHORT).show();
             }
 
         }
@@ -173,5 +168,11 @@ public class FilterDialogFragment extends DialogFragment implements AdapterView.
     @Override
     public void onNothingSelected(AdapterView<?> adapterView) {
 
+    }
+
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
     }
 }

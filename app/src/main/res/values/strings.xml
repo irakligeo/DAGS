@@ -49,21 +49,18 @@
     <!-- ShoppingList MenuItems -->
     <string name="listColor">ფერი</string>
     <string name="action_filter">ფილტრაცია</string>
-    <string name="დისტანცია">დისტანცია (მ)</string>
-    <string name="distance">დისტანცია</string>
+    <string name="distance">დისტანცია (მ) - </string>
     <string name="categoryTextView">კატეგორია</string>
-    <string name="distanceNumberTextView">100</string>
+    <string name="distanceNumberTextView">0</string>
 
     <!-- spinner data (it's temporary)-->
     <string-array name="graphite_categories">
-        <item>Mercury</item>
-        <item>Venus</item>
-        <item>Earth</item>
-        <item>Mars</item>
-        <item>Jupiter</item>
-        <item>Saturn</item>
-        <item>Uranus</item>
-        <item>Neptune</item>
+        <item>ყველა</item>
+        <item>დღევანდელი</item>
+        <item>ორი დღის</item>
+        <item>ერთი კვირსი</item>
+        <item>ერთი თვის</item>
+        <item>ერთი წლის</item>
     </string-array>
 
 </resources>

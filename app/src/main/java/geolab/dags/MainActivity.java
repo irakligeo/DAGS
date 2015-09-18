@@ -1,12 +1,8 @@
 package geolab.dags;
 
-import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.location.Location;
-import android.location.LocationListener;
-import android.location.LocationManager;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
@@ -24,11 +20,6 @@ import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.CheckBox;
-import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -41,21 +32,17 @@ import com.facebook.GraphRequest;
 import com.facebook.GraphResponse;
 import com.facebook.login.LoginManager;
 import com.facebook.login.LoginResult;
-import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.MarkerOptions;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 
+import geolab.dags.animation.DepthPageTransformer;
 import geolab.dags.custom_DialogFragments.FilterDialogFragment;
 import geolab.dags.fileUpload.UploadFileActivity;
 import geolab.dags.fragment.MapFragment;
 import geolab.dags.fragment.ViewPagerFragment;
-import geolab.dags.animation.DepthPageTransformer;
-import geolab.dags.model.GraphiteItemModel;
 
 
 public class MainActivity extends ActionBarActivity implements NavigationView.OnNavigationItemSelectedListener {
@@ -76,7 +63,7 @@ public class MainActivity extends ActionBarActivity implements NavigationView.On
     private LayoutInflater inflater;
     private View view;
     private TextView fbUserName;
-
+    public static FilterDialogFragment filterDialogFragment;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -255,7 +242,8 @@ public class MainActivity extends ActionBarActivity implements NavigationView.On
                     break;
                 }
             case R.id.navigation_item_3:
-                Toast.makeText(MainActivity.this, "filter", Toast.LENGTH_SHORT).show();
+                filterDialogFragment = new FilterDialogFragment();
+                filterDialogFragment.show(getFragmentManager(),"filter_fragment");
                 break;
             default:
                 break;
@@ -314,7 +302,7 @@ public class MainActivity extends ActionBarActivity implements NavigationView.On
 
                 return true;
             case R.id.action_filter:
-                FilterDialogFragment filterDialogFragment = new FilterDialogFragment();
+                filterDialogFragment = new FilterDialogFragment();
                 filterDialogFragment.show(MainActivity.this.getFragmentManager(),"filter_fragment");
                 return true;
         }

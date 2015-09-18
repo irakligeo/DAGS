@@ -15,7 +15,8 @@
             android:id="@+id/distanceTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/distance"/>
+            android:text="@string/distance"
+            android:textSize="17sp" />
 
         <TextView
             android:id="@+id/distanceNumberTextView"
@@ -25,7 +26,9 @@
             android:gravity="right"
             android:layout_above="@+id/seekBarDistance"
             android:layout_toRightOf="@+id/button1"
-            android:layout_toEndOf="@+id/button1" />
+            android:layout_toEndOf="@+id/button1"
+            android:layout_marginLeft="65dp"
+            android:textSize="17sp" />
 
         <SeekBar
             android:layout_width="280dp"
@@ -42,22 +45,25 @@
             android:id="@+id/categoryTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
             android:layout_below="@+id/seekBarDistance"
-            android:text="@string/categoryTextView"/>
+            android:text="@string/categoryTextView"
+            android:textSize="17sp" />
 
         <Spinner
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/spinnerCategory"
-            android:layout_below="@+id/categoryTextView"
-            android:layout_marginRight="87dp"
-            android:layout_marginEnd="87dp" />
+            android:layout_alignTop="@+id/categoryTextView"
+            android:layout_toRightOf="@+id/distanceTextView"
+            android:layout_toEndOf="@+id/distanceTextView" />
 
         <Button
             android:id="@+id/button1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/spinnerCategory"
+            android:layout_marginTop="30dp"
+            android:layout_below="@+id/categoryTextView"
             android:text="ok"/>
 
     </RelativeLayout>
