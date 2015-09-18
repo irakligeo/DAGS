@@ -6,27 +6,49 @@
     android:layout_height="match_parent">
 
     <RelativeLayout
+        android:padding="20dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
 
-    <Button
-        android:id="@+id/button1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="ok"/>
 
-    <CheckBox
-        android:id="@+id/checkBox1"
-        android:layout_below="@+id/button1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        <TextView
+            android:id="@+id/distanceTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/distance"/>
 
-    <CheckBox
-        android:id="@+id/checkBox2"
-        android:layout_width="wrap_content"
-        android:layout_below="@+id/checkBox1"
-        android:layout_height="wrap_content" />
+        <SeekBar
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/seekBarDistance"
+            android:max="1000"
+            android:layout_below="@+id/distanceTextView"
+            android:layout_marginTop="20dp"
+            android:layout_gravity="center_horizontal|top" />
+
+        <TextView
+            android:id="@+id/categoryTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/categoryTextView"/>
+
+        <Spinner
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/spinnerCategory"
+            android:layout_below="@+id/seekBarDistance"
+            android:layout_marginRight="87dp"
+            android:layout_marginEnd="87dp" />
+
+        <Button
+            android:id="@+id/button1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/spinnerCategory"
+            android:text="ok"/>
 
     </RelativeLayout>
+
+
 
 </FrameLayout>

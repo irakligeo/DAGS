@@ -49,5 +49,20 @@
     <!-- ShoppingList MenuItems -->
     <string name="listColor">ფერი</string>
     <string name="action_filter">ფილტრაცია</string>
+    <string name="დისტანცია">დისტანცია (მ)</string>
+    <string name="distance">დისტანცია</string>
+    <string name="categoryTextView">კატეგორია</string>
+
+    <!-- spinner data (it's temporary)-->
+    <string-array name="planets_array">
+        <item>Mercury</item>
+        <item>Venus</item>
+        <item>Earth</item>
+        <item>Mars</item>
+        <item>Jupiter</item>
+        <item>Saturn</item>
+        <item>Uranus</item>
+        <item>Neptune</item>
+    </string-array>
 
 </resources>

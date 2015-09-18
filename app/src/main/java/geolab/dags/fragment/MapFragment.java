@@ -162,7 +162,7 @@ public class MapFragment extends android.support.v4.app.Fragment implements OnMa
 
 
 
-    private static HashMap<String,GraphiteItemModel> mMarkersHashMap;
+    public static HashMap<String,GraphiteItemModel> mMarkersHashMap;
 
 
     public class MarkerInfoWindowAdapter implements GoogleMap.InfoWindowAdapter

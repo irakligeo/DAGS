@@ -4,6 +4,9 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.location.Location;
+import android.location.LocationListener;
+import android.location.LocationManager;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
@@ -41,12 +44,14 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 
 import geolab.dags.fileUpload.UploadFileActivity;
 import geolab.dags.fragment.MapFragment;
 import geolab.dags.fragment.ViewPagerFragment;
 import geolab.dags.animation.DepthPageTransformer;
+import geolab.dags.model.GraphiteItemModel;
 
 
 public class MainActivity extends ActionBarActivity implements NavigationView.OnNavigationItemSelectedListener {
@@ -290,7 +295,19 @@ public class MainActivity extends ActionBarActivity implements NavigationView.On
         return true;
     }
 
+    public double distanceFrom(double lat1, double lng1, double lat2, double lng2) {
+        double earthRadius = 3958.75;
+        double dLat = Math.toRadians(lat2-lat1);
+        double dLng = Math.toRadians(lng2-lng1);
+        double a = Math.sin(dLat/2) * Math.sin(dLat/2) + Math.cos(Math.toRadians(lat1)) * Math.cos(Math.toRadians(lat2)) * Math.sin(dLng/2) * Math.sin(dLng/2);
+        double c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+        double dist = earthRadius * c;
+        int meterConversion = 1609;
+        return new Double(dist * meterConversion).floatValue();    // this will return distance
+    }
 
+    private ArrayList<GraphiteItemModel> data;
+    private double longitude, latitude;
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
@@ -298,6 +315,43 @@ public class MainActivity extends ActionBarActivity implements NavigationView.On
 
                 return true;
             case R.id.action_filter:
+
+                data = new ArrayList<>();
+                for (String key: MapFragment.mMarkersHashMap.keySet()) {
+                    data.add(MapFragment.mMarkersHashMap.get(key));
+                }
+
+                // location listener
+                LocationListener locationListener = new LocationListener() {
+                    @Override
+                    public void onLocationChanged(Location location) {
+                        longitude = location.getLongitude();
+                        latitude = location.getLatitude();
+                    }
+
+                    @Override
+                    public void onStatusChanged(String s, int i, Bundle bundle) {
+
+                    }
+
+                    @Override
+                    public void onProviderEnabled(String s) {
+
+                    }
+
+                    @Override
+                    public void onProviderDisabled(String s) {
+
+                    }
+                };
+
+
+                LocationManager locationManager = (LocationManager)getSystemService(Context.LOCATION_SERVICE);
+
+                locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0, 0, locationListener);
+                locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, locationListener);
+
+                //dialogFragment
                 final Dialog dialog = new Dialog(context);
                 dialog.setContentView(R.layout.filter_dialog_fragment);
                 Button bt_ok = (Button) dialog.findViewById(R.id.button1);
@@ -305,24 +359,35 @@ public class MainActivity extends ActionBarActivity implements NavigationView.On
                 final CheckBox cb2 = (CheckBox) dialog.findViewById(R.id.checkBox2);
                 dialog.setTitle("Category");
 
+
+                //on button click
                 bt_ok.setOnClickListener(new View.OnClickListener() {
 
                     @Override
                     public void onClick(View arg0) {
                         MapFragment.googleMap.clear();
-                        if (cb1.isChecked()){
-                            MapFragment.googleMap.addMarker(new MarkerOptions().position(new LatLng(44.109798, 15.242270)).title("Pin"));
-                        }
-                        if (cb2.isChecked()){
-                            MapFragment.googleMap.addMarker(new MarkerOptions().position(new LatLng(44.209798, 41.392270)).title("Pin 2"));
+                        //get markers with this distance
+                        double distance;
+                        for(int i = 0; i < data.size(); ++i) {
+                            distance = distanceFrom(longitude, latitude, data.get(i).getLongitude(),data.get(i).getLatitude());
+                            MarkerOptions marker = new MarkerOptions().position(
+                                    new LatLng(data.get(i).getLongitude(), data.get(i).getLatitude())).title(data.get(i).getTitle());
+
+                            if(distance > 1000){
+                                MapFragment.googleMap.addMarker(marker);
+                            }else{
+                                Toast.makeText(MainActivity.this, "naklebia " + distance, Toast.LENGTH_SHORT).show();
+                            }
+
                         }
                         dialog.dismiss();
                     }
 
                 });
-
+                //show dialog
                 dialog.show();
                 return true;
+
         }
 
         return super.onOptionsItemSelected(item);
