@@ -196,8 +196,6 @@ public class ViewPagerFragment extends android.support.v4.app.Fragment {
                     graphiteListView = (ListView)rootView.findViewById(R.id.graphiteList);
                     graphiteListView.setAdapter(new ListViewAdapter(getActivity(), graphiteItems));
 
-
-
                     //dismiss progressDialog after loading data
                     progressDialog.dismiss();
                     mSwipeRefreshLayout.setRefreshing(false);

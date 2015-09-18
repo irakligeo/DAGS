@@ -1,5 +1,6 @@
 package geolab.dags;
 
+import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -20,6 +21,8 @@ import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -32,6 +35,8 @@ import com.facebook.GraphRequest;
 import com.facebook.GraphResponse;
 import com.facebook.login.LoginManager;
 import com.facebook.login.LoginResult;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -286,12 +291,37 @@ public class MainActivity extends ActionBarActivity implements NavigationView.On
     }
 
 
-
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.listColor:
+            case R.id.action_settings:
 
+                return true;
+            case R.id.action_filter:
+                final Dialog dialog = new Dialog(context);
+                dialog.setContentView(R.layout.filter_dialog_fragment);
+                Button bt_ok = (Button) dialog.findViewById(R.id.button1);
+                final CheckBox cb1 = (CheckBox) dialog.findViewById(R.id.checkBox1);
+                final CheckBox cb2 = (CheckBox) dialog.findViewById(R.id.checkBox2);
+                dialog.setTitle("Category");
+
+                bt_ok.setOnClickListener(new View.OnClickListener() {
+
+                    @Override
+                    public void onClick(View arg0) {
+                        MapFragment.googleMap.clear();
+                        if (cb1.isChecked()){
+                            MapFragment.googleMap.addMarker(new MarkerOptions().position(new LatLng(44.109798, 15.242270)).title("Pin"));
+                        }
+                        if (cb2.isChecked()){
+                            MapFragment.googleMap.addMarker(new MarkerOptions().position(new LatLng(44.209798, 41.392270)).title("Pin 2"));
+                        }
+                        dialog.dismiss();
+                    }
+
+                });
+
+                dialog.show();
                 return true;
         }
 

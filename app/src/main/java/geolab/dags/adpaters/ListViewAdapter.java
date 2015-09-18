@@ -104,8 +104,6 @@ public class ListViewAdapter extends BaseAdapter {
                 .load(url)
                 .resize(600, 400)
                 .onlyScaleDown()
-                   // blur effect
-//                .transform(new BlurTransformation(context))
                 .centerCrop()
                 .into(viewHolder.imgView);
 

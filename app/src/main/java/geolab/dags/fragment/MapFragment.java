@@ -1,5 +1,6 @@
 package geolab.dags.fragment;
 
+import android.app.Dialog;
 import android.app.DialogFragment;
 import android.database.Cursor;
 import android.os.Bundle;
@@ -9,6 +10,8 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -31,7 +34,7 @@ import geolab.dags.model.GraphiteItemModel;
 
 public class MapFragment extends android.support.v4.app.Fragment implements OnMarkerClickListener{
     MapView mMapView;
-    private GoogleMap googleMap;
+    public static GoogleMap googleMap;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -179,20 +182,23 @@ public class MapFragment extends android.support.v4.app.Fragment implements OnMa
         {
             View v  = getActivity().getLayoutInflater().inflate(R.layout.infowindow_layout, null);
 
-            final GraphiteItemModel myMarker = mMarkersHashMap.get(marker.getTitle());
+            try {
+                final GraphiteItemModel myMarker = mMarkersHashMap.get(marker.getTitle());
 
-            ImageView markerIcon = (ImageView) v.findViewById(R.id.marker_icon);
+                ImageView markerIcon = (ImageView) v.findViewById(R.id.marker_icon);
 
-            TextView markerLabel = (TextView)v.findViewById(R.id.marker_label);
+                TextView markerLabel = (TextView) v.findViewById(R.id.marker_label);
 
-            Picasso.with(getActivity())
-                    .load(myMarker.getImgURL())
-                    .resize(200,300)
-                    .centerCrop()
-                    .into(markerIcon);
+                Picasso.with(getActivity())
+                        .load(myMarker.getImgURL())
+                        .resize(200, 300)
+                        .centerCrop()
+                        .into(markerIcon);
 
-            markerLabel.setText(myMarker.getTitle());
-
+                markerLabel.setText(myMarker.getTitle());
+            }catch (NullPointerException ex){
+                Toast.makeText(getActivity(),ex.getMessage(),Toast.LENGTH_SHORT).show();
+            }
             return v;
         }
     }
@@ -270,11 +276,11 @@ public class MapFragment extends android.support.v4.app.Fragment implements OnMa
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.action_filter:
-
+                Toast.makeText(getActivity(),"blah",Toast.LENGTH_SHORT).show();
                 return true;
             case R.id.action_settings:
                 // Not implemented here
-                return false;
+                return true;
             default:
                 break;
         }
