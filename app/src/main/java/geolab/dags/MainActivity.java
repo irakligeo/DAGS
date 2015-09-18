@@ -24,8 +24,10 @@ import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -72,7 +74,7 @@ public class MainActivity extends ActionBarActivity implements NavigationView.On
     private LayoutInflater inflater;
     private View view;
     private TextView fbUserName;
-
+    private View customView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -84,6 +86,9 @@ public class MainActivity extends ActionBarActivity implements NavigationView.On
         inflater = (LayoutInflater)getApplicationContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
         view = inflater.inflate(R.layout.header_layout, null);
+        //inflating custom view for filter
+        customView = inflater.inflate(R.layout.custom_info_fragment,null);
+
         fbUserName = (TextView) view.findViewById(R.id.fb_user_name);
 
 
@@ -171,6 +176,8 @@ public class MainActivity extends ActionBarActivity implements NavigationView.On
     String str_firstname = "";
     CallbackManager callbackManager;
     AccessToken accessToken;
+
+    //NavigationItemSelected
     @Override
     public boolean onNavigationItemSelected(MenuItem menuItem) {
         switch (menuItem.getItemId()) {
@@ -179,6 +186,7 @@ public class MainActivity extends ActionBarActivity implements NavigationView.On
                 startActivity(intent);
                 mDrawerToggle.setHomeAsUpIndicator(R.drawable.abc_ic_ab_back_mtrl_am_alpha);
                 menuItem.setChecked(true);
+
                 break;
 
             case R.id.navigation_item_2:
@@ -345,18 +353,25 @@ public class MainActivity extends ActionBarActivity implements NavigationView.On
                     }
                 };
 
-
                 LocationManager locationManager = (LocationManager)getSystemService(Context.LOCATION_SERVICE);
 
                 locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0, 0, locationListener);
                 locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, locationListener);
 
+                //spinner
+                Spinner spinner = (Spinner) customView.findViewById(R.id.spinnerCategory);
+                // Create an ArrayAdapter using the string array and a default spinner layout
+                ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(context,
+                        R.array.graphite_categories, android.R.layout.simple_spinner_item);
+                // Specify the layout to use when the list of choices appears
+                adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+//                spinner.setAdapter(adapter);
+
+
                 //dialogFragment
                 final Dialog dialog = new Dialog(context);
                 dialog.setContentView(R.layout.filter_dialog_fragment);
                 Button bt_ok = (Button) dialog.findViewById(R.id.button1);
-                final CheckBox cb1 = (CheckBox) dialog.findViewById(R.id.checkBox1);
-                final CheckBox cb2 = (CheckBox) dialog.findViewById(R.id.checkBox2);
                 dialog.setTitle("Category");
 
 
@@ -386,8 +401,8 @@ public class MainActivity extends ActionBarActivity implements NavigationView.On
                 });
                 //show dialog
                 dialog.show();
-                return true;
 
+            return true;
         }
 
         return super.onOptionsItemSelected(item);

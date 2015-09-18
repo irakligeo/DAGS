@@ -54,7 +54,7 @@
     <string name="categoryTextView">კატეგორია</string>
 
     <!-- spinner data (it's temporary)-->
-    <string-array name="planets_array">
+    <string-array name="graphite_categories">
         <item>Mercury</item>
         <item>Venus</item>
         <item>Earth</item>
