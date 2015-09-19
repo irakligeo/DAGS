@@ -73,11 +73,13 @@ public class ListViewAdapter extends BaseAdapter {
             TextView imgTitleView = (TextView) itemView.findViewById(R.id.imgTitle);
             TextView littleDescriptionView = (TextView) itemView.findViewById(R.id.little_description);
             TextView uploadDateTimeView = (TextView) itemView.findViewById(R.id.uploadDateTime);
+            TextView authorTextView = (TextView) itemView.findViewById(R.id.author);
             ImageView imgView = (ImageView) itemView.findViewById(R.id.peaceOfArtImg);
 
             viewHolder.imgView = imgView;
             viewHolder.imgDescriptionView = littleDescriptionView;
             viewHolder.imgTitleView = imgTitleView;
+            viewHolder.authorView = authorTextView;
             viewHolder.uploadDateTimeView = uploadDateTimeView;
 
             itemView.setTag(viewHolder);
@@ -98,6 +100,8 @@ public class ListViewAdapter extends BaseAdapter {
         viewHolder.imgTitleView.setText(graphiteItem.getTitle());
         viewHolder.imgDescriptionView.setText(graphiteItem.getDescription());
         viewHolder.uploadDateTimeView.setText(graphiteItem.getCreateDate());
+        viewHolder.authorView.setText(graphiteItem.getAuthor());
+
         String url = graphiteItem.getImgURL();
 
         Picasso.with(context)
@@ -112,7 +116,7 @@ public class ListViewAdapter extends BaseAdapter {
 
 
     private class ViewHolder {
-        TextView imgTitleView, imgDescriptionView, uploadDateTimeView;
+        TextView imgTitleView, imgDescriptionView, uploadDateTimeView, authorView;
         ImageView imgView;
     }
 

@@ -38,6 +38,8 @@ public class MapFragment extends android.support.v4.app.Fragment implements OnMa
     MapView mMapView;
     public static GoogleMap googleMap;
 
+    public static ArrayList<GraphiteItemModel> coordsList;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -61,7 +63,7 @@ public class MapFragment extends android.support.v4.app.Fragment implements OnMa
         mMarkersHashMap = new HashMap<>();
 
 
-        ArrayList<GraphiteItemModel> coordsList;
+
         //ArrayList of longitude, latitude, title, imgURL;
         coordsList = getCoordsFromDB();
 
@@ -114,11 +116,10 @@ public class MapFragment extends android.support.v4.app.Fragment implements OnMa
             }
         });
 
-        CameraPosition cameraPosition = new CameraPosition.Builder()
-                .target(new LatLng(coordsList.get(0).getLatitude(), coordsList.get(0).getLongitude())).zoom(12).build();
-        googleMap.animateCamera(CameraUpdateFactory
-                .newCameraPosition(cameraPosition));
-        
+//        CameraPosition cameraPosition = new CameraPosition.Builder()
+//                .target(new LatLng(coordsList.get(0).getLatitude(), coordsList.get(0).getLongitude())).zoom(12).build();
+//        googleMap.animateCamera(CameraUpdateFactory
+//                .newCameraPosition(cameraPosition));
 
         // Perform any camera updates here
         return v;
@@ -126,7 +127,7 @@ public class MapFragment extends android.support.v4.app.Fragment implements OnMa
 
 
     //function gets coordinates and title from database
-    private ArrayList<GraphiteItemModel> getCoordsFromDB(){
+    public static ArrayList<GraphiteItemModel> getCoordsFromDB(){
         ArrayList<GraphiteItemModel> tmpList = new ArrayList<>();
             Cursor cursor = ViewPagerFragment.db.rawQuery("SELECT * FROM " + TableGraphite.TABLE_NAME, null);
             if(cursor.moveToFirst()){

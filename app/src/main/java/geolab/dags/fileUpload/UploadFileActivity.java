@@ -1,5 +1,6 @@
 package geolab.dags.fileUpload;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
@@ -33,10 +34,10 @@ public class UploadFileActivity extends ActionBarActivity {
     public static final int MEDIA_TYPE_IMAGE = 1;
     public static final int MEDIA_TYPE_VIDEO = 2;
 
-    private Uri fileUri; // file url to store image/video
+    private static Uri fileUri; // file url to store image/video
 
     private Button btnCapturePicture, btnRecordVideo;
-
+    public static Activity activity1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -109,11 +110,11 @@ public class UploadFileActivity extends ActionBarActivity {
     /**
      * Launching camera app to capture image
      */
-    private void captureImage() {
+    public void captureImage() {
+
         Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
 
         fileUri = getOutputMediaFileUri(MEDIA_TYPE_IMAGE);
-
         intent.putExtra(MediaStore.EXTRA_OUTPUT, fileUri);
 
         // start the image capture Intent
@@ -226,7 +227,7 @@ public class UploadFileActivity extends ActionBarActivity {
     /**
      * Creating file uri to store image/video
      */
-    public Uri getOutputMediaFileUri(int type) {
+    public static Uri getOutputMediaFileUri(int type) {
         return Uri.fromFile(getOutputMediaFile(type));
     }
 

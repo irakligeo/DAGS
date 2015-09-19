@@ -56,11 +56,8 @@
     <!-- spinner data (it's temporary)-->
     <string-array name="graphite_categories">
         <item>ყველა</item>
-        <item>დღევანდელი</item>
-        <item>ორი დღის</item>
-        <item>ერთი კვირსი</item>
-        <item>ერთი თვის</item>
-        <item>ერთი წლის</item>
+        <item>არტი</item>
+        <item>სტენსელი</item>
     </string-array>
 
 </resources>

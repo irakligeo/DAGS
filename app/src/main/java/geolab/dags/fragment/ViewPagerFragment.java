@@ -40,8 +40,6 @@ import geolab.dags.DB.DBHelper;
 
 public class ViewPagerFragment extends android.support.v4.app.Fragment {
 
-    private View cardViewInflater;
-    private CardView cardView;
     @Override
     public void onActivityCreated(Bundle savedInstanceState){
         super.onActivityCreated(savedInstanceState);
@@ -61,8 +59,6 @@ public class ViewPagerFragment extends android.support.v4.app.Fragment {
                              Bundle savedInstanceState) {
 
         rootView = inflater.inflate(R.layout.fragment_graphite_items_list, container, false);
-//        cardViewInflater = inflater.inflate(R.layout.graphite_cardview_layout,null);
-//        cardView = (CardView) cardViewInflater.findViewById(R.id.cardview);
 
         //swipe refresh
         mSwipeRefreshLayout = (SwipeRefreshLayout) rootView.findViewById(R.id.swipe_refresh_layout);
@@ -70,7 +66,6 @@ public class ViewPagerFragment extends android.support.v4.app.Fragment {
 
             @Override
             public void onRefresh() {
-                graphiteItems = null;
                 getGraphiteDatas(URL);
 
             }
@@ -79,11 +74,9 @@ public class ViewPagerFragment extends android.support.v4.app.Fragment {
 
 
 
-
         //Database instance
         DBHelper dbHelper = new DBHelper(getActivity());
         db = dbHelper.getWritableDatabase();
-
 
 
         // get data from server
@@ -148,7 +141,7 @@ public class ViewPagerFragment extends android.support.v4.app.Fragment {
     private String URL = "http://geolab.club/streetart/json/peaceofart/";
     private JsonArrayRequest jsonArrayRequest;
     private RequestQueue requestQueue;
-    private ArrayList<GraphiteItemModel> graphiteItems;
+    public  ArrayList<GraphiteItemModel> graphiteItems;
 
     // function gets data from server
 
@@ -174,31 +167,38 @@ public class ViewPagerFragment extends android.support.v4.app.Fragment {
                 @Override
                 public void onResponse(JSONArray jsonArray) {
 
-                    db.execSQL("DELETE FROM " + TableGraphite.TABLE_NAME);
-                    db.execSQL("VACUUM");
+
                     graphiteItems = MyResponseParser.getData(jsonArray);
+                    //check if the server had some changes
+//                    if(MyResponseParser.oldStatusCode != MyResponseParser.statusCode ) {
 
-                    //insert graphiteItems arrayList into database
-                    for(int i = 0; i < graphiteItems.size(); ++i){
-                        contentValues.put(TableGraphite.id, graphiteItems.get(i).getId());
-                        contentValues.put(TableGraphite.imgTitle, graphiteItems.get(i).getTitle());
-                        contentValues.put(TableGraphite.imgAuthor, graphiteItems.get(i).getAuthor());
-                        contentValues.put(TableGraphite.imgURL, graphiteItems.get(i).getImgURL());
-                        contentValues.put(TableGraphite.latitude+"", graphiteItems.get(i).getLatitude());
-                        contentValues.put(TableGraphite.longitude+"", graphiteItems.get(i).getLongitude());
-                        contentValues.put(TableGraphite.uploadDateTime, graphiteItems.get(i).getCreateDate());
-                        contentValues.put(TableGraphite.imgDescription, graphiteItems.get(i).getDescription());
+                        db.execSQL("DELETE FROM " + TableGraphite.TABLE_NAME);
+                        db.execSQL("VACUUM");
 
-                        db.insert(TableGraphite.TABLE_NAME,null,contentValues);
-                    }
+//                        Toast.makeText(getActivity()," updating data " + MyResponseParser.oldStatusCode + " " + MyResponseParser.statusCode, Toast.LENGTH_SHORT).show();
+                        //insert graphiteItems arrayList into database
+                        for (int i = 0; i < graphiteItems.size(); ++i) {
+                            contentValues.put(TableGraphite.id, graphiteItems.get(i).getId());
+                            contentValues.put(TableGraphite.imgTitle, graphiteItems.get(i).getTitle());
+                            contentValues.put(TableGraphite.imgAuthor, graphiteItems.get(i).getAuthor());
+                            contentValues.put(TableGraphite.imgURL, graphiteItems.get(i).getImgURL());
+                            contentValues.put(TableGraphite.latitude + "", graphiteItems.get(i).getLatitude());
+                            contentValues.put(TableGraphite.longitude + "", graphiteItems.get(i).getLongitude());
+                            contentValues.put(TableGraphite.uploadDateTime, graphiteItems.get(i).getCreateDate());
+                            contentValues.put(TableGraphite.imgDescription, graphiteItems.get(i).getDescription());
 
+                            db.insert(TableGraphite.TABLE_NAME, null, contentValues);
+                        }
 
-                    graphiteListView = (ListView)rootView.findViewById(R.id.graphiteList);
-                    graphiteListView.setAdapter(new ListViewAdapter(getActivity(), graphiteItems));
+                        graphiteListView = (ListView) rootView.findViewById(R.id.graphiteList);
+                        ListViewAdapter mListViewAdapter = new ListViewAdapter(getActivity(),graphiteItems);
+                        graphiteListView.setAdapter(new ListViewAdapter(getActivity(), graphiteItems));
+                        mListViewAdapter.notifyDataSetChanged();
 
-                    //dismiss progressDialog after loading data
-                    progressDialog.dismiss();
-                    mSwipeRefreshLayout.setRefreshing(false);
+                        //dismiss progressDialog after loading data
+                        progressDialog.dismiss();
+                        mSwipeRefreshLayout.setRefreshing(false);
+
                 }
             },
             new Response.ErrorListener() {
