@@ -141,7 +141,7 @@ public class FilterDialogFragment extends DialogFragment implements AdapterView.
             MarkerOptions marker = new MarkerOptions().position(
                     new LatLng(data.get(i).getLatitude(), data.get(i).getLongitude())).title(data.get(i).getTitle());
             //get markers with this distance
-            if (distance >= radius) {
+            if (distance <= radius) {
                 MapFragment.googleMap.addMarker(marker);
             } else {
                 Toast.makeText(getActivity(), "გაქრა " +  data.get(i).getTitle(), Toast.LENGTH_SHORT).show();
@@ -162,7 +162,6 @@ public class FilterDialogFragment extends DialogFragment implements AdapterView.
         return new Double(dist * meterConversion).floatValue();    // this will return distance
     }
 
-    Date date = new Date();
 
 
     private String category;

@@ -290,6 +290,7 @@ public class MainActivity extends ActionBarActivity implements NavigationView.On
         // start the image capture Intent
         startActivityForResult(intent, CAMERA_CAPTURE_IMAGE_REQUEST_CODE);
     }
+
     //   end of camera code
     private ActionBarDrawerToggle mDrawerToggle;
 
