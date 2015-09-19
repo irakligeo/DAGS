@@ -196,6 +196,12 @@ public class MainActivity extends ActionBarActivity implements NavigationView.On
 
 
 
+    //starting camera code
+    public static CallbackManager callbackManager;
+
+
+
+
     @Override
     public void onBackPressed() {
         if (mPager.getCurrentItem() == 0) {
@@ -205,17 +211,14 @@ public class MainActivity extends ActionBarActivity implements NavigationView.On
             mPager.setCurrentItem(mPager.getCurrentItem() - 1);
         }
     }
-
-
-
-
-    //starting camera code
-
     /**
      * Receiving activity result method will be called after closing the camera
      * */
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        callbackManager.onActivityResult(requestCode, resultCode, data);
         // if the result is capturing Image
         if (requestCode == CAMERA_CAPTURE_IMAGE_REQUEST_CODE) {
             if (resultCode == RESULT_OK) {
@@ -320,7 +323,6 @@ public class MainActivity extends ActionBarActivity implements NavigationView.On
     private ActionBarDrawerToggle mDrawerToggle;
 
     String str_firstname = "";
-    CallbackManager callbackManager;
     AccessToken accessToken;
 
     //NavigationItemSelected
@@ -346,6 +348,8 @@ public class MainActivity extends ActionBarActivity implements NavigationView.On
                                 @Override
                                 public void onClick(DialogInterface dialogInterface, int i) {
                                     LoginManager.getInstance().logOut();
+                                    Toast.makeText(getApplicationContext(), "successfully loged out", Toast.LENGTH_SHORT).show();
+                                    accessToken = null;
                                 }
                             })
                             .setPositiveButton("კი", new DialogInterface.OnClickListener() {
@@ -356,18 +360,19 @@ public class MainActivity extends ActionBarActivity implements NavigationView.On
                             }).show();
                 } else {
                     callbackManager = CallbackManager.Factory.create();
+                    LoginManager.getInstance().logInWithReadPermissions(this, Arrays.asList("email", "user_photos", "public_profile"));
+
                     LoginManager.getInstance().registerCallback(callbackManager,
                             new FacebookCallback<LoginResult>() {
                                 @Override
                                 public void onSuccess(LoginResult loginResult) {
-                                    GraphRequest.newMeRequest(AccessToken.getCurrentAccessToken(), new GraphRequest.GraphJSONObjectCallback() {
+                                    GraphRequest.newMeRequest(loginResult.getAccessToken(), new GraphRequest.GraphJSONObjectCallback() {
                                         @Override
                                         public void onCompleted(JSONObject jsonObject, GraphResponse graphResponse) {
                                             if (graphResponse.getError() != null) {
                                                 System.out.println("ERROR");
                                             } else {
                                                 try {
-                                                    Toast.makeText(getApplicationContext(),accessToken.toString() + "---- " +accessToken.getPermissions(),Toast.LENGTH_SHORT).show();
                                                     String jsonresult = String.valueOf(jsonObject);
                                                     System.out.println("JSON Result" + jsonresult);
                                                     String str_email = jsonObject.getString("email");
@@ -376,7 +381,12 @@ public class MainActivity extends ActionBarActivity implements NavigationView.On
                                                     String str_lastname = jsonObject.getString("last_name");
 
                                                     fbUserName.setText(str_firstname);
-                                                } catch (JSONException e) {
+                                                    Toast.makeText(getApplicationContext(),str_firstname + " " + str_id + " " + str_lastname + " " + str_email , Toast.LENGTH_SHORT).show();
+                                                }
+                                                catch (NullPointerException ex){
+                                                    ex.getMessage();
+                                                }
+                                                catch (JSONException e) {
                                                     e.printStackTrace();
                                                 }
                                             }
@@ -396,9 +406,9 @@ public class MainActivity extends ActionBarActivity implements NavigationView.On
                                     Toast.makeText(MainActivity.this, "onError", Toast.LENGTH_SHORT).show();
                                 }
                             });
-                    LoginManager.getInstance().logInWithReadPermissions(this, Arrays.asList("public_profile", "user_friends"));
-                    break;
                 }
+                break;
+
             case R.id.navigation_item_3:
                 filterDialogFragment = new FilterDialogFragment();
                 filterDialogFragment.show(getFragmentManager(),"filter_fragment");
