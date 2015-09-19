@@ -52,6 +52,7 @@
     <string name="distance">დისტანცია (მ) - </string>
     <string name="categoryTextView">კატეგორია</string>
     <string name="distanceNumberTextView">0</string>
+    <string name="fb_user_name">User</string>
 
     <!-- spinner data (it's temporary)-->
     <string-array name="graphite_categories">

@@ -170,7 +170,6 @@ public class UploadFileActivity extends ActionBarActivity {
         // if the result is capturing Image
         if (requestCode == CAMERA_CAPTURE_IMAGE_REQUEST_CODE) {
             if (resultCode == RESULT_OK) {
-
                 // successfully captured the image
                 // launching upload activity
                 launchUploadActivity(true);

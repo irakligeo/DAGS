@@ -29,6 +29,7 @@ import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -41,9 +42,11 @@ import com.facebook.GraphRequest;
 import com.facebook.GraphResponse;
 import com.facebook.login.LoginManager;
 import com.facebook.login.LoginResult;
+import com.facebook.login.widget.ProfilePictureView;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.squareup.picasso.Picasso;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -89,6 +92,8 @@ public class MainActivity extends ActionBarActivity implements NavigationView.On
     private LayoutInflater inflater;
     private View view;
     private TextView fbUserName;
+    private ProfilePictureView profilePictureView;
+
     private Activity activity;
     public static FilterDialogFragment filterDialogFragment;
     @Override
@@ -104,8 +109,9 @@ public class MainActivity extends ActionBarActivity implements NavigationView.On
 
         view = inflater.inflate(R.layout.header_layout, null);
         fbUserName = (TextView) view.findViewById(R.id.fb_user_name);
-
-
+//        profilePictureView = (ProfilePictureView) view.findViewById(R.id.fb_image);
+//
+//        fbUserName.setText("sdfsdfsdafdsf");
 
 
 
@@ -216,8 +222,6 @@ public class MainActivity extends ActionBarActivity implements NavigationView.On
      * */
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-
         callbackManager.onActivityResult(requestCode, resultCode, data);
         // if the result is capturing Image
         if (requestCode == CAMERA_CAPTURE_IMAGE_REQUEST_CODE) {
@@ -225,8 +229,7 @@ public class MainActivity extends ActionBarActivity implements NavigationView.On
 
                 // successfully captured the image
                 // launching upload activity
-                launchUploadActivity(true);
-
+                launchUploadActivity(true, UserID);
 
             } else if (resultCode == RESULT_CANCELED) {
 
@@ -244,11 +247,14 @@ public class MainActivity extends ActionBarActivity implements NavigationView.On
 
         }
     }
+    String UserID = "";
     //launchUploadActivity
-    private void launchUploadActivity(boolean isImage){
+    private void launchUploadActivity(boolean isImage, String id){
         Intent i = new Intent(MainActivity.this, UploadActivity.class);
         i.putExtra("filePath", fileUri.getPath());
         i.putExtra("isImage", isImage);
+        i.putExtra("userID", id);
+        Toast.makeText(getApplicationContext(),"launchUploadActivity " +user_id,Toast.LENGTH_SHORT).show();
         startActivity(i);
     }
 
@@ -314,102 +320,46 @@ public class MainActivity extends ActionBarActivity implements NavigationView.On
 
         fileUri = getOutputMediaFileUri(MEDIA_TYPE_IMAGE);
         intent.putExtra(MediaStore.EXTRA_OUTPUT, fileUri);
-
-        // start the image capture Intent
+            // start the image capture Intent
         startActivityForResult(intent, CAMERA_CAPTURE_IMAGE_REQUEST_CODE);
     }
 
+
+
+    public boolean checkUserLogingStatus(String id){
+        if(id != "") {
+            return true;
+        }else{
+            return false;
+        }
+
+    }
     //   end of camera code
     private ActionBarDrawerToggle mDrawerToggle;
 
     String str_firstname = "";
     AccessToken accessToken;
 
+
+    String user_id = "";
     //NavigationItemSelected
     @Override
     public boolean onNavigationItemSelected(MenuItem menuItem) {
+
         switch (menuItem.getItemId()) {
-            case R.id.navigation_item_1:
+            case R.id.navigation_item_1: // fotos gadageba
                 // capture picture
                 captureImage();
+                Toast.makeText(getApplicationContext(),"navigation_item_1 " +UserID,Toast.LENGTH_SHORT).show();
                 menuItem.setChecked(true);
-
                 break;
 
-            case R.id.navigation_item_2:
-                accessToken = AccessToken.getCurrentAccessToken();
-                if (accessToken != null) {
-                    Toast.makeText(getApplicationContext(),accessToken.toString() + "---- " +accessToken.getPermissions(),Toast.LENGTH_SHORT).show();
-                    new AlertDialog.Builder(context)
-                            .setTitle("Success...")
-                            .setMessage("გსურთ დარჩეთ ავტორიზებული")
-                            .setCancelable(false)
-                            .setNegativeButton("არა", new DialogInterface.OnClickListener() {
-                                @Override
-                                public void onClick(DialogInterface dialogInterface, int i) {
-                                    LoginManager.getInstance().logOut();
-                                    Toast.makeText(getApplicationContext(), "successfully loged out", Toast.LENGTH_SHORT).show();
-                                    accessToken = null;
-                                }
-                            })
-                            .setPositiveButton("კი", new DialogInterface.OnClickListener() {
-                                @Override
-                                public void onClick(DialogInterface dialogInterface, int i) {
-
-                                }
-                            }).show();
-                } else {
-                    callbackManager = CallbackManager.Factory.create();
-                    LoginManager.getInstance().logInWithReadPermissions(this, Arrays.asList("email", "user_photos", "public_profile"));
-
-                    LoginManager.getInstance().registerCallback(callbackManager,
-                            new FacebookCallback<LoginResult>() {
-                                @Override
-                                public void onSuccess(LoginResult loginResult) {
-                                    GraphRequest.newMeRequest(loginResult.getAccessToken(), new GraphRequest.GraphJSONObjectCallback() {
-                                        @Override
-                                        public void onCompleted(JSONObject jsonObject, GraphResponse graphResponse) {
-                                            if (graphResponse.getError() != null) {
-                                                System.out.println("ERROR");
-                                            } else {
-                                                try {
-                                                    String jsonresult = String.valueOf(jsonObject);
-                                                    System.out.println("JSON Result" + jsonresult);
-                                                    String str_email = jsonObject.getString("email");
-                                                    String str_id = jsonObject.getString("id");
-                                                    str_firstname = jsonObject.getString("first_name");
-                                                    String str_lastname = jsonObject.getString("last_name");
-
-                                                    fbUserName.setText(str_firstname);
-                                                    Toast.makeText(getApplicationContext(),str_firstname + " " + str_id + " " + str_lastname + " " + str_email , Toast.LENGTH_SHORT).show();
-                                                }
-                                                catch (NullPointerException ex){
-                                                    ex.getMessage();
-                                                }
-                                                catch (JSONException e) {
-                                                    e.printStackTrace();
-                                                }
-                                            }
-
-                                        }
-                                    }).executeAsync();
-
-                                }
-
-                                @Override
-                                public void onCancel() {
-                                    Toast.makeText(MainActivity.this, "onCancel", Toast.LENGTH_SHORT).show();
-                                }
-
-                                @Override
-                                public void onError(FacebookException exception) {
-                                    Toast.makeText(MainActivity.this, "onError", Toast.LENGTH_SHORT).show();
-                                }
-                            });
-                }
+            case R.id.navigation_item_2: // avtorizacia
+                Toast.makeText(getApplicationContext(),"navigation_item_2 " +UserID,Toast.LENGTH_SHORT).show();
+                loginToFB();
                 break;
 
-            case R.id.navigation_item_3:
+            case R.id.navigation_item_3: // filtracia
                 filterDialogFragment = new FilterDialogFragment();
                 filterDialogFragment.show(getFragmentManager(),"filter_fragment");
                 break;
@@ -419,6 +369,81 @@ public class MainActivity extends ActionBarActivity implements NavigationView.On
         return true;
     }
 
+    boolean logged = false;
+    public void loginToFB() {
+        Toast.makeText(getApplicationContext(),"loginToFB() ",Toast.LENGTH_SHORT).show();
+        accessToken = AccessToken.getCurrentAccessToken();
+        if (logged) {
+            new AlertDialog.Builder(context)
+                    .setTitle("Success...")
+                    .setMessage("გსურთ დარჩეთ ავტორიზებული")
+                    .setCancelable(false)
+                    .setNegativeButton("არა", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            LoginManager.getInstance().logOut();
+                            Toast.makeText(getApplicationContext(), "successfully loged out", Toast.LENGTH_SHORT).show();
+                            accessToken = null;
+                            logged = false;
+                        }
+                    })
+                    .setPositiveButton("კი", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            logged = true;
+                        }
+                    }).show();
+        } else {
+            callbackManager = CallbackManager.Factory.create();
+            LoginManager.getInstance().logInWithReadPermissions(this, Arrays.asList("email", "user_photos", "public_profile"));
+
+            LoginManager.getInstance().registerCallback(callbackManager,
+                    new FacebookCallback<LoginResult>() {
+
+                        @Override
+                        public void onSuccess(LoginResult loginResult) {
+
+                            GraphRequest.newMeRequest(loginResult.getAccessToken(), new GraphRequest.GraphJSONObjectCallback() {
+                                @Override
+                                public void onCompleted(JSONObject jsonObject, GraphResponse graphResponse) {
+                                    if (graphResponse.getError() != null) {
+                                        System.out.println("ERROR");
+                                    }
+                                    else {
+                                        try {
+                                            user_id = jsonObject.getString("id");
+                                            str_firstname = jsonObject.getString("name");
+                                            fbUserName.setText(jsonObject.getString("name"));
+//                                            Toast.makeText(getApplicationContext(), str_firstname + "https://graph.facebook.com/" + user_id + "/picture?type=large" + " " + user_id, Toast.LENGTH_SHORT).show();
+
+
+                                        } catch (NullPointerException ex) {
+                                            ex.getMessage();
+                                        } catch (JSONException e) {
+                                            e.printStackTrace();
+                                        } finally {
+                                            UserID = user_id;
+                                            Toast.makeText(getApplicationContext(), UserID + " " +user_id, Toast.LENGTH_SHORT).show();
+                                        }
+                                    }
+
+                                }
+                            }).executeAsync();
+
+                        }
+
+                        @Override
+                        public void onCancel() {
+                            Toast.makeText(MainActivity.this, "onCancel", Toast.LENGTH_SHORT).show();
+                        }
+
+                        @Override
+                        public void onError(FacebookException exception) {
+                            Toast.makeText(MainActivity.this, "onError", Toast.LENGTH_SHORT).show();
+                        }
+                    });
+        }
+    }
 
     /**
      * A simple pager adapter that represents 2 ScreenSlidePageFragment objects, in

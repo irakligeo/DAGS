@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:facebook="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="200dp"
@@ -8,15 +9,18 @@
     android:theme="@style/ThemeOverlay.AppCompat.Dark"
     android:background="@drawable/nav_bg">
 
+    <!--<com.facebook.login.widget.ProfilePictureView-->
+        <!--android:id="@+id/fb_image"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--facebook:preset_size="small"/>-->
+
     <TextView
         android:id="@+id/fb_user_name"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="User"
+        android:text="@string/fb_user_name"
         android:textColor="@android:color/white"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-        android:layout_gravity="bottom|center_horizontal"/>
+        android:layout_gravity="center_horizontal|bottom|left"/>
 
 </LinearLayout>
