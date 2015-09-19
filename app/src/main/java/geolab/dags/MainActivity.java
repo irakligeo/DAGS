@@ -8,6 +8,7 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.Signature;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
@@ -46,12 +47,14 @@ import com.facebook.login.widget.ProfilePictureView;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.squareup.picasso.Downloader;
 import com.squareup.picasso.Picasso;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.File;
+import java.net.URL;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.text.SimpleDateFormat;
@@ -222,7 +225,15 @@ public class MainActivity extends ActionBarActivity implements NavigationView.On
      * */
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        callbackManager.onActivityResult(requestCode, resultCode, data);
+        try {
+            callbackManager.onActivityResult(requestCode, resultCode, data);
+        }catch (NullPointerException ex){
+//            loginToFB(false);
+            takeImage();
+            Toast.makeText(getApplicationContext(),
+                    ex.getMessage(), Toast.LENGTH_SHORT)
+                    .show();
+        }
         // if the result is capturing Image
         if (requestCode == CAMERA_CAPTURE_IMAGE_REQUEST_CODE) {
             if (resultCode == RESULT_OK) {
@@ -347,31 +358,73 @@ public class MainActivity extends ActionBarActivity implements NavigationView.On
     public boolean onNavigationItemSelected(MenuItem menuItem) {
 
         switch (menuItem.getItemId()) {
+
             case R.id.navigation_item_1: // fotos gadageba
-                // capture picture
-                captureImage();
-                Toast.makeText(getApplicationContext(),"navigation_item_1 " +UserID,Toast.LENGTH_SHORT).show();
-                menuItem.setChecked(true);
+
+                takeImage();
                 break;
 
             case R.id.navigation_item_2: // avtorizacia
+
                 Toast.makeText(getApplicationContext(),"navigation_item_2 " +UserID,Toast.LENGTH_SHORT).show();
-                loginToFB();
+                //check if logged
+                if(checkUserLogingStatus(UserID)) {
+                    loginToFB(true);
+                }else {
+                    loginToFB(false);
+                }
                 break;
 
             case R.id.navigation_item_3: // filtracia
+
                 filterDialogFragment = new FilterDialogFragment();
                 filterDialogFragment.show(getFragmentManager(),"filter_fragment");
                 break;
+
             default:
                 break;
         }
         return true;
     }
 
+
+    //Take image
+    public void takeImage() {
+        // capture picture
+        if(checkUserLogingStatus(UserID)) {
+            captureImage();
+            Toast.makeText(getApplicationContext(), "logged in", Toast.LENGTH_SHORT).show();
+        }else{
+            AlertDialog.Builder builder = new AlertDialog.Builder(context);
+            builder.setTitle("ჰაი")
+                    .setMessage("ასატვირთად საჭიროა ავტორიზაცია")
+                    .setNegativeButton("არა", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+
+                        }
+                    })
+                    .setPositiveButton("კი", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            loginToFB(false);
+                            Toast.makeText(getApplicationContext(),UserID+"",Toast.LENGTH_SHORT).show();
+
+                                captureImage();
+                                Toast.makeText(getApplicationContext(),"wavida",Toast.LENGTH_SHORT).show();
+
+                        }
+                    }).show();
+
+        }
+    }
+
+
     boolean logged = false;
-    public void loginToFB() {
+    public void loginToFB(boolean status) {
+
         Toast.makeText(getApplicationContext(),"loginToFB() ",Toast.LENGTH_SHORT).show();
+        logged = status;
         accessToken = AccessToken.getCurrentAccessToken();
         if (logged) {
             new AlertDialog.Builder(context)
@@ -382,7 +435,6 @@ public class MainActivity extends ActionBarActivity implements NavigationView.On
                         @Override
                         public void onClick(DialogInterface dialogInterface, int i) {
                             LoginManager.getInstance().logOut();
-                            Toast.makeText(getApplicationContext(), "successfully loged out", Toast.LENGTH_SHORT).show();
                             accessToken = null;
                             logged = false;
                         }
@@ -423,7 +475,7 @@ public class MainActivity extends ActionBarActivity implements NavigationView.On
                                             e.printStackTrace();
                                         } finally {
                                             UserID = user_id;
-                                            Toast.makeText(getApplicationContext(), UserID + " " +user_id, Toast.LENGTH_SHORT).show();
+                                            Toast.makeText(getApplicationContext(), UserID, Toast.LENGTH_SHORT).show();
                                         }
                                     }
 
