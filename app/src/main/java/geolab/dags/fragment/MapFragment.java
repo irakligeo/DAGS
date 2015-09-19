@@ -116,10 +116,10 @@ public class MapFragment extends android.support.v4.app.Fragment implements OnMa
             }
         });
 
-//        CameraPosition cameraPosition = new CameraPosition.Builder()
-//                .target(new LatLng(coordsList.get(0).getLatitude(), coordsList.get(0).getLongitude())).zoom(12).build();
-//        googleMap.animateCamera(CameraUpdateFactory
-//                .newCameraPosition(cameraPosition));
+        CameraPosition cameraPosition = new CameraPosition.Builder()
+                .target(new LatLng(coordsList.get(0).getLatitude(), coordsList.get(0).getLongitude())).zoom(12).build();
+        googleMap.animateCamera(CameraUpdateFactory
+                .newCameraPosition(cameraPosition));
 
         // Perform any camera updates here
         return v;
@@ -218,6 +218,7 @@ public class MapFragment extends android.support.v4.app.Fragment implements OnMa
             TextView imgTitleView = (TextView) view.findViewById(R.id.imgTitle);
             TextView imgDescriptionView = (TextView) view.findViewById(R.id.imgDescription);
             TextView imgUploadDateTimeView = (TextView) view.findViewById(R.id.uploadDateTime);
+            TextView authorTextView = (TextView) view.findViewById(R.id.author);
             ImageView imgView = (ImageView) view.findViewById(R.id.imgView);
 
             Bundle bundle = this.getArguments();
@@ -227,6 +228,7 @@ public class MapFragment extends android.support.v4.app.Fragment implements OnMa
             imgTitleView.setText(graphiteItemModel.getTitle());
             imgDescriptionView.setText(graphiteItemModel.getDescription());
             imgUploadDateTimeView.setText(graphiteItemModel.getCreateDate());
+            authorTextView.setText(graphiteItemModel.getAuthor());
 
             Picasso.with(getActivity().getApplicationContext())
                     .load(graphiteItemModel.getImgURL())

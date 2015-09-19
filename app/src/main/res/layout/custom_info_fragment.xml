@@ -19,6 +19,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="title"
+                android:textSize="18sp"
                 android:layout_centerHorizontal="true"/>
 
             <ImageView
@@ -35,6 +36,7 @@
                 android:id="@+id/author"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
                 android:text="author"
                 android:layout_below="@+id/imgView"/>
 
@@ -45,6 +47,7 @@
                 android:text="uploadDateTime"
                 android:gravity="right"
                 android:layout_below="@+id/imgView"
+                android:layout_marginTop="15dp"
                 android:layout_alignParentRight="true"
                 android:layout_alignParentEnd="true" />
 
@@ -52,6 +55,7 @@
                 android:id="@+id/imgDescription"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
                 android:text="imgDescription"
                 android:layout_below="@+id/uploadDateTime"
                 android:layout_centerHorizontal="true"/>

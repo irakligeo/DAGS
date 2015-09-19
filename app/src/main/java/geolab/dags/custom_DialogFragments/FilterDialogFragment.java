@@ -1,6 +1,7 @@
 package geolab.dags.custom_DialogFragments;
 
 import android.app.DialogFragment;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.location.Location;
 import android.location.LocationListener;
@@ -21,6 +22,8 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 
 import geolab.dags.MainActivity;
 import geolab.dags.R;
@@ -158,6 +161,8 @@ public class FilterDialogFragment extends DialogFragment implements AdapterView.
         int meterConversion = 1609;
         return new Double(dist * meterConversion).floatValue();    // this will return distance
     }
+
+    Date date = new Date();
 
 
     private String category;
