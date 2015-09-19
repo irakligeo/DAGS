@@ -4,6 +4,9 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.content.pm.Signature;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
@@ -20,6 +23,8 @@ import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.Toolbar;
+import android.util.Base64;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -44,6 +49,8 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.File;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.Date;
@@ -166,7 +173,25 @@ public class MainActivity extends ActionBarActivity implements NavigationView.On
         mPagerAdapter = new ScreenSlidePagerAdapter(getSupportFragmentManager());
         mPager.setAdapter(mPagerAdapter);
 
+
+//        try {
+//            PackageInfo info = getPackageManager().getPackageInfo(context.getPackageName(), PackageManager.GET_SIGNATURES);
+//            for (Signature signature : info.signatures) {
+//                MessageDigest md = MessageDigest.getInstance("SHA");
+//                md.update(signature.toByteArray());
+//                Log.d("KeyHash:", "KeyHash:  " + Base64.encodeToString(md.digest(), Base64.DEFAULT));
+//            }
+//        }
+//        catch (PackageManager.NameNotFoundException e) {
+//
+//        }
+//        catch (NoSuchAlgorithmException e) {
+//
+//        }
+
     }
+
+
 
 
 
@@ -305,7 +330,6 @@ public class MainActivity extends ActionBarActivity implements NavigationView.On
             case R.id.navigation_item_1:
                 // capture picture
                 captureImage();
-//                mDrawerToggle.setHomeAsUpIndicator(R.drawable.abc_ic_ab_back_mtrl_am_alpha);
                 menuItem.setChecked(true);
 
                 break;
@@ -313,6 +337,7 @@ public class MainActivity extends ActionBarActivity implements NavigationView.On
             case R.id.navigation_item_2:
                 accessToken = AccessToken.getCurrentAccessToken();
                 if (accessToken != null) {
+                    Toast.makeText(getApplicationContext(),accessToken.toString() + "---- " +accessToken.getPermissions(),Toast.LENGTH_SHORT).show();
                     new AlertDialog.Builder(context)
                             .setTitle("Success...")
                             .setMessage("გსურთ დარჩეთ ავტორიზებული")
@@ -342,6 +367,7 @@ public class MainActivity extends ActionBarActivity implements NavigationView.On
                                                 System.out.println("ERROR");
                                             } else {
                                                 try {
+                                                    Toast.makeText(getApplicationContext(),accessToken.toString() + "---- " +accessToken.getPermissions(),Toast.LENGTH_SHORT).show();
                                                     String jsonresult = String.valueOf(jsonObject);
                                                     System.out.println("JSON Result" + jsonresult);
                                                     String str_email = jsonObject.getString("email");
