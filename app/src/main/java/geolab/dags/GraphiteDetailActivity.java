@@ -3,6 +3,7 @@ package geolab.dags;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
@@ -66,7 +67,8 @@ public class GraphiteDetailActivity extends ActionBarActivity implements Navigat
 
     private TextView likesCountTextView;
     private TextView likeTextView;
-
+    private TextView commentsTextView;
+    private TextView shareTextView;
     private Context context;
     private TextView descriptionView;
 
@@ -74,121 +76,130 @@ public class GraphiteDetailActivity extends ActionBarActivity implements Navigat
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        FacebookSdk.sdkInitialize(getApplicationContext());
-        setContentView(R.layout.activity_graphite_item_detail);
+            super.onCreate(savedInstanceState);
+            FacebookSdk.sdkInitialize(getApplicationContext());
+            setContentView(R.layout.activity_graphite_item_detail);
 
-        context = this;
-        //get selected item detail
-        final GraphiteItemModel  graphiteItem = (GraphiteItemModel) getIntent().getSerializableExtra("GraphiteItem");
+            context = this;
+            //get selected item detail
+            final GraphiteItemModel  graphiteItem = (GraphiteItemModel) getIntent().getSerializableExtra("GraphiteItem");
 
-        fadeIn = new AlphaAnimation(0.0f , 1.0f ) ;
-        fadeIn.setDuration(1200);
-        fadeIn.setFillAfter(true);
+            fadeIn = new AlphaAnimation(0.0f , 1.0f ) ;
+            fadeIn.setDuration(1200);
+            fadeIn.setFillAfter(true);
 
-        textAnimation = AnimationUtils.loadAnimation(context,R.anim.text_animation);
-//        fadeIn = AnimationUtils.loadAnimation(context,R.anim.fab_in);
-//        fadeOut = AnimationUtils.loadAnimation(context,R.anim.fade_out);
-
-
-        //Set Toolbar
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayShowTitleEnabled(false);
-        //set back button icon
-        toolbar.setNavigationIcon(R.drawable.ic_back);
-        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                onBackPressed();
-            }
-        });
+            textAnimation = AnimationUtils.loadAnimation(context,R.anim.text_animation);
+    //        fadeIn = AnimationUtils.loadAnimation(context,R.anim.fab_in);
+    //        fadeOut = AnimationUtils.loadAnimation(context,R.anim.fade_out);
 
 
-        NavigationView navigationView = (NavigationView) findViewById(R.id.navigation_view);
-        navigationView.setNavigationItemSelectedListener(this);
-
-        DrawerLayout mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
-        mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout, toolbar, R.string.open,
-                R.string.close);
-        mDrawerLayout.setDrawerListener(mDrawerToggle);
-        mDrawerToggle.syncState();
-
-
-        // init views
-        likeImageView = (ImageView) findViewById(R.id.like_icon);
-        commentImageView = (ImageView) findViewById(R.id.comments_icon);
-        shareImageView = (ImageView) findViewById(R.id.share_icon);
-        likesCountTextView = (TextView) findViewById(R.id.likes_countTextView);
-        likeTextView = (TextView) findViewById(R.id.like_Text_View);
-        TextView imgTitle = (TextView) findViewById(R.id.imgTitle);
-        ImageView imgView = (ImageView) findViewById(R.id.peaceOfArtImg);
-        descriptionView = (TextView) findViewById(R.id.little_description);
-        TextView createDateView = (TextView) findViewById(R.id.createDate);
-        TextView authorView = (TextView) findViewById(R.id.author);
-
-
-
-
-        imgTitle.setText(graphiteItem.getTitle());
-        createDateView.setText(graphiteItem.getCreateDate());
-        authorView.setText(graphiteItem.getAuthor());
-        descriptionView.setText(graphiteItem.getDescription());
-        likesCountTextView.setText(graphiteItem.getLikesCount()+" ");
-
-
-        final boolean[] clicked = {false};
-        //on like ImageView clikc
-        likeImageView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (!clicked[0]) {
-                    likesCountTextView.setText(graphiteItem.getLikesCount() + 1 + " ");
-                    likeImageView.setImageResource(R.drawable.liked_icon);
-                    likesCountTextView.startAnimation(textAnimation);
-                    likeTextView.setText("liked");
-                    likeTextView.startAnimation(textAnimation);
-                    likesCountTextView.startAnimation(fadeIn);
-                    clicked[0] = true;
-                }else {
-                    Toast.makeText(getApplicationContext(),"უკვე მოწონებულია", Toast.LENGTH_SHORT).show();
+            //Set Toolbar
+            Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+            setSupportActionBar(toolbar);
+            getSupportActionBar().setDisplayShowTitleEnabled(false);
+            //set back button icon
+            toolbar.setNavigationIcon(R.drawable.ic_back);
+            toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    onBackPressed();
                 }
-            }
-        });
-
-        commentImageView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(getApplicationContext(),"comming soon ;) ", Toast.LENGTH_SHORT).show();
-            }
-        });
-
-        shareImageView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(getApplicationContext(),"share",Toast.LENGTH_SHORT).show();
-                //share link content
-                ShareLinkContent content = new ShareLinkContent.Builder()
-                        .setContentUrl(Uri.parse(graphiteItem.getImgURL()))
-                        .setContentTitle(graphiteItem.getTitle())
-                        .setContentDescription(graphiteItem.getDescription())
-                        .build();
-//                ShareButton shareButton = (ShareButton)findViewById(R.id.fb_share_button);
-//                shareButton.setShareContent(content);
-            }
-        });
-
-        DisplayMetrics dm = new DisplayMetrics();
-        getWindowManager().getDefaultDisplay().getMetrics(dm);
-        int width=dm.widthPixels;
-        int height=dm.heightPixels;
+            });
 
 
-        Picasso.with(this)
-                .load(graphiteItem.getImgURL())
-                .fit()
-                .centerCrop()
-                .into(imgView);
+            NavigationView navigationView = (NavigationView) findViewById(R.id.navigation_view);
+            navigationView.setNavigationItemSelectedListener(this);
+
+            DrawerLayout mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+            mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout, toolbar, R.string.open,
+                    R.string.close);
+            mDrawerLayout.setDrawerListener(mDrawerToggle);
+            mDrawerToggle.syncState();
+
+
+            // init views
+            likeImageView = (ImageView) findViewById(R.id.like_icon);
+            commentImageView = (ImageView) findViewById(R.id.comments_icon);
+            shareImageView = (ImageView) findViewById(R.id.share_icon);
+            likesCountTextView = (TextView) findViewById(R.id.likes_countTextView);
+            likeTextView = (TextView) findViewById(R.id.like_Text_View);
+            commentsTextView = (TextView) findViewById(R.id.comments_text_view_id);
+            shareTextView = (TextView) findViewById(R.id.share_text_view_id);
+            TextView imgTitle = (TextView) findViewById(R.id.imgTitle);
+            ImageView imgView = (ImageView) findViewById(R.id.peaceOfArtImg);
+            descriptionView = (TextView) findViewById(R.id.little_description);
+            TextView createDateView = (TextView) findViewById(R.id.createDate);
+            TextView authorView = (TextView) findViewById(R.id.author);
+
+
+            Typeface font = Typeface.createFromAsset(getAssets(), "Chantelli_Antiqua.ttf");
+            likeTextView.setTypeface(font);
+            imgTitle.setTypeface(font);
+            descriptionView.setTypeface(font);
+            authorView.setTypeface(font);
+            authorView.setTypeface(font);
+            shareTextView.setTypeface(font);
+            commentsTextView.setTypeface(font);
+
+            imgTitle.setText(graphiteItem.getTitle());
+            createDateView.setText(graphiteItem.getCreateDate());
+            authorView.setText(graphiteItem.getAuthor());
+            descriptionView.setText(graphiteItem.getDescription());
+            likesCountTextView.setText(graphiteItem.getLikesCount()+" ");
+
+
+            final boolean[] clicked = {false};
+            //on like ImageView clikc
+            likeImageView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    if (!clicked[0]) {
+                        likesCountTextView.setText(graphiteItem.getLikesCount() + 1 + " ");
+                        likeImageView.setImageResource(R.drawable.liked_icon);
+                        likesCountTextView.startAnimation(textAnimation);
+                        likeTextView.setText("liked");
+                        likeTextView.startAnimation(textAnimation);
+                        likesCountTextView.startAnimation(fadeIn);
+                        clicked[0] = true;
+                    }else {
+                        Toast.makeText(getApplicationContext(),"უკვე მოწონებულია", Toast.LENGTH_SHORT).show();
+                    }
+                }
+            });
+
+            commentImageView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Toast.makeText(getApplicationContext(),"comming soon ;) ", Toast.LENGTH_SHORT).show();
+                }
+            });
+
+            shareImageView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Toast.makeText(getApplicationContext(),"share",Toast.LENGTH_SHORT).show();
+                    //share link content
+                    ShareLinkContent content = new ShareLinkContent.Builder()
+                            .setContentUrl(Uri.parse(graphiteItem.getImgURL()))
+                            .setContentTitle(graphiteItem.getTitle())
+                            .setContentDescription(graphiteItem.getDescription())
+                            .build();
+    //                ShareButton shareButton = (ShareButton)findViewById(R.id.fb_share_button);
+    //                shareButton.setShareContent(content);
+                }
+            });
+
+            DisplayMetrics dm = new DisplayMetrics();
+            getWindowManager().getDefaultDisplay().getMetrics(dm);
+            int width=dm.widthPixels;
+            int height=dm.heightPixels;
+
+
+            Picasso.with(this)
+                    .load(graphiteItem.getImgURL())
+                    .fit()
+                    .centerCrop()
+                    .into(imgView);
 
     }
 

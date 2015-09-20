@@ -106,8 +106,7 @@ public class ListViewAdapter extends BaseAdapter {
 
         Picasso.with(context)
                 .load(url)
-                .resize(600, 400)
-                .onlyScaleDown()
+                .fit()
                 .centerCrop()
                 .into(viewHolder.imgView);
 
