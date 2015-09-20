@@ -186,6 +186,7 @@ public class ViewPagerFragment extends android.support.v4.app.Fragment {
                             contentValues.put(TableGraphite.longitude + "", graphiteItems.get(i).getLongitude());
                             contentValues.put(TableGraphite.uploadDateTime, graphiteItems.get(i).getCreateDate());
                             contentValues.put(TableGraphite.imgDescription, graphiteItems.get(i).getDescription());
+                            contentValues.put(TableGraphite.likes,graphiteItems.get(i).getLikesCount());
 
                             db.insert(TableGraphite.TABLE_NAME, null, contentValues);
                         }

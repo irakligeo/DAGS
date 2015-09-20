@@ -18,8 +18,8 @@ public class DBHelper extends SQLiteOpenHelper{
             + TableGraphite.imgDescription + " text,"
             + TableGraphite.longitude + " real,"
             + TableGraphite.latitude + " real,"
-            + TableGraphite.uploadDateTime + " text "
-            + TableGraphite.likes + " text "
+            + TableGraphite.uploadDateTime + " text,"
+            + TableGraphite.likes + " integer "
             + ");";
 
 

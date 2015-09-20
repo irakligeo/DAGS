@@ -17,6 +17,8 @@ import android.util.DisplayMetrics;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -57,8 +59,17 @@ public class GraphiteDetailActivity extends ActionBarActivity implements Navigat
     private static final int CAMERA_CAPTURE_IMAGE_REQUEST_CODE = 100;
     public static final int MEDIA_TYPE_IMAGE = 1;
 
+    private ImageView likeImageView;
+    private ImageView commentImageView;
+    private ImageView shareImageView;
+
+    private TextView likesCountTextView;
+    private TextView likeTextView;
+
     private Context context;
     private TextView descriptionView;
+
+    private Animation textAnimation;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -67,40 +78,13 @@ public class GraphiteDetailActivity extends ActionBarActivity implements Navigat
 
         context = this;
         //get selected item detail
-        GraphiteItemModel  graphiteItem = (GraphiteItemModel) getIntent().getSerializableExtra("GraphiteItem");
+        final GraphiteItemModel  graphiteItem = (GraphiteItemModel) getIntent().getSerializableExtra("GraphiteItem");
 
 
-        //share link content
-        ShareLinkContent content = new ShareLinkContent.Builder()
-                .setContentUrl(Uri.parse(graphiteItem.getImgURL()))
-                .setContentTitle(graphiteItem.getTitle())
-                .setContentDescription(graphiteItem.getDescription())
-                .build();
-//        ShareButton shareButton = (ShareButton)findViewById(R.id.fb_share_button);
-//        shareButton.setShareContent(content);
+
+        textAnimation = AnimationUtils.loadAnimation(context,R.anim.text_animation);
 
 
-        GraphRequest.newMeRequest(AccessToken.getCurrentAccessToken(), new GraphRequest.GraphJSONObjectCallback() {
-            @Override
-            public void onCompleted(JSONObject jsonObject, GraphResponse graphResponse) {
-                if (graphResponse.getError() != null) {
-                    System.out.println("ERROR");
-                } else {
-                    try {
-                        String jsonresult = String.valueOf(jsonObject);
-                        descriptionView.setText(jsonObject.toString());
-                        String str_email = jsonObject.getString("email");
-                        String str_id = jsonObject.getString("id");
-                        String str_firstname = jsonObject.getString("first_name");
-                        String str_lastname = jsonObject.getString("last_name");
-
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                    }
-                }
-
-            }
-        }).executeAsync();
 
         //Set Toolbar
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -126,28 +110,77 @@ public class GraphiteDetailActivity extends ActionBarActivity implements Navigat
         mDrawerToggle.syncState();
 
 
-
+        // init views
+        likeImageView = (ImageView) findViewById(R.id.like_icon);
+        commentImageView = (ImageView) findViewById(R.id.comments_icon);
+        shareImageView = (ImageView) findViewById(R.id.share_icon);
+        likesCountTextView = (TextView) findViewById(R.id.likes_countTextView);
+        likeTextView = (TextView) findViewById(R.id.like_Text_View);
         TextView imgTitle = (TextView) findViewById(R.id.imgTitle);
         ImageView imgView = (ImageView) findViewById(R.id.peaceOfArtImg);
         descriptionView = (TextView) findViewById(R.id.little_description);
         TextView createDateView = (TextView) findViewById(R.id.createDate);
         TextView authorView = (TextView) findViewById(R.id.author);
 
+
+
+
         imgTitle.setText(graphiteItem.getTitle());
         createDateView.setText(graphiteItem.getCreateDate());
         authorView.setText(graphiteItem.getAuthor());
         descriptionView.setText(graphiteItem.getDescription());
+        likesCountTextView.setText(graphiteItem.getLikesCount()+" ");
+
+
+        final boolean[] clicked = {false};
+        //on like ImageView clikc
+        likeImageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (!clicked[0]) {
+                    likesCountTextView.setText(graphiteItem.getLikesCount() + 1 + " ");
+                    likeImageView.setImageResource(R.drawable.liked_icon);
+                    likesCountTextView.startAnimation(textAnimation);
+                    likeTextView.setText("liked");
+                    likeTextView.startAnimation(textAnimation);
+                    clicked[0] = true;
+                }else {
+                    Toast.makeText(getApplicationContext(),"უკვე მოწონებულია", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
+        commentImageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(getApplicationContext(),"comming soon ;) ", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        shareImageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(getApplicationContext(),"share",Toast.LENGTH_SHORT).show();
+                //share link content
+                ShareLinkContent content = new ShareLinkContent.Builder()
+                        .setContentUrl(Uri.parse(graphiteItem.getImgURL()))
+                        .setContentTitle(graphiteItem.getTitle())
+                        .setContentDescription(graphiteItem.getDescription())
+                        .build();
+//                ShareButton shareButton = (ShareButton)findViewById(R.id.fb_share_button);
+//                shareButton.setShareContent(content);
+            }
+        });
 
         DisplayMetrics dm = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(dm);
         int width=dm.widthPixels;
         int height=dm.heightPixels;
 
-        Toast.makeText(getApplicationContext(),width + " " + height, Toast.LENGTH_SHORT).show();
 
         Picasso.with(this)
                 .load(graphiteItem.getImgURL())
-                .resize(width,height/2)
+                .fit()
                 .centerCrop()
                 .into(imgView);
 

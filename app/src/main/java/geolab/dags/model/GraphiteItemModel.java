@@ -41,6 +41,7 @@ public class GraphiteItemModel implements Serializable, Parcelable {
         this.createDate = in.readString();
         this.longitude = in.readDouble();
         this.latitude = in.readDouble();
+        this.likesCount = in.readInt();
     }
 
 
@@ -139,7 +140,7 @@ public class GraphiteItemModel implements Serializable, Parcelable {
         parcel.writeString(this.createDate);
         parcel.writeDouble(this.longitude);
         parcel.writeDouble(this.latitude);
-
+        parcel.writeInt(this.likesCount);
     }
 
     public static final Parcelable.Creator CREATOR = new Parcelable.Creator() {
