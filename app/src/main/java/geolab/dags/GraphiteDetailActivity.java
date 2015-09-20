@@ -17,6 +17,7 @@ import android.util.DisplayMetrics;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
@@ -69,7 +70,8 @@ public class GraphiteDetailActivity extends ActionBarActivity implements Navigat
     private Context context;
     private TextView descriptionView;
 
-    private Animation textAnimation;
+    private Animation textAnimation, fadeIn, fadeOut;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -80,10 +82,13 @@ public class GraphiteDetailActivity extends ActionBarActivity implements Navigat
         //get selected item detail
         final GraphiteItemModel  graphiteItem = (GraphiteItemModel) getIntent().getSerializableExtra("GraphiteItem");
 
-
+        fadeIn = new AlphaAnimation(0.0f , 1.0f ) ;
+        fadeIn.setDuration(1200);
+        fadeIn.setFillAfter(true);
 
         textAnimation = AnimationUtils.loadAnimation(context,R.anim.text_animation);
-
+//        fadeIn = AnimationUtils.loadAnimation(context,R.anim.fab_in);
+//        fadeOut = AnimationUtils.loadAnimation(context,R.anim.fade_out);
 
 
         //Set Toolbar
@@ -143,6 +148,7 @@ public class GraphiteDetailActivity extends ActionBarActivity implements Navigat
                     likesCountTextView.startAnimation(textAnimation);
                     likeTextView.setText("liked");
                     likeTextView.startAnimation(textAnimation);
+                    likesCountTextView.startAnimation(fadeIn);
                     clicked[0] = true;
                 }else {
                     Toast.makeText(getApplicationContext(),"უკვე მოწონებულია", Toast.LENGTH_SHORT).show();
