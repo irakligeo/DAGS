@@ -7,7 +7,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 public class DBHelper extends SQLiteOpenHelper{
 
     private static final String DATABASE_NAME = "GraphiteDB";
-    private static final int DATABASE_VERSION = 1;
+    private static final int DATABASE_VERSION = 2;
 
     private static final String CREATE_GRAPHITE_DB_TABLE =
             "CREATE TABLE " + TableGraphite.TABLE_NAME + "("
@@ -19,6 +19,7 @@ public class DBHelper extends SQLiteOpenHelper{
             + TableGraphite.longitude + " real,"
             + TableGraphite.latitude + " real,"
             + TableGraphite.uploadDateTime + " text "
+            + TableGraphite.likes + " text "
             + ");";
 
 

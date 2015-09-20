@@ -29,10 +29,11 @@ public class MyResponseParser {
                 String imgDescription = response.getJSONObject(i).getString("description");
                 String imgAuthor = response.getJSONObject(i).getString("user_id");
                 String imgUploadDate = response.getJSONObject(i).getString("create_date");
+                int likesCount = response.getJSONObject(i).getInt("like");
                 double longitude = response.getJSONObject(i).getDouble("longitude");
                 double latitude = response.getJSONObject(i).getDouble("latitude");
 
-                GraphiteItemModel graphite = new GraphiteItemModel(imgTitle, imgDescription, imgUrl, imgAuthor, imgUploadDate, longitude, latitude);
+                GraphiteItemModel graphite = new GraphiteItemModel(imgTitle, imgDescription, imgUrl, imgAuthor, imgUploadDate, longitude, latitude,likesCount);
                 data.add(graphite);
             }
         }catch (JSONException e) {

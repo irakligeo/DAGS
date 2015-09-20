@@ -12,11 +12,13 @@ public class GraphiteItemModel implements Serializable, Parcelable {
     private String imgURL;
     private String author;
     private String createDate;
+    private int likesCount;
     private double longitude;
     private double latitude;
+
     private int id;
 
-    public GraphiteItemModel(String title, String description, String imgURL, String author, String createDate, double longitude, double latitude) {
+    public GraphiteItemModel(String title, String description, String imgURL, String author, String createDate, double longitude, double latitude, int likesCount) {
         this.title = title;
         this.description = description;
         this.imgURL = imgURL;
@@ -24,7 +26,10 @@ public class GraphiteItemModel implements Serializable, Parcelable {
         this.createDate = createDate;
         this.longitude = longitude;
         this.latitude = latitude;
+        this.likesCount = likesCount;
     }
+
+
 
     public GraphiteItemModel(){}
 
@@ -36,6 +41,15 @@ public class GraphiteItemModel implements Serializable, Parcelable {
         this.createDate = in.readString();
         this.longitude = in.readDouble();
         this.latitude = in.readDouble();
+    }
+
+
+    public int getLikesCount() {
+        return likesCount;
+    }
+
+    public void setLikesCount(int likesCount) {
+        this.likesCount = likesCount;
     }
 
     public String getTitle() {
