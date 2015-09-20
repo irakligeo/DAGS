@@ -4,11 +4,8 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
-import android.content.pm.Signature;
+import android.content.SharedPreferences;
 import android.net.Uri;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
@@ -24,13 +21,10 @@ import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.Toolbar;
-import android.util.Base64;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -44,19 +38,11 @@ import com.facebook.GraphResponse;
 import com.facebook.login.LoginManager;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.ProfilePictureView;
-import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.MarkerOptions;
-import com.squareup.picasso.Downloader;
-import com.squareup.picasso.Picasso;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.File;
-import java.net.URL;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.Date;
@@ -66,10 +52,9 @@ import geolab.dags.animation.DepthPageTransformer;
 import geolab.dags.custom_DialogFragments.FilterDialogFragment;
 import geolab.dags.fileUpload.Config;
 import geolab.dags.fileUpload.UploadActivity;
-import geolab.dags.fragment.MapFragment;
 import geolab.dags.fragment.ViewPagerFragment;
 
-import static geolab.dags.fragment.MapFragment.*;
+import static geolab.dags.fragment.MapFragment.newInstance;
 
 
 public class MainActivity extends ActionBarActivity implements NavigationView.OnNavigationItemSelectedListener {
@@ -98,12 +83,17 @@ public class MainActivity extends ActionBarActivity implements NavigationView.On
     private ProfilePictureView profilePictureView;
 
     private Activity activity;
+    private TabLayout tabLayout;
     public static FilterDialogFragment filterDialogFragment;
+    public static final String MY_PREF_FOR_FB_USER_ID = "FB_USER_ID";
+    SharedPreferences.Editor mSharedPref;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         FacebookSdk.sdkInitialize(getApplicationContext());
         setContentView(R.layout.activity_main);
+
+        mSharedPref = getSharedPreferences(MY_PREF_FOR_FB_USER_ID,MODE_PRIVATE).edit();
 
         context = this;
         activity = this;
@@ -118,7 +108,7 @@ public class MainActivity extends ActionBarActivity implements NavigationView.On
 
 
 
-        final TabLayout tabLayout = (TabLayout) findViewById(R.id.tab_layout);
+        tabLayout = (TabLayout) findViewById(R.id.tab_layout);
         tabLayout.addTab(tabLayout.newTab().setText("მთავარი"));
         tabLayout.addTab(tabLayout.newTab().setText("რუკა"));
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
@@ -225,22 +215,14 @@ public class MainActivity extends ActionBarActivity implements NavigationView.On
      * */
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        try {
-            callbackManager.onActivityResult(requestCode, resultCode, data);
-        }catch (NullPointerException ex){
-//            loginToFB(false);
-            takeImage();
-            Toast.makeText(getApplicationContext(),
-                    ex.getMessage(), Toast.LENGTH_SHORT)
-                    .show();
-        }
+
         // if the result is capturing Image
         if (requestCode == CAMERA_CAPTURE_IMAGE_REQUEST_CODE) {
             if (resultCode == RESULT_OK) {
 
                 // successfully captured the image
                 // launching upload activity
-                launchUploadActivity(true, UserID);
+                launchUploadActivity(true);
 
             } else if (resultCode == RESULT_CANCELED) {
 
@@ -260,12 +242,10 @@ public class MainActivity extends ActionBarActivity implements NavigationView.On
     }
     String UserID = "";
     //launchUploadActivity
-    private void launchUploadActivity(boolean isImage, String id){
+    private void launchUploadActivity(boolean isImage){
         Intent i = new Intent(MainActivity.this, UploadActivity.class);
         i.putExtra("filePath", fileUri.getPath());
         i.putExtra("isImage", isImage);
-        i.putExtra("userID", id);
-        Toast.makeText(getApplicationContext(),"launchUploadActivity " +user_id,Toast.LENGTH_SHORT).show();
         startActivity(i);
     }
 
@@ -361,7 +341,7 @@ public class MainActivity extends ActionBarActivity implements NavigationView.On
 
             case R.id.navigation_item_1: // fotos gadageba
 
-                takeImage();
+                captureImage();
                 break;
 
             case R.id.navigation_item_2: // avtorizacia
@@ -391,33 +371,33 @@ public class MainActivity extends ActionBarActivity implements NavigationView.On
     //Take image
     public void takeImage() {
         // capture picture
-        if(checkUserLogingStatus(UserID)) {
             captureImage();
             Toast.makeText(getApplicationContext(), "logged in", Toast.LENGTH_SHORT).show();
-        }else{
-            AlertDialog.Builder builder = new AlertDialog.Builder(context);
-            builder.setTitle("ჰაი")
-                    .setMessage("ასატვირთად საჭიროა ავტორიზაცია")
-                    .setNegativeButton("არა", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialogInterface, int i) {
 
-                        }
-                    })
-                    .setPositiveButton("კი", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialogInterface, int i) {
-                            loginToFB(false);
-                            Toast.makeText(getApplicationContext(),UserID+"",Toast.LENGTH_SHORT).show();
-
-                                captureImage();
-                                Toast.makeText(getApplicationContext(),"wavida",Toast.LENGTH_SHORT).show();
-
-                        }
-                    }).show();
-
-        }
+//            AlertDialog.Builder builder = new AlertDialog.Builder(context);
+//            builder.setTitle("ჰაი")
+//                    .setMessage("ასატვირთად საჭიროა ავტორიზაცია")
+//                    .setNegativeButton("არა", new DialogInterface.OnClickListener() {
+//                        @Override
+//                        public void onClick(DialogInterface dialogInterface, int i) {
+//
+//                        }
+//                    })
+//                    .setPositiveButton("კი", new DialogInterface.OnClickListener() {
+//                        @Override
+//                        public void onClick(DialogInterface dialogInterface, int i) {
+//                            loginToFB(false);
+//                            Toast.makeText(getApplicationContext(),UserID+"",Toast.LENGTH_SHORT).show();
+//
+//                                captureImage();
+//                                Toast.makeText(getApplicationContext(),"wavida",Toast.LENGTH_SHORT).show();
+//
+//                        }
+//                    }).show();
+//
+//        }
     }
+
 
 
     boolean logged = false;
@@ -467,7 +447,8 @@ public class MainActivity extends ActionBarActivity implements NavigationView.On
                                             str_firstname = jsonObject.getString("name");
                                             fbUserName.setText(jsonObject.getString("name"));
 //                                            Toast.makeText(getApplicationContext(), str_firstname + "https://graph.facebook.com/" + user_id + "/picture?type=large" + " " + user_id, Toast.LENGTH_SHORT).show();
-
+                                            mSharedPref.putString("user_id",user_id);
+                                            mSharedPref.commit();
 
                                         } catch (NullPointerException ex) {
                                             ex.getMessage();
@@ -524,11 +505,14 @@ public class MainActivity extends ActionBarActivity implements NavigationView.On
     @Override
     protected void onResume() {
         super.onResume();
+//        AppEventsLogger.activateApp(this);
     }
 
     @Override
     protected void onPause() {
         super.onPause();
+        // Logs 'app deactivate' App Event.
+//        AppEventsLogger.deactivateApp(this);
     }
 
 

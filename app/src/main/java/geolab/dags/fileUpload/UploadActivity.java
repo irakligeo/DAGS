@@ -183,7 +183,6 @@ public class UploadActivity extends ActionBarActivity{
 
         // image or video path that is captured in previous activity
         filePath = i.getStringExtra("filePath");
-        userID = i.getStringExtra("userID");
         // boolean flag to identify the media type, image or video
         boolean isImage = i.getBooleanExtra("isImage", true);
 
@@ -309,8 +308,8 @@ public class UploadActivity extends ActionBarActivity{
                             new StringBody(latitude.getText().toString()));
                     entity.addPart("uploadDateTime",
                             new StringBody(new Date().toString()));
-                    entity.addPart("user_id",
-                            new StringBody(userID));
+//                    entity.addPart("user_id",
+//                            new StringBody(userID));
 
                 } catch (UnsupportedEncodingException e) {
                     e.printStackTrace();

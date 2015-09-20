@@ -122,7 +122,8 @@ public class MapFragment extends android.support.v4.app.Fragment implements OnMa
             googleMap.animateCamera(CameraUpdateFactory
                     .newCameraPosition(cameraPosition));
 
-        }catch (NullPointerException e){
+        }catch (IndexOutOfBoundsException e){
+//            new MapFragment().onCreateView(inflater,container,savedInstanceState);
         }
 
         // Perform any camera updates here
