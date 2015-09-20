@@ -6,8 +6,8 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 public class DBHelper extends SQLiteOpenHelper{
 
-    private static final String DATABASE_NAME = "GraphiteDB";
-    private static final int DATABASE_VERSION = 2;
+    private static final String DATABASE_NAME = "DAGS";
+    private static final int DATABASE_VERSION = 3;
 
     private static final String CREATE_GRAPHITE_DB_TABLE =
             "CREATE TABLE " + TableGraphite.TABLE_NAME + "("
