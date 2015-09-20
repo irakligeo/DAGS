@@ -368,37 +368,6 @@ public class MainActivity extends ActionBarActivity implements NavigationView.On
     }
 
 
-    //Take image
-    public void takeImage() {
-        // capture picture
-            captureImage();
-            Toast.makeText(getApplicationContext(), "logged in", Toast.LENGTH_SHORT).show();
-
-//            AlertDialog.Builder builder = new AlertDialog.Builder(context);
-//            builder.setTitle("ჰაი")
-//                    .setMessage("ასატვირთად საჭიროა ავტორიზაცია")
-//                    .setNegativeButton("არა", new DialogInterface.OnClickListener() {
-//                        @Override
-//                        public void onClick(DialogInterface dialogInterface, int i) {
-//
-//                        }
-//                    })
-//                    .setPositiveButton("კი", new DialogInterface.OnClickListener() {
-//                        @Override
-//                        public void onClick(DialogInterface dialogInterface, int i) {
-//                            loginToFB(false);
-//                            Toast.makeText(getApplicationContext(),UserID+"",Toast.LENGTH_SHORT).show();
-//
-//                                captureImage();
-//                                Toast.makeText(getApplicationContext(),"wavida",Toast.LENGTH_SHORT).show();
-//
-//                        }
-//                    }).show();
-//
-//        }
-    }
-
-
 
     boolean logged = false;
     public void loginToFB(boolean status) {

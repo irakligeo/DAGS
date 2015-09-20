@@ -53,6 +53,14 @@
     <string name="categoryTextView">კატეგორია</string>
     <string name="distanceNumberTextView">0</string>
     <string name="fb_user_name">User</string>
+    <string name="imgTitle">jemo</string>
+    <string name="author">author</string>
+    <string name="createDate">createDate</string>
+    <string name="little_description">აღწერა აღწერა აღწერა აღწერა აღწერა აღწერა აღწერა აღწერა აღწერა </string>
+    <string name="likes">likes</string>
+    <string name="likes_number">37</string>
+    <string name="comments_number">16</string>
+    <string name="comments">comments</string>
 
     <!-- spinner data (it's temporary)-->
     <string-array name="graphite_categories">

@@ -29,6 +29,7 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/imgTitle"
                 android:layout_centerHorizontal="true"
+                android:textColor="@color/black"
                 android:textSize="30sp"
                 android:text="jemo" />
 
@@ -46,6 +47,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/peaceOfArtImg"
                 android:layout_marginTop="20dp"
+                android:textColor="@color/black"
                 android:text="author" />
 
             <TextView
@@ -54,6 +56,7 @@
                 android:layout_height="wrap_content"
                 android:text="upload DateTime"
                 android:gravity="right"
+                android:textColor="@color/black"
                 android:layout_alignTop="@+id/author"
                 android:layout_alignParentRight="true"
                 android:layout_alignParentEnd="true" />
@@ -64,6 +67,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/uploadDateTime"
                 android:layout_marginTop="10dp"
+                android:textColor="@color/black"
                 android:layout_marginBottom="10dp"
                 android:text="little description" />
 

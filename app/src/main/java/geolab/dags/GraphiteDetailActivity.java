@@ -76,8 +76,8 @@ public class GraphiteDetailActivity extends ActionBarActivity implements Navigat
                 .setContentTitle(graphiteItem.getTitle())
                 .setContentDescription(graphiteItem.getDescription())
                 .build();
-        ShareButton shareButton = (ShareButton)findViewById(R.id.fb_share_button);
-        shareButton.setShareContent(content);
+//        ShareButton shareButton = (ShareButton)findViewById(R.id.fb_share_button);
+//        shareButton.setShareContent(content);
 
 
         GraphRequest.newMeRequest(AccessToken.getCurrentAccessToken(), new GraphRequest.GraphJSONObjectCallback() {
