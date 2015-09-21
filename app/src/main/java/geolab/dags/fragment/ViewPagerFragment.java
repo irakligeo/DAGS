@@ -148,6 +148,7 @@ public class ViewPagerFragment extends android.support.v4.app.Fragment {
 
     public void getGraphiteDatas(String url){
         // progressDialog for nice loading
+        
         progressDialog = new ProgressDialog(getActivity());
         progressDialog.setTitle("Please Wait");
         progressDialog.setMessage("Loading Graphites...");

@@ -119,7 +119,7 @@ public class FilterDialogFragment extends DialogFragment implements AdapterView.
                     //cleare markers from map
                     MapFragment.googleMap.clear();
                     checkCoords(data);
-                    Toast.makeText(getActivity(), "if shesrulda " + longitude + " " + latitude, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), "lokacia agebulia " + longitude + " " + latitude, Toast.LENGTH_SHORT).show();
                 }
 
                 Toast.makeText(getActivity(), longitude + " " +latitude, Toast.LENGTH_SHORT).show();

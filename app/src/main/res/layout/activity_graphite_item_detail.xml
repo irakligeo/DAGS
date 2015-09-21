@@ -11,7 +11,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="geolab.dags.GraphiteDetailActivity">
+    tools:context="geolab.dags.GraphiteDetailActivity"
+    android:background="#fff">
 
     <include
         layout="@layout/toolbar"
@@ -41,7 +42,8 @@
                 android:textSize="20sp"
                 android:text="@string/imgTitle"
                 android:layout_marginBottom="5dp"
-                android:layout_centerHorizontal="true" />
+                android:layout_centerHorizontal="true"
+                android:textColor="#000" />
 
             <!-- graphite image view-->
             <ImageView
@@ -63,7 +65,8 @@
                 android:textSize="13sp"
                 android:layout_below="@+id/imgTitle"
                 android:layout_alignStart="@+id/peaceOfArtImg"
-                android:layout_marginBottom="5dp" />
+                android:layout_marginBottom="5dp"
+                android:textColor="#000" />
 
             <!-- upload time text view-->
             <TextView
@@ -76,7 +79,8 @@
                 android:textIsSelectable="false"
                 android:layout_below="@+id/imgTitle"
                 android:textSize="13sp"
-                android:layout_marginBottom="5dp" />
+                android:layout_marginBottom="5dp"
+                android:textColor="#000" />
 
 
 
@@ -93,7 +97,8 @@
                 android:textSize="12sp"
                 android:layout_alignParentStart="true"
                 android:layout_marginLeft="30dp"
-                android:layout_marginTop="10dp" />
+                android:layout_marginTop="10dp"
+                android:textColor="#000" />
 
             <!-- like text-->
             <TextView
@@ -105,7 +110,8 @@
                 android:layout_toRightOf="@+id/likes_countTextView"
                 android:layout_marginTop="10dp"
                 android:layout_marginLeft="8dp"
-                android:textSize="12sp" />
+                android:textSize="12sp"
+                android:textColor="#000" />
 
             <!-- comments number-->
             <TextView
@@ -117,7 +123,8 @@
                 android:layout_above="@+id/customViewLinear"
                 android:layout_toRightOf="@+id/likes"
                 android:layout_toEndOf="@+id/likes"
-                android:layout_marginLeft="15dp" />
+                android:layout_marginLeft="15dp"
+                android:textColor="#000" />
 
             <!-- comments text-->
             <TextView
@@ -129,7 +136,8 @@
                 android:layout_toRightOf="@+id/comments_numberTextView"
                 android:layout_toEndOf="@+id/comments_numberTextView"
                 android:layout_marginLeft="8dp"
-                android:textSize="12sp" />
+                android:textSize="12sp"
+                android:textColor="#000" />
 
 
             <!-- line custom view-->
@@ -147,7 +155,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
                     android:padding="20dp"
-                    android:background="#44ffffff"
+                    android:background="#dddddd"
                     android:layout_below="@+id/likes"
                     android:layout_alignParentStart="true"
                     android:layout_marginTop="10dp" />
@@ -176,7 +184,8 @@
                 android:layout_marginTop="11dp"
                 android:layout_toRightOf="@+id/like_icon"
                 android:layout_below="@+id/customViewLinear"
-                android:layout_marginLeft="4dp" />
+                android:layout_marginLeft="4dp"
+                android:textColor="#000" />
 
             <ImageView
                 android:id="@+id/comments_icon"
@@ -198,7 +207,8 @@
                 android:layout_marginTop="10dp"
                 android:layout_toRightOf="@+id/comments_icon"
                 android:layout_below="@+id/customViewLinear"
-                android:layout_marginLeft="4dp" />
+                android:layout_marginLeft="4dp"
+                android:textColor="#000" />
 
             <ImageView
                 android:id="@+id/share_icon"
@@ -219,7 +229,8 @@
                 android:layout_marginTop="10dp"
                 android:layout_toEndOf="@+id/share_icon"
                 android:layout_below="@+id/customViewLinear"
-                android:layout_marginLeft="4dp" />
+                android:layout_marginLeft="4dp"
+                android:textColor="#000" />
 
 
             <!--<com.facebook.share.widget.ShareButton-->
@@ -243,7 +254,8 @@
                 android:layout_below="@id/share_text_view_id"
                 android:layout_alignParentBottom="true"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="20dp" />
+                android:layout_marginTop="20dp"
+                android:textColor="#000" />
 
 
         </RelativeLayout>
