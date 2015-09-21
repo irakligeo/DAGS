@@ -48,7 +48,7 @@ public class ViewPagerFragment extends android.support.v4.app.Fragment {
     private ProgressDialog progressDialog;
     private ListView graphiteListView;
     public static View rootView;
-
+    public ArrayList<GraphiteItemModel> favoriteItems;
 
     public static SQLiteDatabase db;
     private SwipeRefreshLayout mSwipeRefreshLayout;
@@ -78,6 +78,7 @@ public class ViewPagerFragment extends android.support.v4.app.Fragment {
         DBHelper dbHelper = new DBHelper(getActivity());
         db = dbHelper.getWritableDatabase();
 
+        favoriteItems = new ArrayList<>();
 
         // get data from server
         getGraphiteDatas(URL);
