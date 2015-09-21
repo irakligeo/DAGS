@@ -349,12 +349,13 @@ public class MainActivity extends ActionBarActivity implements NavigationView.On
 
             case R.id.navigation_item_1: // fotos gadageba
 
+//                closeDrawerFromUiThread();
                 captureImage();
-                mDrawerLayout.closeDrawer(Gravity.LEFT);
+
                 break;
 
             case R.id.navigation_item_2: // avtorizacia
-
+//                closeDrawerFromUiThread();
                 Toast.makeText(getApplicationContext(),"navigation_item_2 " +UserID,Toast.LENGTH_SHORT).show();
                 //check if logged
                 if(checkUserLogingStatus(UserID)) {
@@ -362,15 +363,20 @@ public class MainActivity extends ActionBarActivity implements NavigationView.On
                 }else {
                     loginToFB(false);
                 }
-                mDrawerLayout.closeDrawer(Gravity.LEFT);
                 break;
 
             case R.id.navigation_item_3: // filtracia
 
-                filterDialogFragment = new FilterDialogFragment();
-                filterDialogFragment.show(getFragmentManager(),"filter_fragment");
+                closeDrawerFromUiThread();
 
-                mDrawerLayout.closeDrawer(Gravity.LEFT);
+                filterDialogFragment = new FilterDialogFragment();
+                filterDialogFragment.show(getFragmentManager(), "filter_fragment");
+
+
+                break;
+
+            case R.id.navigation_item_favorites:
+                closeDrawerFromUiThread();
                 break;
 
             default:
@@ -380,6 +386,24 @@ public class MainActivity extends ActionBarActivity implements NavigationView.On
     }
 
 
+    //close drawarLayout on UI Thread
+    private void closeDrawerFromUiThread(){
+        Thread thread = new Thread()
+        {
+
+            @Override
+            public void run() {
+                //yourOperation
+                MainActivity.this.runOnUiThread(new Runnable(){
+                    @Override
+                    public void run() {
+                        mDrawerLayout.closeDrawer(Gravity.LEFT);
+                    }});
+                super.run();
+            }
+        };
+        thread.start();
+    }
 
     boolean logged = false;
     public void loginToFB(boolean status) {

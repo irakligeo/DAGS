@@ -78,14 +78,21 @@
         <entry file="file://$PROJECT_DIR$/app/src/main/java/geolab/dags/MainActivity.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="352" column="56" selection-start-line="352" selection-start-column="56" selection-end-line="352" selection-end-column="56" />
+              <caret line="342" column="22" selection-start-line="342" selection-start-column="22" selection-end-line="342" selection-end-column="22" />
               <folding>
                 <element signature="class#4360:4645" expanded="false" />
+                <element signature="e#5738#5751#0" expanded="true" />
+                <element signature="e#5769#5783#0" expanded="true" />
                 <element signature="e#6287#6302#0" expanded="false" />
                 <element signature="method#onSaveInstanceState#0;class#MainActivity#0" expanded="false" />
                 <element signature="method#onRestoreInstanceState#0;class#MainActivity#0" expanded="false" />
                 <element signature="docComment;method#getOutputMediaFile#0;class#MainActivity#0" expanded="false" />
                 <element signature="method#getOutputMediaFile#0;class#MainActivity#0" expanded="false" />
+                <element signature="method#closeDrawerFromUiThread#0;class#MainActivity#0" expanded="false" />
+                <element signature="e#12267#12653#0" expanded="true" />
+                <element signature="e#12425#12598#0" expanded="true" />
+                <element signature="e#12597#12598#0" expanded="true" />
+                <element signature="e#12652#12653#0" expanded="true" />
                 <element signature="class#ScreenSlidePagerAdapter#0;class#MainActivity#0" expanded="false" />
                 <element signature="method#getItem#0;class#ScreenSlidePagerAdapter#0;class#MainActivity#0" expanded="false" />
               </folding>
@@ -93,21 +100,23 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CustomPagerAdapter.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/geolab/dags/slider/CustomPagerAdapter.java">
+      <file leaf-file-name="ViewPagerFragment.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/geolab/dags/fragment/ViewPagerFragment.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="28" column="0" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
-              <folding />
+            <state vertical-scroll-proportion="2.1043956">
+              <caret line="181" column="23" selection-start-line="181" selection-start-column="23" selection-end-line="181" selection-end-column="23" />
+              <folding>
+                <element signature="e#3224#3255#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="GraphiteDetailActivity.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="GraphiteDetailActivity.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/geolab/dags/GraphiteDetailActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-1.7804154">
-              <caret line="131" column="33" selection-start-line="131" selection-start-column="33" selection-end-line="131" selection-end-column="33" />
+            <state vertical-scroll-proportion="-10.0">
+              <caret line="422" column="16" selection-start-line="422" selection-start-column="16" selection-end-line="422" selection-end-column="56" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="method#onSaveInstanceState#0;class#GraphiteDetailActivity#0" expanded="false" />
@@ -123,13 +132,13 @@
       </file>
       <file leaf-file-name="activity_main.xml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml">
-          <provider editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="6" column="34" selection-start-line="6" selection-start-column="21" selection-end-line="6" selection-end-column="34" />
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-9.310345">
+              <caret line="18" column="12" selection-start-line="18" selection-start-column="12" selection-end-line="18" selection-end-column="12" />
               <folding />
             </state>
           </provider>
-          <provider selected="true" editor-type-id="android-designer">
+          <provider editor-type-id="android-designer">
             <state />
           </provider>
         </entry>
@@ -2005,7 +2014,6 @@
         <option value="$PROJECT_DIR$/app/src/main/res/drawable/line.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/geolab/dags/parsers/MyResponseParser.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/geolab/dags/fragment/MapFragment.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/geolab/dags/fragment/ViewPagerFragment.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/geolab/dags/DB/DBHelper.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/geolab/dags/DB/TableGraphite.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/geolab/dags/model/GraphiteItemModel.java" />
@@ -2042,8 +2050,9 @@
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/navigation.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/menu/drawer.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/java/geolab/dags/MainActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/geolab/dags/GraphiteDetailActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/geolab/dags/MainActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/geolab/dags/fragment/ViewPagerFragment.java" />
       </list>
     </option>
   </component>
@@ -2247,6 +2256,28 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="slider" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="DAGS" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidSourceTypeNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="dags" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="fragment" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -2631,7 +2662,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/geolab/dags/fragment/ViewPagerFragment.java</url>
-          <line>165</line>
+          <line>166</line>
           <properties />
           <option name="timeStamp" value="202" />
         </line-breakpoint>
@@ -2667,25 +2698,25 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/geolab/dags/fragment/ViewPagerFragment.java</url>
-          <line>170</line>
+          <line>171</line>
           <properties />
           <option name="timeStamp" value="211" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/geolab/dags/fragment/ViewPagerFragment.java</url>
-          <line>188</line>
+          <line>189</line>
           <properties />
           <option name="timeStamp" value="212" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/geolab/dags/fragment/ViewPagerFragment.java</url>
-          <line>181</line>
+          <line>182</line>
           <properties />
           <option name="timeStamp" value="213" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/geolab/dags/fragment/ViewPagerFragment.java</url>
-          <line>190</line>
+          <line>191</line>
           <properties />
           <option name="timeStamp" value="214" />
         </line-breakpoint>
@@ -2701,13 +2732,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/library/src/main/java/geolab/library/library/SliderAdapter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="7" column="21" selection-start-line="7" selection-start-column="21" selection-end-line="7" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/library/src/main/java/geolab/library/library/SliderTypes/BaseSliderView.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -2885,16 +2909,6 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="43" column="0" selection-start-line="43" selection-start-column="0" selection-end-line="43" selection-end-column="0" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/geolab/dags/fragment/ViewPagerFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="190" column="0" selection-start-line="190" selection-start-column="0" selection-end-line="190" selection-end-column="0" />
-          <folding>
-            <element signature="e#3127#3158#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -3081,6 +3095,41 @@
         <state />
       </provider>
     </entry>
+    <entry file="jar://$USER_HOME$/Library/Android/sdk/platforms/android-22/android.jar!/java/lang/Thread.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/geolab/dags/GraphiteDetailActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-10.0">
+          <caret line="422" column="16" selection-start-line="422" selection-start-column="16" selection-end-line="422" selection-end-column="56" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#onSaveInstanceState#0;class#GraphiteDetailActivity#0" expanded="false" />
+            <element signature="method#onRestoreInstanceState#0;class#GraphiteDetailActivity#0" expanded="false" />
+            <element signature="method#getOutputMediaFile#0;class#GraphiteDetailActivity#0" expanded="false" />
+            <element signature="method#getOutputMediaFileUri#0;class#GraphiteDetailActivity#0" expanded="false" />
+            <element signature="method#captureImage#0;class#GraphiteDetailActivity#0" expanded="false" />
+            <element signature="method#onClick#0;class#14036:14272" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-9.310345">
+          <caret line="18" column="12" selection-start-line="18" selection-start-column="12" selection-end-line="18" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/navigation.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-2.586207">
@@ -3100,46 +3149,36 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml">
-      <provider editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="6" column="34" selection-start-line="6" selection-start-column="21" selection-end-line="6" selection-end-column="34" />
-          <folding />
-        </state>
-      </provider>
-      <provider selected="true" editor-type-id="android-designer">
-        <state />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/geolab/dags/MainActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="352" column="56" selection-start-line="352" selection-start-column="56" selection-end-line="352" selection-end-column="56" />
+          <caret line="342" column="22" selection-start-line="342" selection-start-column="22" selection-end-line="342" selection-end-column="22" />
           <folding>
             <element signature="class#4360:4645" expanded="false" />
+            <element signature="e#5738#5751#0" expanded="true" />
+            <element signature="e#5769#5783#0" expanded="true" />
             <element signature="e#6287#6302#0" expanded="false" />
             <element signature="method#onSaveInstanceState#0;class#MainActivity#0" expanded="false" />
             <element signature="method#onRestoreInstanceState#0;class#MainActivity#0" expanded="false" />
             <element signature="docComment;method#getOutputMediaFile#0;class#MainActivity#0" expanded="false" />
             <element signature="method#getOutputMediaFile#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#closeDrawerFromUiThread#0;class#MainActivity#0" expanded="false" />
+            <element signature="e#12267#12653#0" expanded="true" />
+            <element signature="e#12425#12598#0" expanded="true" />
+            <element signature="e#12597#12598#0" expanded="true" />
+            <element signature="e#12652#12653#0" expanded="true" />
             <element signature="class#ScreenSlidePagerAdapter#0;class#MainActivity#0" expanded="false" />
             <element signature="method#getItem#0;class#ScreenSlidePagerAdapter#0;class#MainActivity#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/geolab/dags/GraphiteDetailActivity.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/geolab/dags/fragment/ViewPagerFragment.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-1.7804154">
-          <caret line="131" column="33" selection-start-line="131" selection-start-column="33" selection-end-line="131" selection-end-column="33" />
+        <state vertical-scroll-proportion="2.1043956">
+          <caret line="181" column="23" selection-start-line="181" selection-start-column="23" selection-end-line="181" selection-end-column="23" />
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#onSaveInstanceState#0;class#GraphiteDetailActivity#0" expanded="false" />
-            <element signature="method#onRestoreInstanceState#0;class#GraphiteDetailActivity#0" expanded="false" />
-            <element signature="method#getOutputMediaFile#0;class#GraphiteDetailActivity#0" expanded="false" />
-            <element signature="method#getOutputMediaFileUri#0;class#GraphiteDetailActivity#0" expanded="false" />
-            <element signature="method#captureImage#0;class#GraphiteDetailActivity#0" expanded="false" />
-            <element signature="method#onClick#0;class#14036:14272" expanded="false" />
+            <element signature="e#3224#3255#0" expanded="false" />
           </folding>
         </state>
       </provider>

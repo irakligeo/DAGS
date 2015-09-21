@@ -418,6 +418,10 @@ public class GraphiteDetailActivity extends ActionBarActivity implements Navigat
                 filterDialogFragment.show(getFragmentManager(), "filter_fragment");
                 mDrawerLayout.closeDrawer(Gravity.LEFT);
                 break;
+
+            case R.id.navigation_item_favorites:
+                mDrawerLayout.closeDrawer(Gravity.LEFT);
+                break;
             default:
                 break;
         }
