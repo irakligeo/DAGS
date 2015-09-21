@@ -9,12 +9,14 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
 import android.support.design.widget.NavigationView;
+import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.Toolbar;
 import android.util.DisplayMetrics;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -53,6 +55,7 @@ import geolab.dags.fileUpload.Config;
 import geolab.dags.fileUpload.UploadActivity;
 import geolab.dags.fileUpload.UploadFileActivity;
 import geolab.dags.model.GraphiteItemModel;
+import geolab.dags.slider.CustomPagerAdapter;
 
 
 public class GraphiteDetailActivity extends ActionBarActivity implements NavigationView.OnNavigationItemSelectedListener{
@@ -73,7 +76,7 @@ public class GraphiteDetailActivity extends ActionBarActivity implements Navigat
     private TextView descriptionView;
 
     private Animation textAnimation, fadeIn, fadeOut;
-
+    private CustomPagerAdapter mCustomPagerAdapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
@@ -89,9 +92,23 @@ public class GraphiteDetailActivity extends ActionBarActivity implements Navigat
             fadeIn.setFillAfter(true);
 
             textAnimation = AnimationUtils.loadAnimation(context,R.anim.text_animation);
-    //        fadeIn = AnimationUtils.loadAnimation(context,R.anim.fab_in);
-    //        fadeOut = AnimationUtils.loadAnimation(context,R.anim.fade_out);
 
+
+            //viewpager gallery
+        int[] mResources = {
+                R.drawable.liked_icon,
+                R.drawable.like_icon,
+                R.drawable.graphite,
+                R.drawable.palitra_icon,
+                R.drawable.photoaparat,
+                R.drawable.graphite
+        };
+
+        LayoutInflater inflater  = (LayoutInflater)getApplicationContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        View view = inflater.inflate(R.layout.fragment_test,null);
+        mCustomPagerAdapter = new CustomPagerAdapter(this, mResources);
+        final ViewPager mViewPager = (ViewPager) view.findViewById(R.id.pager);
+        mViewPager.setAdapter(mCustomPagerAdapter);
 
             //Set Toolbar
             Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -126,7 +143,9 @@ public class GraphiteDetailActivity extends ActionBarActivity implements Navigat
             commentsTextView = (TextView) findViewById(R.id.comments_text_view_id);
             shareTextView = (TextView) findViewById(R.id.share_text_view_id);
             TextView imgTitle = (TextView) findViewById(R.id.imgTitle);
+
             ImageView imgView = (ImageView) findViewById(R.id.peaceOfArtImg);
+
             descriptionView = (TextView) findViewById(R.id.little_description);
             TextView createDateView = (TextView) findViewById(R.id.createDate);
             TextView authorView = (TextView) findViewById(R.id.author);

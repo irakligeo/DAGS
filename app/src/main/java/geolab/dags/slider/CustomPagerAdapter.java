@@ -10,7 +10,7 @@ import android.widget.LinearLayout;
 
 import geolab.dags.R;
 
-class CustomPagerAdapter extends PagerAdapter {
+public class CustomPagerAdapter extends PagerAdapter {
 
     Context mContext;
     LayoutInflater mLayoutInflater;
@@ -34,9 +34,9 @@ class CustomPagerAdapter extends PagerAdapter {
 
     @Override
     public Object instantiateItem(ViewGroup container, int position) {
-        View itemView = mLayoutInflater.inflate(R.layout.pager_item, container, false);
+        View itemView = mLayoutInflater.inflate(R.layout.activity_graphite_item_detail, container, false);
 
-        ImageView imageView = (ImageView) itemView.findViewById(R.id.imageView);
+        ImageView imageView = (ImageView) itemView.findViewById(R.id.peaceOfArtImg);
         imageView.setImageResource(mResources[position]);
 
         container.addView(itemView);

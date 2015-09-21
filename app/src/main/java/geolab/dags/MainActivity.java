@@ -93,8 +93,8 @@ public class MainActivity extends ActionBarActivity implements NavigationView.On
         super.onCreate(savedInstanceState);
         FacebookSdk.sdkInitialize(getApplicationContext());
 
-        Intent intent = new Intent(MainActivity.this, SliderActivity.class);
-        startActivity(intent);
+//        Intent intent = new Intent(MainActivity.this, SliderActivity.class);
+//        startActivity(intent);
 
         setContentView(R.layout.activity_main);
 
