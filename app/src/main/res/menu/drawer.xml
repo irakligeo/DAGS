@@ -14,5 +14,9 @@
             android:id="@+id/navigation_item_3"
             android:icon="@drawable/filter_icon"
             android:title="ფილტრაცია" />
+        <item
+            android:id="@+id/navigation_item_favorites"
+            android:icon="@drawable/favorites_icon"
+            android:title="ფავორიტები" />
     </group>
 </menu>

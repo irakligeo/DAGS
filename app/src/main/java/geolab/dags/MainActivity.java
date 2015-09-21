@@ -14,6 +14,7 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
+import android.support.v4.view.GravityCompat;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
@@ -21,6 +22,7 @@ import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.Toolbar;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -83,6 +85,7 @@ public class MainActivity extends ActionBarActivity implements NavigationView.On
     private TextView fbUserName;
     private ProfilePictureView profilePictureView;
 
+    private DrawerLayout mDrawerLayout;
     private Activity activity;
     private TabLayout tabLayout;
     public static FilterDialogFragment filterDialogFragment;
@@ -160,7 +163,7 @@ public class MainActivity extends ActionBarActivity implements NavigationView.On
         NavigationView navigationView = (NavigationView) findViewById(R.id.navigation_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-        DrawerLayout mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+        mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout, toolbar, R.string.open,
                 R.string.close);
         mDrawerLayout.setDrawerListener(mDrawerToggle);
@@ -347,6 +350,7 @@ public class MainActivity extends ActionBarActivity implements NavigationView.On
             case R.id.navigation_item_1: // fotos gadageba
 
                 captureImage();
+                mDrawerLayout.closeDrawer(Gravity.LEFT);
                 break;
 
             case R.id.navigation_item_2: // avtorizacia
@@ -358,12 +362,15 @@ public class MainActivity extends ActionBarActivity implements NavigationView.On
                 }else {
                     loginToFB(false);
                 }
+                mDrawerLayout.closeDrawer(Gravity.LEFT);
                 break;
 
             case R.id.navigation_item_3: // filtracia
 
                 filterDialogFragment = new FilterDialogFragment();
                 filterDialogFragment.show(getFragmentManager(),"filter_fragment");
+
+                mDrawerLayout.closeDrawer(Gravity.LEFT);
                 break;
 
             default:

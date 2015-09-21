@@ -16,6 +16,7 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.Toolbar;
 import android.util.DisplayMetrics;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -36,8 +37,6 @@ import com.facebook.GraphRequest;
 import com.facebook.GraphResponse;
 import com.facebook.login.LoginManager;
 import com.facebook.login.LoginResult;
-import com.facebook.share.model.ShareLinkContent;
-import com.facebook.share.widget.ShareButton;
 import com.squareup.picasso.Picasso;
 
 import org.json.JSONException;
@@ -50,10 +49,8 @@ import java.util.Date;
 import java.util.Locale;
 
 import geolab.dags.custom_DialogFragments.FilterDialogFragment;
-import geolab.dags.facebook.FacebookLoginActivity;
 import geolab.dags.fileUpload.Config;
 import geolab.dags.fileUpload.UploadActivity;
-import geolab.dags.fileUpload.UploadFileActivity;
 import geolab.dags.model.GraphiteItemModel;
 import geolab.dags.slider.CustomPagerAdapter;
 
@@ -68,12 +65,16 @@ public class GraphiteDetailActivity extends ActionBarActivity implements Navigat
     private ImageView commentImageView;
     private ImageView shareImageView;
 
+
+
     private TextView likesCountTextView;
     private TextView likeTextView;
     private TextView commentsTextView;
     private TextView shareTextView;
     private Context context;
     private TextView descriptionView;
+
+    private DrawerLayout mDrawerLayout;
 
     private Animation textAnimation, fadeIn, fadeOut;
     private CustomPagerAdapter mCustomPagerAdapter;
@@ -127,7 +128,7 @@ public class GraphiteDetailActivity extends ActionBarActivity implements Navigat
             NavigationView navigationView = (NavigationView) findViewById(R.id.navigation_view);
             navigationView.setNavigationItemSelectedListener(this);
 
-            DrawerLayout mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+            mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
             mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout, toolbar, R.string.open,
                     R.string.close);
             mDrawerLayout.setDrawerListener(mDrawerToggle);
@@ -197,12 +198,17 @@ public class GraphiteDetailActivity extends ActionBarActivity implements Navigat
                 @Override
                 public void onClick(View view) {
                     Toast.makeText(getApplicationContext(),"share",Toast.LENGTH_SHORT).show();
+                    Intent sendIntent = new Intent();
+                    sendIntent.setAction(Intent.ACTION_SEND);
+                    sendIntent.putExtra(Intent.EXTRA_TEXT, "This is my text to send.");
+                    sendIntent.setType("text/plain");
+                    startActivity(sendIntent);
                     //share link content
-                    ShareLinkContent content = new ShareLinkContent.Builder()
-                            .setContentUrl(Uri.parse(graphiteItem.getImgURL()))
-                            .setContentTitle(graphiteItem.getTitle())
-                            .setContentDescription(graphiteItem.getDescription())
-                            .build();
+//                    ShareLinkContent content = new ShareLinkContent.Builder()
+//                            .setContentUrl(Uri.parse(graphiteItem.getImgURL()))
+//                            .setContentTitle(graphiteItem.getTitle())
+//                            .setContentDescription(graphiteItem.getDescription())
+//                            .build();
     //                ShareButton shareButton = (ShareButton)findViewById(R.id.fb_share_button);
     //                shareButton.setShareContent(content);
                 }
@@ -341,6 +347,7 @@ public class GraphiteDetailActivity extends ActionBarActivity implements Navigat
         switch(menuItem.getItemId()){
             case R.id.navigation_item_1:
                 captureImage();
+                mDrawerLayout.closeDrawer(Gravity.LEFT);
                 break;
             case R.id.navigation_item_2:
                 accessToken = AccessToken.getCurrentAccessToken();
@@ -402,11 +409,14 @@ public class GraphiteDetailActivity extends ActionBarActivity implements Navigat
                             });
                     LoginManager.getInstance().logInWithReadPermissions(this, Arrays.asList("public_profile", "user_friends"));
                 }
+
+                mDrawerLayout.closeDrawer(Gravity.LEFT);
                 break;
 
             case R.id.navigation_item_3:
                 filterDialogFragment = new FilterDialogFragment();
                 filterDialogFragment.show(getFragmentManager(), "filter_fragment");
+                mDrawerLayout.closeDrawer(Gravity.LEFT);
                 break;
             default:
                 break;
@@ -434,11 +444,7 @@ public class GraphiteDetailActivity extends ActionBarActivity implements Navigat
         }
 
         if (id == R.id.menu_item_share) {
-            Intent sendIntent = new Intent();
-            sendIntent.setAction(Intent.ACTION_SEND);
-            sendIntent.putExtra(Intent.EXTRA_TEXT, "This is my text to send.");
-            sendIntent.setType("text/plain");
-            startActivity(sendIntent);
+
             return true;
         }
 
