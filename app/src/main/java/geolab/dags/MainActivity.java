@@ -53,6 +53,7 @@ import geolab.dags.custom_DialogFragments.FilterDialogFragment;
 import geolab.dags.fileUpload.Config;
 import geolab.dags.fileUpload.UploadActivity;
 import geolab.dags.fragment.ViewPagerFragment;
+import geolab.dags.slider.SliderActivity;
 
 import static geolab.dags.fragment.MapFragment.newInstance;
 
@@ -91,6 +92,10 @@ public class MainActivity extends ActionBarActivity implements NavigationView.On
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         FacebookSdk.sdkInitialize(getApplicationContext());
+
+        Intent intent = new Intent(MainActivity.this, SliderActivity.class);
+        startActivity(intent);
+
         setContentView(R.layout.activity_main);
 
         mSharedPref = getSharedPreferences(MY_PREF_FOR_FB_USER_ID,MODE_PRIVATE).edit();

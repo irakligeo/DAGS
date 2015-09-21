@@ -64,6 +64,10 @@
             android:label="@string/title_activity_graphite_item_detail" >
         </activity>
         <activity
+            android:name=".slider.SliderActivity"
+            android:label="@string/title_activity_graphite_item_detail" >
+        </activity>
+        <activity
             android:name=".fileUpload.UploadFileActivity"
             android:label="@string/title_activity_upload_file" >
         </activity>

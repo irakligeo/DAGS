@@ -15,8 +15,8 @@ public class TestFrag extends android.support.v4.app.Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_test, container, false);
 
-        TextView tv = (TextView) v.findViewById(R.id.tvFragTest);
-        tv.setText(getArguments().getString("msg"));
+//        TextView tv = (TextView) v.findViewById(R.id.tvFragTest);
+//        tv.setText(getArguments().getString("msg"));
 
         return v;
     }
