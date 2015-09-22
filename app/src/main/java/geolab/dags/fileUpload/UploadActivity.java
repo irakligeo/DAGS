@@ -3,12 +3,14 @@ package geolab.dags.fileUpload;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.AsyncTask;
+import android.preference.PreferenceManager;
 import android.provider.Settings;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.ActionBarActivity;
@@ -89,6 +91,8 @@ public class UploadActivity extends ActionBarActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_upload);
 
+        // loads pref data
+        LoadPreferences();
 
         final Context context = this;
         longitude = (TextView) findViewById(R.id.longitude);
@@ -169,6 +173,8 @@ public class UploadActivity extends ActionBarActivity{
         }
 
 
+
+
         txtPercentage = (TextView) findViewById(R.id.txtPercentage);
         btnUpload = (Button) findViewById(R.id.btnUpload);
         btnDone = (Button) findViewById(R.id.doneBtn);
@@ -210,6 +216,12 @@ public class UploadActivity extends ActionBarActivity{
             }
         });
 
+    }
+
+    private void LoadPreferences(){
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        String  data = sharedPreferences.getString("user_id", "user id") ;
+        Toast.makeText(this,data, Toast.LENGTH_LONG).show();
     }
 
     /**

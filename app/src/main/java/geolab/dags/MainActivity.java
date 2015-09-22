@@ -8,6 +8,7 @@ import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
+import android.preference.PreferenceManager;
 import android.provider.MediaStore;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
@@ -90,7 +91,7 @@ public class MainActivity extends ActionBarActivity implements NavigationView.On
     private TabLayout tabLayout;
     public static FilterDialogFragment filterDialogFragment;
     public static final String MY_PREF_FOR_FB_USER_ID = "FB_USER_ID";
-    SharedPreferences.Editor mSharedPref;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -101,7 +102,6 @@ public class MainActivity extends ActionBarActivity implements NavigationView.On
 
         setContentView(R.layout.activity_main);
 
-        mSharedPref = getSharedPreferences(MY_PREF_FOR_FB_USER_ID,MODE_PRIVATE).edit();
 
         context = this;
         activity = this;
@@ -333,6 +333,19 @@ public class MainActivity extends ActionBarActivity implements NavigationView.On
         }
 
     }
+
+
+    //SharedPreferences
+    private void SavePreferences(String key, String value){
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString(key, value);
+        editor.commit();
+    }
+
+
+
     //   end of camera code
     private ActionBarDrawerToggle mDrawerToggle;
 
@@ -452,8 +465,7 @@ public class MainActivity extends ActionBarActivity implements NavigationView.On
                                             str_firstname = jsonObject.getString("name");
                                             fbUserName.setText(jsonObject.getString("name"));
 //                                            Toast.makeText(getApplicationContext(), str_firstname + "https://graph.facebook.com/" + user_id + "/picture?type=large" + " " + user_id, Toast.LENGTH_SHORT).show();
-                                            mSharedPref.putString("user_id",user_id);
-                                            mSharedPref.commit();
+                                            SavePreferences("user_id",user_id);
 
                                         } catch (NullPointerException ex) {
                                             ex.getMessage();
@@ -467,6 +479,7 @@ public class MainActivity extends ActionBarActivity implements NavigationView.On
 
                                 }
                             }).executeAsync();
+                            logged = true;
 
                         }
 

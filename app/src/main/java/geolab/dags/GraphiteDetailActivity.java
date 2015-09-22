@@ -78,6 +78,8 @@ public class GraphiteDetailActivity extends ActionBarActivity implements Navigat
 
     private Animation textAnimation, fadeIn, fadeOut;
     private CustomPagerAdapter mCustomPagerAdapter;
+
+//    on Create View
     @Override
     protected void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
@@ -214,10 +216,10 @@ public class GraphiteDetailActivity extends ActionBarActivity implements Navigat
                 }
             });
 
-            DisplayMetrics dm = new DisplayMetrics();
-            getWindowManager().getDefaultDisplay().getMetrics(dm);
-            int width=dm.widthPixels;
-            int height=dm.heightPixels;
+//            DisplayMetrics dm = new DisplayMetrics();
+//            getWindowManager().getDefaultDisplay().getMetrics(dm);
+//            int width=dm.widthPixels;
+//            int height=dm.heightPixels;
 
 
             Picasso.with(this)
