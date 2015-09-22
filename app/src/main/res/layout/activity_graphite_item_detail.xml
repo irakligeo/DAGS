@@ -224,7 +224,7 @@
                 android:id="@+id/share_text_view_id"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="share"
+                android:text="@string/share_text_view_id"
                 android:textSize="17sp"
                 android:layout_marginTop="10dp"
                 android:layout_toEndOf="@+id/share_icon"
@@ -256,15 +256,6 @@
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="20dp"
                 android:textColor="#000" />
-
-            <TextView
-                android:id="@+id/imgLinks"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/imgLinks"
-                android:layout_below="@+id/comments_icon"
-                android:layout_toRightOf="@+id/author"
-                android:layout_toEndOf="@+id/author" />
 
         </RelativeLayout>
 

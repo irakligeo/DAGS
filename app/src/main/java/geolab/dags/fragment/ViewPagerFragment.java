@@ -145,6 +145,7 @@ public class ViewPagerFragment extends android.support.v4.app.Fragment {
     private RequestQueue requestQueue;
     public  ArrayList<GraphiteItemModel> graphiteItems;
 
+    String[] splitedHashtag;
     public static HashMap<String,ArrayList<String>> hashTagsMap;
     ArrayList<String> imgArrayList;
     // function gets data from server
@@ -167,6 +168,8 @@ public class ViewPagerFragment extends android.support.v4.app.Fragment {
         }
         if(hashTagsMap == null){
             hashTagsMap = new HashMap<>();
+        }
+        if(imgArrayList == null){
             imgArrayList = new ArrayList<>();
         }
         if(jsonArrayRequest == null){
@@ -197,13 +200,17 @@ public class ViewPagerFragment extends android.support.v4.app.Fragment {
 
 
                             //retrieve hashTags
-                            String hashtag = graphiteItems.get(i).getImgURL();
-                            String[] splitedHashtag;
+                            String hashtag = graphiteItems.get(i).getHashtag();
+                            char[] charArray = hashtag.toCharArray();
                             //allocate images for same hashtags
                             if(hashtag != "") {
                                 for(int j = 0; j < hashtag.length(); ++j){
+                                    if(charArray[j] == '#')
                                     splitedHashtag = hashtag.split(" ");
-                                    imgArrayList.add(splitedHashtag[i]);
+                                }
+                                if(splitedHashtag != null && splitedHashtag.length != 0)
+                                for(int k = 0; k < splitedHashtag.length; ++k){
+                                    imgArrayList.add(splitedHashtag[k]);
                                 }
                                 hashTagsMap.put(hashtag, imgArrayList);
                             }

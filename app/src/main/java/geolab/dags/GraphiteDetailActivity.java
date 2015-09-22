@@ -44,13 +44,16 @@ import org.json.JSONObject;
 
 import java.io.File;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.Locale;
 
 import geolab.dags.custom_DialogFragments.FilterDialogFragment;
 import geolab.dags.fileUpload.Config;
 import geolab.dags.fileUpload.UploadActivity;
+import geolab.dags.fragment.ViewPagerFragment;
 import geolab.dags.model.GraphiteItemModel;
 import geolab.dags.slider.CustomPagerAdapter;
 
@@ -106,6 +109,8 @@ public class GraphiteDetailActivity extends ActionBarActivity implements Navigat
                 R.drawable.photoaparat,
                 R.drawable.graphite
         };
+
+        hashMap = new HashMap<>();
 
         LayoutInflater inflater  = (LayoutInflater)getApplicationContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View view = inflater.inflate(R.layout.fragment_test,null);
@@ -221,6 +226,10 @@ public class GraphiteDetailActivity extends ActionBarActivity implements Navigat
 //            int width=dm.widthPixels;
 //            int height=dm.heightPixels;
 
+        hashMap = ViewPagerFragment.hashTagsMap;
+
+
+
 
             Picasso.with(this)
                     .load(graphiteItem.getImgURL())
@@ -229,6 +238,8 @@ public class GraphiteDetailActivity extends ActionBarActivity implements Navigat
                     .into(imgView);
 
     }
+
+    private HashMap<String, ArrayList<String>> hashMap;
 
     private ActionBarDrawerToggle mDrawerToggle;
 

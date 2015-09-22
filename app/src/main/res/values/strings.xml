@@ -62,6 +62,7 @@
     <string name="comments_number">16</string>
     <string name="comments">comments</string>
     <string name="imgLinks">imgLinks</string>
+    <string name="share_text_view_id">share</string>
 
     <!-- spinner data (it's temporary)-->
     <string-array name="graphite_categories">
