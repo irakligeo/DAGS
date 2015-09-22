@@ -68,7 +68,7 @@ public class GraphiteDetailActivity extends ActionBarActivity implements Navigat
     private ImageView commentImageView;
     private ImageView shareImageView;
 
-
+    private TextView hashTagTextView;
 
     private TextView likesCountTextView;
     private TextView likeTextView;
@@ -158,6 +158,8 @@ public class GraphiteDetailActivity extends ActionBarActivity implements Navigat
             TextView createDateView = (TextView) findViewById(R.id.createDate);
             TextView authorView = (TextView) findViewById(R.id.author);
 
+        hashTagTextView = (TextView) findViewById(R.id.hashTagId);
+        hashTagTextView.setText(graphiteItem.getHashtag());
 
             Typeface font = Typeface.createFromAsset(getAssets(), "Chantelli_Antiqua.ttf");
             likeTextView.setTypeface(font);

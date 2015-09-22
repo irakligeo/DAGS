@@ -29,7 +29,7 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:paddingLeft="10dp"
             android:paddingRight="10dp"
             android:id="@+id/RL">
@@ -232,7 +232,18 @@
                 android:layout_marginLeft="4dp"
                 android:textColor="#000" />
 
-
+            <TextView
+                android:id="@+id/hashTagId"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="hashTag"
+                android:textSize="17sp"
+                android:layout_alignStart="@+id/little_description"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="10dp"
+                android:layout_below="@+id/share_text_view_id"
+                android:layout_marginLeft="20dp"
+                android:textColor="#ff0073ff" />
             <!--<com.facebook.share.widget.ShareButton-->
                 <!--android:layout_below="@+id/createDate"-->
                 <!--android:id="@+id/fb_share_button"-->
@@ -254,14 +265,12 @@
                 android:layout_below="@id/share_text_view_id"
                 android:layout_alignParentBottom="true"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="45dp"
                 android:textColor="#000" />
 
         </RelativeLayout>
 
         </ScrollView>
-
-
 
 
 </RelativeLayout>
