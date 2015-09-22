@@ -92,7 +92,7 @@ public class UploadActivity extends ActionBarActivity{
         setContentView(R.layout.activity_upload);
 
         // loads pref data
-        LoadPreferences();
+        userID = LoadPreferences();
 
         final Context context = this;
         longitude = (TextView) findViewById(R.id.longitude);
@@ -218,10 +218,11 @@ public class UploadActivity extends ActionBarActivity{
 
     }
 
-    private void LoadPreferences(){
+    private String LoadPreferences(){
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
         String  data = sharedPreferences.getString("user_id", "user id") ;
         Toast.makeText(this,data, Toast.LENGTH_LONG).show();
+        return data;
     }
 
     /**
@@ -320,8 +321,8 @@ public class UploadActivity extends ActionBarActivity{
                             new StringBody(latitude.getText().toString()));
                     entity.addPart("uploadDateTime",
                             new StringBody(new Date().toString()));
-//                    entity.addPart("user_id",
-//                            new StringBody(userID));
+                    entity.addPart("user_id",
+                            new StringBody(userID));
 
                 } catch (UnsupportedEncodingException e) {
                     e.printStackTrace();

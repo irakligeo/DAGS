@@ -223,7 +223,7 @@ public class MainActivity extends ActionBarActivity implements NavigationView.On
      * */
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-
+        callbackManager.onActivityResult(requestCode, resultCode, data);
         // if the result is capturing Image
         if (requestCode == CAMERA_CAPTURE_IMAGE_REQUEST_CODE) {
             if (resultCode == RESULT_OK) {
@@ -363,7 +363,27 @@ public class MainActivity extends ActionBarActivity implements NavigationView.On
             case R.id.navigation_item_1: // fotos gadageba
 
 //                closeDrawerFromUiThread();
-                captureImage();
+                if (user_id != "")
+                    captureImage();
+                else {
+                    new AlertDialog.Builder(context)
+                            .setTitle("ფოტოს ატვირთვა")
+                            .setMessage("ფოტოს ასატვირთად საჭიროა ავტორიზაცია")
+                            .setCancelable(false)
+                            .setNegativeButton("არა", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialogInterface, int i) {
+                                    LoginManager.getInstance().logOut();
+                                    accessToken = null;
+                                }
+                            })
+                            .setPositiveButton("კი", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialogInterface, int i) {
+                                    loginToFB();
+                                }
+                            }).show();
+                }
 
                 break;
 
@@ -371,11 +391,7 @@ public class MainActivity extends ActionBarActivity implements NavigationView.On
 //                closeDrawerFromUiThread();
                 Toast.makeText(getApplicationContext(),"navigation_item_2 " +UserID,Toast.LENGTH_SHORT).show();
                 //check if logged
-                if(checkUserLogingStatus(UserID)) {
-                    loginToFB(true);
-                }else {
-                    loginToFB(false);
-                }
+                    loginToFB();
                 break;
 
             case R.id.navigation_item_3: // filtracia
@@ -418,13 +434,12 @@ public class MainActivity extends ActionBarActivity implements NavigationView.On
         thread.start();
     }
 
-    boolean logged = false;
-    public void loginToFB(boolean status) {
 
+    public void loginToFB() {
+        final boolean[] logged = {false};
         Toast.makeText(getApplicationContext(),"loginToFB() ",Toast.LENGTH_SHORT).show();
-        logged = status;
         accessToken = AccessToken.getCurrentAccessToken();
-        if (logged) {
+        if (logged[0]) {
             new AlertDialog.Builder(context)
                     .setTitle("Success...")
                     .setMessage("გსურთ დარჩეთ ავტორიზებული")
@@ -434,13 +449,13 @@ public class MainActivity extends ActionBarActivity implements NavigationView.On
                         public void onClick(DialogInterface dialogInterface, int i) {
                             LoginManager.getInstance().logOut();
                             accessToken = null;
-                            logged = false;
+                            logged[0] = false;
                         }
                     })
                     .setPositiveButton("კი", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialogInterface, int i) {
-                            logged = true;
+                            logged[0] = true;
                         }
                     }).show();
         } else {
@@ -452,7 +467,7 @@ public class MainActivity extends ActionBarActivity implements NavigationView.On
 
                         @Override
                         public void onSuccess(LoginResult loginResult) {
-
+                            Toast.makeText(getApplicationContext(), "onSuccess", Toast.LENGTH_SHORT).show();
                             GraphRequest.newMeRequest(loginResult.getAccessToken(), new GraphRequest.GraphJSONObjectCallback() {
                                 @Override
                                 public void onCompleted(JSONObject jsonObject, GraphResponse graphResponse) {
@@ -479,7 +494,7 @@ public class MainActivity extends ActionBarActivity implements NavigationView.On
 
                                 }
                             }).executeAsync();
-                            logged = true;
+                            logged[0] = true;
 
                         }
 
