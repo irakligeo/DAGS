@@ -145,8 +145,9 @@ public class MapFragment extends android.support.v4.app.Fragment implements OnMa
                     String uploadDateTime = cursor.getString(cursor.getColumnIndex(TableGraphite.uploadDateTime));
                     String author = cursor.getString(cursor.getColumnIndex(TableGraphite.imgAuthor));
                     int likesCount = Integer.parseInt(cursor.getString(cursor.getColumnIndex(String.valueOf(TableGraphite.likes))));
+                    String hashtag = cursor.getString(cursor.getColumnIndex(TableGraphite.hashtag));
 
-                    GraphiteItemModel model = new GraphiteItemModel(title,imgDescription,imgURL,author,uploadDateTime, longitude,latitude,likesCount);
+                    GraphiteItemModel model = new GraphiteItemModel(title,imgDescription,imgURL,author,uploadDateTime, longitude,latitude,likesCount,hashtag);
 
                     tmpList.add(model);
 

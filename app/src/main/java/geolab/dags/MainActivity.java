@@ -323,19 +323,7 @@ public class MainActivity extends ActionBarActivity implements NavigationView.On
         startActivityForResult(intent, CAMERA_CAPTURE_IMAGE_REQUEST_CODE);
     }
 
-
-
-    public boolean checkUserLogingStatus(String id){
-        if(id != "") {
-            return true;
-        }else{
-            return false;
-        }
-
-    }
-
-
-    //SharedPreferences
+    //SharedPreferences for save
     private void SavePreferences(String key, String value){
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
 
@@ -343,7 +331,6 @@ public class MainActivity extends ActionBarActivity implements NavigationView.On
         editor.putString(key, value);
         editor.commit();
     }
-
 
 
     //   end of camera code

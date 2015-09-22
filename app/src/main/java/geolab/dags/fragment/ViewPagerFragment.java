@@ -28,6 +28,7 @@ import org.json.JSONArray;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import geolab.dags.GraphiteDetailActivity;
 import geolab.dags.DB.TableGraphite;
@@ -144,8 +145,9 @@ public class ViewPagerFragment extends android.support.v4.app.Fragment {
     private RequestQueue requestQueue;
     public  ArrayList<GraphiteItemModel> graphiteItems;
 
+    public static HashMap<String,ArrayList<String>> hashTagsMap;
+    ArrayList<String> imgArrayList;
     // function gets data from server
-
     public void getGraphiteDatas(String url){
         // progressDialog for nice loading
         
@@ -163,7 +165,10 @@ public class ViewPagerFragment extends android.support.v4.app.Fragment {
         if(graphiteItems == null){
             graphiteItems = new ArrayList<>();
         }
-
+        if(hashTagsMap == null){
+            hashTagsMap = new HashMap<>();
+            imgArrayList = new ArrayList<>();
+        }
         if(jsonArrayRequest == null){
             jsonArrayRequest = new JsonArrayRequest(url,new Response.Listener<JSONArray>() {
                 @Override
@@ -177,7 +182,6 @@ public class ViewPagerFragment extends android.support.v4.app.Fragment {
                         db.execSQL("DELETE FROM " + TableGraphite.TABLE_NAME);
                         db.execSQL("VACUUM");
 
-//                        Toast.makeText(getActivity()," updating data " + MyResponseParser.oldStatusCode + " " + MyResponseParser.statusCode, Toast.LENGTH_SHORT).show();
                         //insert graphiteItems arrayList into database
                         for (int i = 0; i < graphiteItems.size(); ++i) {
                             contentValues.put(TableGraphite.id, graphiteItems.get(i).getId());
@@ -189,8 +193,23 @@ public class ViewPagerFragment extends android.support.v4.app.Fragment {
                             contentValues.put(TableGraphite.uploadDateTime, graphiteItems.get(i).getCreateDate());
                             contentValues.put(TableGraphite.imgDescription, graphiteItems.get(i).getDescription());
                             contentValues.put(TableGraphite.likes,graphiteItems.get(i).getLikesCount());
+                            contentValues.put(TableGraphite.hashtag,graphiteItems.get(i).getHashtag());
 
+
+                            //retrieve hashTags
+                            String hashtag = graphiteItems.get(i).getImgURL();
+                            String[] splitedHashtag;
+                            //allocate images for same hashtags
+                            if(hashtag != "") {
+                                for(int j = 0; j < hashtag.length(); ++j){
+                                    splitedHashtag = hashtag.split(" ");
+                                    imgArrayList.add(splitedHashtag[i]);
+                                }
+                                hashTagsMap.put(hashtag, imgArrayList);
+                            }
+                            // insert into database
                             db.insert(TableGraphite.TABLE_NAME, null, contentValues);
+
                         }
 
                         graphiteListView = (ListView) rootView.findViewById(R.id.graphiteList);

@@ -32,8 +32,8 @@ public class MyResponseParser {
                 int likesCount = response.getJSONObject(i).getInt("like");
                 double longitude = response.getJSONObject(i).getDouble("longitude");
                 double latitude = response.getJSONObject(i).getDouble("latitude");
-
-                GraphiteItemModel graphite = new GraphiteItemModel(imgTitle, imgDescription, imgUrl, imgAuthor, imgUploadDate, longitude, latitude,likesCount);
+                String hashtag = response.getJSONObject(i).getString("hashtag");
+                GraphiteItemModel graphite = new GraphiteItemModel(imgTitle, imgDescription, imgUrl, imgAuthor, imgUploadDate, longitude, latitude,likesCount,hashtag);
                 data.add(graphite);
             }
         }catch (JSONException e) {

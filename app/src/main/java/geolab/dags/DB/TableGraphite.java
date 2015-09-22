@@ -13,4 +13,5 @@ public class TableGraphite {
     public static String longitude = "longitude";
     public static String uploadDateTime = "uploadDateTime";
     public static String likes = "likes";
+    public static String hashtag = "hashtag";
 }

@@ -13,13 +13,14 @@ public class DBHelper extends SQLiteOpenHelper{
             "CREATE TABLE " + TableGraphite.TABLE_NAME + "("
             + TableGraphite.id + " integer,"
             + TableGraphite.imgTitle + " text,"
-            + TableGraphite.imgAuthor + " text,"
+            + TableGraphite.imgAuthor + "x text,"
             + TableGraphite.imgURL + " text,"
             + TableGraphite.imgDescription + " text,"
             + TableGraphite.longitude + " real,"
             + TableGraphite.latitude + " real,"
             + TableGraphite.uploadDateTime + " text,"
-            + TableGraphite.likes + " integer "
+            + TableGraphite.likes + " integer,"
+            + TableGraphite.hashtag + " text"
             + ");";
 
 

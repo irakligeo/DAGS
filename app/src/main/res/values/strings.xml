@@ -61,6 +61,7 @@
     <string name="likes_number">37</string>
     <string name="comments_number">16</string>
     <string name="comments">comments</string>
+    <string name="imgLinks">imgLinks</string>
 
     <!-- spinner data (it's temporary)-->
     <string-array name="graphite_categories">

@@ -16,9 +16,11 @@ public class GraphiteItemModel implements Serializable, Parcelable {
     private double longitude;
     private double latitude;
 
+    private String hashtag;
+
     private int id;
 
-    public GraphiteItemModel(String title, String description, String imgURL, String author, String createDate, double longitude, double latitude, int likesCount) {
+    public GraphiteItemModel(String title, String description, String imgURL, String author, String createDate, double longitude, double latitude, int likesCount, String hashtag) {
         this.title = title;
         this.description = description;
         this.imgURL = imgURL;
@@ -27,6 +29,7 @@ public class GraphiteItemModel implements Serializable, Parcelable {
         this.longitude = longitude;
         this.latitude = latitude;
         this.likesCount = likesCount;
+        this.hashtag = hashtag;
     }
 
 
@@ -42,6 +45,7 @@ public class GraphiteItemModel implements Serializable, Parcelable {
         this.longitude = in.readDouble();
         this.latitude = in.readDouble();
         this.likesCount = in.readInt();
+        this.hashtag = in.readString();
     }
 
 
@@ -109,6 +113,10 @@ public class GraphiteItemModel implements Serializable, Parcelable {
         this.latitude = latitude;
     }
 
+    public String getHashtag() {
+        return hashtag;
+    }
+
     public int getId() {
         return this.id;
     }
@@ -141,6 +149,7 @@ public class GraphiteItemModel implements Serializable, Parcelable {
         parcel.writeDouble(this.longitude);
         parcel.writeDouble(this.latitude);
         parcel.writeInt(this.likesCount);
+        parcel.writeString(this.hashtag);
     }
 
     public static final Parcelable.Creator CREATOR = new Parcelable.Creator() {
