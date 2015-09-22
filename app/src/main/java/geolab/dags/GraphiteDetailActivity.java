@@ -49,6 +49,7 @@ import java.util.Arrays;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Locale;
+import java.util.Map;
 
 import geolab.dags.custom_DialogFragments.FilterDialogFragment;
 import geolab.dags.fileUpload.Config;
@@ -228,8 +229,49 @@ public class GraphiteDetailActivity extends ActionBarActivity implements Navigat
 //            int width=dm.widthPixels;
 //            int height=dm.heightPixels;
 
+
         hashMap = ViewPagerFragment.hashTagsMap;
 
+
+        ArrayList<String> tmplist = new ArrayList<>();
+
+        String keys = "";
+        for ( Map.Entry<String, ArrayList<String>> entry : hashMap.entrySet()) {
+            String key = entry.getKey();
+            keys += key + " ";
+            tmplist = entry.getValue();
+        }
+        descriptionView.setText(keys);
+
+        for(int l = 0; l < tmplist.size(); ++l){
+
+        }
+
+
+        String hashtag = graphiteItem.getHashtag();
+        char[] charArray;
+        charArray = hashtag.toCharArray();
+        String[] res;
+        String result = "";
+        if( hashtag != "" ) {
+
+                if (checkArray(charArray)) {
+                    res = hashtag.split(",");
+                    for (int k = 0; k < res.length; ++k) {
+                        if (hashMap.containsKey(res[k])) {
+                            result += hashMap.get(res[k]).toString();
+//                            descriptionView.setText(hashMap.get(res[k]).toString());
+                        }
+                    }
+//                    descriptionView.setText(result);
+                }else{
+                    if (hashMap.containsKey(hashtag)) {
+//                        descriptionView.setText(hashMap.get(hashtag).toString());
+                    }
+                }
+            }
+
+//        descriptionView.setText(hashMap.toString());
 
 
 
@@ -239,6 +281,15 @@ public class GraphiteDetailActivity extends ActionBarActivity implements Navigat
                     .centerCrop()
                     .into(imgView);
 
+    }
+
+    private boolean checkArray(char[] arr){
+        for(int i = 0; i < arr.length; ++i){
+            if (arr[i] == ','){
+                return true;
+            }
+        }
+        return false;
     }
 
     private HashMap<String, ArrayList<String>> hashMap;

@@ -29,6 +29,7 @@ import org.json.JSONArray;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
 
 import geolab.dags.GraphiteDetailActivity;
 import geolab.dags.DB.TableGraphite;
@@ -201,18 +202,27 @@ public class ViewPagerFragment extends android.support.v4.app.Fragment {
 
                             //retrieve hashTags
                             String hashtag = graphiteItems.get(i).getHashtag();
+
+
                             char[] charArray = hashtag.toCharArray();
                             //allocate images for same hashtags
                             if(hashtag != "") {
-                                for(int j = 0; j < hashtag.length(); ++j){
-                                    if(charArray[j] == '#')
-                                    splitedHashtag = hashtag.split(" ");
+                                for(int j = 0; j < charArray.length; ++j){
+                                    if(charArray[j] == ',')
+                                        splitedHashtag = hashtag.split(",");
                                 }
-                                if(splitedHashtag != null && splitedHashtag.length != 0)
-                                for(int k = 0; k < splitedHashtag.length; ++k){
-                                    imgArrayList.add(splitedHashtag[k]);
+                                if(splitedHashtag != null && splitedHashtag.length != 0) {
+                                    for (int k = 0; k < splitedHashtag.length; ++k) {
+                                        if(hashTagsMap.containsKey(splitedHashtag[k])) {
+                                            imgArrayList.add(graphiteItems.get(i).getImgURL());
+                                            hashTagsMap.put(splitedHashtag[k], imgArrayList);
+                                        }
+                                        else {
+                                            imgArrayList = new ArrayList<>();
+                                        }
+                                    }
                                 }
-                                hashTagsMap.put(hashtag, imgArrayList);
+
                             }
                             // insert into database
                             db.insert(TableGraphite.TABLE_NAME, null, contentValues);

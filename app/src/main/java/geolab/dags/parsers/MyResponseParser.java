@@ -27,7 +27,7 @@ public class MyResponseParser {
                 String imgUrl = response.getJSONObject(i).getString("pic_url");
                 String imgTitle = response.getJSONObject(i).getString("title");
                 String imgDescription = response.getJSONObject(i).getString("description");
-                String imgAuthor = response.getJSONObject(i).getString("user_id");
+                String imgAuthor = response.getJSONObject(i).getString("u_name");
                 String imgUploadDate = response.getJSONObject(i).getString("create_date");
                 int likesCount = response.getJSONObject(i).getInt("like");
                 double longitude = response.getJSONObject(i).getDouble("longitude");
