@@ -207,10 +207,12 @@ public class ViewPagerFragment extends android.support.v4.app.Fragment {
                             char[] charArray = hashtag.toCharArray();
                             //allocate images for same hashtags
                             if(hashtag != "") {
+
                                 for(int j = 0; j < charArray.length; ++j){
                                     if(charArray[j] == ',')
                                         splitedHashtag = hashtag.split(",");
                                 }
+
                                 if(splitedHashtag != null && splitedHashtag.length != 0) {
                                     for (int k = 0; k < splitedHashtag.length; ++k) {
                                         if(hashTagsMap.containsKey(splitedHashtag[k])) {
@@ -219,7 +221,18 @@ public class ViewPagerFragment extends android.support.v4.app.Fragment {
                                         }
                                         else {
                                             imgArrayList = new ArrayList<>();
+                                            imgArrayList.add(graphiteItems.get(i).getImgURL());
+                                            hashTagsMap.put(splitedHashtag[k], imgArrayList);
                                         }
+                                    }
+                                }else {
+                                    if(hashTagsMap.containsKey(hashtag)) {
+                                        imgArrayList.add(graphiteItems.get(i).getImgURL());
+                                        hashTagsMap.put(hashtag, imgArrayList);
+                                    }else{
+                                        imgArrayList = new ArrayList<>();
+                                        imgArrayList.add(graphiteItems.get(i).getImgURL());
+                                        hashTagsMap.put(hashtag, imgArrayList);
                                     }
                                 }
 

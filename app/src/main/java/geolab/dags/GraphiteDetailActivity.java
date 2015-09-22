@@ -240,6 +240,7 @@ public class GraphiteDetailActivity extends ActionBarActivity implements Navigat
             String key = entry.getKey();
             keys += key + " ";
             tmplist = entry.getValue();
+            System.out.println(key +" --- " +tmplist.toString());
         }
         descriptionView.setText(keys);
 
