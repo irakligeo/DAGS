@@ -226,7 +226,8 @@
         android:layout_marginTop="10dp"
         android:layout_toRightOf="@+id/like_Text_View"
         android:layout_marginLeft="40dp"
-        android:nestedScrollingEnabled="false" />
+        android:nestedScrollingEnabled="false"
+        android:layout_centerInParent="true" />
 
     <TextView
         android:id="@+id/comments_text_view_id"

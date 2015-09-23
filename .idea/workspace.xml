@@ -62,15 +62,15 @@
       <file leaf-file-name="GraphiteDetailActivity.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/geolab/dags/GraphiteDetailActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="11.666667">
+            <state vertical-scroll-proportion="0.0">
               <caret line="387" column="30" selection-start-line="387" selection-start-column="30" selection-end-line="387" selection-end-column="30" />
               <folding>
+                <element signature="imports" expanded="false" />
                 <element signature="e#4498#4625#0" expanded="false" />
-                <element signature="e#8128#10506#0" expanded="true" />
-                <element signature="e#8958#8973#0" expanded="true" />
-                <element signature="e#9595#10003#0" expanded="true" />
-                <element signature="e#10002#10003#0" expanded="true" />
-                <element signature="e#10505#10506#0" expanded="true" />
+                <element signature="e#5373#5374#0" expanded="false" />
+                <element signature="e#5420#5421#0" expanded="false" />
+                <element signature="e#6195#6196#0" expanded="false" />
+                <element signature="e#6242#6243#0" expanded="false" />
                 <element signature="method#onSaveInstanceState#0;class#GraphiteDetailActivity#0" expanded="false" />
                 <element signature="method#onRestoreInstanceState#0;class#GraphiteDetailActivity#0" expanded="false" />
                 <element signature="method#getOutputMediaFile#0;class#GraphiteDetailActivity#0" expanded="false" />
@@ -84,15 +84,18 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ViewPagerFragment.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="ViewPagerFragment.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/geolab/dags/fragment/ViewPagerFragment.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.85271317">
-              <caret line="238" column="0" selection-start-line="238" selection-start-column="0" selection-end-line="238" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="232" column="37" selection-start-line="232" selection-start-column="37" selection-end-line="232" selection-end-column="37" />
               <folding>
+                <element signature="imports" expanded="false" />
                 <element signature="method#onActivityCreated#0;class#ViewPagerFragment#0" expanded="false" />
                 <element signature="method#onCreate#0;class#ViewPagerFragment#0" expanded="false" />
                 <element signature="e#4171#4240#0" expanded="false" />
+                <element signature="e#10928#10929#0" expanded="false" />
+                <element signature="e#10960#10961#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -100,25 +103,27 @@
       </file>
       <file leaf-file-name="activity_graphite_item_detail.xml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_graphite_item_detail.xml">
-          <provider editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="191" column="34" selection-start-line="191" selection-start-column="34" selection-end-line="191" selection-end-column="34" />
-              <folding>
-                <element signature="e#2205#2223#0" expanded="true" />
-                <element signature="e#2642#2658#0" expanded="true" />
-                <element signature="e#3296#3318#0" expanded="true" />
-                <element signature="e#3917#3932#0" expanded="true" />
-                <element signature="e#4634#4659#0" expanded="true" />
-                <element signature="e#5336#5354#0" expanded="true" />
-                <element signature="e#6217#6237#0" expanded="true" />
-                <element signature="e#8004#8021#0" expanded="true" />
-                <element signature="e#8668#8696#0" expanded="true" />
-                <element signature="e#11487#11515#0" expanded="true" />
-              </folding>
+          <provider editor-type-id="android-designer">
+            <state />
+          </provider>
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-0.0">
+              <caret line="196" column="21" selection-start-line="196" selection-start-column="21" selection-end-line="196" selection-end-column="21" />
+              <folding />
             </state>
           </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="header_layout.xml" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/header_layout.xml">
           <provider selected="true" editor-type-id="android-designer">
             <state />
+          </provider>
+          <provider editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="8" column="54" selection-start-line="8" selection-start-column="54" selection-end-line="8" selection-end-column="54" />
+              <folding />
+            </state>
           </provider>
         </entry>
       </file>
@@ -126,7 +131,7 @@
         <entry file="file://$PROJECT_DIR$/app/src/main/java/geolab/dags/MainActivity.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="153" column="31" selection-start-line="153" selection-start-column="31" selection-end-line="153" selection-end-column="31" />
+              <caret line="120" column="46" selection-start-line="120" selection-start-column="46" selection-end-line="120" selection-end-column="46" />
               <folding>
                 <element signature="method#onBackPressed#0;class#MainActivity#0" expanded="false" />
                 <element signature="method#launchUploadActivity#0;class#MainActivity#0" expanded="false" />
@@ -134,8 +139,6 @@
                 <element signature="method#SavePreferences#0;class#MainActivity#0" expanded="false" />
                 <element signature="method#closeDrawerFromUiThread#0;class#MainActivity#0" expanded="false" />
                 <element signature="method#onSuccess#0;class#15204:17653" expanded="false" />
-                <element signature="e#15583#17138#0" expanded="true" />
-                <element signature="e#17137#17138#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -147,49 +150,18 @@
             <state vertical-scroll-proportion="0.0">
               <caret line="105" column="29" selection-start-line="105" selection-start-column="29" selection-end-line="105" selection-end-column="29" />
               <folding>
+                <element signature="imports" expanded="false" />
+                <element signature="e#2439#2999#0" expanded="false" />
+                <element signature="e#2998#2999#0" expanded="false" />
                 <element signature="method#getCoordsFromDB#0;class#MapFragment#0" expanded="false" />
                 <element signature="method#newInstance#0;class#MapFragment#0" expanded="false" />
+                <element signature="e#6630#6631#0" expanded="false" />
+                <element signature="e#6665#6666#0" expanded="false" />
                 <element signature="method#getInfoContents#0;class#MarkerInfoWindowAdapter#0;class#MapFragment#0" expanded="false" />
+                <element signature="e#9720#10535#0" expanded="false" />
+                <element signature="e#10534#10535#0" expanded="false" />
               </folding>
             </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="build.gradle" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/build.gradle">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="41" column="46" selection-start-line="41" selection-start-column="46" selection-end-line="41" selection-end-column="46" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="toolbar.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/toolbar.xml">
-          <provider editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
-              <folding>
-                <element signature="e#246#293#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-          <provider selected="true" editor-type-id="android-designer">
-            <state />
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="activity_main.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml">
-          <provider editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="44" column="23" selection-start-line="44" selection-start-column="23" selection-end-line="44" selection-end-column="23" />
-              <folding />
-            </state>
-          </provider>
-          <provider selected="true" editor-type-id="android-designer">
-            <state />
           </provider>
         </entry>
       </file>
@@ -205,14 +177,14 @@
       </file>
       <file leaf-file-name="graphite_cardview_layout.xml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/graphite_cardview_layout.xml">
+          <provider selected="true" editor-type-id="android-designer">
+            <state />
+          </provider>
           <provider editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
               <caret line="31" column="43" selection-start-line="31" selection-start-column="43" selection-end-line="31" selection-end-column="43" />
               <folding />
             </state>
-          </provider>
-          <provider selected="true" editor-type-id="android-designer">
-            <state />
           </provider>
         </entry>
       </file>
@@ -1844,13 +1816,14 @@
         <option value="$PROJECT_DIR$/app/src/main/res/drawable/myrect.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/transition/change_image_transition.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/transition/change_image_transform.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/custom_info_fragment.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/values/styles.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/geolab/dags/GraphiteDetailActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_graphite_item_detail.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/graphite_cardview_layout.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/geolab/dags/fragment/MapFragment.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/geolab/dags/fragment/ViewPagerFragment.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_graphite_item_detail.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/custom_info_fragment.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/header_layout.xml" />
       </list>
     </option>
   </component>
@@ -1914,7 +1887,8 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scratches" />
+      <pane id="ProjectPane" />
+      <pane id="PackagesPane" />
       <pane id="AndroidView">
         <subPane>
           <PATH>
@@ -2101,9 +2075,8 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="ProjectPane" />
+      <pane id="Scratches" />
       <pane id="Scope" />
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -2114,7 +2087,7 @@
     <property name="MemberChooser.showClasses" value="true" />
     <property name="MemberChooser.copyJavadoc" value="false" />
     <property name="recentsLimit" value="5" />
-    <property name="ANDROID_EXTENDED_DEVICE_CHOOSER_SERIALS" value="03596ceb" />
+    <property name="ANDROID_EXTENDED_DEVICE_CHOOSER_SERIALS" value="4d007fea4a934169" />
     <property name="ANDROID_EXTENDED_DEVICE_CHOOSER_AVD" value="Nexus_5_API_21_x86" />
     <property name="FullScreen" value="false" />
     <property name="UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager2.WIDTH" value="292" />
@@ -2334,13 +2307,13 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1280" height="734" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32847896" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32847896" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32847896" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Captures" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39967638" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
@@ -2356,7 +2329,7 @@
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32956383" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.18416801" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32847896" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32847896" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -2571,35 +2544,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_graphite_items_list.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="13" column="35" selection-start-line="13" selection-start-column="35" selection-end-line="13" selection-end-column="35" />
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/animator/animator_up_from_bottom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="7" column="6" selection-start-line="7" selection-start-column="6" selection-end-line="7" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_upload.xml">
-      <provider editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-      <provider selected="true" editor-type-id="android-designer">
-        <state />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/geolab/dags/fileUpload/UploadActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -2669,7 +2613,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-3.6793003">
           <caret line="124" column="48" selection-start-line="124" selection-start-column="48" selection-end-line="124" selection-end-column="48" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2731,14 +2674,14 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_upload_file.xml">
+      <provider selected="true" editor-type-id="android-designer">
+        <state />
+      </provider>
       <provider editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
-      </provider>
-      <provider selected="true" editor-type-id="android-designer">
-        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/anim/slide_out_up.xml">
@@ -2763,14 +2706,14 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_upload.xml">
+      <provider selected="true" editor-type-id="android-designer">
+        <state />
+      </provider>
       <provider editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
-      </provider>
-      <provider selected="true" editor-type-id="android-designer">
-        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/geolab/dags/adpaters/ScreenSlidePagerAdapter.java">
@@ -2826,23 +2769,18 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="128" column="20" selection-start-line="128" selection-start-column="20" selection-end-line="128" selection-end-column="74" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#6999#7000#0" expanded="false" />
-            <element signature="e#7049#7050#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/custom_header.xml">
+      <provider selected="true" editor-type-id="android-designer">
+        <state />
+      </provider>
       <provider editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="11" column="42" selection-start-line="11" selection-start-column="42" selection-end-line="11" selection-end-column="42" />
           <folding />
         </state>
-      </provider>
-      <provider selected="true" editor-type-id="android-designer">
-        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/values/colors.xml">
@@ -2857,7 +2795,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-0.015503876">
           <caret line="176" column="16" selection-start-line="176" selection-start-column="16" selection-end-line="176" selection-end-column="16" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -2870,27 +2807,25 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/toolbar.xml">
-      <provider editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
-          <folding>
-            <element signature="e#246#293#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
       <provider selected="true" editor-type-id="android-designer">
         <state />
       </provider>
+      <provider editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml">
+      <provider selected="true" editor-type-id="android-designer">
+        <state />
+      </provider>
       <provider editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="44" column="23" selection-start-line="44" selection-start-column="23" selection-end-line="44" selection-end-column="23" />
           <folding />
         </state>
-      </provider>
-      <provider selected="true" editor-type-id="android-designer">
-        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/myrect.xml">
@@ -2899,17 +2834,6 @@
           <caret line="5" column="8" selection-start-line="5" selection-start-column="8" selection-end-line="5" selection-end-column="8" />
           <folding />
         </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/custom_info_fragment.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.75139666">
-          <caret line="199" column="37" selection-start-line="199" selection-start-column="37" selection-end-line="199" selection-end-column="37" />
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer">
-        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/values/styles.xml">
@@ -2921,14 +2845,14 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_graphite_items_list.xml">
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="1.1256983">
           <caret line="37" column="35" selection-start-line="37" selection-start-column="35" selection-end-line="37" selection-end-column="35" />
           <folding />
         </state>
-      </provider>
-      <provider editor-type-id="android-designer">
-        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/ic_colorpicker_swatch_selected.png">
@@ -2943,15 +2867,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/geolab/dags/GraphiteDetailActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="11.666667">
+        <state vertical-scroll-proportion="0.0">
           <caret line="387" column="30" selection-start-line="387" selection-start-column="30" selection-end-line="387" selection-end-column="30" />
           <folding>
+            <element signature="imports" expanded="false" />
             <element signature="e#4498#4625#0" expanded="false" />
-            <element signature="e#8128#10506#0" expanded="true" />
-            <element signature="e#8958#8973#0" expanded="true" />
-            <element signature="e#9595#10003#0" expanded="true" />
-            <element signature="e#10002#10003#0" expanded="true" />
-            <element signature="e#10505#10506#0" expanded="true" />
+            <element signature="e#5373#5374#0" expanded="false" />
+            <element signature="e#5420#5421#0" expanded="false" />
+            <element signature="e#6195#6196#0" expanded="false" />
+            <element signature="e#6242#6243#0" expanded="false" />
             <element signature="method#onSaveInstanceState#0;class#GraphiteDetailActivity#0" expanded="false" />
             <element signature="method#onRestoreInstanceState#0;class#GraphiteDetailActivity#0" expanded="false" />
             <element signature="method#getOutputMediaFile#0;class#GraphiteDetailActivity#0" expanded="false" />
@@ -2964,53 +2888,14 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_graphite_item_detail.xml">
-      <provider editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="191" column="34" selection-start-line="191" selection-start-column="34" selection-end-line="191" selection-end-column="34" />
-          <folding>
-            <element signature="e#2205#2223#0" expanded="true" />
-            <element signature="e#2642#2658#0" expanded="true" />
-            <element signature="e#3296#3318#0" expanded="true" />
-            <element signature="e#3917#3932#0" expanded="true" />
-            <element signature="e#4634#4659#0" expanded="true" />
-            <element signature="e#5336#5354#0" expanded="true" />
-            <element signature="e#6217#6237#0" expanded="true" />
-            <element signature="e#8004#8021#0" expanded="true" />
-            <element signature="e#8668#8696#0" expanded="true" />
-            <element signature="e#11487#11515#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/graphite_cardview_layout.xml">
       <provider selected="true" editor-type-id="android-designer">
         <state />
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/graphite_cardview_layout.xml">
       <provider editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="31" column="43" selection-start-line="31" selection-start-column="43" selection-end-line="31" selection-end-column="43" />
           <folding />
-        </state>
-      </provider>
-      <provider selected="true" editor-type-id="android-designer">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/geolab/dags/MainActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="153" column="31" selection-start-line="153" selection-start-column="31" selection-end-line="153" selection-end-column="31" />
-          <folding>
-            <element signature="method#onBackPressed#0;class#MainActivity#0" expanded="false" />
-            <element signature="method#launchUploadActivity#0;class#MainActivity#0" expanded="false" />
-            <element signature="method#onRestoreInstanceState#0;class#MainActivity#0" expanded="false" />
-            <element signature="method#SavePreferences#0;class#MainActivity#0" expanded="false" />
-            <element signature="method#closeDrawerFromUiThread#0;class#MainActivity#0" expanded="false" />
-            <element signature="method#onSuccess#0;class#15204:17653" expanded="false" />
-            <element signature="e#15583#17138#0" expanded="true" />
-            <element signature="e#17137#17138#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -3019,22 +2904,90 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="105" column="29" selection-start-line="105" selection-start-column="29" selection-end-line="105" selection-end-column="29" />
           <folding>
+            <element signature="imports" expanded="false" />
+            <element signature="e#2439#2999#0" expanded="false" />
+            <element signature="e#2998#2999#0" expanded="false" />
             <element signature="method#getCoordsFromDB#0;class#MapFragment#0" expanded="false" />
             <element signature="method#newInstance#0;class#MapFragment#0" expanded="false" />
+            <element signature="e#6630#6631#0" expanded="false" />
+            <element signature="e#6665#6666#0" expanded="false" />
             <element signature="method#getInfoContents#0;class#MarkerInfoWindowAdapter#0;class#MapFragment#0" expanded="false" />
+            <element signature="e#9720#10535#0" expanded="false" />
+            <element signature="e#10534#10535#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/geolab/dags/fragment/ViewPagerFragment.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.85271317">
-          <caret line="238" column="0" selection-start-line="238" selection-start-column="0" selection-end-line="238" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="232" column="37" selection-start-line="232" selection-start-column="37" selection-end-line="232" selection-end-column="37" />
           <folding>
+            <element signature="imports" expanded="false" />
             <element signature="method#onActivityCreated#0;class#ViewPagerFragment#0" expanded="false" />
             <element signature="method#onCreate#0;class#ViewPagerFragment#0" expanded="false" />
             <element signature="e#4171#4240#0" expanded="false" />
+            <element signature="e#10928#10929#0" expanded="false" />
+            <element signature="e#10960#10961#0" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_graphite_item_detail.xml">
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.0">
+          <caret line="196" column="21" selection-start-line="196" selection-start-column="21" selection-end-line="196" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/geolab/dags/MainActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="120" column="46" selection-start-line="120" selection-start-column="46" selection-end-line="120" selection-end-column="46" />
+          <folding>
+            <element signature="method#onBackPressed#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#launchUploadActivity#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#onRestoreInstanceState#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#SavePreferences#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#closeDrawerFromUiThread#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#onSuccess#0;class#15204:17653" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/blue_and_red.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/custom_info_fragment.xml">
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5">
+          <caret line="193" column="45" selection-start-line="193" selection-start-column="45" selection-end-line="193" selection-end-column="45" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/add_button.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/header_layout.xml">
+      <provider selected="true" editor-type-id="android-designer">
+        <state />
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="8" column="54" selection-start-line="8" selection-start-column="54" selection-end-line="8" selection-end-column="54" />
+          <folding />
         </state>
       </provider>
     </entry>

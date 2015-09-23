@@ -187,7 +187,7 @@
             <ImageView
                 android:id="@+id/comments_icon"
                 android:layout_width="28dp"
-                android:src="@drawable/comments_icon1"
+                android:src="@drawable/comments_icon"
                 android:layout_height="28dp"
                 android:layout_marginTop="10dp"
                 android:layout_centerHorizontal="true"
