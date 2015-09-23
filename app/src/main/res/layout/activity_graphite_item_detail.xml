@@ -25,25 +25,29 @@
         android:orientation="vertical"
         android:layout_below="@+id/toolbar"
         android:layout_height="fill_parent"
-        android:id="@+id/scrollView">
+        android:id="@+id/scrollView"
+        android:background="#FF9800">
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:paddingLeft="10dp"
-            android:paddingRight="10dp"
+            android:layout_height="wrap_content"
             android:id="@+id/RL">
 
             <!-- image title text view-->
             <TextView
                 android:id="@+id/imgTitle"
-                android:layout_width="wrap_content"
+                android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:textSize="20sp"
                 android:text="@string/imgTitle"
                 android:layout_marginBottom="5dp"
+                android:textColor="#000"
+                android:layout_alignParentEnd="false"
                 android:layout_centerHorizontal="true"
-                android:textColor="#000" />
+                android:gravity="center_horizontal"
+                android:background="#FF5722"
+                android:paddingBottom="10dp"
+                android:paddingTop="10dp" />
 
             <!-- graphite image view-->
             <ImageView
@@ -255,8 +259,8 @@
             <!-- description -->
             <TextView
                 android:id="@+id/little_description"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
                 android:text="@string/little_description"
                 android:paddingLeft="20dp"
                 android:paddingRight="20dp"
@@ -264,7 +268,9 @@
                 android:layout_alignParentBottom="true"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="40dp"
-                android:textColor="#000" />
+                android:textColor="#000"
+                android:background="#FF5722"
+                android:gravity="bottom" />
 
         </RelativeLayout>
 
