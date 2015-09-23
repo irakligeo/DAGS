@@ -93,6 +93,7 @@ public class GraphiteDetailActivity extends ActionBarActivity implements Navigat
 
     private Animation textAnimation, fadeIn, fadeOut;
     private CustomPagerAdapter mCustomPagerAdapter;
+    public static FilterDialogFragment filterDialogFragment;
 
 //    on Create View
     @Override
@@ -102,15 +103,17 @@ public class GraphiteDetailActivity extends ActionBarActivity implements Navigat
             setContentView(R.layout.activity_graphite_item_detail);
 
             context = this;
-            //get selected item detail
-            final GraphiteItemModel  graphiteItem = (GraphiteItemModel) getIntent().getSerializableExtra("GraphiteItem");
+        //filter dialog
+        filterDialogFragment = new FilterDialogFragment();
+        //get selected item detail
+        final GraphiteItemModel  graphiteItem = (GraphiteItemModel) getIntent().getSerializableExtra("GraphiteItem");
 
-            fadeIn = new AlphaAnimation(0.0f , 1.0f ) ;
             fadeIn.setDuration(1200);
-            fadeIn.setFillAfter(true);
+        fadeIn.setFillAfter(true);
+        fadeIn = new AlphaAnimation(0.0f , 1.0f ) ;
 
-            textAnimation = AnimationUtils.loadAnimation(context,R.anim.text_animation);
 
+        textAnimation = AnimationUtils.loadAnimation(context,R.anim.text_animation);
 
             //viewpager gallery
         int[] mResources = {
@@ -129,147 +132,147 @@ public class GraphiteDetailActivity extends ActionBarActivity implements Navigat
         mCustomPagerAdapter = new CustomPagerAdapter(this, mResources);
         final ViewPager mViewPager = (ViewPager) view.findViewById(R.id.pager);
         mViewPager.setAdapter(mCustomPagerAdapter);
-
-            //Set Toolbar
-            Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-            setSupportActionBar(toolbar);
-            getSupportActionBar().setDisplayShowTitleEnabled(false);
-            //set back button icon
-            toolbar.setNavigationIcon(R.drawable.ic_back);
-            toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    onBackPressed();
-                }
-            });
-
-
-            NavigationView navigationView = (NavigationView) findViewById(R.id.navigation_view);
-            navigationView.setNavigationItemSelectedListener(this);
-
-            mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
-            mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout, toolbar, R.string.open,
-                    R.string.close);
-            mDrawerLayout.setDrawerListener(mDrawerToggle);
-            mDrawerToggle.syncState();
+        //Set Toolbar
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
+        //set back button icon
+        toolbar.setNavigationIcon(R.drawable.ic_back);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
 
 
-            // init views
-            likeImageView = (ImageView) findViewById(R.id.like_icon);
-            commentImageView = (ImageView) findViewById(R.id.comments_icon);
-            shareImageView = (ImageView) findViewById(R.id.share_icon);
-            likesCountTextView = (TextView) findViewById(R.id.likes_countTextView);
-            likeTextView = (TextView) findViewById(R.id.like_Text_View);
-            commentsTextView = (TextView) findViewById(R.id.comments_text_view_id);
-            shareTextView = (TextView) findViewById(R.id.share_text_view_id);
-            TextView imgTitle = (TextView) findViewById(R.id.imgTitle);
+        NavigationView navigationView = (NavigationView) findViewById(R.id.navigation_view);
+        navigationView.setNavigationItemSelectedListener(this);
 
-            ImageView imgView = (ImageView) findViewById(R.id.peaceOfArtImg);
+        mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+        mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout, toolbar, R.string.open,
+                R.string.close);
+        mDrawerLayout.setDrawerListener(mDrawerToggle);
+        mDrawerToggle.syncState();
 
-            descriptionView = (TextView) findViewById(R.id.little_description);
-            TextView createDateView = (TextView) findViewById(R.id.createDate);
-            TextView authorView = (TextView) findViewById(R.id.author);
+
+        // init views
+        likeImageView = (ImageView) findViewById(R.id.like_icon);
+        commentImageView = (ImageView) findViewById(R.id.comments_icon);
+        shareImageView = (ImageView) findViewById(R.id.share_icon);
+        likesCountTextView = (TextView) findViewById(R.id.likes_countTextView);
+        likeTextView = (TextView) findViewById(R.id.like_Text_View);
+        commentsTextView = (TextView) findViewById(R.id.comments_text_view_id);
+        shareTextView = (TextView) findViewById(R.id.share_text_view_id);
+        TextView imgTitle = (TextView) findViewById(R.id.imgTitle);
+
+        ImageView imgView = (ImageView) findViewById(R.id.peaceOfArtImg);
+
+        descriptionView = (TextView) findViewById(R.id.little_description);
+        TextView createDateView = (TextView) findViewById(R.id.createDate);
+        TextView authorView = (TextView) findViewById(R.id.author);
 
         hashTagTextView = (TextView) findViewById(R.id.hashTagId);
         hashTagTextView.setText(graphiteItem.getHashtag());
 
-            Typeface font = Typeface.createFromAsset(getAssets(), "Chantelli_Antiqua.ttf");
-            likeTextView.setTypeface(font);
+        Typeface font = Typeface.createFromAsset(getAssets(), "Chantelli_Antiqua.ttf");
+        likeTextView.setTypeface(font);
 //            imgTitle.setTypeface(font);
-            descriptionView.setTypeface(font);
-            authorView.setTypeface(font);
-            authorView.setTypeface(font);
-            shareTextView.setTypeface(font);
-            commentsTextView.setTypeface(font);
+        descriptionView.setTypeface(font);
+        authorView.setTypeface(font);
+        authorView.setTypeface(font);
+        shareTextView.setTypeface(font);
+        commentsTextView.setTypeface(font);
 
-            imgTitle.setText(graphiteItem.getTitle());
-            createDateView.setText(graphiteItem.getCreateDate());
-            authorView.setText(graphiteItem.getAuthor());
-            descriptionView.setText(graphiteItem.getDescription());
-            likesCountTextView.setText(graphiteItem.getLikesCount()+" ");
+        imgTitle.setText(graphiteItem.getTitle());
+        createDateView.setText(graphiteItem.getCreateDate());
+        authorView.setText(graphiteItem.getAuthor());
+        descriptionView.setText(graphiteItem.getDescription());
+        likesCountTextView.setText(graphiteItem.getLikesCount()+" ");
 
-            final String userID = LoadPreferences();
+        final String userID = LoadPreferences();
 
-            final boolean[] clicked = {false};
-            //on like ImageView clikc
-            likeImageView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    if (!clicked[0]) {
-                        likesCountTextView.setText(graphiteItem.getLikesCount() + 1 + " ");
-                        likeImageView.setImageResource(R.drawable.liked_icon);
-                        likesCountTextView.startAnimation(textAnimation);
-                        likeTextView.setText("liked");
-                        likeTextView.startAnimation(textAnimation);
-                        likesCountTextView.startAnimation(fadeIn);
-
-                        final HttpClient httpclient = new DefaultHttpClient();
-                        final HttpPost httppost = new HttpPost("http://www.geolab.club/streetart/likemobile.php");
-                        try {
-                            List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(2);
-                            nameValuePairs.add(new BasicNameValuePair("marker_id", graphiteItem.getMarkerID()+""));
-                            nameValuePairs.add(new BasicNameValuePair("user_id", userID));
-                            httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
-
-                            String json = "";
-
-                            // 3. build jsonObject
-                            JSONObject jsonObject = new JSONObject();
+        final boolean[] clicked = {false};
+        //on like ImageView clikc
+        likeImageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (!clicked[0]) {
+                    likesCountTextView.setText(graphiteItem.getLikesCount() + 1 + " ");
+                    likeImageView.setImageResource(R.drawable.liked_icon);
+                    likesCountTextView.startAnimation(textAnimation);
+                    likeTextView.setText("liked");
+                    likeTextView.startAnimation(textAnimation);
+                    likesCountTextView.startAnimation(fadeIn);
 
 
-                            // 4. convert JSONObject to JSON to String
-                            json = jsonObject.toString();
+                    final HttpClient httpclient = new DefaultHttpClient();
+                    final HttpPost httppost = new HttpPost("http://www.geolab.club/streetart/likemobile.php");
+                    try {
+                        List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(2);
+                        nameValuePairs.add(new BasicNameValuePair("marker_id", graphiteItem.getMarkerID()+""));
+                        nameValuePairs.add(new BasicNameValuePair("user_id", userID));
+                        httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
 
-                            Thread thread = new Thread(new Runnable(){
-                                @Override
-                                public void run() {
-                                    try {
-                                        httpclient.execute(httppost);
-                                    } catch (Exception e) {
-                                        e.printStackTrace();
-                                    }
+                        String json = "";
+
+                        // 3. build jsonObject
+                        JSONObject jsonObject = new JSONObject();
+
+
+                        // 4. convert JSONObject to JSON to String
+                        json = jsonObject.toString();
+
+                        Thread thread = new Thread(new Runnable(){
+                            @Override
+                            public void run() {
+                                try {
+                                    httpclient.execute(httppost);
+                                } catch (Exception e) {
+                                    e.printStackTrace();
                                 }
-                            });
+                            }
+                        });
 
-                            thread.start();
-                            Toast.makeText(getBaseContext(),"Sent " + graphiteItem.getMarkerID() +" "+ userID,Toast.LENGTH_SHORT).show();
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        }
-
-                        clicked[0] = true;
-                    }else {
-                        Toast.makeText(getApplicationContext(),"უკვე მოწონებულია", Toast.LENGTH_SHORT).show();
+                        thread.start();
+                        Toast.makeText(getBaseContext(),"Sent " + graphiteItem.getMarkerID() +" "+ userID,Toast.LENGTH_SHORT).show();
+                    } catch (IOException e) {
+                        e.printStackTrace();
                     }
-                }
-            });
 
-            commentImageView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Toast.makeText(getApplicationContext(),"comming soon ;) ", Toast.LENGTH_SHORT).show();
+                    clicked[0] = true;
+                }else {
+                    Toast.makeText(getApplicationContext(),"უკვე მოწონებულია", Toast.LENGTH_SHORT).show();
                 }
-            });
+            }
+        });
 
-            shareImageView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Toast.makeText(getApplicationContext(),"share",Toast.LENGTH_SHORT).show();
-                    Intent sendIntent = new Intent();
-                    sendIntent.setAction(Intent.ACTION_SEND);
-                    sendIntent.putExtra(Intent.EXTRA_TEXT, "This is my text to send.");
-                    sendIntent.setType("text/plain");
-                    startActivity(sendIntent);
-                    //share link content
+        commentImageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(getApplicationContext(),"comming soon ;) ", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        shareImageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(getApplicationContext(),"share",Toast.LENGTH_SHORT).show();
+                Intent sendIntent = new Intent();
+                sendIntent.setAction(Intent.ACTION_SEND);
+                sendIntent.putExtra(Intent.EXTRA_TEXT, "This is my text to send.");
+                sendIntent.setType("text/plain");
+                startActivity(sendIntent);
+                //share link content
 //                    ShareLinkContent content = new ShareLinkContent.Builder()
 //                            .setContentUrl(Uri.parse(graphiteItem.getImgURL()))
 //                            .setContentTitle(graphiteItem.getTitle())
 //                            .setContentDescription(graphiteItem.getDescription())
 //                            .build();
-    //                ShareButton shareButton = (ShareButton)findViewById(R.id.fb_share_button);
-    //                shareButton.setShareContent(content);
-                }
-            });
+                //                ShareButton shareButton = (ShareButton)findViewById(R.id.fb_share_button);
+                //                shareButton.setShareContent(content);
+            }
+        });
 
 //            DisplayMetrics dm = new DisplayMetrics();
 //            getWindowManager().getDefaultDisplay().getMetrics(dm);
@@ -303,31 +306,31 @@ public class GraphiteDetailActivity extends ActionBarActivity implements Navigat
         String result = "";
         if( hashtag != "" ) {
 
-                if (checkArray(charArray)) {
-                    res = hashtag.split(",");
-                    for (int k = 0; k < res.length; ++k) {
-                        if (hashMap.containsKey(res[k])) {
-                            result += hashMap.get(res[k]).toString();
+            if (checkArray(charArray)) {
+                res = hashtag.split(",");
+                for (int k = 0; k < res.length; ++k) {
+                    if (hashMap.containsKey(res[k])) {
+                        result += hashMap.get(res[k]).toString();
 //                            descriptionView.setText(hashMap.get(res[k]).toString());
-                        }
-                    }
-//                    descriptionView.setText(result);
-                }else{
-                    if (hashMap.containsKey(hashtag)) {
-//                        descriptionView.setText(hashMap.get(hashtag).toString());
                     }
                 }
+//                    descriptionView.setText(result);
+            }else{
+                if (hashMap.containsKey(hashtag)) {
+//                        descriptionView.setText(hashMap.get(hashtag).toString());
+                }
             }
+        }
 
 //        descriptionView.setText(hashMap.toString());
 
 
 
-            Picasso.with(this)
-                    .load(graphiteItem.getImgURL())
-                    .fit()
-                    .centerCrop()
-                    .into(imgView);
+        Picasso.with(this)
+                .load(graphiteItem.getImgURL())
+                .fit()
+                .centerCrop()
+                .into(imgView);
 
     }
 
@@ -345,6 +348,7 @@ public class GraphiteDetailActivity extends ActionBarActivity implements Navigat
             }
         }
         return false;
+
     }
 
     private HashMap<String, ArrayList<String>> hashMap;
@@ -461,7 +465,6 @@ public class GraphiteDetailActivity extends ActionBarActivity implements Navigat
 
     CallbackManager callbackManager;
     AccessToken accessToken;
-    private static FilterDialogFragment filterDialogFragment;
 
     @Override
     public boolean onNavigationItemSelected(MenuItem menuItem) {
@@ -535,7 +538,6 @@ public class GraphiteDetailActivity extends ActionBarActivity implements Navigat
                 break;
 
             case R.id.navigation_item_3:
-                filterDialogFragment = new FilterDialogFragment();
                 filterDialogFragment.show(getFragmentManager(), "filter_fragment");
                 mDrawerLayout.closeDrawer(Gravity.LEFT);
                 break;

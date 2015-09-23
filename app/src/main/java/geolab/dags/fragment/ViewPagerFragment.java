@@ -9,6 +9,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
+import android.graphics.Rect;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
@@ -19,7 +20,10 @@ import android.support.v7.widget.CardView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AbsListView;
+import android.widget.AbsListView.OnScrollListener;
 import android.widget.AdapterView;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -48,7 +52,7 @@ import geolab.dags.adpaters.ListViewAdapter;
 import geolab.dags.DB.DBHelper;
 
 
-public class ViewPagerFragment extends android.support.v4.app.Fragment {
+public class ViewPagerFragment extends android.support.v4.app.Fragment implements OnScrollListener {
 
     @Override
     public void onActivityCreated(Bundle savedInstanceState){
@@ -71,7 +75,8 @@ public class ViewPagerFragment extends android.support.v4.app.Fragment {
     public DBHelper dbHelper;
 
     private SwipeRefreshLayout mSwipeRefreshLayout;
-
+    private ImageView backgroundImage;
+    private int lastTopValue = 0;
     //onCreateView
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -117,6 +122,15 @@ public class ViewPagerFragment extends android.support.v4.app.Fragment {
             }
         });
 
+
+        graphiteListView = (ListView) rootView.findViewById(R.id.graphiteList);
+//        LayoutInflater inflate = getActivity().getLayoutInflater();
+//        ViewGroup header = (ViewGroup) inflate.inflate(R.layout.custom_header, graphiteListView, false);
+//        graphiteListView.addHeaderView(header, null, false);
+//
+//        backgroundImage = (ImageView) header.findViewById(R.id.listHeaderImage);
+//        graphiteListView.setOnScrollListener(this);
+//
 
         return rootView;
     }
@@ -226,7 +240,7 @@ public class ViewPagerFragment extends android.support.v4.app.Fragment {
 
                         }
 
-                        graphiteListView = (ListView) rootView.findViewById(R.id.graphiteList);
+
                         ListViewAdapter mListViewAdapter = new ListViewAdapter(getActivity(),graphiteItems);
                         graphiteListView.setAdapter(new ListViewAdapter(getActivity(), graphiteItems));
                         mListViewAdapter.notifyDataSetChanged();
@@ -263,5 +277,20 @@ public class ViewPagerFragment extends android.support.v4.app.Fragment {
         f.setArguments(b);
 
         return f;
+    }
+
+    @Override
+    public void onScrollStateChanged(AbsListView absListView, int i) {
+
+    }
+
+    @Override
+    public void onScroll(AbsListView absListView, int i, int i1, int i2) {
+        Rect rect = new Rect();
+        backgroundImage.getLocalVisibleRect(rect);
+        if (lastTopValue != rect.top) {
+            lastTopValue = rect.top;
+            backgroundImage.setY((float) (rect.top / 2.0));
+        }
     }
 }

@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Rect;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
@@ -28,6 +29,7 @@ import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AbsListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -103,6 +105,8 @@ public class MainActivity extends ActionBarActivity implements NavigationView.On
 
         setContentView(R.layout.activity_main);
 
+        //filter dialog
+        filterDialogFragment = new FilterDialogFragment();
 
         context = this;
         activity = this;
@@ -369,9 +373,12 @@ public class MainActivity extends ActionBarActivity implements NavigationView.On
             case R.id.navigation_item_3: // filtracia
 
                 closeDrawerFromUiThread();
+                try {
+                    filterDialogFragment.show(getFragmentManager(), "filter_fragment");
+                    GraphiteDetailActivity.filterDialogFragment.dismiss();
+                }catch (NullPointerException e){
 
-                filterDialogFragment = new FilterDialogFragment();
-                filterDialogFragment.show(getFragmentManager(), "filter_fragment");
+                }
 
 
                 break;
