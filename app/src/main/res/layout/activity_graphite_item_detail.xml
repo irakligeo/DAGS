@@ -243,7 +243,7 @@
                 android:layout_marginBottom="10dp"
                 android:layout_below="@+id/share_text_view_id"
                 android:layout_marginLeft="20dp"
-                android:textColor="#ff0073ff" />
+                android:textColor="#000" />
             <!--<com.facebook.share.widget.ShareButton-->
                 <!--android:layout_below="@+id/createDate"-->
                 <!--android:id="@+id/fb_share_button"-->
@@ -265,7 +265,7 @@
                 android:layout_below="@id/share_text_view_id"
                 android:layout_alignParentBottom="true"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="45dp"
+                android:layout_marginTop="40dp"
                 android:textColor="#000" />
 
         </RelativeLayout>
