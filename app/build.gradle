@@ -39,5 +39,5 @@ dependencies {
     compile 'com.facebook.android:facebook-android-sdk:4.1.0'
     compile 'com.android.support:design:22.2.0'
     compile "org.apache.httpcomponents:httpmime:4.2.3"
-
+    compile 'com.android.support:palette-v7:+'
 }
