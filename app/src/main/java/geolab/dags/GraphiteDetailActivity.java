@@ -1,11 +1,14 @@
 package geolab.dags;
 
+import android.annotation.TargetApi;
+import android.app.ActivityOptions;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Typeface;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.preference.PreferenceManager;
@@ -53,6 +56,7 @@ import org.json.JSONObject;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -141,6 +145,7 @@ public class GraphiteDetailActivity extends ActionBarActivity implements Navigat
         //set back button icon
         toolbar.setNavigationIcon(R.drawable.ic_back);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
             @Override
             public void onClick(View v) {
                 onBackPressed();
@@ -167,9 +172,6 @@ public class GraphiteDetailActivity extends ActionBarActivity implements Navigat
             }
         });
 
-
-//remove home as up indicator
-//        mDrawerToggle.setHomeAsUpIndicator(null);
 
         // init views
         likeImageView = (ImageView) findViewById(R.id.like_icon);
@@ -289,11 +291,6 @@ public class GraphiteDetailActivity extends ActionBarActivity implements Navigat
             }
         });
 
-//            DisplayMetrics dm = new DisplayMetrics();
-//            getWindowManager().getDefaultDisplay().getMetrics(dm);
-//            int width=dm.widthPixels;
-//            int height=dm.heightPixels;
-
 
         hashMap = ViewPagerFragment.hashTagsMap;
 
@@ -337,7 +334,6 @@ public class GraphiteDetailActivity extends ActionBarActivity implements Navigat
             }
         }
 
-//        descriptionView.setText(hashMap.toString());
 
 
 
@@ -347,6 +343,15 @@ public class GraphiteDetailActivity extends ActionBarActivity implements Navigat
                 .centerCrop()
                 .into(imgView);
 
+    }
+
+    @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
+    @Override
+    public void onBackPressed(){
+        Intent intent = new Intent(GraphiteDetailActivity.this, MainActivity.class);
+
+        Bundle bundle = ActivityOptions.makeCustomAnimation(getApplicationContext(), R.anim.slide_out_up, R.anim.slide_in_up).toBundle();
+        startActivity(intent, bundle);
     }
 
     private String LoadPreferences(){
