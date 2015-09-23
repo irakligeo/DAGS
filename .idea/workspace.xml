@@ -100,13 +100,25 @@
       </file>
       <file leaf-file-name="activity_graphite_item_detail.xml" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_graphite_item_detail.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="1.2988827">
-              <caret line="58" column="45" selection-start-line="58" selection-start-column="45" selection-end-line="58" selection-end-column="45" />
-              <folding />
+          <provider editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="33" column="43" selection-start-line="33" selection-start-column="43" selection-end-line="33" selection-end-column="43" />
+              <folding>
+                <element signature="e#2583#2601#0" expanded="true" />
+                <element signature="e#3020#3036#0" expanded="true" />
+                <element signature="e#3622#3644#0" expanded="true" />
+                <element signature="e#4243#4258#0" expanded="true" />
+                <element signature="e#4960#4985#0" expanded="true" />
+                <element signature="e#5662#5680#0" expanded="true" />
+                <element signature="e#6543#6563#0" expanded="true" />
+                <element signature="n#LinearLayout#0;n#RelativeLayout#0;n#android.support.v7.widget.CardView#0;n#ScrollView#0;n#RelativeLayout#0;n#android.support.v4.widget.DrawerLayout#0;n#!!top" expanded="false" />
+                <element signature="e#8330#8347#0" expanded="true" />
+                <element signature="e#8993#9021#0" expanded="true" />
+                <element signature="e#11793#11821#0" expanded="true" />
+              </folding>
             </state>
           </provider>
-          <provider editor-type-id="android-designer">
+          <provider selected="true" editor-type-id="android-designer">
             <state />
           </provider>
         </entry>
@@ -1790,11 +1802,11 @@
         <option value="$PROJECT_DIR$/app/src/main/java/geolab/dags/custom_DialogFragments/FilterDialogFragment.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/geolab/dags/MainActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/custom_header.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_graphite_item_detail.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/custom_info_fragment.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/graphite_cardview_layout.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/values/colors.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/geolab/dags/GraphiteDetailActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_graphite_item_detail.xml" />
       </list>
     </option>
   </component>
@@ -2906,13 +2918,25 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_graphite_item_detail.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.2988827">
-          <caret line="58" column="45" selection-start-line="58" selection-start-column="45" selection-end-line="58" selection-end-column="45" />
-          <folding />
+      <provider editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="33" column="43" selection-start-line="33" selection-start-column="43" selection-end-line="33" selection-end-column="43" />
+          <folding>
+            <element signature="e#2583#2601#0" expanded="true" />
+            <element signature="e#3020#3036#0" expanded="true" />
+            <element signature="e#3622#3644#0" expanded="true" />
+            <element signature="e#4243#4258#0" expanded="true" />
+            <element signature="e#4960#4985#0" expanded="true" />
+            <element signature="e#5662#5680#0" expanded="true" />
+            <element signature="e#6543#6563#0" expanded="true" />
+            <element signature="n#LinearLayout#0;n#RelativeLayout#0;n#android.support.v7.widget.CardView#0;n#ScrollView#0;n#RelativeLayout#0;n#android.support.v4.widget.DrawerLayout#0;n#!!top" expanded="false" />
+            <element signature="e#8330#8347#0" expanded="true" />
+            <element signature="e#8993#9021#0" expanded="true" />
+            <element signature="e#11793#11821#0" expanded="true" />
+          </folding>
         </state>
       </provider>
-      <provider editor-type-id="android-designer">
+      <provider selected="true" editor-type-id="android-designer">
         <state />
       </provider>
     </entry>

@@ -7,12 +7,10 @@
     android:fitsSystemWindows="true">
 
 
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<RelativeLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="geolab.dags.GraphiteDetailActivity"
-    android:background="#fff">
+    android:background="#ddd">
 
     <include
         layout="@layout/toolbar"
@@ -24,276 +22,250 @@
         android:layout_width="fill_parent"
         android:orientation="vertical"
         android:layout_below="@+id/toolbar"
-        android:layout_height="fill_parent"
+        android:layout_height="wrap_content"
         android:id="@+id/scrollView"
         android:background="#ffbbbbbb">
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/RL">
-
-            <!-- image title text view-->
-            <TextView
-                android:id="@+id/imgTitle"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:textSize="25sp"
-                android:text="@string/imgTitle"
-                android:layout_marginBottom="5dp"
-                android:textColor="#800080"
-                android:layout_alignParentEnd="false"
-                android:layout_centerHorizontal="true"
-                android:gravity="center_horizontal"
-                android:paddingBottom="10dp"
-                android:paddingTop="10dp"
-                android:textStyle="bold" />
 
 
 
             <android.support.v7.widget.CardView
-
                 xmlns:card_view="http://schemas.android.com/apk/res-auto"
                 android:id="@+id/cardview"
-                card_view:cardElevation="0dp"
+                card_view:cardElevation="10dp"
                 android:layout_width="match_parent"
-                android:layout_below="@+id/author"
                 card_view:cardCornerRadius="5dp"
                 android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:foreground="?android:attr/selectableItemBackground"
-                android:layout_margin="10dp">
+                android:foreground="?android:attr/selectableItemBackground">
 
-            <!-- graphite image view-->
-            <ImageView
-                android:layout_width="fill_parent"
-                android:layout_height="290dp"
-                android:id="@+id/peaceOfArtImg"
-                android:background="@drawable/background1"
-                android:layout_below="@+id/author"
-                android:scaleType="fitStart"
-                android:adjustViewBounds="true"
-                android:layout_centerHorizontal="true" />
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <!-- graphite image view-->
+                        <ImageView
+                            android:id="@+id/peaceOfArtImg"
+                            android:layout_width="fill_parent"
+                            android:layout_height="290dp"
+                            android:background="@drawable/background1"
+                            android:scaleType="fitStart"
+                            android:adjustViewBounds="true"
+                            android:layout_centerHorizontal="true" />
+
+                        <!-- image title text view-->
+                        <TextView
+                            android:id="@+id/imgTitle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/customViewLinear"
+                            android:textSize="25sp"
+                            android:paddingLeft="20dp"
+                            android:paddingTop="10dp"
+                            android:paddingRight="20dp"
+                            android:text="@string/imgTitle"
+                            android:textColor="#800080"
+                            android:textStyle="bold" />
+
+                        <!-- author textview-->
+                        <TextView
+                            android:id="@+id/author"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/author"
+                            android:textSize="13sp"
+                            android:textColor="#000"
+                            android:layout_alignBaseline="@+id/hashTagId"
+                            android:layout_alignBottom="@+id/hashTagId"
+                            android:layout_alignLeft="@+id/createDate"
+                            android:layout_alignStart="@+id/createDate" />
+
+
+                        <!-- likes number-->
+                        <TextView
+                            android:id="@+id/likes_countTextView"
+                            android:text="@string/likes_number"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/peaceOfArtImg"
+                            android:textSize="12sp"
+                            android:layout_marginLeft="30dp"
+                            android:layout_marginTop="10dp"
+                            android:textColor="#000" />
+
+                        <!-- like text-->
+                        <TextView
+                            android:id="@+id/likes"
+                            android:text="@string/likes"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/peaceOfArtImg"
+                            android:layout_toRightOf="@+id/likes_countTextView"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginLeft="8dp"
+                            android:textSize="12sp"
+                            android:textColor="#000" />
+
+                        <!-- comments number-->
+                        <TextView
+                            android:id="@+id/comments_numberTextView"
+                            android:text="@string/comments_number"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/peaceOfArtImg"
+                            android:textSize="12sp"
+                            android:layout_marginTop="10dp"
+                            android:layout_toEndOf="@+id/likes"
+                            android:layout_marginLeft="15dp"
+                            android:textColor="#000" />
+
+                        <!-- comments text-->
+                        <TextView
+                            android:id="@+id/commentsTextViw"
+                            android:text="@string/comments"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignTop="@+id/comments_numberTextView"
+                            android:layout_toRightOf="@+id/comments_numberTextView"
+                            android:layout_toEndOf="@+id/comments_numberTextView"
+                            android:layout_marginLeft="8dp"
+                            android:textSize="12sp"
+                            android:textColor="#000" />
+
+                        <!-- upload time text view-->
+                        <TextView
+                            android:id="@+id/createDate"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/createDate"
+                            android:textIsSelectable="false"
+                            android:textSize="13sp"
+                            android:textColor="#000"
+                            android:layout_above="@+id/customViewLinear"
+                            android:layout_alignParentRight="false"
+                            android:layout_alignParentEnd="true" />
+
+                        <!-- line custom view-->
+                        <LinearLayout
+                            android:id="@+id/customViewLinear"
+                            android:paddingLeft="50dp"
+                            android:paddingRight="50dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:divider="@drawable/abc_list_divider_mtrl_alpha"
+                            android:layout_below="@+id/likes"
+                            android:layout_centerHorizontal="true">
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="1dp"
+                                android:padding="20dp"
+                                android:background="#dddddd"
+                                android:layout_below="@+id/likes"
+                                android:layout_alignParentStart="true"
+                                android:layout_marginTop="10dp" />
+
+                        </LinearLayout>
+
+
+                        <TextView
+                            android:id="@+id/hashTagId"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/hashTag"
+                            android:textSize="17sp"
+                            android:layout_alignStart="@+id/little_description"
+                            android:layout_marginBottom="5dp"
+                            android:layout_below="@+id/imgTitle"
+                            android:layout_marginLeft="20dp"
+                            android:textColor="#000" />
+
+                        <TextView
+                            android:id="@+id/little_description"
+                            android:layout_width="wrap_content"
+                            android:layout_height="fill_parent"
+                            android:text="@string/little_description"
+                            android:paddingLeft="20dp"
+                            android:paddingRight="20dp"
+                            android:layout_below="@id/hashTagId"
+                            android:layout_centerHorizontal="true"
+                            android:layout_marginTop="5dp"
+                            android:textColor="#000"
+                            android:gravity="bottom"
+                            android:typeface="serif" />
+
+                    </RelativeLayout>
+
 
             </android.support.v7.widget.CardView>
 
-            <!-- author textview-->
-            <TextView
-                android:id="@+id/author"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/author"
-                android:textSize="13sp"
-                android:layout_below="@+id/imgTitle"
-                android:layout_alignStart="@+id/cardview"
-                android:layout_marginBottom="5dp"
-                android:textColor="#000" />
-
-            <!-- upload time text view-->
-            <TextView
-                android:id="@+id/createDate"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/createDate"
-                android:layout_alignRight="@+id/cardview"
-                android:layout_alignEnd="@+id/cardview"
-                android:textIsSelectable="false"
-                android:layout_below="@+id/imgTitle"
-                android:textSize="13sp"
-                android:layout_marginBottom="5dp"
-                android:textColor="#000" />
-
-
-
-
-            <!-- likes number-->
-            <TextView
-                android:id="@+id/likes_countTextView"
-                android:text="@string/likes_number"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/cardview"
-                android:textSize="12sp"
-                android:layout_alignParentStart="true"
-                android:layout_marginLeft="30dp"
-                android:layout_marginTop="10dp"
-                android:textColor="#000" />
-
-            <!-- like text-->
-            <TextView
-                android:id="@+id/likes"
-                android:text="@string/likes"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/cardview"
-                android:layout_toRightOf="@+id/likes_countTextView"
-                android:layout_marginTop="10dp"
-                android:layout_marginLeft="8dp"
-                android:textSize="12sp"
-                android:textColor="#000" />
-
-            <!-- comments number-->
-            <TextView
-                android:id="@+id/comments_numberTextView"
-                android:text="@string/comments_number"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="12sp"
-                android:layout_above="@+id/customViewLinear"
-                android:layout_toRightOf="@+id/likes"
-                android:layout_toEndOf="@+id/likes"
-                android:layout_marginLeft="15dp"
-                android:textColor="#000" />
-
-            <!-- comments text-->
-            <TextView
-                android:id="@+id/commentsTextViw"
-                android:text="@string/comments"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignTop="@+id/comments_numberTextView"
-                android:layout_toRightOf="@+id/comments_numberTextView"
-                android:layout_toEndOf="@+id/comments_numberTextView"
-                android:layout_marginLeft="8dp"
-                android:textSize="12sp"
-                android:textColor="#000" />
-
-
-            <!-- line custom view-->
-            <LinearLayout
-                android:id="@+id/customViewLinear"
-                android:paddingLeft="50dp"
-                android:paddingRight="50dp"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:divider="@drawable/abc_list_divider_mtrl_alpha"
-                android:layout_below="@+id/likes"
-                android:layout_centerHorizontal="true">
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:padding="20dp"
-                    android:background="#dddddd"
-                    android:layout_below="@+id/likes"
-                    android:layout_alignParentStart="true"
-                    android:layout_marginTop="10dp" />
-
-            </LinearLayout>
-
-
-            <!-- like imageView-->
-            <ImageView
-                android:id="@+id/like_icon"
-                android:layout_width="28dp"
-                android:src="@drawable/like_icon"
-                android:layout_height="28dp"
-                android:layout_below="@+id/customViewLinear"
-                android:layout_marginTop="10dp"
-                android:layout_alignParentStart="true"
-                android:layout_marginLeft="25dp" />
-
-            <!-- like imageView text-->
-            <TextView
-                android:id="@+id/like_Text_View"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="like"
-                android:textSize="17sp"
-                android:layout_marginTop="11dp"
-                android:layout_toRightOf="@+id/like_icon"
-                android:layout_below="@+id/customViewLinear"
-                android:layout_marginLeft="4dp"
-                android:textColor="#000" />
-
-            <ImageView
-                android:id="@+id/comments_icon"
-                android:layout_width="28dp"
-                android:src="@drawable/comments_icon"
-                android:layout_height="28dp"
-                android:layout_marginTop="10dp"
-                android:layout_below="@+id/customViewLinear"
-                android:layout_toRightOf="@+id/like_Text_View"
-                android:layout_toEndOf="@+id/customViewLinear"
-                android:layout_marginLeft="20dp" />
-
-            <TextView
-                android:id="@+id/comments_text_view_id"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="comments"
-                android:textSize="17sp"
-                android:layout_marginTop="10dp"
-                android:layout_toRightOf="@+id/comments_icon"
-                android:layout_below="@+id/customViewLinear"
-                android:layout_marginLeft="4dp"
-                android:textColor="#000" />
-
-            <ImageView
-                android:id="@+id/share_icon"
-                android:layout_width="28dp"
-                android:src="@drawable/share_icon"
-                android:layout_height="28dp"
-                android:layout_marginTop="10dp"
-                android:layout_below="@+id/customViewLinear"
-                android:layout_toEndOf="@+id/comments_text_view_id"
-                android:layout_marginLeft="20dp" />
-
-            <TextView
-                android:id="@+id/share_text_view_id"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/share_text_view_id"
-                android:textSize="17sp"
-                android:layout_marginTop="10dp"
-                android:layout_toEndOf="@+id/share_icon"
-                android:layout_below="@+id/customViewLinear"
-                android:layout_marginLeft="4dp"
-                android:textColor="#000" />
-
-            <TextView
-                android:id="@+id/hashTagId"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="hashTag"
-                android:textSize="17sp"
-                android:layout_alignStart="@+id/little_description"
-                android:layout_marginTop="15dp"
-                android:layout_marginBottom="10dp"
-                android:layout_below="@+id/share_text_view_id"
-                android:layout_marginLeft="20dp"
-                android:textColor="#000" />
-            <!--<com.facebook.share.widget.ShareButton-->
-                <!--android:layout_below="@+id/createDate"-->
-                <!--android:id="@+id/fb_share_button"-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:gravity="right"-->
-                <!--android:layout_alignRight="@+id/createDate"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:text="share"-->
-                <!--android:visibility="gone"/>-->
-
-            <!-- description -->
-            <TextView
-                android:id="@+id/little_description"
-                android:layout_width="wrap_content"
-                android:layout_height="fill_parent"
-                android:text="@string/little_description"
-                android:paddingLeft="20dp"
-                android:paddingRight="20dp"
-                android:layout_below="@id/share_text_view_id"
-                android:layout_alignParentBottom="true"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="40dp"
-                android:textColor="#000"
-                android:gravity="bottom"
-                android:typeface="serif"
-                android:elevation="15dp" />
-
-        </RelativeLayout>
 
         </ScrollView>
+    <!-- like imageView-->
+    <ImageView
+        android:id="@+id/like_icon"
+        android:layout_width="28dp"
+        android:src="@drawable/like_icon"
+        android:layout_height="28dp"
+        android:layout_marginTop="10dp"
+        android:layout_below="@+id/scrollView"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="25dp" />
 
+    <!-- like imageView text-->
+    <TextView
+        android:id="@+id/like_Text_View"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="like"
+        android:textSize="17sp"
+        android:layout_below="@+id/scrollView"
+        android:layout_marginTop="11dp"
+        android:layout_toRightOf="@+id/like_icon"
+        android:layout_marginLeft="4dp"
+        android:textColor="#000" />
+
+    <ImageView
+        android:id="@+id/comments_icon"
+        android:layout_width="28dp"
+        android:src="@drawable/comments_icon"
+        android:layout_height="28dp"
+        android:layout_below="@+id/scrollView"
+        android:layout_marginTop="10dp"
+        android:layout_toRightOf="@+id/like_Text_View"
+        android:layout_marginLeft="20dp" />
+
+    <TextView
+        android:id="@+id/comments_text_view_id"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="comments"
+        android:textSize="17sp"
+        android:layout_marginTop="10dp"
+        android:layout_below="@+id/scrollView"
+        android:layout_toRightOf="@+id/comments_icon"
+        android:layout_marginLeft="4dp"
+        android:textColor="#000" />
+
+    <ImageView
+        android:id="@+id/share_icon"
+        android:layout_width="28dp"
+        android:src="@drawable/share_icon"
+        android:layout_height="28dp"
+        android:layout_marginTop="10dp"
+        android:layout_below="@+id/scrollView"
+        android:layout_toEndOf="@+id/comments_text_view_id"
+        android:layout_marginLeft="20dp" />
+
+    <TextView
+        android:id="@+id/share_text_view_id"
+        android:layout_width="wrap_content"
+        android:layout_below="@+id/scrollView"
+        android:layout_height="wrap_content"
+        android:text="@string/share_text_view_id"
+        android:textSize="17sp"
+        android:layout_marginTop="10dp"
+        android:layout_toEndOf="@+id/share_icon"
+        android:layout_marginLeft="4dp"
+        android:textColor="#000" />
 
 </RelativeLayout>
 

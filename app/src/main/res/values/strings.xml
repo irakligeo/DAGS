@@ -63,6 +63,7 @@
     <string name="comments">comments</string>
     <string name="imgLinks">imgLinks</string>
     <string name="share_text_view_id">share</string>
+    <string name="hashTag">hashTag</string>
 
     <!-- spinner data (it's temporary)-->
     <string-array name="graphite_categories">
