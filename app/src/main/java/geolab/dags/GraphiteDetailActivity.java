@@ -215,7 +215,7 @@ public class GraphiteDetailActivity extends ActionBarActivity implements Navigat
 
                             // 3. build jsonObject
                             JSONObject jsonObject = new JSONObject();
-                            
+
 
                             // 4. convert JSONObject to JSON to String
                             json = jsonObject.toString();

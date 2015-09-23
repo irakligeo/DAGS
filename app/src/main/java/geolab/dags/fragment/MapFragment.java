@@ -236,9 +236,14 @@ public class MapFragment extends android.support.v4.app.Fragment implements OnMa
 
 //            likesCountTextView.setText(graphiteItemModel.getLikesCount());
 
+            String[] createDate = graphiteItemModel.getCreateDate().split(" ");
+
+
             imgTitleView.setText(graphiteItemModel.getTitle());
             imgDescriptionView.setText(graphiteItemModel.getDescription());
-            imgUploadDateTimeView.setText(graphiteItemModel.getCreateDate());
+            imgUploadDateTimeView.setText(createDate[0]);
+
+
             authorTextView.setText(graphiteItemModel.getAuthor());
 
             final Animation fadeIn = new AlphaAnimation(0.0f , 1.0f ) ;

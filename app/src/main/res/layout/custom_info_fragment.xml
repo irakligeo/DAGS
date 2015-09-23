@@ -63,7 +63,7 @@
                 android:layout_below="@+id/imgTitle"
                 android:layout_alignStart="@+id/peaceOfArtImg"
                 android:layout_marginBottom="5dp"
-                android:textColor="#000" />
+                android:textColor="#ff197fa0" />
 
             <!-- upload time text view-->
             <TextView
@@ -74,10 +74,10 @@
                 android:layout_alignRight="@+id/peaceOfArtImg"
                 android:layout_alignEnd="@+id/peaceOfArtImg"
                 android:textIsSelectable="false"
-                android:layout_below="@+id/imgTitle"
+                android:layout_below="@+id/author"
                 android:textSize="13sp"
                 android:layout_marginBottom="5dp"
-                android:textColor="#000" />
+                android:textColor="#ff1de0da" />
 
 
 
