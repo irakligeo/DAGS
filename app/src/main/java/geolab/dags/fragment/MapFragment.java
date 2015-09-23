@@ -95,6 +95,7 @@ public class MapFragment extends android.support.v4.app.Fragment implements OnMa
 
     //init map
     public static void initMap(){
+        coordsList = new ArrayList<>();
         coordsList = ViewPagerFragment.graphiteItems;
 
         // create marker

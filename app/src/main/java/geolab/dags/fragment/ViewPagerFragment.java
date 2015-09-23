@@ -162,9 +162,8 @@ public class ViewPagerFragment extends android.support.v4.app.Fragment implement
         if(requestQueue == null){
             requestQueue = new Volley().newRequestQueue(getActivity());
         }
-        if(graphiteItems == null){
             graphiteItems = new ArrayList<>();
-        }
+
         if(hashTagsMap == null){
             hashTagsMap = new HashMap<>();
         }
@@ -181,8 +180,8 @@ public class ViewPagerFragment extends android.support.v4.app.Fragment implement
                     //check if the server had some changes
 //                    if(MyResponseParser.oldStatusCode != MyResponseParser.statusCode ) {
 
-//                        db.execSQL("DELETE FROM " + TableGraphite.TABLE_NAME);
-//                        db.execSQL("VACUUM");
+                        db.execSQL("DELETE FROM " + TableGraphite.TABLE_NAME);
+                        db.execSQL("VACUUM");
 
                         //insert graphiteItems arrayList into database
                         for (int i = 0; i < graphiteItems.size(); ++i) {
@@ -245,6 +244,7 @@ public class ViewPagerFragment extends android.support.v4.app.Fragment implement
                         graphiteListView.setAdapter(new ListViewAdapter(getActivity(), graphiteItems));
                         mListViewAdapter.notifyDataSetChanged();
 
+                    Toast.makeText(getActivity(),"opa",Toast.LENGTH_LONG).show();
                         //dismiss progressDialog after loading data
                         progressDialog.dismiss();
                         mSwipeRefreshLayout.setRefreshing(false);

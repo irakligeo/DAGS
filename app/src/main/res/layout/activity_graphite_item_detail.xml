@@ -36,7 +36,7 @@
                             android:id="@+id/peaceOfArtImg"
                             android:layout_width="fill_parent"
                             android:layout_height="290dp"
-                            android:background="@drawable/background1"
+                            android:background="@drawable/background2"
                             android:scaleType="fitStart"
                             android:adjustViewBounds="true"
                             android:layout_centerHorizontal="true" />

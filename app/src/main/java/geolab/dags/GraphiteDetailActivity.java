@@ -304,7 +304,7 @@ public class GraphiteDetailActivity extends ActionBarActivity implements Navigat
             tmplist = entry.getValue();
             System.out.println(key +" --- " +tmplist.toString());
         }
-        descriptionView.setText(keys);
+//        descriptionView.setText(keys);
 
         for(int l = 0; l < tmplist.size(); ++l){
 
@@ -356,7 +356,7 @@ public class GraphiteDetailActivity extends ActionBarActivity implements Navigat
     private String LoadPreferences(){
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
         String  data = sharedPreferences.getString("user_id", "user id") ;
-        Toast.makeText(this,data, Toast.LENGTH_LONG).show();
+//        Toast.makeText(this,data, Toast.LENGTH_LONG).show();
         return data;
     }
 
@@ -373,6 +373,9 @@ public class GraphiteDetailActivity extends ActionBarActivity implements Navigat
     private HashMap<String, ArrayList<String>> hashMap;
 
     private ActionBarDrawerToggle mDrawerToggle;
+
+
+
 
     //starting camera code
 
