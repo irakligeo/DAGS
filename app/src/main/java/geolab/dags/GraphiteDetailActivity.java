@@ -175,7 +175,7 @@ public class GraphiteDetailActivity extends ActionBarActivity implements Navigat
 
             Typeface font = Typeface.createFromAsset(getAssets(), "Chantelli_Antiqua.ttf");
             likeTextView.setTypeface(font);
-            imgTitle.setTypeface(font);
+//            imgTitle.setTypeface(font);
             descriptionView.setTypeface(font);
             authorView.setTypeface(font);
             authorView.setTypeface(font);

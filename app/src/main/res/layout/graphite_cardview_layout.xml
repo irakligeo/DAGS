@@ -1,54 +1,58 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:cardview="http://schemas.android.com/tools"
     android:orientation="horizontal"
-    android:layout_width="match_parent"
+    android:layout_width="fill_parent"
     android:layout_height="match_parent">
 
 
     <android.support.v7.widget.CardView
         xmlns:card_view="http://schemas.android.com/apk/res-auto"
         android:id="@+id/cardview"
-        card_view:cardElevation="0dp"
-        android:layout_marginBottom="5dp"
-        android:layout_width="wrap_content"
-        card_view:cardCornerRadius="5dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        card_view:cardElevation="6dp"
+
+        card_view:cardCornerRadius="3dp"
+        card_view:cardUseCompatPadding="true"
         android:foreground="?android:attr/selectableItemBackground">
 
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingLeft="16dp"
-            android:paddingRight="16dp"
-            android:paddingTop="5dp">
+            android:layout_height="wrap_content">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/imgTitle"
-                android:layout_centerHorizontal="true"
-                android:textColor="@color/black"
-                android:textSize="30sp"
-                android:text="jemo" />
+
 
             <ImageView
                 android:id="@+id/peaceOfArtImg"
                 android:layout_width="fill_parent"
                 android:layout_height="200dp"
-                android:layout_below="@+id/imgTitle"
                 android:background="@drawable/graphite"
                 android:contentDescription="" />
+
+            <TextView
+                android:id="@+id/imgTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/peaceOfArtImg"
+                android:textColor="@color/black"
+                android:textSize="30sp"
+                android:text="jemo"
+                android:gravity="left"
+                android:layout_marginLeft="20dp"
+                android:typeface="serif" />
 
             <TextView
                 android:id="@+id/author"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/peaceOfArtImg"
-                android:layout_marginTop="20dp"
+                android:layout_below="@+id/imgTitle"
                 android:textColor="@color/black"
-                android:text="author" />
+                android:text="author"
+                android:textSize="12sp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp" />
 
             <TextView
                 android:id="@+id/uploadDateTime"
@@ -57,9 +61,12 @@
                 android:text="upload DateTime"
                 android:gravity="right"
                 android:textColor="@color/black"
-                android:layout_alignTop="@+id/author"
+                android:layout_below="@+id/imgTitle"
                 android:layout_alignParentRight="true"
-                android:layout_alignParentEnd="true" />
+                android:layout_alignParentEnd="false"
+                android:textSize="12sp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="10dp" />
 
             <TextView
                 android:id="@+id/little_description"
@@ -69,7 +76,8 @@
                 android:layout_marginTop="10dp"
                 android:textColor="@color/black"
                 android:layout_marginBottom="10dp"
-                android:text="little description" />
+                android:text="little description"
+                android:layout_marginLeft="15dp" />
 
 
         </RelativeLayout>
@@ -78,4 +86,4 @@
 
 
 
-</FrameLayout>
+</RelativeLayout>
