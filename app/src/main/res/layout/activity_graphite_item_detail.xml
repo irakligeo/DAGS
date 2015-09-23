@@ -69,7 +69,7 @@
                 android:layout_width="fill_parent"
                 android:layout_height="290dp"
                 android:id="@+id/peaceOfArtImg"
-                android:background="@drawable/graphite"
+                android:background="@drawable/background1"
                 android:layout_below="@+id/author"
                 android:scaleType="fitStart"
                 android:adjustViewBounds="true"

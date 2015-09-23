@@ -127,11 +127,13 @@ public class GraphiteDetailActivity extends ActionBarActivity implements Navigat
 
         hashMap = new HashMap<>();
 
-        LayoutInflater inflater  = (LayoutInflater)getApplicationContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View view = inflater.inflate(R.layout.fragment_test,null);
-        mCustomPagerAdapter = new CustomPagerAdapter(this, mResources);
-        final ViewPager mViewPager = (ViewPager) view.findViewById(R.id.pager);
-        mViewPager.setAdapter(mCustomPagerAdapter);
+//        LayoutInflater inflater  = (LayoutInflater)getApplicationContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+//        View view = inflater.inflate(R.layout.fragment_test,null);
+//        mCustomPagerAdapter = new CustomPagerAdapter(this, mResources);
+//        final ViewPager mViewPager = (ViewPager) view.findViewById(R.id.pager);
+//        mViewPager.setAdapter(mCustomPagerAdapter);
+
+
         //Set Toolbar
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -155,6 +157,19 @@ public class GraphiteDetailActivity extends ActionBarActivity implements Navigat
         mDrawerLayout.setDrawerListener(mDrawerToggle);
         mDrawerToggle.syncState();
 
+        mDrawerToggle.setDrawerIndicatorEnabled(false);
+        //set home as up indicator
+        mDrawerToggle.setHomeAsUpIndicator(R.drawable.arrow_left);
+        mDrawerToggle.setToolbarNavigationClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
+            }
+        });
+
+
+//remove home as up indicator
+//        mDrawerToggle.setHomeAsUpIndicator(null);
 
         // init views
         likeImageView = (ImageView) findViewById(R.id.like_icon);
