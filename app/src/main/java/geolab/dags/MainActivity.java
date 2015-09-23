@@ -362,7 +362,6 @@ public class MainActivity extends ActionBarActivity implements NavigationView.On
 
             case R.id.navigation_item_2: // avtorizacia
 //                closeDrawerFromUiThread();
-                Toast.makeText(getApplicationContext(),"navigation_item_2 " +UserID,Toast.LENGTH_SHORT).show();
                 //check if logged
                     loginToFB();
                 break;
@@ -407,10 +406,10 @@ public class MainActivity extends ActionBarActivity implements NavigationView.On
         thread.start();
     }
 
-
+    final boolean[] logged = {false};
     public void loginToFB() {
-        final boolean[] logged = {false};
-        Toast.makeText(getApplicationContext(),"loginToFB() ",Toast.LENGTH_SHORT).show();
+
+//        Toast.makeText(getApplicationContext(),"loginToFB() ",Toast.LENGTH_SHORT).show();
         accessToken = AccessToken.getCurrentAccessToken();
         if (logged[0]) {
             new AlertDialog.Builder(context)
@@ -440,7 +439,8 @@ public class MainActivity extends ActionBarActivity implements NavigationView.On
 
                         @Override
                         public void onSuccess(LoginResult loginResult) {
-                            Toast.makeText(getApplicationContext(), "onSuccess", Toast.LENGTH_SHORT).show();
+                            logged[0] = true;
+                            Toast.makeText(getApplicationContext(), "Success", Toast.LENGTH_SHORT).show();
                             GraphRequest.newMeRequest(loginResult.getAccessToken(), new GraphRequest.GraphJSONObjectCallback() {
                                 @Override
                                 public void onCompleted(JSONObject jsonObject, GraphResponse graphResponse) {
@@ -461,13 +461,11 @@ public class MainActivity extends ActionBarActivity implements NavigationView.On
                                             e.printStackTrace();
                                         } finally {
                                             UserID = user_id;
-                                            Toast.makeText(getApplicationContext(), UserID, Toast.LENGTH_SHORT).show();
                                         }
                                     }
 
                                 }
                             }).executeAsync();
-                            logged[0] = true;
 
                         }
 

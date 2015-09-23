@@ -365,19 +365,10 @@ public class UploadActivity extends ActionBarActivity{
             Log.e(TAG, "Response from server: " + result);
 
             // showing the server response in an alert dialog
-            showAlert(result);
+            showAlert();
 
             super.onPostExecute(result);
 
-//            btnDone.setVisibility(btnDone.VISIBLE);
-//
-//            btnUpload.setVisibility(btnUpload.GONE);
-//            descriptionEditText.setVisibility(descriptionEditText.GONE);
-//            titleEditText.setVisibility(titleEditText.GONE);
-//            titleInputLayout.setVisibility(titleInputLayout.GONE);
-//            descriptionInputLayout.setVisibility(descriptionInputLayout.GONE);
-//            longitude.setVisibility(longitude.GONE);
-//            latitude.setVisibility(latitude.GONE);
         }
 
     }
@@ -385,13 +376,21 @@ public class UploadActivity extends ActionBarActivity{
     /**
      * Method to show alert dialog
      * */
-    private void showAlert(String message) {
+    private void showAlert() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setMessage(message).setTitle("Response from Servers")
+        builder.setMessage("ფოტოს დამატება ").setTitle("Success")
                 .setCancelable(false)
+                .setNegativeButton("NO", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        Intent toMainActivity = new Intent(UploadActivity.this,MainActivity.class);
+                        startActivity(toMainActivity);
+                    }
+                })
                 .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
-                        // do nothing
+                        Intent toUploadActivity = new Intent(UploadActivity.this,UploadFileActivity.class);
+                        startActivity(toUploadActivity);
                     }
                 });
         AlertDialog alert = builder.create();

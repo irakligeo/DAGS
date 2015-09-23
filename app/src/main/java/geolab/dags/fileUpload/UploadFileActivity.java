@@ -43,6 +43,8 @@ public class UploadFileActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_upload_file);
 
+        captureImage();
+
         //burger menu
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);

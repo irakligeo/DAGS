@@ -85,8 +85,6 @@
 
 
 
-
-
             <!-- likes number-->
             <TextView
                 android:id="@+id/likes_countTextView"

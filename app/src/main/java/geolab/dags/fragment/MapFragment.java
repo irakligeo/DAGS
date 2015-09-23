@@ -233,7 +233,7 @@ public class MapFragment extends android.support.v4.app.Fragment implements OnMa
             GraphiteItemModel graphiteItemModel = new GraphiteItemModel();
             graphiteItemModel = bundle.getParcelable("id");
 
-            likesCountTextView.setText(graphiteItemModel.getLikesCount());
+//            likesCountTextView.setText(graphiteItemModel.getLikesCount());
 
             imgTitleView.setText(graphiteItemModel.getTitle());
             imgDescriptionView.setText(graphiteItemModel.getDescription());
