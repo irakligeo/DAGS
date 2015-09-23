@@ -2,7 +2,7 @@ package geolab.dags.DB;
 
 public class TableGraphite {
 
-    public static String TABLE_NAME = "graphiteItem";
+    public static String TABLE_NAME = "graphite";
 
     public static String id = "ID";
     public static String imgTitle = "imgTitle";

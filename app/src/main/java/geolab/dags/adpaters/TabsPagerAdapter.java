@@ -19,11 +19,11 @@ public class TabsPagerAdapter extends FragmentStatePagerAdapter {
             case 2: return MapFragment.newInstance("map");
 //            case 1: return TestFrag.newInstance("testFrag");
         }
-        return new ViewPagerFragment();
+        return new MapFragment();
     }
 
     @Override
     public int getCount() {
-        return 3;
+        return 2;
     }
 }

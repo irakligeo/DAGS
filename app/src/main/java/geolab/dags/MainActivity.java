@@ -55,6 +55,7 @@ import geolab.dags.animation.DepthPageTransformer;
 import geolab.dags.custom_DialogFragments.FilterDialogFragment;
 import geolab.dags.fileUpload.Config;
 import geolab.dags.fileUpload.UploadActivity;
+import geolab.dags.fragment.MapFragment;
 import geolab.dags.fragment.ViewPagerFragment;
 import geolab.dags.slider.SliderActivity;
 
@@ -142,6 +143,7 @@ public class MainActivity extends ActionBarActivity implements NavigationView.On
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
                 viewPager.setCurrentItem(tab.getPosition());
+                MapFragment.initMap();
             }
 
             @Override
@@ -179,22 +181,6 @@ public class MainActivity extends ActionBarActivity implements NavigationView.On
 
         mPagerAdapter = new ScreenSlidePagerAdapter(getSupportFragmentManager());
         mPager.setAdapter(mPagerAdapter);
-
-
-//        try {
-//            PackageInfo info = getPackageManager().getPackageInfo(context.getPackageName(), PackageManager.GET_SIGNATURES);
-//            for (Signature signature : info.signatures) {
-//                MessageDigest md = MessageDigest.getInstance("SHA");
-//                md.update(signature.toByteArray());
-//                Log.d("KeyHash:", "KeyHash:  " + Base64.encodeToString(md.digest(), Base64.DEFAULT));
-//            }
-//        }
-//        catch (PackageManager.NameNotFoundException e) {
-//
-//        }
-//        catch (NoSuchAlgorithmException e) {
-//
-//        }
 
     }
 

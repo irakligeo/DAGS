@@ -9,7 +9,7 @@ import geolab.dags.fragment.MapFragment;
 import geolab.dags.fragment.ViewPagerFragment;
 
 public class ScreenSlidePagerAdapter extends FragmentStatePagerAdapter {
-    private final int NUM_PAGES = 3;
+    private final int NUM_PAGES = 2;
     public ScreenSlidePagerAdapter(FragmentManager fm) {
         super(fm);
     }
@@ -17,10 +17,10 @@ public class ScreenSlidePagerAdapter extends FragmentStatePagerAdapter {
     @Override
     public Fragment getItem(int i) {
         switch (i){
-            case 1: return MapFragment.newInstance("viewPager");
-//                case 1: return TestFrag.newInstance("testFrag");
+            case 2: return MapFragment.newInstance("viewPager");
+            case 1: return ViewPagerFragment.newInstance("testFrag");
         }
-        return new ViewPagerFragment();
+        return new MapFragment();
     }
 
     @Override

@@ -7,6 +7,9 @@ import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.support.design.widget.TabLayout;
+import android.support.v4.view.PagerAdapter;
+import android.support.v4.view.ViewPager;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.CardView;
 import android.view.LayoutInflater;
@@ -47,12 +50,21 @@ public class ViewPagerFragment extends android.support.v4.app.Fragment {
         super.onActivityCreated(savedInstanceState);
     }
 
+    public void onCreate (Bundle savedInstanceState){
+        super.onCreate(savedInstanceState);
+
+        dbHelper = new DBHelper(getActivity());
+        db = dbHelper.getWritableDatabase();
+    }
+
     private ProgressDialog progressDialog;
     private ListView graphiteListView;
     public static View rootView;
     public ArrayList<GraphiteItemModel> favoriteItems;
 
     public static SQLiteDatabase db;
+    public DBHelper dbHelper;
+
     private SwipeRefreshLayout mSwipeRefreshLayout;
 
     //onCreateView
@@ -61,6 +73,8 @@ public class ViewPagerFragment extends android.support.v4.app.Fragment {
                              Bundle savedInstanceState) {
 
         rootView = inflater.inflate(R.layout.fragment_graphite_items_list, container, false);
+
+
 
         //swipe refresh
         mSwipeRefreshLayout = (SwipeRefreshLayout) rootView.findViewById(R.id.swipe_refresh_layout);
@@ -75,10 +89,8 @@ public class ViewPagerFragment extends android.support.v4.app.Fragment {
 
 
 
-
         //Database instance
-        DBHelper dbHelper = new DBHelper(getActivity());
-        db = dbHelper.getWritableDatabase();
+
 
         favoriteItems = new ArrayList<>();
 
@@ -138,13 +150,12 @@ public class ViewPagerFragment extends android.support.v4.app.Fragment {
 
 
 
-
     private ContentValues contentValues;
 
     private String URL = "http://geolab.club/streetart/json/peaceofart/";
     private JsonArrayRequest jsonArrayRequest;
     private RequestQueue requestQueue;
-    public  ArrayList<GraphiteItemModel> graphiteItems;
+    public static ArrayList<GraphiteItemModel> graphiteItems;
 
     String[] splitedHashtag;
     public static HashMap<String,ArrayList<String>> hashTagsMap;
@@ -183,8 +194,8 @@ public class ViewPagerFragment extends android.support.v4.app.Fragment {
                     //check if the server had some changes
 //                    if(MyResponseParser.oldStatusCode != MyResponseParser.statusCode ) {
 
-                        db.execSQL("DELETE FROM " + TableGraphite.TABLE_NAME);
-                        db.execSQL("VACUUM");
+//                        db.execSQL("DELETE FROM " + TableGraphite.TABLE_NAME);
+//                        db.execSQL("VACUUM");
 
                         //insert graphiteItems arrayList into database
                         for (int i = 0; i < graphiteItems.size(); ++i) {
@@ -263,5 +274,16 @@ public class ViewPagerFragment extends android.support.v4.app.Fragment {
             });
         }
         requestQueue.add(jsonArrayRequest);
+    }
+
+    public static ViewPagerFragment newInstance(String text) {
+
+        ViewPagerFragment f = new ViewPagerFragment();
+        Bundle b = new Bundle();
+        b.putString("msg", text);
+
+        f.setArguments(b);
+
+        return f;
     }
 }

@@ -63,43 +63,9 @@ public class MapFragment extends android.support.v4.app.Fragment implements OnMa
         mMarkersHashMap = new HashMap<>();
 
 
-
-        //ArrayList of longitude, latitude, title, imgURL;
-        coordsList = getCoordsFromDB();
-
-        // create marker
-        for( int i = 0; i < coordsList.size(); ++i ) {
-
-            double longitude = coordsList.get(i).getLongitude();
-            double latitude = coordsList.get(i).getLatitude();
-            String title = coordsList.get(i).getTitle();
-
-
-            MarkerOptions marker = new MarkerOptions().position(
-                    new LatLng(latitude, longitude)).title(title);
-
-            // add marker
-            googleMap.addMarker(marker);
-            //insert into hashMap
-            mMarkersHashMap.put(marker.getTitle(), coordsList.get(i));
-            googleMap.setInfoWindowAdapter(new MarkerInfoWindowAdapter());
-        }
-
+        initMap();
+        googleMap.setInfoWindowAdapter(new MarkerInfoWindowAdapter());
         //OnMarkerClickListener
-        try {
-            googleMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
-                @Override
-                public boolean onMarkerClick(com.google.android.gms.maps.model.Marker marker) {
-                    marker.showInfoWindow();
-                    return true;
-                }
-            });
-        }catch (NullPointerException ex){
-            Toast.makeText(getActivity(),ex.getMessage(),Toast.LENGTH_SHORT).show();
-        }
-
-
-
         //on imgClick (googleMap marker Bitmap)
         googleMap.setOnInfoWindowClickListener(new GoogleMap.OnInfoWindowClickListener() {
             @Override
@@ -116,6 +82,35 @@ public class MapFragment extends android.support.v4.app.Fragment implements OnMa
             }
         });
 
+
+
+
+        // Perform any camera updates here
+        return v;
+    }
+
+
+    //init map
+    public static void initMap(){
+        coordsList = ViewPagerFragment.graphiteItems;
+
+        // create marker
+        for( int i = 0; i < coordsList.size(); ++i ) {
+
+            double longitude = coordsList.get(i).getLongitude();
+            double latitude = coordsList.get(i).getLatitude();
+            String title = coordsList.get(i).getTitle();
+
+
+            MarkerOptions marker = new MarkerOptions().position(
+                    new LatLng(latitude, longitude)).title(title);
+
+            // add marker
+            googleMap.addMarker(marker);
+            //insert into hashMap
+            mMarkersHashMap.put(marker.getTitle(), coordsList.get(i));
+
+        }
         try {
             CameraPosition cameraPosition = new CameraPosition.Builder()
                     .target(new LatLng(coordsList.get(0).getLatitude(), coordsList.get(0).getLongitude())).zoom(12).build();
@@ -126,10 +121,7 @@ public class MapFragment extends android.support.v4.app.Fragment implements OnMa
 //            new MapFragment().onCreateView(inflater,container,savedInstanceState);
         }
 
-        // Perform any camera updates here
-        return v;
     }
-
 
     //function gets coordinates and title from database
     public static ArrayList<GraphiteItemModel> getCoordsFromDB(){
@@ -223,10 +215,10 @@ public class MapFragment extends android.support.v4.app.Fragment implements OnMa
 
             View view = inflater.inflate(R.layout.custom_info_fragment,null);
             TextView imgTitleView = (TextView) view.findViewById(R.id.imgTitle);
-            TextView imgDescriptionView = (TextView) view.findViewById(R.id.imgDescription);
-            TextView imgUploadDateTimeView = (TextView) view.findViewById(R.id.uploadDateTime);
+            TextView imgDescriptionView = (TextView) view.findViewById(R.id.little_description);
+            TextView imgUploadDateTimeView = (TextView) view.findViewById(R.id.createDate);
             TextView authorTextView = (TextView) view.findViewById(R.id.author);
-            ImageView imgView = (ImageView) view.findViewById(R.id.imgView);
+            ImageView imgView = (ImageView) view.findViewById(R.id.peaceOfArtImg);
 
             Bundle bundle = this.getArguments();
             GraphiteItemModel graphiteItemModel = new GraphiteItemModel();
