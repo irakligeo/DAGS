@@ -28,9 +28,6 @@
       </layout>
     </layouts>
   </component>
-  <component name="AndroidLogFilters">
-    <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
-  </component>
   <component name="ChangeListManager">
     <list default="true" id="d5737cb4-1e3a-4d01-99bf-14f7089776aa" name="Default" comment="" />
     <ignored path="DAGS.iws" />
@@ -88,25 +85,25 @@
       </file>
       <file leaf-file-name="activity_graphite_item_detail.xml" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_graphite_item_detail.xml">
-          <provider editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="38" column="37" selection-start-line="38" selection-start-column="37" selection-end-line="38" selection-end-column="37" />
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-0.13128492">
+              <caret line="206" column="22" selection-start-line="206" selection-start-column="22" selection-end-line="206" selection-end-column="22" />
               <folding>
-                <element signature="e#2630#2648#0" expanded="true" />
-                <element signature="e#3067#3083#0" expanded="true" />
-                <element signature="e#3721#3743#0" expanded="true" />
-                <element signature="e#4342#4357#0" expanded="true" />
-                <element signature="e#5059#5084#0" expanded="true" />
-                <element signature="e#5761#5779#0" expanded="true" />
-                <element signature="e#6642#6662#0" expanded="true" />
-                <element signature="n#LinearLayout#0;n#RelativeLayout#0;n#android.support.v7.widget.CardView#0;n#ScrollView#0;n#RelativeLayout#0;n#android.support.v4.widget.DrawerLayout#0;n#!!top" expanded="false" />
-                <element signature="e#8429#8446#0" expanded="true" />
-                <element signature="e#9093#9121#0" expanded="true" />
-                <element signature="e#12044#12072#0" expanded="true" />
+                <element signature="e#2205#2223#0" expanded="true" />
+                <element signature="e#2642#2658#0" expanded="true" />
+                <element signature="e#3296#3318#0" expanded="true" />
+                <element signature="e#3917#3932#0" expanded="true" />
+                <element signature="e#4634#4659#0" expanded="true" />
+                <element signature="e#5336#5354#0" expanded="true" />
+                <element signature="e#6217#6237#0" expanded="true" />
+                <element signature="n#LinearLayout#0;n#RelativeLayout#0;n#ScrollView#0;n#RelativeLayout#0;n#android.support.v4.widget.DrawerLayout#0;n#!!top" expanded="false" />
+                <element signature="e#8004#8021#0" expanded="true" />
+                <element signature="e#8668#8696#0" expanded="true" />
+                <element signature="e#11487#11515#0" expanded="true" />
               </folding>
             </state>
           </provider>
-          <provider selected="true" editor-type-id="android-designer">
+          <provider editor-type-id="android-designer">
             <state />
           </provider>
         </entry>
@@ -2311,7 +2308,7 @@
       <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32847896" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Android" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32847896" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32847896" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -2539,11 +2536,11 @@
           <caret line="217" column="0" selection-start-line="217" selection-start-column="0" selection-end-line="217" selection-end-column="0" />
           <folding>
             <element signature="e#4498#4625#0" expanded="false" />
-            <element signature="e#5227#5431#0" expanded="true" />
-            <element signature="e#5430#5431#0" expanded="true" />
-            <element signature="e#5778#5792#0" expanded="true" />
-            <element signature="e#6101#6253#0" expanded="true" />
-            <element signature="e#6252#6253#0" expanded="true" />
+            <element signature="e#5227#5431#0" expanded="false" />
+            <element signature="e#5430#5431#0" expanded="false" />
+            <element signature="e#5778#5792#0" expanded="false" />
+            <element signature="e#6101#6253#0" expanded="false" />
+            <element signature="e#6252#6253#0" expanded="false" />
             <element signature="method#onSaveInstanceState#0;class#GraphiteDetailActivity#0" expanded="false" />
             <element signature="method#onRestoreInstanceState#0;class#GraphiteDetailActivity#0" expanded="false" />
             <element signature="method#getOutputMediaFile#0;class#GraphiteDetailActivity#0" expanded="false" />
@@ -2875,11 +2872,11 @@
           <caret line="350" column="30" selection-start-line="350" selection-start-column="30" selection-end-line="350" selection-end-column="30" />
           <folding>
             <element signature="e#4498#4625#0" expanded="false" />
-            <element signature="e#5227#5431#0" expanded="true" />
-            <element signature="e#5430#5431#0" expanded="true" />
-            <element signature="e#5778#5792#0" expanded="true" />
-            <element signature="e#6101#6253#0" expanded="true" />
-            <element signature="e#6252#6253#0" expanded="true" />
+            <element signature="e#5227#5431#0" expanded="false" />
+            <element signature="e#5430#5431#0" expanded="false" />
+            <element signature="e#5778#5792#0" expanded="false" />
+            <element signature="e#6101#6253#0" expanded="false" />
+            <element signature="e#6252#6253#0" expanded="false" />
             <element signature="method#onSaveInstanceState#0;class#GraphiteDetailActivity#0" expanded="false" />
             <element signature="method#onRestoreInstanceState#0;class#GraphiteDetailActivity#0" expanded="false" />
             <element signature="method#getOutputMediaFile#0;class#GraphiteDetailActivity#0" expanded="false" />
@@ -2992,25 +2989,25 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_graphite_item_detail.xml">
-      <provider editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="38" column="37" selection-start-line="38" selection-start-column="37" selection-end-line="38" selection-end-column="37" />
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.13128492">
+          <caret line="206" column="22" selection-start-line="206" selection-start-column="22" selection-end-line="206" selection-end-column="22" />
           <folding>
-            <element signature="e#2630#2648#0" expanded="true" />
-            <element signature="e#3067#3083#0" expanded="true" />
-            <element signature="e#3721#3743#0" expanded="true" />
-            <element signature="e#4342#4357#0" expanded="true" />
-            <element signature="e#5059#5084#0" expanded="true" />
-            <element signature="e#5761#5779#0" expanded="true" />
-            <element signature="e#6642#6662#0" expanded="true" />
-            <element signature="n#LinearLayout#0;n#RelativeLayout#0;n#android.support.v7.widget.CardView#0;n#ScrollView#0;n#RelativeLayout#0;n#android.support.v4.widget.DrawerLayout#0;n#!!top" expanded="false" />
-            <element signature="e#8429#8446#0" expanded="true" />
-            <element signature="e#9093#9121#0" expanded="true" />
-            <element signature="e#12044#12072#0" expanded="true" />
+            <element signature="e#2205#2223#0" expanded="true" />
+            <element signature="e#2642#2658#0" expanded="true" />
+            <element signature="e#3296#3318#0" expanded="true" />
+            <element signature="e#3917#3932#0" expanded="true" />
+            <element signature="e#4634#4659#0" expanded="true" />
+            <element signature="e#5336#5354#0" expanded="true" />
+            <element signature="e#6217#6237#0" expanded="true" />
+            <element signature="n#LinearLayout#0;n#RelativeLayout#0;n#ScrollView#0;n#RelativeLayout#0;n#android.support.v4.widget.DrawerLayout#0;n#!!top" expanded="false" />
+            <element signature="e#8004#8021#0" expanded="true" />
+            <element signature="e#8668#8696#0" expanded="true" />
+            <element signature="e#11487#11515#0" expanded="true" />
           </folding>
         </state>
       </provider>
-      <provider selected="true" editor-type-id="android-designer">
+      <provider editor-type-id="android-designer">
         <state />
       </provider>
     </entry>
