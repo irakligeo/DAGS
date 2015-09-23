@@ -123,8 +123,8 @@
       <file leaf-file-name="MapFragment.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/geolab/dags/fragment/MapFragment.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.29166666">
-              <caret line="247" column="37" selection-start-line="247" selection-start-column="37" selection-end-line="247" selection-end-column="37" />
+            <state vertical-scroll-proportion="0.5">
+              <caret line="236" column="0" selection-start-line="236" selection-start-column="0" selection-end-line="236" selection-end-column="0" />
               <folding>
                 <element signature="e#2439#2999#0" expanded="true" />
                 <element signature="e#2998#2999#0" expanded="true" />
@@ -138,9 +138,9 @@
       </file>
       <file leaf-file-name="custom_info_fragment.xml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/custom_info_fragment.xml">
-          <provider editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="3" column="38" selection-start-line="3" selection-start-column="38" selection-end-line="3" selection-end-column="38" />
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-7.172414">
+              <caret line="211" column="44" selection-start-line="211" selection-start-column="44" selection-end-line="211" selection-end-column="44" />
               <folding>
                 <element signature="e#1367#1385#0" expanded="true" />
                 <element signature="e#2243#2259#0" expanded="true" />
@@ -149,12 +149,11 @@
                 <element signature="e#3823#3838#0" expanded="true" />
                 <element signature="e#4396#4421#0" expanded="true" />
                 <element signature="e#4963#4981#0" expanded="true" />
-                <element signature="e#9022#9050#0" expanded="true" />
-                <element signature="e#10644#10672#0" expanded="true" />
+                <element signature="e#10707#10735#0" expanded="true" />
               </folding>
             </state>
           </provider>
-          <provider selected="true" editor-type-id="android-designer">
+          <provider editor-type-id="android-designer">
             <state />
           </provider>
         </entry>
@@ -2569,25 +2568,25 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/geolab/dags/fragment/MapFragment.java</url>
-          <line>237</line>
+          <line>239</line>
           <properties />
           <option name="timeStamp" value="83" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/geolab/dags/fragment/MapFragment.java</url>
-          <line>236</line>
+          <line>238</line>
           <properties />
           <option name="timeStamp" value="84" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/geolab/dags/fragment/MapFragment.java</url>
-          <line>235</line>
+          <line>237</line>
           <properties />
           <option name="timeStamp" value="85" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/geolab/dags/fragment/MapFragment.java</url>
-          <line>238</line>
+          <line>240</line>
           <properties />
           <option name="timeStamp" value="86" />
         </line-breakpoint>
@@ -2970,9 +2969,9 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/custom_info_fragment.xml">
-      <provider editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="3" column="38" selection-start-line="3" selection-start-column="38" selection-end-line="3" selection-end-column="38" />
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-7.172414">
+          <caret line="211" column="44" selection-start-line="211" selection-start-column="44" selection-end-line="211" selection-end-column="44" />
           <folding>
             <element signature="e#1367#1385#0" expanded="true" />
             <element signature="e#2243#2259#0" expanded="true" />
@@ -2981,19 +2980,18 @@
             <element signature="e#3823#3838#0" expanded="true" />
             <element signature="e#4396#4421#0" expanded="true" />
             <element signature="e#4963#4981#0" expanded="true" />
-            <element signature="e#9022#9050#0" expanded="true" />
-            <element signature="e#10644#10672#0" expanded="true" />
+            <element signature="e#10707#10735#0" expanded="true" />
           </folding>
         </state>
       </provider>
-      <provider selected="true" editor-type-id="android-designer">
+      <provider editor-type-id="android-designer">
         <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/geolab/dags/fragment/MapFragment.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.29166666">
-          <caret line="247" column="37" selection-start-line="247" selection-start-column="37" selection-end-line="247" selection-end-column="37" />
+        <state vertical-scroll-proportion="0.5">
+          <caret line="236" column="0" selection-start-line="236" selection-start-column="0" selection-end-line="236" selection-end-column="0" />
           <folding>
             <element signature="e#2439#2999#0" expanded="true" />
             <element signature="e#2998#2999#0" expanded="true" />

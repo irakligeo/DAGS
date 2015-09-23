@@ -27,9 +27,9 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingLeft="10dp"
-            android:paddingRight="10dp"
-            android:id="@+id/RL">
+            android:id="@+id/RL"
+            android:paddingRight="20dp"
+            android:paddingLeft="20dp">
 
             <!-- image title text view-->
             <TextView
@@ -172,17 +172,17 @@
                 android:layout_marginLeft="25dp" />
 
             <!-- like imageView text-->
-            <TextView
-                android:id="@+id/like_Text_View"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="like"
-                android:textSize="17sp"
-                android:layout_marginTop="11dp"
-                android:layout_toRightOf="@+id/like_icon"
-                android:layout_below="@+id/customViewLinear"
-                android:layout_marginLeft="4dp"
-                android:textColor="#000" />
+            <!--<TextView-->
+                <!--android:id="@+id/like_Text_View"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:text="like"-->
+                <!--android:textSize="17sp"-->
+                <!--android:layout_marginTop="11dp"-->
+                <!--android:layout_toRightOf="@+id/like_icon"-->
+                <!--android:layout_below="@+id/customViewLinear"-->
+                <!--android:layout_marginLeft="4dp"-->
+                <!--android:textColor="#000" />-->
 
             <ImageView
                 android:id="@+id/comments_icon"
@@ -190,44 +190,41 @@
                 android:src="@drawable/comments_icon"
                 android:layout_height="28dp"
                 android:layout_marginTop="10dp"
-                android:layout_below="@+id/customViewLinear"
-                android:layout_toRightOf="@+id/like_Text_View"
-                android:layout_toEndOf="@+id/customViewLinear"
-                android:layout_marginLeft="20dp" />
+                android:layout_centerHorizontal="true"
+                android:layout_below="@+id/customViewLinear" />
 
-            <TextView
-                android:id="@+id/comments_text_view_id"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="comments"
-                android:textSize="17sp"
-                android:layout_marginTop="10dp"
-                android:layout_toRightOf="@+id/comments_icon"
-                android:layout_below="@+id/customViewLinear"
-                android:layout_marginLeft="4dp"
-                android:textColor="#000" />
+            <!--<TextView-->
+                <!--android:id="@+id/comments_text_view_id"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:text="comments"-->
+                <!--android:textSize="17sp"-->
+                <!--android:layout_marginTop="10dp"-->
+                <!--android:layout_toRightOf="@+id/comments_icon"-->
+                <!--android:layout_below="@+id/customViewLinear"-->
+                <!--android:layout_marginLeft="4dp"-->
+                <!--android:textColor="#000" />-->
 
             <ImageView
                 android:id="@+id/share_icon"
                 android:layout_width="28dp"
                 android:src="@drawable/share_icon"
                 android:layout_height="28dp"
-                android:layout_marginTop="10dp"
-                android:layout_below="@+id/customViewLinear"
-                android:layout_toEndOf="@+id/comments_text_view_id"
-                android:layout_marginLeft="20dp" />
+                android:layout_above="@+id/little_description"
+                android:layout_alignRight="@+id/peaceOfArtImg"
+                android:layout_alignEnd="@+id/peaceOfArtImg" />
 
-            <TextView
-                android:id="@+id/share_text_view_id"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/share_text_view_id"
-                android:textSize="17sp"
-                android:layout_marginTop="10dp"
-                android:layout_toEndOf="@+id/share_icon"
-                android:layout_below="@+id/customViewLinear"
-                android:layout_marginLeft="4dp"
-                android:textColor="#000" />
+            <!--<TextView-->
+                <!--android:id="@+id/share_text_view_id"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:text="@string/share_text_view_id"-->
+                <!--android:textSize="17sp"-->
+                <!--android:layout_marginTop="10dp"-->
+                <!--android:layout_toEndOf="@+id/share_icon"-->
+                <!--android:layout_below="@+id/customViewLinear"-->
+                <!--android:layout_marginLeft="4dp"-->
+                <!--android:textColor="#000" />-->
 
             <TextView
                 android:id="@+id/hashTagId"
@@ -238,7 +235,7 @@
                 android:layout_alignStart="@+id/little_description"
                 android:layout_marginTop="15dp"
                 android:layout_marginBottom="10dp"
-                android:layout_below="@+id/share_text_view_id"
+                android:layout_below="@+id/like_icon"
                 android:layout_marginLeft="20dp"
                 android:textColor="#ff0073ff" />
             <!--<com.facebook.share.widget.ShareButton-->
@@ -259,7 +256,7 @@
                 android:text="@string/little_description"
                 android:paddingLeft="20dp"
                 android:paddingRight="20dp"
-                android:layout_below="@id/share_text_view_id"
+                android:layout_below="@id/like_icon"
                 android:layout_alignParentBottom="true"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="45dp"

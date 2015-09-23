@@ -10,6 +10,9 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.ImageView;
@@ -218,16 +221,50 @@ public class MapFragment extends android.support.v4.app.Fragment implements OnMa
             TextView imgDescriptionView = (TextView) view.findViewById(R.id.little_description);
             TextView imgUploadDateTimeView = (TextView) view.findViewById(R.id.createDate);
             TextView authorTextView = (TextView) view.findViewById(R.id.author);
+            final TextView likeTextView = (TextView) view.findViewById(R.id.likes);
+            final TextView likesCountTextView = (TextView) view.findViewById(R.id.likes_countTextView);
             ImageView imgView = (ImageView) view.findViewById(R.id.peaceOfArtImg);
+
+            final ImageView likeImageView = (ImageView) view.findViewById(R.id.like_icon);
+
+
 
             Bundle bundle = this.getArguments();
             GraphiteItemModel graphiteItemModel = new GraphiteItemModel();
             graphiteItemModel = bundle.getParcelable("id");
 
+            likesCountTextView.setText(graphiteItemModel.getLikesCount());
+
             imgTitleView.setText(graphiteItemModel.getTitle());
             imgDescriptionView.setText(graphiteItemModel.getDescription());
             imgUploadDateTimeView.setText(graphiteItemModel.getCreateDate());
             authorTextView.setText(graphiteItemModel.getAuthor());
+
+            final Animation fadeIn = new AlphaAnimation(0.0f , 1.0f ) ;
+            fadeIn.setDuration(1200);
+            fadeIn.setFillAfter(true);
+
+            final Animation textAnimation = AnimationUtils.loadAnimation(getActivity(), R.anim.text_animation);
+
+            final boolean[] clicked = {false};
+            //on like ImageView click
+            final GraphiteItemModel finalGraphiteItemModel = graphiteItemModel;
+            likeImageView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    if (!clicked[0]) {
+                        likesCountTextView.setText(finalGraphiteItemModel.getLikesCount() + 1 + " ");
+                        likeImageView.setImageResource(R.drawable.liked_icon);
+                        likesCountTextView.startAnimation(textAnimation);
+                        likeTextView.setText("liked");
+                        likeTextView.startAnimation(textAnimation);
+                        likesCountTextView.startAnimation(fadeIn);
+                        clicked[0] = true;
+                    } else {
+                        Toast.makeText(getActivity(), "უკვე მოწონებულია", Toast.LENGTH_SHORT).show();
+                    }
+                }
+            });
 
             Picasso.with(getActivity().getApplicationContext())
                     .load(graphiteItemModel.getImgURL())
