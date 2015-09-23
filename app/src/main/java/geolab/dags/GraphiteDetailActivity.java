@@ -348,10 +348,9 @@ public class GraphiteDetailActivity extends ActionBarActivity implements Navigat
     @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
     @Override
     public void onBackPressed(){
-        Intent intent = new Intent(GraphiteDetailActivity.this, MainActivity.class);
-
-        Bundle bundle = ActivityOptions.makeCustomAnimation(getApplicationContext(), R.anim.slide_out_up, R.anim.slide_in_up).toBundle();
-        startActivity(intent, bundle);
+        super.onBackPressed();
+        overridePendingTransition(R.anim.slide_in_up, R.anim.slide_out_up);
+//        finish();
     }
 
     private String LoadPreferences(){
