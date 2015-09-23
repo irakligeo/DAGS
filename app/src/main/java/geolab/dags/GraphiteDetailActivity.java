@@ -107,10 +107,10 @@ public class GraphiteDetailActivity extends ActionBarActivity implements Navigat
         filterDialogFragment = new FilterDialogFragment();
         //get selected item detail
         final GraphiteItemModel  graphiteItem = (GraphiteItemModel) getIntent().getSerializableExtra("GraphiteItem");
-
-            fadeIn.setDuration(1200);
-        fadeIn.setFillAfter(true);
         fadeIn = new AlphaAnimation(0.0f , 1.0f ) ;
+        fadeIn.setDuration(1200);
+        fadeIn.setFillAfter(true);
+
 
 
         textAnimation = AnimationUtils.loadAnimation(context,R.anim.text_animation);

@@ -25,6 +25,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 
+import geolab.dags.GraphiteDetailActivity;
 import geolab.dags.MainActivity;
 import geolab.dags.R;
 import geolab.dags.fragment.MapFragment;
@@ -123,7 +124,15 @@ public class FilterDialogFragment extends DialogFragment implements AdapterView.
                 }
 
                 Toast.makeText(getActivity(), longitude + " " +latitude, Toast.LENGTH_SHORT).show();
-                MainActivity.filterDialogFragment.dismiss();
+                try {
+                    MainActivity.filterDialogFragment.dismiss();
+                    GraphiteDetailActivity.filterDialogFragment.dismiss();
+                }catch (NullPointerException e){
+
+                }
+                finally {
+
+                }
             }
 
         });
