@@ -24,6 +24,7 @@ public class MyResponseParser {
         try {
             for (int i = 1; i <= response.length(); i++) {
 
+                int marker_id = response.getJSONObject(i).getInt("marker_id");
                 String imgUrl = response.getJSONObject(i).getString("pic_url");
                 String imgTitle = response.getJSONObject(i).getString("title");
                 String imgDescription = response.getJSONObject(i).getString("description");
@@ -33,7 +34,7 @@ public class MyResponseParser {
                 double longitude = response.getJSONObject(i).getDouble("longitude");
                 double latitude = response.getJSONObject(i).getDouble("latitude");
                 String hashtag = response.getJSONObject(i).getString("hashtag");
-                GraphiteItemModel graphite = new GraphiteItemModel(imgTitle, imgDescription, imgUrl, imgAuthor, imgUploadDate, longitude, latitude,likesCount,hashtag);
+                GraphiteItemModel graphite = new GraphiteItemModel(imgTitle, imgDescription, imgUrl, imgAuthor, imgUploadDate, longitude, latitude,likesCount,hashtag, marker_id);
                 data.add(graphite);
             }
         }catch (JSONException e) {

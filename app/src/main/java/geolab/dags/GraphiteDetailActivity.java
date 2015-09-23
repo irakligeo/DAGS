@@ -3,10 +3,12 @@ package geolab.dags;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
+import android.preference.PreferenceManager;
 import android.provider.MediaStore;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.ViewPager;
@@ -39,15 +41,24 @@ import com.facebook.login.LoginManager;
 import com.facebook.login.LoginResult;
 import com.squareup.picasso.Picasso;
 
+import org.apache.http.NameValuePair;
+import org.apache.http.client.ClientProtocolException;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.entity.UrlEncodedFormEntity;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.File;
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 
@@ -177,6 +188,7 @@ public class GraphiteDetailActivity extends ActionBarActivity implements Navigat
             descriptionView.setText(graphiteItem.getDescription());
             likesCountTextView.setText(graphiteItem.getLikesCount()+" ");
 
+            final String userID = LoadPreferences();
 
             final boolean[] clicked = {false};
             //on like ImageView clikc
@@ -190,6 +202,41 @@ public class GraphiteDetailActivity extends ActionBarActivity implements Navigat
                         likeTextView.setText("liked");
                         likeTextView.startAnimation(textAnimation);
                         likesCountTextView.startAnimation(fadeIn);
+
+                        final HttpClient httpclient = new DefaultHttpClient();
+                        final HttpPost httppost = new HttpPost("http://www.geolab.club/streetart/likemobile.php");
+                        try {
+                            List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(2);
+                            nameValuePairs.add(new BasicNameValuePair("marker_id", graphiteItem.getMarkerID()+""));
+                            nameValuePairs.add(new BasicNameValuePair("user_id", userID));
+                            httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
+
+                            String json = "";
+
+                            // 3. build jsonObject
+                            JSONObject jsonObject = new JSONObject();
+                            
+
+                            // 4. convert JSONObject to JSON to String
+                            json = jsonObject.toString();
+
+                            Thread thread = new Thread(new Runnable(){
+                                @Override
+                                public void run() {
+                                    try {
+                                        httpclient.execute(httppost);
+                                    } catch (Exception e) {
+                                        e.printStackTrace();
+                                    }
+                                }
+                            });
+
+                            thread.start();
+                            Toast.makeText(getBaseContext(),"Sent " + graphiteItem.getMarkerID() +" "+ userID,Toast.LENGTH_SHORT).show();
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+
                         clicked[0] = true;
                     }else {
                         Toast.makeText(getApplicationContext(),"უკვე მოწონებულია", Toast.LENGTH_SHORT).show();
@@ -282,6 +329,13 @@ public class GraphiteDetailActivity extends ActionBarActivity implements Navigat
                     .centerCrop()
                     .into(imgView);
 
+    }
+
+    private String LoadPreferences(){
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        String  data = sharedPreferences.getString("user_id", "user id") ;
+        Toast.makeText(this,data, Toast.LENGTH_LONG).show();
+        return data;
     }
 
     private boolean checkArray(char[] arr){

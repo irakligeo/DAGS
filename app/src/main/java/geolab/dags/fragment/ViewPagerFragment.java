@@ -118,41 +118,8 @@ public class ViewPagerFragment extends android.support.v4.app.Fragment {
         });
 
 
-        //scroll in list and select last item
-
         return rootView;
     }
-
-//    FloatingActionButton fab;
-//    static int k = 0;
-//    private void scrollBottom(){
-//        fab = (FloatingActionButton) rootView.findViewById(R.id.fab_scrollBottom);
-//        fab.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                scrollMyListViewToBottom();
-//            }
-//        });
-//    }
-
-
-    // for specific item selecting in list
-//    private void scrollMyListViewToBottom() {
-//        graphiteListView.post(new Runnable() {
-//            @Override
-//            public void run() {
-//                if(k % 2 == 0) {
-//                    // Select the last row so it will scroll into view...
-//                    graphiteListView.setSelection(graphiteListView.getCount() - 1);
-//                }else{
-//                    graphiteListView.setSelection(0);
-//                    fab.destroyDrawingCache();
-//                }
-//                ++k;
-//            }
-//
-//        });
-//    }
 
 
 
@@ -205,7 +172,7 @@ public class ViewPagerFragment extends android.support.v4.app.Fragment {
 
                         //insert graphiteItems arrayList into database
                         for (int i = 0; i < graphiteItems.size(); ++i) {
-                            contentValues.put(TableGraphite.id, graphiteItems.get(i).getId());
+                            contentValues.put(TableGraphite.id, graphiteItems.get(i).getMarkerID());
                             contentValues.put(TableGraphite.imgTitle, graphiteItems.get(i).getTitle());
                             contentValues.put(TableGraphite.imgAuthor, graphiteItems.get(i).getAuthor());
                             contentValues.put(TableGraphite.imgURL, graphiteItems.get(i).getImgURL());

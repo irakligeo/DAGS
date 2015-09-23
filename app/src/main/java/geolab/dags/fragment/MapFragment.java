@@ -132,6 +132,7 @@ public class MapFragment extends android.support.v4.app.Fragment implements OnMa
             Cursor cursor = ViewPagerFragment.db.rawQuery("SELECT * FROM " + TableGraphite.TABLE_NAME, null);
             if(cursor.moveToFirst()){
                 do{
+                    int markerId = Integer.parseInt(cursor.getString(cursor.getColumnIndex(String.valueOf(TableGraphite.id))));
                     double longitude = Double.parseDouble(cursor.getString(cursor.getColumnIndex(String.valueOf(TableGraphite.longitude))));
                     double latitude = Double.parseDouble(cursor.getString(cursor.getColumnIndex(String.valueOf(TableGraphite.latitude))));
                     String title = cursor.getString(cursor.getColumnIndex(TableGraphite.imgTitle));
@@ -142,7 +143,7 @@ public class MapFragment extends android.support.v4.app.Fragment implements OnMa
                     int likesCount = Integer.parseInt(cursor.getString(cursor.getColumnIndex(String.valueOf(TableGraphite.likes))));
                     String hashtag = cursor.getString(cursor.getColumnIndex(TableGraphite.hashtag));
 
-                    GraphiteItemModel model = new GraphiteItemModel(title,imgDescription,imgURL,author,uploadDateTime, longitude,latitude,likesCount,hashtag);
+                    GraphiteItemModel model = new GraphiteItemModel(title,imgDescription,imgURL,author,uploadDateTime, longitude,latitude,likesCount,hashtag,markerId);
 
                     tmpList.add(model);
 
