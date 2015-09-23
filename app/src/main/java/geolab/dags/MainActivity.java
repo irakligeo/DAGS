@@ -129,7 +129,6 @@ public class MainActivity extends ActionBarActivity implements NavigationView.On
             public int getCount() {
                 return tabLayout.getTabCount();
             }
-
             @Override
             public boolean isViewFromObject(View view, Object object) {
                 return false;
@@ -305,6 +304,7 @@ public class MainActivity extends ActionBarActivity implements NavigationView.On
 
         fileUri = getOutputMediaFileUri(MEDIA_TYPE_IMAGE);
         intent.putExtra(MediaStore.EXTRA_OUTPUT, fileUri);
+        overridePendingTransition(R.anim.slide_in_up, R.anim.slide_out_up);
             // start the image capture Intent
         startActivityForResult(intent, CAMERA_CAPTURE_IMAGE_REQUEST_CODE);
     }

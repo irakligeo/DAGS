@@ -385,12 +385,14 @@ public class UploadActivity extends ActionBarActivity{
                     public void onClick(DialogInterface dialogInterface, int i) {
                         Intent toMainActivity = new Intent(UploadActivity.this,MainActivity.class);
                         startActivity(toMainActivity);
+                        overridePendingTransition(R.anim.slide_in_up, R.anim.slide_out_up);
                     }
                 })
                 .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                         Intent toUploadActivity = new Intent(UploadActivity.this,UploadFileActivity.class);
                         startActivity(toUploadActivity);
+                        overridePendingTransition(R.anim.slide_in_up, R.anim.slide_out_up);
                     }
                 });
         AlertDialog alert = builder.create();

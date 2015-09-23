@@ -1,11 +1,15 @@
 package geolab.dags.fragment;
 
+import android.annotation.TargetApi;
+import android.app.ActivityOptions;
+import android.app.FragmentTransaction;
 import android.app.ProgressDialog;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.PagerAdapter;
@@ -36,6 +40,7 @@ import java.util.Map;
 
 import geolab.dags.GraphiteDetailActivity;
 import geolab.dags.DB.TableGraphite;
+import geolab.dags.MainActivity;
 import geolab.dags.model.GraphiteItemModel;
 import geolab.dags.parsers.MyResponseParser;
 import geolab.dags.R;
@@ -100,14 +105,15 @@ public class ViewPagerFragment extends android.support.v4.app.Fragment {
         graphiteListView = (ListView) rootView.findViewById(R.id.graphiteList);
 
         graphiteListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(getActivity(), GraphiteDetailActivity.class);
 
                 GraphiteItemModel graphiteItem = (GraphiteItemModel) parent.getAdapter().getItem(position);
                 intent.putExtra("GraphiteItem", (Serializable) graphiteItem);
-                startActivity(intent);
-
+                Bundle bundle = ActivityOptions.makeCustomAnimation(getActivity(), R.anim.slide_in_up, R.anim.slide_out_up).toBundle();
+                getActivity().startActivity(intent, bundle);
             }
         });
 
@@ -274,6 +280,11 @@ public class ViewPagerFragment extends android.support.v4.app.Fragment {
             });
         }
         requestQueue.add(jsonArrayRequest);
+    }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
     }
 
     public static ViewPagerFragment newInstance(String text) {
