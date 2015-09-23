@@ -77,7 +77,8 @@
                             android:layout_below="@+id/customViewLinear"
                             android:layout_alignLeft="@+id/createDate"
                             android:layout_alignStart="@+id/createDate"
-                            android:layout_marginTop="5dp" />
+                            android:layout_marginTop="5dp"
+                            android:background="@drawable/myrect" />
 
 
                         <!-- likes number-->
@@ -206,7 +207,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:background="#eee"
+        android:background="#000"
         android:id="@+id/relativeLayout2"
         android:translationZ="10dp"
         android:elevation="10dp"
@@ -232,7 +233,7 @@
         android:layout_marginTop="11dp"
         android:layout_toRightOf="@+id/like_icon"
         android:layout_marginLeft="4dp"
-        android:textColor="#000" />
+        android:textColor="#fff" />
 
     <ImageView
         android:id="@+id/comments_icon"
@@ -252,7 +253,7 @@
         android:layout_marginTop="10dp"
         android:layout_toRightOf="@+id/comments_icon"
         android:layout_marginLeft="4dp"
-        android:textColor="#000" />
+        android:textColor="#fff" />
 
     <ImageView
         android:id="@+id/share_icon"
@@ -272,7 +273,7 @@
         android:layout_marginTop="10dp"
         android:layout_toEndOf="@+id/share_icon"
         android:layout_marginLeft="4dp"
-        android:textColor="#000" />
+        android:textColor="#fff" />
 
     </RelativeLayout>
 
