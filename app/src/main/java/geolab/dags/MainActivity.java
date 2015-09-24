@@ -8,7 +8,6 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.Color;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -102,7 +101,7 @@ public class MainActivity extends ActionBarActivity implements NavigationView.On
     public static FilterDialogFragment filterDialogFragment;
     public static final String MY_PREF_FOR_FB_USER_ID = "FB_USER_ID";
 
-    public Toolbar toolbar;
+    public static Toolbar toolbar;
 
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     @Override
@@ -117,11 +116,7 @@ public class MainActivity extends ActionBarActivity implements NavigationView.On
         activity = this;
 
         inflater = (LayoutInflater)getApplicationContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-//        headerView = inflater.inflate(R.layout.header_layout)
 
-
-        view = inflater.inflate(R.layout.header_layout, null);
-        fbUserName = (TextView) view.findViewById(R.id.fb_user_name);
 //        profilePictureView = (ProfilePictureView) view.findViewById(R.id.fb_image);
 //
 
@@ -182,7 +177,7 @@ public class MainActivity extends ActionBarActivity implements NavigationView.On
         mDrawerLayout.setDrawerListener(mDrawerToggle);
         mDrawerToggle.syncState();
 
-        // Instantiate a ViewPager and a PagerAdapter.
+        // Instantiate toolbarColorResId ViewPager and toolbarColorResId PagerAdapter.
         mPager = (ViewPager) findViewById(R.id.pager);
 
         // animation styles
@@ -193,7 +188,6 @@ public class MainActivity extends ActionBarActivity implements NavigationView.On
         mPagerAdapter = new ScreenSlidePagerAdapter(getSupportFragmentManager());
         mPager.setAdapter(mPagerAdapter);
 
-        fbUserName.setText("sdfsdfsdafdsf");
 
         //        status bar color
         Window window = activity.getWindow();
@@ -209,6 +203,9 @@ public class MainActivity extends ActionBarActivity implements NavigationView.On
 
         //filter dialog
         filterDialogFragment = new FilterDialogFragment();
+
+        int toolbarColorResId = R.color.toolbar_color, tabLayoutColorResId = R.color.tab_layout, statusBarColorResId = R.color.status_bar_color;
+                SaveUserSettings(this,toolbarColorResId,tabLayoutColorResId,statusBarColorResId);
 
     }
 
@@ -308,7 +305,7 @@ public class MainActivity extends ActionBarActivity implements NavigationView.On
             }
         }
 
-        // Create a media file name
+        // Create toolbarColorResId media file name
         String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss",
                 Locale.getDefault()).format(new Date());
         File mediaFile;
@@ -339,6 +336,16 @@ public class MainActivity extends ActionBarActivity implements NavigationView.On
     }
 
     //SharedPreferences for save
+    public static void SaveUserSettings(Context context, int toolbarColorResId, int tabLayoutColorResId, int statusBarColorResId){
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
+
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putInt("toolbarColor", toolbarColorResId);
+        editor.putInt("tabLayoutColor", tabLayoutColorResId);
+        editor.putInt("statusBarColor", statusBarColorResId);
+        editor.commit();
+    }
+
     private void SavePreferences(String key, String value){
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
 
@@ -346,7 +353,6 @@ public class MainActivity extends ActionBarActivity implements NavigationView.On
         editor.putString(key, value);
         editor.commit();
     }
-
 
     //   end of camera code
     private ActionBarDrawerToggle mDrawerToggle;
@@ -484,7 +490,6 @@ public class MainActivity extends ActionBarActivity implements NavigationView.On
                                             user_id = jsonObject.getString("id");
                                             str_firstname = jsonObject.getString("name");
                                             fbUserName.setText(jsonObject.getString("name"));
-//                                            Toast.makeText(getApplicationContext(), str_firstname + "https://graph.facebook.com/" + user_id + "/picture?type=large" + " " + user_id, Toast.LENGTH_SHORT).show();
                                             SavePreferences("user_id",user_id);
 
                                         } catch (NullPointerException ex) {
@@ -624,11 +629,11 @@ public class MainActivity extends ActionBarActivity implements NavigationView.On
 
         //change style
         @TargetApi(Build.VERSION_CODES.LOLLIPOP)
-        public void changeStyle(int toolbarResID, int tablayoutResId, int statusbarResId){
+        public void changeStyle(Toolbar toolbar,TabLayout tabLayout, Window window, int toolbarResID, int tablayoutResId, int statusbarResId){
 
             toolbar.setBackgroundColor(activity.getResources().getColor(toolbarResID));
             tabLayout.setBackgroundColor(activity.getResources().getColor(tablayoutResId));
-            Window window = activity.getWindow();
+            window = activity.getWindow();
 
             // clear FLAG_TRANSLUCENT_STATUS flag:
             window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
@@ -638,28 +643,49 @@ public class MainActivity extends ActionBarActivity implements NavigationView.On
 
             // finally change the color
             window.setStatusBarColor(activity.getResources().getColor(statusbarResId));
+
+
+        }
+
+
+
+        int toolbarColor, tabLyoutColor,statusBarColor;
+        public void initResColors(int a, int b, int c){
+            toolbarColor = a; tabLyoutColor = b; statusBarColor = c;
         }
 
         @Override
         public void onClick(View view) {
             switch (view.getId()){
                 case R.id.redStyleImageView:
-                    changeStyle(R.color.red_toolbar_color, R.color.red_tab_layout, R.color.red_status_bar_color);
+
+                    changeStyle(toolbar, tabLayout, activity.getWindow(), R.color.red_toolbar_color, R.color.red_tab_layout, R.color.red_status_bar_color);
+                    initResColors(R.color.red_toolbar_color,R.color.red_tab_layout, R.color.red_status_bar_color);
+                    SaveUserSettings(getApplicationContext(),R.color.red_toolbar_color, R.color.red_tab_layout, R.color.red_status_bar_color);
                     break;
                 case R.id.purpleStyleIamgeView:
-                    changeStyle(R.color.purple_toolbar_color, R.color.purple_tab_layout, R.color.purple_status_bar_color);
+                    changeStyle(toolbar,tabLayout, activity.getWindow(),R.color.purple_toolbar_color, R.color.purple_tab_layout, R.color.purple_status_bar_color);
+                    initResColors(R.color.purple_toolbar_color, R.color.purple_tab_layout, R.color.purple_status_bar_color);
+                    SaveUserSettings(getApplicationContext(),R.color.purple_toolbar_color, R.color.purple_tab_layout, R.color.purple_status_bar_color);
                     break;
                 case R.id.blueStyleImageView:
-                    changeStyle(R.color.blue_toolbar_color, R.color.blue_tab_layout, R.color.blue_status_bar_color);
+                    changeStyle(toolbar,tabLayout, activity.getWindow(),R.color.blue_toolbar_color, R.color.blue_tab_layout, R.color.blue_status_bar_color);
+                    initResColors(R.color.blue_toolbar_color, R.color.blue_tab_layout, R.color.blue_status_bar_color);
+                    SaveUserSettings(getApplicationContext(), R.color.blue_toolbar_color, R.color.blue_tab_layout, R.color.blue_status_bar_color);
                     break;
                 case R.id.darkStyleImageView:
-                    changeStyle(R.color.dark_toolbar_color, R.color.dark_tab_layout, R.color.dark_status_bar_color);
+                    changeStyle(toolbar,tabLayout, activity.getWindow(),R.color.dark_toolbar_color, R.color.dark_tab_layout, R.color.dark_status_bar_color);
+                    initResColors(R.color.dark_toolbar_color, R.color.dark_tab_layout, R.color.dark_status_bar_color);
+                    SaveUserSettings(getApplicationContext(), R.color.dark_toolbar_color, R.color.dark_tab_layout, R.color.dark_status_bar_color);
                     break;
                 case R.id.grayStyleImageView:
-                    changeStyle(R.color.toolbar_color, R.color.tab_layout, R.color.status_bar_color);
+                    changeStyle(toolbar,tabLayout, activity.getWindow(),R.color.toolbar_color, R.color.tab_layout, R.color.status_bar_color);
+                    initResColors(R.color.toolbar_color, R.color.tab_layout, R.color.status_bar_color);
+                    SaveUserSettings(getApplicationContext(), R.color.toolbar_color, R.color.tab_layout, R.color.status_bar_color);
                     break;
                 default:
-                    changeStyle(R.color.toolbar_color, R.color.tab_layout, R.color.status_bar_color);
+                    changeStyle(toolbar,tabLayout, activity.getWindow(),R.color.toolbar_color, R.color.tab_layout, R.color.status_bar_color);
+                    SaveUserSettings(getApplicationContext(), toolbarColor,tabLyoutColor,statusBarColor);
                     break;
             }
         }

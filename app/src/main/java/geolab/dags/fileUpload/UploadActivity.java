@@ -91,6 +91,8 @@ public class UploadActivity extends ActionBarActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_upload);
 
+        LoadSettings();
+
         // loads pref data
         userID = LoadPreferences();
 
@@ -218,12 +220,26 @@ public class UploadActivity extends ActionBarActivity{
 
     }
 
+
+    private void LoadSettings(){
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        int toolbarResColor = sharedPreferences.getInt("toolbarColor", 1) ;
+        int tabLayoutResColor = sharedPreferences.getInt("tabLayoutColor", 2) ;
+        int statusBarResColor = sharedPreferences.getInt("statusBarColor", 3) ;
+
+        Toast.makeText(this,toolbarResColor +" "+ tabLayoutResColor, Toast.LENGTH_LONG).show();
+
+        MainActivity.SaveUserSettings(getApplicationContext(),toolbarResColor,tabLayoutResColor,statusBarResColor);
+    }
+
     private String LoadPreferences(){
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
         String  data = sharedPreferences.getString("user_id", "user id") ;
-        Toast.makeText(this,data, Toast.LENGTH_LONG).show();
+//        Toast.makeText(this,data, Toast.LENGTH_LONG).show();
         return data;
     }
+
+
 
     /**
      * Displaying captured image/video on the screen

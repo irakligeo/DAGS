@@ -1,7 +1,6 @@
 package geolab.dags;
 
 import android.annotation.TargetApi;
-import android.app.ActivityOptions;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -14,15 +13,12 @@ import android.os.Environment;
 import android.preference.PreferenceManager;
 import android.provider.MediaStore;
 import android.support.design.widget.NavigationView;
-import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.Toolbar;
-import android.util.DisplayMetrics;
 import android.view.Gravity;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -47,7 +43,6 @@ import com.facebook.login.LoginResult;
 import com.squareup.picasso.Picasso;
 
 import org.apache.http.NameValuePair;
-import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpPost;
@@ -58,7 +53,6 @@ import org.json.JSONObject;
 
 import java.io.File;
 import java.io.IOException;
-import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -101,15 +95,18 @@ public class GraphiteDetailActivity extends ActionBarActivity implements Navigat
     private CustomPagerAdapter mCustomPagerAdapter;
     public static FilterDialogFragment filterDialogFragment;
 
+
+    public int toolbarColorResId, tabLayoutResColorId, statusBarColorResId;
 //    on Create View
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-            super.onCreate(savedInstanceState);
-            FacebookSdk.sdkInitialize(getApplicationContext());
-            setContentView(R.layout.activity_graphite_item_detail);
 
-            context = this;
+        super.onCreate(savedInstanceState);
+        FacebookSdk.sdkInitialize(getApplicationContext());
+        setContentView(R.layout.activity_graphite_item_detail);
+
+        context = this;
         //filter dialog
         filterDialogFragment = new FilterDialogFragment();
         //get selected item detail
@@ -122,28 +119,22 @@ public class GraphiteDetailActivity extends ActionBarActivity implements Navigat
 
         textAnimation = AnimationUtils.loadAnimation(context,R.anim.text_animation);
 
-            //viewpager gallery
-        int[] mResources = {
-                R.drawable.liked_icon,
-                R.drawable.like_heart_icon,
-                R.drawable.graphite,
-                R.drawable.palitra_icon,
-                R.drawable.photoaparat,
-                R.drawable.graphite
-        };
+
 
         hashMap = new HashMap<>();
 
-//        LayoutInflater inflater  = (LayoutInflater)getApplicationContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-//        View view = inflater.inflate(R.layout.fragment_test,null);
-//        mCustomPagerAdapter = new CustomPagerAdapter(this, mResources);
-//        final ViewPager mViewPager = (ViewPager) view.findViewById(R.id.pager);
-//        mViewPager.setAdapter(mCustomPagerAdapter);
+        Window window = this.getWindow();
 
+        toolbarColorResId = 0; tabLayoutResColorId = 0; statusBarColorResId = 0;
+        LoadSettings();
 
         //Set Toolbar
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        //change style
+        changeStyle(toolbar,window, toolbarColorResId, statusBarColorResId);
+
         getSupportActionBar().setDisplayShowTitleEnabled(false);
         //set back button icon
         toolbar.setNavigationIcon(R.drawable.ic_back);
@@ -324,17 +315,6 @@ public class GraphiteDetailActivity extends ActionBarActivity implements Navigat
             }
         }
 
-        //        status bar color
-        Window window = this.getWindow();
-
-        // clear FLAG_TRANSLUCENT_STATUS flag:
-        window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-
-        // add FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS flag to the window
-        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-
-        // finally change the color
-        window.setStatusBarColor(this.getResources().getColor(R.color.status_bar_color));
 
         //filter dialog
         filterDialogFragment = new FilterDialogFragment();
@@ -347,6 +327,43 @@ public class GraphiteDetailActivity extends ActionBarActivity implements Navigat
                 .into(imgView);
 
     }
+
+
+    //
+    //change style
+    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
+    public void changeStyle(Toolbar toolbar, Window window, int toolbarResID, int statusbarResId){
+        int k = 0;
+//        LoadSettings(toolbarResID,k,statusbarResId );
+        toolbar.setBackgroundColor(this.getResources().getColor(toolbarResID));
+        window = this.getWindow();
+
+        // clear FLAG_TRANSLUCENT_STATUS flag:
+        window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+
+        // add FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS flag to the window
+        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+
+        // finally change the color
+        window.setStatusBarColor(this.getResources().getColor(statusbarResId));
+
+
+    }
+
+
+    // load user settings
+    private void LoadSettings(){
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+
+        toolbarColorResId = sharedPreferences.getInt("toolbarColor", R.color.toolbar_color) ;
+        tabLayoutResColorId = sharedPreferences.getInt("tabLayoutColor", R.color.tab_layout) ;
+        statusBarColorResId = sharedPreferences.getInt("statusBarColor", R.color.status_bar_color ) ;
+
+
+        MainActivity.SaveUserSettings(getApplicationContext(), toolbarColorResId, tabLayoutResColorId, statusBarColorResId);
+
+    }
+
 
     @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
     @Override
@@ -457,7 +474,7 @@ public class GraphiteDetailActivity extends ActionBarActivity implements Navigat
             }
         }
 
-        // Create a media file name
+        // Create toolbarColorResId media file name
         String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss",
                 Locale.getDefault()).format(new Date());
         File mediaFile;
