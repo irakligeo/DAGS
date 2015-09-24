@@ -44,10 +44,10 @@
 
             <!-- graphite image view-->
             <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
+                android:layout_width="match_parent"
+                android:layout_height="228dp"
                 android:id="@+id/peaceOfArtImg"
-                android:background="@drawable/graphite"
+                android:background="@color/tab_layout"
                 android:layout_below="@+id/author"
                 android:scaleType="fitStart"
                 android:adjustViewBounds="true"

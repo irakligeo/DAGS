@@ -307,11 +307,7 @@ public class GraphiteDetailActivity extends ActionBarActivity implements Navigat
             tmplist = entry.getValue();
             System.out.println(key +" --- " +tmplist.toString());
         }
-//        descriptionView.setText(keys);
-
-        for(int l = 0; l < tmplist.size(); ++l){
-
-        }
+        descriptionView.setText(tmplist.toString());
 
 
         String hashtag = graphiteItem.getHashtag();

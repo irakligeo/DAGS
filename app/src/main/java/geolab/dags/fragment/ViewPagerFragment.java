@@ -38,7 +38,9 @@ import com.android.volley.toolbox.Volley;
 import org.json.JSONArray;
 
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -234,17 +236,21 @@ public class ViewPagerFragment extends android.support.v4.app.Fragment implement
                                 }
 
                             }
+
+
+
                             // insert into database
                             db.insert(TableGraphite.TABLE_NAME, null, contentValues);
 
                         }
 
 
+
+
                         ListViewAdapter mListViewAdapter = new ListViewAdapter(getActivity(),graphiteItems);
                         graphiteListView.setAdapter(new ListViewAdapter(getActivity(), graphiteItems));
                         mListViewAdapter.notifyDataSetChanged();
 
-                    Toast.makeText(getActivity(),"opa",Toast.LENGTH_LONG).show();
                         //dismiss progressDialog after loading data
                         progressDialog.dismiss();
                         mSwipeRefreshLayout.setRefreshing(false);
@@ -262,6 +268,7 @@ public class ViewPagerFragment extends android.support.v4.app.Fragment implement
         }
         requestQueue.add(jsonArrayRequest);
     }
+
 
     @Override
     public void onDetach() {

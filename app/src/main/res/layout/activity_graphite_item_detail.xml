@@ -38,10 +38,10 @@
                             android:id="@+id/peaceOfArtImg"
                             android:layout_width="fill_parent"
                             android:layout_height="290dp"
-                            android:background="@drawable/background2"
                             android:scaleType="fitStart"
                             android:adjustViewBounds="true"
-                            android:layout_centerHorizontal="true" />
+                            android:layout_centerHorizontal="true"
+                            android:background="@color/tab_layout" />
 
                         <!-- image title text view-->
                         <TextView
@@ -225,11 +225,12 @@
         android:layout_width="28dp"
         android:src="@drawable/comments_icon"
         android:layout_height="28dp"
-        android:layout_marginTop="10dp"
-        android:layout_toRightOf="@+id/like_Text_View"
         android:layout_marginLeft="40dp"
         android:nestedScrollingEnabled="false"
-        android:layout_centerInParent="true" />
+        android:layout_alignTop="@+id/comments_text_view_id"
+        android:layout_toRightOf="@+id/like_Text_View"
+        android:layout_toEndOf="@+id/like_Text_View"
+        android:layout_marginStart="40dp" />
 
     <TextView
         android:id="@+id/comments_text_view_id"

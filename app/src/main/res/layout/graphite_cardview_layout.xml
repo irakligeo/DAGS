@@ -28,7 +28,7 @@
                 android:id="@+id/peaceOfArtImg"
                 android:layout_width="fill_parent"
                 android:layout_height="200dp"
-                android:background="@drawable/background2"
+                android:background="@color/tab_layout"
                 android:contentDescription="" />
 
             <TextView
