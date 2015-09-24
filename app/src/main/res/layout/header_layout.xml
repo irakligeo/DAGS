@@ -7,7 +7,18 @@
     android:gravity="bottom"
     android:padding="16dp"
     android:theme="@style/ThemeOverlay.AppCompat.Dark"
-    android:background="@drawable/rain">
+    android:background="@drawable/header_bg1">
+
+
+    <!--<de.hdodenhof.circleimageview.CircleImageView-->
+        <!--xmlns:app="http://schemas.android.com/apk/res-auto"-->
+        <!--android:id="@+id/profile_image"-->
+        <!--android:layout_width="76dp"-->
+        <!--android:layout_height="76dp"-->
+        <!--android:src="@drawable/profile"-->
+        <!--app:border_color="#FF000000"-->
+        <!--android:layout_marginLeft="24dp"-->
+        <!--android:layout_marginStart="24dp" />-->
 
     <!--<com.facebook.login.widget.ProfilePictureView-->
         <!--android:id="@+id/fb_image"-->

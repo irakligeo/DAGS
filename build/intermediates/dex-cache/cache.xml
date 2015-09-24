@@ -2,39 +2,53 @@
 <items version="2" >
 
     <item
-        jar="/Users/geolabedu/DAGS/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-vision/7.8.0/jars/classes.jar"
+        jar="/Users/geolabedu/DAGS/app/build/intermediates/exploded-aar/com.android.support/mediarouter-v7/22.2.0/jars/classes.jar"
         jumboMode="false"
         revision="21.1.2"
-        sha1="b99f0b78bbcb76b915bc6529a83b65d4d46990dd">
-        <dex dex="/Users/geolabedu/DAGS/app/build/intermediates/pre-dexed/debug/classes-09c076b83d9e550aaf09af0c223584117ac34413.jar" />
+        sha1="dcf8c83c3dead00a6c4fe313e95f7aaca20dc641">
+        <dex dex="/Users/geolabedu/DAGS/app/build/intermediates/pre-dexed/debug/classes-275e0e178ff7f3f11170728acbd086c4be28b7c1.jar" />
     </item>
     <item
-        jar="/Users/geolabedu/DAGS/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-safetynet/7.8.0/jars/classes.jar"
+        jar="/Users/geolabedu/DAGS/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/7.8.0/jars/classes.jar"
         jumboMode="false"
         revision="21.1.2"
-        sha1="166e458ee3b5fb5fcff0f936df3f3a788e6c54f3">
-        <dex dex="/Users/geolabedu/DAGS/app/build/intermediates/pre-dexed/debug/classes-454d94e53becdc6fa7ffaa3f4d3946321120d36d.jar" />
+        sha1="c0c912d58c9468b1f9d9769c8975afdf2c85d681">
+        <dex dex="/Users/geolabedu/DAGS/app/build/intermediates/pre-dexed/debug/classes-8fdc2776e8a761cbaf9bb37420d537915bba3502.jar" />
     </item>
     <item
-        jar="/Users/geolabedu/DAGS/app/build/intermediates/exploded-aar/com.android.support/mediarouter-v7/22.2.0/jars/libs/internal_impl-22.2.0.jar"
+        jar="/Users/geolabedu/.gradle/caches/modules-2/files-2.1/com.parse.bolts/bolts-android/1.2.0/6ee2953ccf51ce72b6d548c30c4633b99eb4f9dd/bolts-android-1.2.0.jar"
         jumboMode="false"
         revision="21.1.2"
-        sha1="0632f06970823b7e3436f649bfa65b47035c91d0">
-        <dex dex="/Users/geolabedu/DAGS/app/build/intermediates/pre-dexed/debug/internal_impl-22.2.0-983bdcd734e967fe67d82b9f1f8f88221252e68c.jar" />
+        sha1="6ee2953ccf51ce72b6d548c30c4633b99eb4f9dd">
+        <dex dex="/Users/geolabedu/DAGS/app/build/intermediates/pre-dexed/debug/bolts-android-1.2.0-2989e662233022ff999104fc51a9e90f267d0044.jar" />
     </item>
     <item
-        jar="/Users/geolabedu/DAGS/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.0.1/jars/libs/internal_impl-23.0.1.jar"
+        jar="/Users/geolabedu/DAGS/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-games/7.8.0/jars/classes.jar"
         jumboMode="false"
         revision="21.1.2"
-        sha1="aa92916125166649d8ad4ba3940c3dd7515596d3">
-        <dex dex="/Users/geolabedu/DAGS/app/build/intermediates/pre-dexed/debug/internal_impl-23.0.1-0508b739a4316fed749d6e0e2a09d820a16f0cff.jar" />
+        sha1="2e24e5f1b11170163028277de63f709e42525db4">
+        <dex dex="/Users/geolabedu/DAGS/app/build/intermediates/pre-dexed/debug/classes-18d3e2a3c4f59e0128bb20194cc1a3f876746cd5.jar" />
     </item>
     <item
-        jar="/Users/geolabedu/DAGS/app/build/intermediates/exploded-aar/com.android.support/palette-v7/23.0.1/jars/classes.jar"
+        jar="/Users/geolabedu/DAGS/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-appinvite/7.8.0/jars/classes.jar"
         jumboMode="false"
         revision="21.1.2"
-        sha1="a527cd5d9aa10f1a387cbd1c4c426fff5022a376">
-        <dex dex="/Users/geolabedu/DAGS/app/build/intermediates/pre-dexed/debug/classes-229aeb81fa900d14502c02b691b29182b3877e3d.jar" />
+        sha1="98137c4d12c50923f5809852b1ef4d1c4e162081">
+        <dex dex="/Users/geolabedu/DAGS/app/build/intermediates/pre-dexed/debug/classes-9979668f49776427df561a839f05d4135681d1a1.jar" />
+    </item>
+    <item
+        jar="/Users/geolabedu/DAGS/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-cast/7.8.0/jars/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="130b32ed466fa0f63efd4c7d6250ccd2ed506790">
+        <dex dex="/Users/geolabedu/DAGS/app/build/intermediates/pre-dexed/debug/classes-5aa431d3ca9f0daa74e84e8a3db36de335c70b19.jar" />
+    </item>
+    <item
+        jar="/Users/geolabedu/.gradle/caches/modules-2/files-2.1/org.apache.httpcomponents/httpcore/4.2.2/b76bee23cd3f3ee9b98bc7c2c14670e821ddbbfd/httpcore-4.2.2.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="b76bee23cd3f3ee9b98bc7c2c14670e821ddbbfd">
+        <dex dex="/Users/geolabedu/DAGS/app/build/intermediates/pre-dexed/debug/httpcore-4.2.2-38bac0fbd419daf2c3f6dd07aa8c269f8047f0c0.jar" />
     </item>
     <item
         jar="/Users/geolabedu/DAGS/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-plus/7.8.0/jars/classes.jar"
@@ -51,97 +65,6 @@
         <dex dex="/Users/geolabedu/DAGS/app/build/intermediates/pre-dexed/debug/classes-cd2ac24f5341c3dadfd0b9d6594afca4405b4660.jar" />
     </item>
     <item
-        jar="/Users/geolabedu/DAGS/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-appindexing/7.8.0/jars/classes.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="e23ea11124bb700eeddd4ab7aa848c615f493850">
-        <dex dex="/Users/geolabedu/DAGS/app/build/intermediates/pre-dexed/debug/classes-43ae1a08114a16eac98ef0c1fcc289f0226631d5.jar" />
-    </item>
-    <item
-        jar="/Users/geolabedu/DAGS/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-appinvite/7.8.0/jars/classes.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="98137c4d12c50923f5809852b1ef4d1c4e162081">
-        <dex dex="/Users/geolabedu/DAGS/app/build/intermediates/pre-dexed/debug/classes-9979668f49776427df561a839f05d4135681d1a1.jar" />
-    </item>
-    <item
-        jar="/Users/geolabedu/.gradle/caches/modules-2/files-2.1/org.apache.httpcomponents/httpmime/4.2.3/118ae1bc7f3aeeddfe564f0edfd79c11d09d17d1/httpmime-4.2.3.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="118ae1bc7f3aeeddfe564f0edfd79c11d09d17d1">
-        <dex dex="/Users/geolabedu/DAGS/app/build/intermediates/pre-dexed/debug/httpmime-4.2.3-edb5b755b010df356fe2f4826d7fbe45e22bc8fe.jar" />
-    </item>
-    <item
-        jar="/Users/geolabedu/DAGS/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-identity/7.8.0/jars/classes.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="d11330ea68c0d964d30d5caed1f27e6b1488b189">
-        <dex dex="/Users/geolabedu/DAGS/app/build/intermediates/pre-dexed/debug/classes-3197da4427dcb593d59510932422939e52a0bd99.jar" />
-    </item>
-    <item
-        jar="/Users/geolabedu/DAGS/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-fitness/7.8.0/jars/classes.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="77a9dcb5f8b1dba36aacaa9c150eb0942dbea158">
-        <dex dex="/Users/geolabedu/DAGS/app/build/intermediates/pre-dexed/debug/classes-8accceb8b4f73c6de5bd25c60966449efb7b6471.jar" />
-    </item>
-    <item
-        jar="/Users/geolabedu/DAGS/app/build/intermediates/exploded-aar/com.android.support/design/22.2.0/jars/classes.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="fc63b820d54c8a27a3a614bdd93920e0076581c2">
-        <dex dex="/Users/geolabedu/DAGS/app/build/intermediates/pre-dexed/debug/classes-20ecff74e55c0150f570d33e433762e9d8328c2f.jar" />
-    </item>
-    <item
-        jar="/Users/geolabedu/DAGS/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-analytics/7.8.0/jars/classes.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="0124ce31248c0e8acfa2b28283c6d1a4d76e73d2">
-        <dex dex="/Users/geolabedu/DAGS/app/build/intermediates/pre-dexed/debug/classes-f28cdc1326a4d46b8f7763b5778d3b185a992cc1.jar" />
-    </item>
-    <item
-        jar="/Users/geolabedu/DAGS/app/build/intermediates/exploded-aar/com.github.erd/android-volley/1.0.0/jars/classes.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="24c7ec1ecd41d65b24a76cef274fdd5f0805e98b">
-        <dex dex="/Users/geolabedu/DAGS/app/build/intermediates/pre-dexed/debug/classes-afcfbc397f91d6d206c0758497952333320ccd0d.jar" />
-    </item>
-    <item
-        jar="/Users/geolabedu/DAGS/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-wearable/7.8.0/jars/classes.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="c5cafb324568d954780abb858c25db7ce675ab3c">
-        <dex dex="/Users/geolabedu/DAGS/app/build/intermediates/pre-dexed/debug/classes-8ebf8ae37634bffc90d4957b80a3deae224d0ab8.jar" />
-    </item>
-    <item
-        jar="/Users/geolabedu/DAGS/app/build/intermediates/exploded-aar/com.android.support/cardview-v7/22.2.0/jars/classes.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="97f7e239e86ef994de894818fdd8a71d2e89d6aa">
-        <dex dex="/Users/geolabedu/DAGS/app/build/intermediates/pre-dexed/debug/classes-382ccf1aebe99bdeb384be7987bcd5665d6131bb.jar" />
-    </item>
-    <item
-        jar="/Users/geolabedu/DAGS/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-maps/7.8.0/jars/classes.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="cb6fab7a71fa9ec1f483d44c5fca65ab469d8aca">
-        <dex dex="/Users/geolabedu/DAGS/app/build/intermediates/pre-dexed/debug/classes-771d19edb89d7ca951627b78c38718fb6927b2c2.jar" />
-    </item>
-    <item
-        jar="/Users/geolabedu/.gradle/caches/modules-2/files-2.1/org.apache.httpcomponents/httpcore/4.2.2/b76bee23cd3f3ee9b98bc7c2c14670e821ddbbfd/httpcore-4.2.2.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="b76bee23cd3f3ee9b98bc7c2c14670e821ddbbfd">
-        <dex dex="/Users/geolabedu/DAGS/app/build/intermediates/pre-dexed/debug/httpcore-4.2.2-38bac0fbd419daf2c3f6dd07aa8c269f8047f0c0.jar" />
-    </item>
-    <item
-        jar="/Users/geolabedu/DAGS/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-cast/7.8.0/jars/classes.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="130b32ed466fa0f63efd4c7d6250ccd2ed506790">
-        <dex dex="/Users/geolabedu/DAGS/app/build/intermediates/pre-dexed/debug/classes-5aa431d3ca9f0daa74e84e8a3db36de335c70b19.jar" />
-    </item>
-    <item
         jar="/Users/geolabedu/DAGS/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-nearby/7.8.0/jars/classes.jar"
         jumboMode="false"
         revision="21.1.2"
@@ -149,88 +72,18 @@
         <dex dex="/Users/geolabedu/DAGS/app/build/intermediates/pre-dexed/debug/classes-a729632b4154bcb9ff5a5d094a92ae3133b58414.jar" />
     </item>
     <item
-        jar="/Users/geolabedu/DAGS/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.0.1/jars/classes.jar"
+        jar="/Users/geolabedu/DAGS/app/build/intermediates/exploded-aar/com.android.support/support-v4/22.2.0/jars/libs/internal_impl-22.2.0.jar"
         jumboMode="false"
         revision="21.1.2"
-        sha1="c31e21b53ff2f74664e498248d01453a32e32d48">
-        <dex dex="/Users/geolabedu/DAGS/app/build/intermediates/pre-dexed/debug/classes-07745d540b64990ceb51d8fc8d3c4caa5a5156dd.jar" />
+        sha1="57f2ab85c164ff1676ec64dee787981c046fab79">
+        <dex dex="/Users/geolabedu/DAGS/app/build/intermediates/pre-dexed/debug/internal_impl-22.2.0-97825dbbdc9cc29d4758100384771ae993342b16.jar" />
     </item>
     <item
-        jar="/Users/geolabedu/DAGS/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-location/7.8.0/jars/classes.jar"
+        jar="/Users/geolabedu/DAGS/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-appindexing/7.8.0/jars/classes.jar"
         jumboMode="false"
         revision="21.1.2"
-        sha1="4a135d56554069e5d0ff80e3220e887e57146ee5">
-        <dex dex="/Users/geolabedu/DAGS/app/build/intermediates/pre-dexed/debug/classes-a89de394334cef6935caaaa6440fe2d62745d9ca.jar" />
-    </item>
-    <item
-        jar="/Users/geolabedu/DAGS/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-panorama/7.8.0/jars/classes.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="6e85edfc9b5346d216e50ccef1f8e825504144a3">
-        <dex dex="/Users/geolabedu/DAGS/app/build/intermediates/pre-dexed/debug/classes-4446e24c73f2de8586161a3bf27f54eaa73b7854.jar" />
-    </item>
-    <item
-        jar="/Users/geolabedu/DAGS/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-drive/7.8.0/jars/classes.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="42a1ee578b62fd1bd28b3307a679dc9ba0791587">
-        <dex dex="/Users/geolabedu/DAGS/app/build/intermediates/pre-dexed/debug/classes-4778df0189a028006d1674d40bb1612c278d5db4.jar" />
-    </item>
-    <item
-        jar="/Users/geolabedu/DAGS/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-games/7.8.0/jars/classes.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="2e24e5f1b11170163028277de63f709e42525db4">
-        <dex dex="/Users/geolabedu/DAGS/app/build/intermediates/pre-dexed/debug/classes-18d3e2a3c4f59e0128bb20194cc1a3f876746cd5.jar" />
-    </item>
-    <item
-        jar="/Users/geolabedu/DAGS/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-appstate/7.8.0/jars/classes.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="edea92852b40eee716e910af8dad9eeaa58fb0e1">
-        <dex dex="/Users/geolabedu/DAGS/app/build/intermediates/pre-dexed/debug/classes-75cc69e241d7d2b29fd9d5ffbed35880ff4abc91.jar" />
-    </item>
-    <item
-        jar="/Users/geolabedu/DAGS/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-ads/7.8.0/jars/classes.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="1ff30fa49c07a08c3035d7218a3efebf5680d522">
-        <dex dex="/Users/geolabedu/DAGS/app/build/intermediates/pre-dexed/debug/classes-6506e61314426ced3380ad36543bb13ab76dcc11.jar" />
-    </item>
-    <item
-        jar="/Users/geolabedu/.gradle/caches/modules-2/files-2.1/com.parse.bolts/bolts-android/1.2.0/6ee2953ccf51ce72b6d548c30c4633b99eb4f9dd/bolts-android-1.2.0.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="6ee2953ccf51ce72b6d548c30c4633b99eb4f9dd">
-        <dex dex="/Users/geolabedu/DAGS/app/build/intermediates/pre-dexed/debug/bolts-android-1.2.0-2989e662233022ff999104fc51a9e90f267d0044.jar" />
-    </item>
-    <item
-        jar="/Users/geolabedu/DAGS/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-gcm/7.8.0/jars/classes.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="c756d14e99d39471e99013a1e8fd2f3813ed42bf">
-        <dex dex="/Users/geolabedu/DAGS/app/build/intermediates/pre-dexed/debug/classes-55a71e1da9b20c6708f049547d51a996f82ce689.jar" />
-    </item>
-    <item
-        jar="/Users/geolabedu/DAGS/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/7.8.0/jars/classes.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="c0c912d58c9468b1f9d9769c8975afdf2c85d681">
-        <dex dex="/Users/geolabedu/DAGS/app/build/intermediates/pre-dexed/debug/classes-8fdc2776e8a761cbaf9bb37420d537915bba3502.jar" />
-    </item>
-    <item
-        jar="/Users/geolabedu/DAGS/app/build/intermediates/exploded-aar/com.android.support/mediarouter-v7/22.2.0/jars/classes.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="dcf8c83c3dead00a6c4fe313e95f7aaca20dc641">
-        <dex dex="/Users/geolabedu/DAGS/app/build/intermediates/pre-dexed/debug/classes-275e0e178ff7f3f11170728acbd086c4be28b7c1.jar" />
-    </item>
-    <item
-        jar="/Users/geolabedu/Library/Android/sdk/extras/android/m2repository/com/android/support/support-annotations/23.0.1/support-annotations-23.0.1.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="1fce89a6428c51467090d7f424e4c9c3dbd55f7e">
-        <dex dex="/Users/geolabedu/DAGS/app/build/intermediates/pre-dexed/debug/support-annotations-23.0.1-b9d563b41eaab3b2c2f6b74dc6fb1a33a7bd9457.jar" />
+        sha1="e23ea11124bb700eeddd4ab7aa848c615f493850">
+        <dex dex="/Users/geolabedu/DAGS/app/build/intermediates/pre-dexed/debug/classes-43ae1a08114a16eac98ef0c1fcc289f0226631d5.jar" />
     </item>
     <item
         jar="/Users/geolabedu/DAGS/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.2.0/jars/classes.jar"
@@ -240,6 +93,20 @@
         <dex dex="/Users/geolabedu/DAGS/app/build/intermediates/pre-dexed/debug/classes-b57ed920aeb3cb0bee9b5106ca5c915140fe89c3.jar" />
     </item>
     <item
+        jar="/Users/geolabedu/DAGS/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-maps/7.8.0/jars/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="cb6fab7a71fa9ec1f483d44c5fca65ab469d8aca">
+        <dex dex="/Users/geolabedu/DAGS/app/build/intermediates/pre-dexed/debug/classes-771d19edb89d7ca951627b78c38718fb6927b2c2.jar" />
+    </item>
+    <item
+        jar="/Users/geolabedu/DAGS/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-wearable/7.8.0/jars/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="c5cafb324568d954780abb858c25db7ce675ab3c">
+        <dex dex="/Users/geolabedu/DAGS/app/build/intermediates/pre-dexed/debug/classes-8ebf8ae37634bffc90d4957b80a3deae224d0ab8.jar" />
+    </item>
+    <item
         jar="/Users/geolabedu/.gradle/caches/modules-2/files-2.1/com.squareup.picasso/picasso/2.5.2/7446d06ec8d4f7ffcc53f1da37c95f200dcb9387/picasso-2.5.2.jar"
         jumboMode="false"
         revision="21.1.2"
@@ -247,11 +114,137 @@
         <dex dex="/Users/geolabedu/DAGS/app/build/intermediates/pre-dexed/debug/picasso-2.5.2-b11232a54dbc7389d2c7be966e8fe04fd490eaf7.jar" />
     </item>
     <item
+        jar="/Users/geolabedu/DAGS/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-vision/7.8.0/jars/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="b99f0b78bbcb76b915bc6529a83b65d4d46990dd">
+        <dex dex="/Users/geolabedu/DAGS/app/build/intermediates/pre-dexed/debug/classes-09c076b83d9e550aaf09af0c223584117ac34413.jar" />
+    </item>
+    <item
         jar="/Users/geolabedu/DAGS/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-wallet/7.8.0/jars/classes.jar"
         jumboMode="false"
         revision="21.1.2"
         sha1="c2ac04c5b232f6f0658ee4f1c13be09cd76406e2">
         <dex dex="/Users/geolabedu/DAGS/app/build/intermediates/pre-dexed/debug/classes-776ece4d8c97eae3631e8276b1f24563a018b9a9.jar" />
+    </item>
+    <item
+        jar="/Users/geolabedu/DAGS/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-appstate/7.8.0/jars/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="edea92852b40eee716e910af8dad9eeaa58fb0e1">
+        <dex dex="/Users/geolabedu/DAGS/app/build/intermediates/pre-dexed/debug/classes-75cc69e241d7d2b29fd9d5ffbed35880ff4abc91.jar" />
+    </item>
+    <item
+        jar="/Users/geolabedu/DAGS/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-gcm/7.8.0/jars/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="c756d14e99d39471e99013a1e8fd2f3813ed42bf">
+        <dex dex="/Users/geolabedu/DAGS/app/build/intermediates/pre-dexed/debug/classes-55a71e1da9b20c6708f049547d51a996f82ce689.jar" />
+    </item>
+    <item
+        jar="/Users/geolabedu/DAGS/app/build/intermediates/exploded-aar/com.github.erd/android-volley/1.0.0/jars/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="24c7ec1ecd41d65b24a76cef274fdd5f0805e98b">
+        <dex dex="/Users/geolabedu/DAGS/app/build/intermediates/pre-dexed/debug/classes-afcfbc397f91d6d206c0758497952333320ccd0d.jar" />
+    </item>
+    <item
+        jar="/Users/geolabedu/DAGS/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-ads/7.8.0/jars/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="1ff30fa49c07a08c3035d7218a3efebf5680d522">
+        <dex dex="/Users/geolabedu/DAGS/app/build/intermediates/pre-dexed/debug/classes-6506e61314426ced3380ad36543bb13ab76dcc11.jar" />
+    </item>
+    <item
+        jar="/Users/geolabedu/DAGS/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-drive/7.8.0/jars/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="42a1ee578b62fd1bd28b3307a679dc9ba0791587">
+        <dex dex="/Users/geolabedu/DAGS/app/build/intermediates/pre-dexed/debug/classes-4778df0189a028006d1674d40bb1612c278d5db4.jar" />
+    </item>
+    <item
+        jar="/Users/geolabedu/DAGS/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-fitness/7.8.0/jars/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="77a9dcb5f8b1dba36aacaa9c150eb0942dbea158">
+        <dex dex="/Users/geolabedu/DAGS/app/build/intermediates/pre-dexed/debug/classes-8accceb8b4f73c6de5bd25c60966449efb7b6471.jar" />
+    </item>
+    <item
+        jar="/Users/geolabedu/DAGS/app/build/intermediates/exploded-aar/com.android.support/mediarouter-v7/22.2.0/jars/libs/internal_impl-22.2.0.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="0632f06970823b7e3436f649bfa65b47035c91d0">
+        <dex dex="/Users/geolabedu/DAGS/app/build/intermediates/pre-dexed/debug/internal_impl-22.2.0-983bdcd734e967fe67d82b9f1f8f88221252e68c.jar" />
+    </item>
+    <item
+        jar="/Users/geolabedu/DAGS/app/build/intermediates/exploded-aar/com.android.support/design/22.2.0/jars/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="fc63b820d54c8a27a3a614bdd93920e0076581c2">
+        <dex dex="/Users/geolabedu/DAGS/app/build/intermediates/pre-dexed/debug/classes-20ecff74e55c0150f570d33e433762e9d8328c2f.jar" />
+    </item>
+    <item
+        jar="/Users/geolabedu/DAGS/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-safetynet/7.8.0/jars/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="166e458ee3b5fb5fcff0f936df3f3a788e6c54f3">
+        <dex dex="/Users/geolabedu/DAGS/app/build/intermediates/pre-dexed/debug/classes-454d94e53becdc6fa7ffaa3f4d3946321120d36d.jar" />
+    </item>
+    <item
+        jar="/Users/geolabedu/DAGS/app/build/intermediates/exploded-aar/com.android.support/support-v4/22.2.0/jars/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="1ee588ff2c4daf7b97c1cbf922a6c7f027285c2f">
+        <dex dex="/Users/geolabedu/DAGS/app/build/intermediates/pre-dexed/debug/classes-20dfd0226a62590befb45649f0deca5ef45cc193.jar" />
+    </item>
+    <item
+        jar="/Users/geolabedu/DAGS/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-panorama/7.8.0/jars/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="6e85edfc9b5346d216e50ccef1f8e825504144a3">
+        <dex dex="/Users/geolabedu/DAGS/app/build/intermediates/pre-dexed/debug/classes-4446e24c73f2de8586161a3bf27f54eaa73b7854.jar" />
+    </item>
+    <item
+        jar="/Users/geolabedu/DAGS/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-location/7.8.0/jars/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="4a135d56554069e5d0ff80e3220e887e57146ee5">
+        <dex dex="/Users/geolabedu/DAGS/app/build/intermediates/pre-dexed/debug/classes-a89de394334cef6935caaaa6440fe2d62745d9ca.jar" />
+    </item>
+    <item
+        jar="/Users/geolabedu/DAGS/app/build/intermediates/exploded-aar/com.android.support/cardview-v7/22.2.0/jars/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="97f7e239e86ef994de894818fdd8a71d2e89d6aa">
+        <dex dex="/Users/geolabedu/DAGS/app/build/intermediates/pre-dexed/debug/classes-382ccf1aebe99bdeb384be7987bcd5665d6131bb.jar" />
+    </item>
+    <item
+        jar="/Users/geolabedu/.gradle/caches/modules-2/files-2.1/org.apache.httpcomponents/httpmime/4.2.3/118ae1bc7f3aeeddfe564f0edfd79c11d09d17d1/httpmime-4.2.3.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="118ae1bc7f3aeeddfe564f0edfd79c11d09d17d1">
+        <dex dex="/Users/geolabedu/DAGS/app/build/intermediates/pre-dexed/debug/httpmime-4.2.3-edb5b755b010df356fe2f4826d7fbe45e22bc8fe.jar" />
+    </item>
+    <item
+        jar="/Users/geolabedu/DAGS/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-analytics/7.8.0/jars/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="0124ce31248c0e8acfa2b28283c6d1a4d76e73d2">
+        <dex dex="/Users/geolabedu/DAGS/app/build/intermediates/pre-dexed/debug/classes-f28cdc1326a4d46b8f7763b5778d3b185a992cc1.jar" />
+    </item>
+    <item
+        jar="/Users/geolabedu/Library/Android/sdk/extras/android/m2repository/com/android/support/support-annotations/22.2.0/support-annotations-22.2.0.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="66b42a1f3eb7676070b7ef7f14b603483aecbee1">
+        <dex dex="/Users/geolabedu/DAGS/app/build/intermediates/pre-dexed/debug/support-annotations-22.2.0-a9c90a841bebfc6a8fe9ec3d45a379a5695b6a4f.jar" />
+    </item>
+    <item
+        jar="/Users/geolabedu/DAGS/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-identity/7.8.0/jars/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="d11330ea68c0d964d30d5caed1f27e6b1488b189">
+        <dex dex="/Users/geolabedu/DAGS/app/build/intermediates/pre-dexed/debug/classes-3197da4427dcb593d59510932422939e52a0bd99.jar" />
     </item>
 
 </items>
