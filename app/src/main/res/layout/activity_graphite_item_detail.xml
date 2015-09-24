@@ -54,12 +54,12 @@
                             android:layout_below="@+id/customViewLinear"
                             android:textSize="25sp"
                             android:paddingLeft="20dp"
-                            android:paddingTop="10dp"
                             android:paddingRight="20dp"
                             android:text="@string/imgTitle"
                             android:textColor="#800080"
                             android:textStyle="bold"
-                            android:layout_marginTop="20dp" />
+                            android:layout_marginTop="10dp"
+                            android:paddingBottom="10dp" />
 
                         <!-- author textview-->
                         <TextView
@@ -70,10 +70,9 @@
                             android:textSize="13sp"
                             android:textColor="#000"
                             android:background="@drawable/myrect"
-                            android:layout_below="@+id/customViewLinear"
-                            android:layout_toLeftOf="@+id/createDate"
-                            android:layout_toStartOf="@+id/createDate"
-                            android:layout_marginTop="10dp" />
+                            android:layout_below="@+id/imgTitle"
+                            android:layout_alignLeft="@+id/hashTagId"
+                            android:layout_alignStart="@+id/hashTagId" />
 
 
                         <!-- likes number-->
@@ -136,10 +135,10 @@
                             android:textIsSelectable="false"
                             android:textSize="13sp"
                             android:textColor="#000"
-                            android:layout_above="@+id/customViewLinear"
-                            android:layout_alignParentRight="true"
-                            android:layout_alignParentEnd="false"
-                            android:layout_marginLeft="20dp" />
+                            android:layout_alignTop="@+id/commentsTextViw"
+                            android:layout_toRightOf="@+id/commentsTextViw"
+                            android:layout_toEndOf="@+id/commentsTextViw"
+                            android:layout_marginLeft="70dp" />
 
                         <!-- line custom view-->
                         <LinearLayout
@@ -169,12 +168,13 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/hashTag"
-                            android:textSize="17sp"
+                            android:textSize="15sp"
                             android:layout_alignStart="@+id/little_description"
                             android:layout_marginBottom="5dp"
-                            android:layout_below="@+id/imgTitle"
+                            android:layout_below="@+id/author"
                             android:layout_marginLeft="20dp"
-                            android:textColor="#000" />
+                            android:textColor="#ff1b66ac"
+                            android:paddingTop="5dp" />
 
                         <TextView
                             android:id="@+id/little_description"
