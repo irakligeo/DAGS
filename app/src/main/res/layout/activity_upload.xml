@@ -27,7 +27,7 @@
             xmlns:card_view="http://schemas.android.com/apk/res-auto"
             android:id="@+id/cardview"
             android:layout_width="match_parent"
-            android:layout_height="300dp"
+            android:layout_height="230dp"
             card_view:cardElevation="6dp"
 
             card_view:cardCornerRadius="3dp"
@@ -171,7 +171,7 @@
         android:src="@drawable/add_button"
         android:layout_margin="16dp"
         app:pressedTranslationZ="12dp"
-        android:visibility="gone"
+        android:visibility="visible"
         android:layout_gravity="end|bottom"
         app:fabSize="normal" />
 

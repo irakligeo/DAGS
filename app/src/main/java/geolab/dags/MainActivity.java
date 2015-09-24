@@ -90,7 +90,7 @@ public class MainActivity extends ActionBarActivity implements NavigationView.On
     private Context context;
     private LayoutInflater inflater;
     private View view;
-    private TextView fbUserName;
+    private TextView fbUserNameTextView;
     private ProfilePictureView profilePictureView;
 
     private View headerView;
@@ -101,6 +101,7 @@ public class MainActivity extends ActionBarActivity implements NavigationView.On
     public static FilterDialogFragment filterDialogFragment;
     public static final String MY_PREF_FOR_FB_USER_ID = "FB_USER_ID";
 
+    public static String fbUserName;
     public static Toolbar toolbar;
     public int toolbarColorResId,tabLayoutResColorId,statusBarColorResId;
 
@@ -111,7 +112,7 @@ public class MainActivity extends ActionBarActivity implements NavigationView.On
         FacebookSdk.sdkInitialize(getApplicationContext());
         setContentView(R.layout.activity_main);
 
-
+        user_id = LoadPreferences();
 
         context = this;
         activity = this;
@@ -170,7 +171,10 @@ public class MainActivity extends ActionBarActivity implements NavigationView.On
         NavigationView navigationView = (NavigationView) findViewById(R.id.navigation_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-        fbUserName = (TextView) navigationView.findViewById(R.id.fb_user_name);
+        fbUserNameTextView = (TextView) navigationView.findViewById(R.id.fb_user_name);
+        if(user_id != ""){
+            fbUserNameTextView.setText(fbUserName);
+        }
 
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout, toolbar, R.string.open,
@@ -202,6 +206,9 @@ public class MainActivity extends ActionBarActivity implements NavigationView.On
         // finally change the color
         window.setStatusBarColor(activity.getResources().getColor(R.color.status_bar_color));
 
+
+
+        Toast.makeText(getApplicationContext(),user_id,Toast.LENGTH_SHORT).show();
         //filter dialog
         filterDialogFragment = new FilterDialogFragment();
 
@@ -212,7 +219,12 @@ public class MainActivity extends ActionBarActivity implements NavigationView.On
 
     }
 
-
+    private String LoadPreferences(){
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        String  data = sharedPreferences.getString("user_id", "") ;
+//        Toast.makeText(this,data, Toast.LENGTH_LONG).show();
+        return data;
+    }
 
 
     //starting camera code
@@ -235,6 +247,10 @@ public class MainActivity extends ActionBarActivity implements NavigationView.On
      * */
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+
+        if(callbackManager == null){
+            callbackManager = CallbackManager.Factory.create();
+        }
         callbackManager.onActivityResult(requestCode, resultCode, data);
         // if the result is capturing Image
         if (requestCode == CAMERA_CAPTURE_IMAGE_REQUEST_CODE) {
@@ -403,8 +419,11 @@ public class MainActivity extends ActionBarActivity implements NavigationView.On
             case R.id.navigation_item_1: // fotos gadageba
 
 //                closeDrawerFromUiThread();
-                if (user_id != "")
+                if (user_id != "") {
+                    Toast.makeText(getApplicationContext(),user_id,Toast.LENGTH_SHORT).show();
                     captureImage();
+                    logged[0] = true;
+                }
                 else {
                     new AlertDialog.Builder(context)
                             .setTitle("ფოტოს ატვირთვა")
@@ -415,6 +434,7 @@ public class MainActivity extends ActionBarActivity implements NavigationView.On
                                 public void onClick(DialogInterface dialogInterface, int i) {
                                     LoginManager.getInstance().logOut();
                                     accessToken = null;
+                                    SavePreferences("user_id","");
                                 }
                             })
                             .setPositiveButton("კი", new DialogInterface.OnClickListener() {
@@ -428,7 +448,6 @@ public class MainActivity extends ActionBarActivity implements NavigationView.On
                 break;
 
             case R.id.navigation_item_2: // avtorizacia
-//                closeDrawerFromUiThread();
                 //check if logged
                     loginToFB();
                 break;
@@ -491,6 +510,7 @@ public class MainActivity extends ActionBarActivity implements NavigationView.On
                         public void onClick(DialogInterface dialogInterface, int i) {
                             LoginManager.getInstance().logOut();
                             accessToken = null;
+                            SavePreferences("user_id","");
                             logged[0] = false;
                         }
                     })
@@ -521,7 +541,8 @@ public class MainActivity extends ActionBarActivity implements NavigationView.On
                                         try {
                                             user_id = jsonObject.getString("id");
                                             str_firstname = jsonObject.getString("name");
-                                            fbUserName.setText(jsonObject.getString("name"));
+                                            fbUserName = jsonObject.getString("name");
+                                            fbUserNameTextView.setText(fbUserName);
                                             SavePreferences("user_id",user_id);
 
                                         } catch (NullPointerException ex) {
@@ -628,6 +649,7 @@ public class MainActivity extends ActionBarActivity implements NavigationView.On
     @Override
     protected void onDestroy() {
         super.onDestroy();
+        SavePreferences("user_id","");
         unbindDrawables(findViewById(R.id.frameLayout));
         System.gc();
     }
