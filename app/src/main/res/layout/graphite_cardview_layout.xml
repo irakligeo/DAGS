@@ -37,22 +37,12 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/peaceOfArtImg"
                 android:textColor="@color/black"
-                android:textSize="30sp"
+                android:textSize="25sp"
                 android:text="jemo"
                 android:gravity="left"
                 android:layout_marginLeft="20dp"
                 android:typeface="serif" />
 
-            <TextView
-                android:id="@+id/author"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/imgTitle"
-                android:textColor="@color/black"
-                android:text="author"
-                android:textSize="12sp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="10dp" />
 
             <TextView
                 android:id="@+id/uploadDateTime"
@@ -61,7 +51,7 @@
                 android:text="upload DateTime"
                 android:gravity="right"
                 android:textColor="@color/black"
-                android:layout_below="@+id/imgTitle"
+                android:layout_below="@+id/peaceOfArtImg"
                 android:layout_alignParentRight="true"
                 android:layout_alignParentEnd="false"
                 android:textSize="12sp"
@@ -69,13 +59,25 @@
                 android:layout_marginTop="10dp" />
 
             <TextView
+                android:id="@+id/author"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:text="author"
+                android:textSize="12sp"
+                android:layout_below="@+id/little_description"
+                android:layout_alignLeft="@+id/uploadDateTime"
+                android:layout_alignStart="@+id/uploadDateTime"
+                android:layout_marginBottom="10dp" />
+
+            <TextView
                 android:id="@+id/little_description"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/uploadDateTime"
+                android:layout_below="@+id/imgTitle"
                 android:layout_marginTop="10dp"
                 android:textColor="@color/black"
-                android:layout_marginBottom="10dp"
+                android:layout_marginBottom="5dp"
                 android:text="little description"
                 android:layout_marginLeft="15dp" />
 
