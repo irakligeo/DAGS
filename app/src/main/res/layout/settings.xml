@@ -15,7 +15,7 @@
     <ImageView
         android:id="@+id/redStyleImageView"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="120dp"
         android:background="@drawable/red_style"
         android:layout_marginBottom="10dp"/>
 
@@ -24,7 +24,7 @@
         android:layout_below="@+id/redStyleImageView"
         android:background="@drawable/purple_style"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="120dp"
         android:layout_marginBottom="10dp"/>
 
     <ImageView
@@ -32,7 +32,7 @@
         android:layout_below="@+id/purpleStyleIamgeView"
         android:background="@drawable/dark_style"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="120dp"
         android:layout_marginBottom="10dp"/>
 
     <ImageView
@@ -40,7 +40,7 @@
         android:layout_below="@+id/darkStyleImageView"
         android:background="@drawable/blue_style"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="120dp"
         android:layout_marginBottom="10dp"/>
 
     <ImageView
@@ -48,7 +48,7 @@
         android:layout_below="@+id/blueStyleImageView"
         android:background="@drawable/gray_style"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="120dp"
         android:layout_marginBottom="10dp"/>
 
     </RelativeLayout>

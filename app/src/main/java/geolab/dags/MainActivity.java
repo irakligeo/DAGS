@@ -597,7 +597,7 @@ public class MainActivity extends ActionBarActivity implements NavigationView.On
 
 
     @SuppressLint("ValidFragment")
-    private class SettingsFragment extends DialogFragment {
+    private class SettingsFragment extends DialogFragment implements View.OnClickListener {
 
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -608,44 +608,26 @@ public class MainActivity extends ActionBarActivity implements NavigationView.On
 
 
             ImageView redStyle = (ImageView) view.findViewById(R.id.redStyleImageView);
+                        redStyle.setOnClickListener(this);
             ImageView purpleStyle = (ImageView) view.findViewById(R.id.purpleStyleIamgeView);
-
-
-            // წითელი სტილი
-            redStyle.setOnClickListener(new View.OnClickListener() {
-
-                @TargetApi(Build.VERSION_CODES.LOLLIPOP)
-                @Override
-                public void onClick(View view) {
-                    changeStyle(R.color.red_toolbar_color,R.color.red_tab_layout,R.color.red_status_bar_color);
-
-                }
-            });
-
-            purpleStyle.setOnClickListener(new View.OnClickListener() {
-                @TargetApi(Build.VERSION_CODES.LOLLIPOP)
-                @Override
-                public void onClick(View view) {
-                    toolbar.setBackgroundColor(Color.parseColor("#E91E63"));
-                    tabLayout.setBackgroundColor(Color.parseColor("#E91E63"));
-
-                    Window window = activity.getWindow();
-                    window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-                    window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-                    window.setStatusBarColor(Color.parseColor("#C2185B"));
-
-                }
-            });
+                        purpleStyle.setOnClickListener(this);
+            ImageView darkStyle = (ImageView) view.findViewById(R.id.darkStyleImageView);
+                        darkStyle.setOnClickListener(this);
+            ImageView grayStyle = (ImageView) view.findViewById(R.id.grayStyleImageView);
+                        grayStyle.setOnClickListener(this);
+            ImageView blueStyle = (ImageView) view.findViewById(R.id.blueStyleImageView);
+                        blueStyle.setOnClickListener(this);
 
             return view;
         }
 
+
+        //change style
         @TargetApi(Build.VERSION_CODES.LOLLIPOP)
-        @SuppressLint("ResourceAsColor")
         public void changeStyle(int toolbarResID, int tablayoutResId, int statusbarResId){
 
-            toolbar.setBackgroundColor(toolbarResID);
-            tabLayout.setBackgroundColor(tablayoutResId);
+            toolbar.setBackgroundColor(activity.getResources().getColor(toolbarResID));
+            tabLayout.setBackgroundColor(activity.getResources().getColor(tablayoutResId));
             Window window = activity.getWindow();
 
             // clear FLAG_TRANSLUCENT_STATUS flag:
@@ -658,6 +640,29 @@ public class MainActivity extends ActionBarActivity implements NavigationView.On
             window.setStatusBarColor(activity.getResources().getColor(statusbarResId));
         }
 
+        @Override
+        public void onClick(View view) {
+            switch (view.getId()){
+                case R.id.redStyleImageView:
+                    changeStyle(R.color.red_toolbar_color, R.color.red_tab_layout, R.color.red_status_bar_color);
+                    break;
+                case R.id.purpleStyleIamgeView:
+                    changeStyle(R.color.purple_toolbar_color, R.color.purple_tab_layout, R.color.purple_status_bar_color);
+                    break;
+                case R.id.blueStyleImageView:
+                    changeStyle(R.color.blue_toolbar_color, R.color.blue_tab_layout, R.color.blue_status_bar_color);
+                    break;
+                case R.id.darkStyleImageView:
+                    changeStyle(R.color.dark_toolbar_color, R.color.dark_tab_layout, R.color.dark_status_bar_color);
+                    break;
+                case R.id.grayStyleImageView:
+                    changeStyle(R.color.toolbar_color, R.color.tab_layout, R.color.status_bar_color);
+                    break;
+                default:
+                    changeStyle(R.color.toolbar_color, R.color.tab_layout, R.color.status_bar_color);
+                    break;
+            }
+        }
     }
 
 }

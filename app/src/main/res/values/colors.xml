@@ -31,7 +31,7 @@
 
     <!-- ვარდისფერი-->
     <color name="purple_tab_layout">#E91E63</color>
-    <color name="purple_color">#E91E63</color>
+    <color name="purple_toolbar_color">#E91E63</color>
     <color name="purple_status_bar_color">#C2185B</color>
 
 
