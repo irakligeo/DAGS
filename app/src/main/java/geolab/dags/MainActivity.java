@@ -610,22 +610,15 @@ public class MainActivity extends ActionBarActivity implements NavigationView.On
             ImageView redStyle = (ImageView) view.findViewById(R.id.redStyleImageView);
             ImageView purpleStyle = (ImageView) view.findViewById(R.id.purpleStyleIamgeView);
 
+
+            // წითელი სტილი
             redStyle.setOnClickListener(new View.OnClickListener() {
+
                 @TargetApi(Build.VERSION_CODES.LOLLIPOP)
                 @Override
                 public void onClick(View view) {
-                    toolbar.setBackgroundColor(Color.parseColor("#F44336"));
-                    tabLayout.setBackgroundColor(Color.parseColor("#F44336"));
-                    Window window = activity.getWindow();
+                    changeStyle(R.color.red_toolbar_color,R.color.red_tab_layout,R.color.red_status_bar_color);
 
-                    // clear FLAG_TRANSLUCENT_STATUS flag:
-                    window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-
-                    // add FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS flag to the window
-                    window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-
-                    // finally change the color
-                    window.setStatusBarColor(Color.parseColor("#D32F2F"));
                 }
             });
 
@@ -637,20 +630,32 @@ public class MainActivity extends ActionBarActivity implements NavigationView.On
                     tabLayout.setBackgroundColor(Color.parseColor("#E91E63"));
 
                     Window window = activity.getWindow();
-
-                    // clear FLAG_TRANSLUCENT_STATUS flag:
                     window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-
-                    // add FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS flag to the window
                     window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-
-                    // finally change the color
                     window.setStatusBarColor(Color.parseColor("#C2185B"));
 
                 }
             });
 
             return view;
+        }
+
+        @TargetApi(Build.VERSION_CODES.LOLLIPOP)
+        @SuppressLint("ResourceAsColor")
+        public void changeStyle(int toolbarResID, int tablayoutResId, int statusbarResId){
+
+            toolbar.setBackgroundColor(toolbarResID);
+            tabLayout.setBackgroundColor(tablayoutResId);
+            Window window = activity.getWindow();
+
+            // clear FLAG_TRANSLUCENT_STATUS flag:
+            window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+
+            // add FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS flag to the window
+            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+
+            // finally change the color
+            window.setStatusBarColor(activity.getResources().getColor(statusbarResId));
         }
 
     }
