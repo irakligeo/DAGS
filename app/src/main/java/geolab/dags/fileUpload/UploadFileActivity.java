@@ -102,7 +102,7 @@ public class UploadFileActivity extends ActionBarActivity {
     private boolean isDeviceSupportCamera() {
         if (getApplicationContext().getPackageManager().hasSystemFeature(
                 PackageManager.FEATURE_CAMERA)) {
-            // this device has a camera
+            // this device has toolbarColorResId camera
             return true;
         } else {
             // no camera on this device
@@ -253,7 +253,7 @@ public class UploadFileActivity extends ActionBarActivity {
             }
         }
 
-        // Create a media file name
+        // Create toolbarColorResId media file name
         String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss",
                 Locale.getDefault()).format(new Date());
         File mediaFile;
