@@ -8,6 +8,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -34,6 +35,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -96,9 +98,11 @@ public class MainActivity extends ActionBarActivity implements NavigationView.On
 
     private DrawerLayout mDrawerLayout;
     private Activity activity;
-    private TabLayout tabLayout;
+    public TabLayout tabLayout;
     public static FilterDialogFragment filterDialogFragment;
     public static final String MY_PREF_FOR_FB_USER_ID = "FB_USER_ID";
+
+    public Toolbar toolbar;
 
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     @Override
@@ -163,7 +167,7 @@ public class MainActivity extends ActionBarActivity implements NavigationView.On
         });
 
         //Burger menu
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
 
@@ -560,7 +564,8 @@ public class MainActivity extends ActionBarActivity implements NavigationView.On
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.action_settings:
-
+                SettingsFragment settingsFragment = new SettingsFragment();
+                settingsFragment.show(getFragmentManager(),"settings");
                 return true;
             case R.id.action_filter:
                 filterDialogFragment = new FilterDialogFragment();
@@ -598,8 +603,54 @@ public class MainActivity extends ActionBarActivity implements NavigationView.On
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState){
 
+            View view = inflater.inflate(R.layout.settings,null);
 
-            return null;
+
+
+            ImageView redStyle = (ImageView) view.findViewById(R.id.redStyleImageView);
+            ImageView purpleStyle = (ImageView) view.findViewById(R.id.purpleStyleIamgeView);
+
+            redStyle.setOnClickListener(new View.OnClickListener() {
+                @TargetApi(Build.VERSION_CODES.LOLLIPOP)
+                @Override
+                public void onClick(View view) {
+                    toolbar.setBackgroundColor(Color.parseColor("#D32F2F"));
+                    tabLayout.setBackgroundColor(Color.parseColor("#D32F2F"));
+                    Window window = activity.getWindow();
+
+                    // clear FLAG_TRANSLUCENT_STATUS flag:
+                    window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+
+                    // add FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS flag to the window
+                    window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+
+                    // finally change the color
+                    window.setStatusBarColor(Color.parseColor("#F44336"));
+                }
+            });
+
+            purpleStyle.setOnClickListener(new View.OnClickListener() {
+                @TargetApi(Build.VERSION_CODES.LOLLIPOP)
+                @Override
+                public void onClick(View view) {
+                    toolbar.setBackgroundColor(Color.parseColor("#E91E63"));
+                    tabLayout.setBackgroundColor(Color.parseColor("#E91E63"));
+
+                    Window window = activity.getWindow();
+
+                    // clear FLAG_TRANSLUCENT_STATUS flag:
+                    window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+
+                    // add FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS flag to the window
+                    window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+
+                    // finally change the color
+                    window.setStatusBarColor(Color.parseColor("#C2185B"));
+
+                }
+            });
+
+            return view;
         }
 
     }
