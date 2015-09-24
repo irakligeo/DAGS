@@ -31,7 +31,10 @@
                     <RelativeLayout
                         android:id="@+id/cardview"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content">
+                        android:layout_height="wrap_content"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:focusableInTouchMode="true">
 
                         <!-- graphite image view-->
                         <ImageView
@@ -55,7 +58,8 @@
                             android:paddingRight="20dp"
                             android:text="@string/imgTitle"
                             android:textColor="#800080"
-                            android:textStyle="bold" />
+                            android:textStyle="bold"
+                            android:layout_marginTop="20dp" />
 
                         <!-- author textview-->
                         <TextView
@@ -65,11 +69,11 @@
                             android:text="@string/author"
                             android:textSize="13sp"
                             android:textColor="#000"
+                            android:background="@drawable/myrect"
                             android:layout_below="@+id/customViewLinear"
-                            android:layout_alignLeft="@+id/createDate"
-                            android:layout_alignStart="@+id/createDate"
-                            android:layout_marginTop="5dp"
-                            android:background="@drawable/myrect" />
+                            android:layout_toLeftOf="@+id/createDate"
+                            android:layout_toStartOf="@+id/createDate"
+                            android:layout_marginTop="10dp" />
 
 
                         <!-- likes number-->
@@ -133,8 +137,9 @@
                             android:textSize="13sp"
                             android:textColor="#000"
                             android:layout_above="@+id/customViewLinear"
-                            android:layout_alignParentRight="false"
-                            android:layout_alignParentEnd="true" />
+                            android:layout_alignParentRight="true"
+                            android:layout_alignParentEnd="false"
+                            android:layout_marginLeft="20dp" />
 
                         <!-- line custom view-->
                         <LinearLayout
