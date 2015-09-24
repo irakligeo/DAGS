@@ -373,6 +373,8 @@ public class GraphiteDetailActivity extends ActionBarActivity implements Navigat
 //        finish();
     }
 
+
+    // get user id pref
     private String LoadPreferences(){
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
         String  data = sharedPreferences.getString("user_id", "user id") ;

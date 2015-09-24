@@ -102,6 +102,7 @@ public class MainActivity extends ActionBarActivity implements NavigationView.On
     public static final String MY_PREF_FOR_FB_USER_ID = "FB_USER_ID";
 
     public static Toolbar toolbar;
+    public int toolbarColorResId,tabLayoutResColorId,statusBarColorResId;
 
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     @Override
@@ -204,12 +205,11 @@ public class MainActivity extends ActionBarActivity implements NavigationView.On
         //filter dialog
         filterDialogFragment = new FilterDialogFragment();
 
-        int toolbarColorResId = R.color.toolbar_color, tabLayoutColorResId = R.color.tab_layout, statusBarColorResId = R.color.status_bar_color;
-                SaveUserSettings(this,toolbarColorResId,tabLayoutColorResId,statusBarColorResId);
+        
+        LoadSettings();
+        changeStyle(toolbar,tabLayout,window,toolbarColorResId,tabLayoutResColorId,statusBarColorResId);
 
     }
-
-
 
 
 
@@ -335,6 +335,36 @@ public class MainActivity extends ActionBarActivity implements NavigationView.On
         startActivityForResult(intent, CAMERA_CAPTURE_IMAGE_REQUEST_CODE);
     }
 
+
+
+    //change style
+    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
+    public void changeStyle(Toolbar toolbar,TabLayout tabLayout, Window window, int toolbarResID, int tablayoutResId, int statusbarResId){
+
+        toolbar.setBackgroundColor(activity.getResources().getColor(toolbarResID));
+        tabLayout.setBackgroundColor(activity.getResources().getColor(tablayoutResId));
+        window = activity.getWindow();
+
+        // clear FLAG_TRANSLUCENT_STATUS flag:
+        window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+
+        // add FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS flag to the window
+        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+
+        // finally change the color
+        window.setStatusBarColor(activity.getResources().getColor(statusbarResId));
+
+    }
+
+    public void LoadSettings() {
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+
+        toolbarColorResId = sharedPreferences.getInt("toolbarColor", R.color.toolbar_color);
+        tabLayoutResColorId = sharedPreferences.getInt("tabLayoutColor", R.color.tab_layout);
+        statusBarColorResId = sharedPreferences.getInt("statusBarColor", R.color.status_bar_color);
+    }
+
+
     //SharedPreferences for save
     public static void SaveUserSettings(Context context, int toolbarColorResId, int tabLayoutColorResId, int statusBarColorResId){
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
@@ -346,6 +376,7 @@ public class MainActivity extends ActionBarActivity implements NavigationView.On
         editor.commit();
     }
 
+    //SavePref ( user id )
     private void SavePreferences(String key, String value){
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
 
@@ -627,25 +658,8 @@ public class MainActivity extends ActionBarActivity implements NavigationView.On
         }
 
 
-        //change style
-        @TargetApi(Build.VERSION_CODES.LOLLIPOP)
-        public void changeStyle(Toolbar toolbar,TabLayout tabLayout, Window window, int toolbarResID, int tablayoutResId, int statusbarResId){
-
-            toolbar.setBackgroundColor(activity.getResources().getColor(toolbarResID));
-            tabLayout.setBackgroundColor(activity.getResources().getColor(tablayoutResId));
-            window = activity.getWindow();
-
-            // clear FLAG_TRANSLUCENT_STATUS flag:
-            window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-
-            // add FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS flag to the window
-            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-
-            // finally change the color
-            window.setStatusBarColor(activity.getResources().getColor(statusbarResId));
 
 
-        }
 
 
 
