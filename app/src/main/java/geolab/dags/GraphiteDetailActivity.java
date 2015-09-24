@@ -125,7 +125,7 @@ public class GraphiteDetailActivity extends ActionBarActivity implements Navigat
             //viewpager gallery
         int[] mResources = {
                 R.drawable.liked_icon,
-                R.drawable.like_icon,
+                R.drawable.like_heart_icon,
                 R.drawable.graphite,
                 R.drawable.palitra_icon,
                 R.drawable.photoaparat,

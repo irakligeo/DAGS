@@ -164,7 +164,7 @@
             <ImageView
                 android:id="@+id/like_icon"
                 android:layout_width="28dp"
-                android:src="@drawable/like_icon"
+                android:src="@drawable/like_heart_icon"
                 android:layout_height="28dp"
                 android:layout_below="@+id/customViewLinear"
                 android:layout_marginTop="10dp"
