@@ -614,8 +614,8 @@ public class MainActivity extends ActionBarActivity implements NavigationView.On
                 @TargetApi(Build.VERSION_CODES.LOLLIPOP)
                 @Override
                 public void onClick(View view) {
-                    toolbar.setBackgroundColor(Color.parseColor("#D32F2F"));
-                    tabLayout.setBackgroundColor(Color.parseColor("#D32F2F"));
+                    toolbar.setBackgroundColor(Color.parseColor("#F44336"));
+                    tabLayout.setBackgroundColor(Color.parseColor("#F44336"));
                     Window window = activity.getWindow();
 
                     // clear FLAG_TRANSLUCENT_STATUS flag:
@@ -625,7 +625,7 @@ public class MainActivity extends ActionBarActivity implements NavigationView.On
                     window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
 
                     // finally change the color
-                    window.setStatusBarColor(Color.parseColor("#F44336"));
+                    window.setStatusBarColor(Color.parseColor("#D32F2F"));
                 }
             });
 
