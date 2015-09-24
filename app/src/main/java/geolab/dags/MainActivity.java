@@ -1,7 +1,9 @@
 package geolab.dags;
 
+import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
 import android.app.Activity;
+import android.app.DialogFragment;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -586,6 +588,20 @@ public class MainActivity extends ActionBarActivity implements NavigationView.On
         super.onDestroy();
         unbindDrawables(findViewById(R.id.frameLayout));
         System.gc();
+    }
+
+
+    @SuppressLint("ValidFragment")
+    private class SettingsFragment extends DialogFragment {
+
+        @Override
+        public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                                 Bundle savedInstanceState){
+
+
+            return null;
+        }
+
     }
 
 }
