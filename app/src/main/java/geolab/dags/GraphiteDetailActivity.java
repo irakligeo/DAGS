@@ -234,15 +234,6 @@ public class GraphiteDetailActivity extends ActionBarActivity implements Navigat
                         nameValuePairs.add(new BasicNameValuePair("user_id", userID));
                         httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
 
-                        String json = "";
-
-                        // 3. build jsonObject
-                        JSONObject jsonObject = new JSONObject();
-
-
-                        // 4. convert JSONObject to JSON to String
-                        json = jsonObject.toString();
-
                         Thread thread = new Thread(new Runnable(){
                             @Override
                             public void run() {
