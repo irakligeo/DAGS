@@ -90,6 +90,8 @@ public class MainActivity extends ActionBarActivity implements NavigationView.On
     private TextView fbUserName;
     private ProfilePictureView profilePictureView;
 
+    private View headerView;
+
     private DrawerLayout mDrawerLayout;
     private Activity activity;
     private TabLayout tabLayout;
@@ -109,12 +111,13 @@ public class MainActivity extends ActionBarActivity implements NavigationView.On
         activity = this;
 
         inflater = (LayoutInflater)getApplicationContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+//        headerView = inflater.inflate(R.layout.header_layout)
+
 
         view = inflater.inflate(R.layout.header_layout, null);
         fbUserName = (TextView) view.findViewById(R.id.fb_user_name);
 //        profilePictureView = (ProfilePictureView) view.findViewById(R.id.fb_image);
 //
-//        fbUserName.setText("sdfsdfsdafdsf");
 
 
 
@@ -165,6 +168,8 @@ public class MainActivity extends ActionBarActivity implements NavigationView.On
         NavigationView navigationView = (NavigationView) findViewById(R.id.navigation_view);
         navigationView.setNavigationItemSelectedListener(this);
 
+        fbUserName = (TextView) navigationView.findViewById(R.id.fb_user_name);
+
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout, toolbar, R.string.open,
                 R.string.close);
@@ -182,7 +187,7 @@ public class MainActivity extends ActionBarActivity implements NavigationView.On
         mPagerAdapter = new ScreenSlidePagerAdapter(getSupportFragmentManager());
         mPager.setAdapter(mPagerAdapter);
 
-
+        fbUserName.setText("sdfsdfsdafdsf");
 
         //        status bar color
         Window window = activity.getWindow();
