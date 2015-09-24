@@ -182,7 +182,7 @@ public class UploadActivity extends ActionBarActivity{
         btnDone = (Button) findViewById(R.id.doneBtn);
         progressBar = (ProgressBar) findViewById(R.id.progressBar);
         imgPreview = (ImageView) findViewById(R.id.imgPreview);
-        vidPreview = (VideoView) findViewById(R.id.videoPreview);
+//        vidPreview = (VideoView) findViewById(R.id.videoPreview);
 
         // Changing action bar background color
 

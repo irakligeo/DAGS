@@ -205,8 +205,9 @@ public class MainActivity extends ActionBarActivity implements NavigationView.On
         //filter dialog
         filterDialogFragment = new FilterDialogFragment();
 
-        
+        //laod old settings
         LoadSettings();
+        //set settings
         changeStyle(toolbar,tabLayout,window,toolbarColorResId,tabLayoutResColorId,statusBarColorResId);
 
     }

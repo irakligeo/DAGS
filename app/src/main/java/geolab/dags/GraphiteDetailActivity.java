@@ -187,13 +187,8 @@ public class GraphiteDetailActivity extends ActionBarActivity implements Navigat
         hashTagTextView.setText(graphiteItem.getHashtag());
 
         Typeface font = Typeface.createFromAsset(getAssets(), "Chantelli_Antiqua.ttf");
-        likeTextView.setTypeface(font);
 //            imgTitle.setTypeface(font);
-        descriptionView.setTypeface(font);
         authorView.setTypeface(font);
-        authorView.setTypeface(font);
-        shareTextView.setTypeface(font);
-        commentsTextView.setTypeface(font);
 
         imgTitle.setText(graphiteItem.getTitle());
         createDateView.setText(graphiteItem.getCreateDate());
@@ -359,7 +354,7 @@ public class GraphiteDetailActivity extends ActionBarActivity implements Navigat
         tabLayoutResColorId = sharedPreferences.getInt("tabLayoutColor", R.color.tab_layout) ;
         statusBarColorResId = sharedPreferences.getInt("statusBarColor", R.color.status_bar_color ) ;
 
-
+        //save settings;
         MainActivity.SaveUserSettings(getApplicationContext(), toolbarColorResId, tabLayoutResColorId, statusBarColorResId);
 
     }
