@@ -234,7 +234,7 @@ public class UploadActivity extends ActionBarActivity{
 
     private String LoadPreferences(){
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
-        String  data = sharedPreferences.getString("user_id", "user id") ;
+        String  data = sharedPreferences.getString("user_id", "0") ;
 //        Toast.makeText(this,data, Toast.LENGTH_LONG).show();
         return data;
     }

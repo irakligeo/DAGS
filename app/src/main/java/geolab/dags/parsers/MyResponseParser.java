@@ -69,7 +69,7 @@ public class MyResponseParser {
             d2 = format.parse(currDate);
 
             //in milliseconds
-            long diff = d2.getTime() - d1.getTime();
+            long diff = ( d2.getTime() - d1.getTime() ) - 39600000;
 
             long diffSeconds = diff / 1000 % 60;
             long diffMinutes = diff / (60 * 1000) % 60;
@@ -91,7 +91,7 @@ public class MyResponseParser {
                 res = diffMinutes + " minutes ago";
                 return res;
             }else if(diffSeconds > 0 ) {
-                res = diffSeconds + " seconds ago";
+                res = " few seconds ago";
                 return res;
             }else {
                 return uploadDate;

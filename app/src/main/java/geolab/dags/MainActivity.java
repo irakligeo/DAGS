@@ -115,7 +115,6 @@ public class MainActivity extends ActionBarActivity implements NavigationView.On
 
 
         user_id = LoadPreferences();
-//        deleteFbPrefference();
 
 
         context = this;
@@ -407,8 +406,9 @@ public class MainActivity extends ActionBarActivity implements NavigationView.On
     //SavePref ( user id )
 
     private void SavePreferences(String key, String value){
-        SharedPreferences sharedPreferences = getSharedPreferences("user_id", 0);
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
         SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString("user_id", value);
         editor.putString(key, value);
         editor.commit();
     }
@@ -523,7 +523,6 @@ public class MainActivity extends ActionBarActivity implements NavigationView.On
                         public void onClick(DialogInterface dialogInterface, int i) {
                             LoginManager.getInstance().logOut();
                             accessToken = null;
-                            deleteFbPrefference();
                             logged[0] = false;
                             user_id = "";
                             fbUserNameTextView.setText("Loged out");
@@ -667,7 +666,6 @@ public class MainActivity extends ActionBarActivity implements NavigationView.On
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        deleteFbPrefference();
         unbindDrawables(findViewById(R.id.frameLayout));
         System.gc();
     }
