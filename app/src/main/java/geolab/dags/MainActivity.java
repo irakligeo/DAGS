@@ -112,7 +112,11 @@ public class MainActivity extends ActionBarActivity implements NavigationView.On
         FacebookSdk.sdkInitialize(getApplicationContext());
         setContentView(R.layout.activity_main);
 
+
+
         user_id = LoadPreferences();
+//        deleteFbPrefference();
+
 
         context = this;
         activity = this;
@@ -226,6 +230,14 @@ public class MainActivity extends ActionBarActivity implements NavigationView.On
         return data;
     }
 
+    public void deleteFbPrefference(){
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        preferences.edit().remove("user_id").commit();
+        String key = preferences.getString("user_id","vervnaxe");
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.clear();
+        editor.commit();
+    }
 
     //starting camera code
     public static CallbackManager callbackManager;
@@ -394,9 +406,9 @@ public class MainActivity extends ActionBarActivity implements NavigationView.On
     }
 
     //SavePref ( user id )
-    private void SavePreferences(String key, String value){
-        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
 
+    private void SavePreferences(String key, String value){
+        SharedPreferences sharedPreferences = getSharedPreferences("user_id", 0);
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putString(key, value);
         editor.commit();
@@ -434,7 +446,6 @@ public class MainActivity extends ActionBarActivity implements NavigationView.On
                                 public void onClick(DialogInterface dialogInterface, int i) {
                                     LoginManager.getInstance().logOut();
                                     accessToken = null;
-                                    SavePreferences("user_id","");
                                 }
                             })
                             .setPositiveButton("კი", new DialogInterface.OnClickListener() {
@@ -510,7 +521,7 @@ public class MainActivity extends ActionBarActivity implements NavigationView.On
                         public void onClick(DialogInterface dialogInterface, int i) {
                             LoginManager.getInstance().logOut();
                             accessToken = null;
-                            SavePreferences("user_id","");
+                            deleteFbPrefference();
                             logged[0] = false;
                         }
                     })
@@ -649,7 +660,7 @@ public class MainActivity extends ActionBarActivity implements NavigationView.On
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        SavePreferences("user_id","");
+        deleteFbPrefference();
         unbindDrawables(findViewById(R.id.frameLayout));
         System.gc();
     }
