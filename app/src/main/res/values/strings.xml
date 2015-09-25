@@ -64,6 +64,7 @@
     <string name="imgLinks">imgLinks</string>
     <string name="share_text_view_id">share</string>
     <string name="hashTag">hashTag</string>
+    <string name="action_pallete">თემის შეცვლა</string>
 
     <!-- spinner data (it's temporary)-->
     <string-array name="graphite_categories">

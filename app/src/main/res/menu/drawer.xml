@@ -7,6 +7,10 @@
             android:icon="@drawable/photoaparat"
             android:title="ფოტოს ატვირთვა" />
         <item
+            android:id="@+id/navigation_item_style"
+            android:icon="@drawable/palitra_icon"
+            android:title="თემის შეცვლა" />
+        <item
             android:id="@+id/navigation_item_2"
             android:icon="@drawable/fb_icon"
             android:title="ავტორიზაცია" />

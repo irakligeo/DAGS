@@ -212,7 +212,6 @@ public class MainActivity extends ActionBarActivity implements NavigationView.On
 
 
 
-        Toast.makeText(getApplicationContext(),user_id,Toast.LENGTH_SHORT).show();
         //filter dialog
         filterDialogFragment = new FilterDialogFragment();
 
@@ -457,8 +456,8 @@ public class MainActivity extends ActionBarActivity implements NavigationView.On
 
                 break;
 
-            case R.id.navigation_item_2: // avtorizacia
-                //check if logged
+            case R.id.navigation_item_2:
+                // login
                     loginToFB();
                 break;
 
@@ -477,6 +476,10 @@ public class MainActivity extends ActionBarActivity implements NavigationView.On
 
             case R.id.navigation_item_favorites:
                 closeDrawerFromUiThread();
+                break;
+            case R.id.navigation_item_style:
+                SettingsFragment palleteFrag = new SettingsFragment();
+                palleteFrag.show(getFragmentManager(),"Pallete-Fragment");
                 break;
 
             default:
@@ -634,12 +637,15 @@ public class MainActivity extends ActionBarActivity implements NavigationView.On
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.action_settings:
-                SettingsFragment settingsFragment = new SettingsFragment();
-                settingsFragment.show(getFragmentManager(),"settings");
+
                 return true;
             case R.id.action_filter:
                 filterDialogFragment = new FilterDialogFragment();
                 filterDialogFragment.show(MainActivity.this.getFragmentManager(),"filter_fragment");
+                return true;
+            case R.id.action_pallete:
+                SettingsFragment palleteFrag = new SettingsFragment();
+                palleteFrag.show(MainActivity.this.getFragmentManager(),"Pallete_fragment");
                 return true;
         }
 
