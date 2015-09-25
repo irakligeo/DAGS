@@ -38,6 +38,11 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonArrayRequest;
+import com.android.volley.toolbox.Volley;
 import com.facebook.AccessToken;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
@@ -49,6 +54,7 @@ import com.facebook.login.LoginManager;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.ProfilePictureView;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -56,6 +62,7 @@ import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.Locale;
 
 import geolab.dags.animation.DepthPageTransformer;
@@ -64,6 +71,7 @@ import geolab.dags.fileUpload.Config;
 import geolab.dags.fileUpload.UploadActivity;
 import geolab.dags.fragment.MapFragment;
 import geolab.dags.fragment.ViewPagerFragment;
+import geolab.dags.model.UserLikes;
 
 import static geolab.dags.fragment.MapFragment.newInstance;
 
@@ -478,7 +486,7 @@ public class MainActivity extends ActionBarActivity implements NavigationView.On
                 closeDrawerFromUiThread();
                 break;
             case R.id.navigation_item_style:
-                SettingsFragment palleteFrag = new SettingsFragment();
+                palleteFrag = new SettingsFragment();
                 palleteFrag.show(getFragmentManager(),"Pallete-Fragment");
                 break;
 
@@ -488,6 +496,7 @@ public class MainActivity extends ActionBarActivity implements NavigationView.On
         return true;
     }
 
+    public SettingsFragment palleteFrag;
 
     //close drawarLayout on UI Thread
     private void closeDrawerFromUiThread(){
@@ -624,6 +633,32 @@ public class MainActivity extends ActionBarActivity implements NavigationView.On
     }
 
 
+
+    private final String likesURL = "http://geolab.club/streetart/json/likes/";
+    private HashMap<String,UserLikes> userLikesHashMap;
+    private JsonArrayRequest jsonArrayRequest;
+    private RequestQueue likesQueue;
+    private void onFavoriteClick(){
+        likesQueue = new Volley().newRequestQueue(context);
+        jsonArrayRequest = new JsonArrayRequest(likesURL, new Response.Listener<JSONArray>() {
+            @Override
+            public void onResponse(JSONArray jsonArray) {
+                for(int i = 0; i < jsonArray.length(); ++i){
+
+                }
+            }
+        },
+        new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError volleyError) {
+
+            }
+        });
+        likesQueue.add(jsonArrayRequest);
+
+    }
+
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -713,28 +748,33 @@ public class MainActivity extends ActionBarActivity implements NavigationView.On
                 case R.id.redStyleImageView:
 
                     changeStyle(toolbar, tabLayout, activity.getWindow(), R.color.red_toolbar_color, R.color.red_tab_layout, R.color.red_status_bar_color);
-                    initResColors(R.color.red_toolbar_color,R.color.red_tab_layout, R.color.red_status_bar_color);
-                    SaveUserSettings(getApplicationContext(),R.color.red_toolbar_color, R.color.red_tab_layout, R.color.red_status_bar_color);
+                    initResColors(R.color.red_toolbar_color, R.color.red_tab_layout, R.color.red_status_bar_color);
+                    SaveUserSettings(getApplicationContext(), R.color.red_toolbar_color, R.color.red_tab_layout, R.color.red_status_bar_color);
+                    palleteFrag.dismiss();
                     break;
                 case R.id.purpleStyleIamgeView:
                     changeStyle(toolbar,tabLayout, activity.getWindow(),R.color.purple_toolbar_color, R.color.purple_tab_layout, R.color.purple_status_bar_color);
                     initResColors(R.color.purple_toolbar_color, R.color.purple_tab_layout, R.color.purple_status_bar_color);
-                    SaveUserSettings(getApplicationContext(),R.color.purple_toolbar_color, R.color.purple_tab_layout, R.color.purple_status_bar_color);
+                    SaveUserSettings(getApplicationContext(), R.color.purple_toolbar_color, R.color.purple_tab_layout, R.color.purple_status_bar_color);
+                    palleteFrag.dismiss();
                     break;
                 case R.id.blueStyleImageView:
                     changeStyle(toolbar,tabLayout, activity.getWindow(),R.color.blue_toolbar_color, R.color.blue_tab_layout, R.color.blue_status_bar_color);
                     initResColors(R.color.blue_toolbar_color, R.color.blue_tab_layout, R.color.blue_status_bar_color);
                     SaveUserSettings(getApplicationContext(), R.color.blue_toolbar_color, R.color.blue_tab_layout, R.color.blue_status_bar_color);
+                    palleteFrag.dismiss();
                     break;
                 case R.id.darkStyleImageView:
                     changeStyle(toolbar,tabLayout, activity.getWindow(),R.color.dark_toolbar_color, R.color.dark_tab_layout, R.color.dark_status_bar_color);
                     initResColors(R.color.dark_toolbar_color, R.color.dark_tab_layout, R.color.dark_status_bar_color);
                     SaveUserSettings(getApplicationContext(), R.color.dark_toolbar_color, R.color.dark_tab_layout, R.color.dark_status_bar_color);
+                    palleteFrag.dismiss();
                     break;
                 case R.id.grayStyleImageView:
                     changeStyle(toolbar,tabLayout, activity.getWindow(),R.color.toolbar_color, R.color.tab_layout, R.color.status_bar_color);
                     initResColors(R.color.toolbar_color, R.color.tab_layout, R.color.status_bar_color);
                     SaveUserSettings(getApplicationContext(), R.color.toolbar_color, R.color.tab_layout, R.color.status_bar_color);
+                    palleteFrag.dismiss();
                     break;
                 default:
                     changeStyle(toolbar,tabLayout, activity.getWindow(),R.color.toolbar_color, R.color.tab_layout, R.color.status_bar_color);
