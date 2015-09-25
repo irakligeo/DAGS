@@ -444,8 +444,7 @@ public class MainActivity extends ActionBarActivity implements NavigationView.On
                             .setNegativeButton("არა", new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialogInterface, int i) {
-                                    LoginManager.getInstance().logOut();
-                                    accessToken = null;
+
                                 }
                             })
                             .setPositiveButton("კი", new DialogInterface.OnClickListener() {
@@ -523,6 +522,8 @@ public class MainActivity extends ActionBarActivity implements NavigationView.On
                             accessToken = null;
                             deleteFbPrefference();
                             logged[0] = false;
+                            user_id = "";
+                            fbUserNameTextView.setText("Loged out");
                         }
                     })
                     .setPositiveButton("კი", new DialogInterface.OnClickListener() {
