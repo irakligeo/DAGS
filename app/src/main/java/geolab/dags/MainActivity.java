@@ -60,6 +60,7 @@ import org.json.JSONObject;
 
 import java.io.File;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.HashMap;
@@ -71,7 +72,10 @@ import geolab.dags.fileUpload.Config;
 import geolab.dags.fileUpload.UploadActivity;
 import geolab.dags.fragment.MapFragment;
 import geolab.dags.fragment.ViewPagerFragment;
+import geolab.dags.model.GraphiteItemModel;
 import geolab.dags.model.UserLikes;
+import geolab.dags.parsers.MyLikesParser;
+import geolab.dags.parsers.MyResponseParser;
 
 import static geolab.dags.fragment.MapFragment.newInstance;
 
@@ -635,17 +639,21 @@ public class MainActivity extends ActionBarActivity implements NavigationView.On
 
 
     private final String likesURL = "http://geolab.club/streetart/json/likes/";
-    private HashMap<String,UserLikes> userLikesHashMap;
+    private HashMap<String,ArrayList<UserLikes>> userLikesHashMap;
+    private ArrayList<UserLikes> userLikesArrayList;
+
     private JsonArrayRequest jsonArrayRequest;
     private RequestQueue likesQueue;
+
+    //on favorite icon click
     private void onFavoriteClick(){
+        userLikesArrayList = new ArrayList<>();
+        userLikesHashMap = new HashMap<>();
         likesQueue = new Volley().newRequestQueue(context);
         jsonArrayRequest = new JsonArrayRequest(likesURL, new Response.Listener<JSONArray>() {
             @Override
             public void onResponse(JSONArray jsonArray) {
-                for(int i = 0; i < jsonArray.length(); ++i){
-
-                }
+                userLikesArrayList = MyLikesParser.parseLikesData(jsonArray);
             }
         },
         new Response.ErrorListener() {
@@ -658,6 +666,17 @@ public class MainActivity extends ActionBarActivity implements NavigationView.On
 
     }
 
+    private ArrayList<GraphiteItemModel> userFavouriteList;
+
+    //get posts related current user id
+    private void fillFavouriteList(){
+        userFavouriteList = new ArrayList<>();
+        for(int i = 0; i < userLikesArrayList.size(); ++i){
+            if(MyResponseParser.postsHashMap.containsKey(userLikesArrayList.get(i).getUserId())){
+                userFavouriteList.add(MyResponseParser.postsHashMap.get(userLikesArrayList.get(i).getUserId()));
+            }
+        }
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

@@ -8,6 +8,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
+import java.util.HashMap;
 
 import geolab.dags.fragment.ViewPagerFragment;
 import geolab.dags.model.GraphiteItemModel;
@@ -16,10 +17,12 @@ public class MyResponseParser {
 
     public static int oldStatusCode = 0, statusCode = 1;
 
+    public static HashMap<String, GraphiteItemModel> postsHashMap;
 
     //function
     public static ArrayList<GraphiteItemModel> getData(JSONArray response){
         ArrayList<GraphiteItemModel> data = new ArrayList<>();
+        postsHashMap = new HashMap<>();
         System.out.println(response);
         String res = "";
 //      statusCode = response.getJSONObject(0).getInt("android");
@@ -37,12 +40,16 @@ public class MyResponseParser {
                 double latitude = response.getJSONObject(i).getDouble("latitude");
                 String hashtag = response.getJSONObject(i).getString("hashtag");
 
+                String userId = response.getJSONObject(i).getString("user_id");
+
                 String currentDateTime = new Date().toString();
                 res = formatUploadPostTime(imgUploadDate);
 
 
                 GraphiteItemModel graphite = new GraphiteItemModel(imgTitle, imgDescription, imgUrl, imgAuthor, res, longitude, latitude,likesCount,hashtag, marker_id);
                 data.add(graphite);
+
+                postsHashMap.put(userId, graphite);
             }
         }catch (JSONException e) {
                 e.printStackTrace();
