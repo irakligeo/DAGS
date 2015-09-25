@@ -66,9 +66,11 @@
                 android:text="author"
                 android:textSize="12sp"
                 android:layout_below="@+id/little_description"
-                android:layout_alignLeft="@+id/uploadDateTime"
-                android:layout_alignStart="@+id/uploadDateTime"
-                android:layout_marginBottom="10dp" />
+                android:layout_marginBottom="10dp"
+                android:layout_alignParentStart="false"
+                android:layout_alignParentEnd="false"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="20dp" />
 
             <TextView
                 android:id="@+id/little_description"
