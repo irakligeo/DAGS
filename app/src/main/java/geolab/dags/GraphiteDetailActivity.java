@@ -83,16 +83,14 @@ public class GraphiteDetailActivity extends ActionBarActivity implements Navigat
     private TextView hashTagTextView;
 
     private TextView likesCountTextView;
-    private TextView likeTextView;
-    private TextView commentsTextView;
-    private TextView shareTextView;
     private Context context;
     private TextView descriptionView;
 
     private DrawerLayout mDrawerLayout;
 
-    private Animation textAnimation, fadeIn, fadeOut;
-    private CustomPagerAdapter mCustomPagerAdapter;
+    private Animation textAnimation, fadeIn;
+
+    // filter dialog fragment
     public static FilterDialogFragment filterDialogFragment;
 
 
@@ -205,8 +203,6 @@ public class GraphiteDetailActivity extends ActionBarActivity implements Navigat
                     likesCountTextView.setText(graphiteItem.getLikesCount() + 1 + " ");
                     likeImageView.setImageResource(R.drawable.liked_icon);
                     likesCountTextView.startAnimation(textAnimation);
-                    likeTextView.setText("liked");
-                    likeTextView.startAnimation(textAnimation);
                     likesCountTextView.startAnimation(fadeIn);
 
 
