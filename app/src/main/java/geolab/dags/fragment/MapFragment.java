@@ -1,6 +1,5 @@
 package geolab.dags.fragment;
 
-import android.app.Dialog;
 import android.app.DialogFragment;
 import android.database.Cursor;
 import android.os.Bundle;
@@ -13,8 +12,6 @@ import android.view.ViewGroup;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
-import android.widget.Button;
-import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -24,6 +21,7 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.GoogleMap.OnMarkerClickListener;
 import com.google.android.gms.maps.MapView;
 import com.google.android.gms.maps.MapsInitializer;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
@@ -98,7 +96,7 @@ public class MapFragment extends android.support.v4.app.Fragment implements OnMa
         coordsList = new ArrayList<>();
         coordsList = ViewPagerFragment.graphiteItems;
 
-        // Tbilisi Saburtalo's coords
+        // Tbilisi Saburtalo's coords // zoomIn defoult location
         double lat = 41.7186058,lng = 44.7816541;
         // create marker
         for( int i = 0; i < coordsList.size(); ++i ) {
@@ -107,9 +105,9 @@ public class MapFragment extends android.support.v4.app.Fragment implements OnMa
             double latitude = coordsList.get(i).getLatitude();
             String title = coordsList.get(i).getTitle();
 
-
             MarkerOptions marker = new MarkerOptions().position(
-                    new LatLng(latitude, longitude)).title(title);
+                    new LatLng(latitude, longitude)).title(title)
+                    .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_CYAN));
 
             // add marker
             googleMap.addMarker(marker);

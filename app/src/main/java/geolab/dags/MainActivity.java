@@ -499,9 +499,6 @@ public class MainActivity extends ActionBarActivity implements NavigationView.On
         }
         return true;
     }
-
-    public SettingsFragment palleteFrag;
-
     //close drawarLayout on UI Thread
     private void closeDrawerFromUiThread(){
         Thread thread = new Thread()
@@ -678,10 +675,12 @@ public class MainActivity extends ActionBarActivity implements NavigationView.On
         }
     }
 
+    SettingsFragment palleteFrag;
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
+        palleteFrag = new SettingsFragment();
         return true;
     }
 
@@ -697,7 +696,7 @@ public class MainActivity extends ActionBarActivity implements NavigationView.On
                 filterDialogFragment.show(MainActivity.this.getFragmentManager(),"filter_fragment");
                 return true;
             case R.id.action_pallete:
-                SettingsFragment palleteFrag = new SettingsFragment();
+                palleteFrag = new SettingsFragment();
                 palleteFrag.show(MainActivity.this.getFragmentManager(),"Pallete_fragment");
                 return true;
         }

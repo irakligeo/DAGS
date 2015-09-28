@@ -2,21 +2,14 @@ package geolab.dags.fragment;
 
 import android.annotation.TargetApi;
 import android.app.ActivityOptions;
-import android.app.FragmentTransaction;
 import android.app.ProgressDialog;
 import android.content.ContentValues;
-import android.content.Context;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
-import android.graphics.Color;
 import android.graphics.Rect;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.design.widget.TabLayout;
-import android.support.v4.view.PagerAdapter;
-import android.support.v4.view.ViewPager;
 import android.support.v4.widget.SwipeRefreshLayout;
-import android.support.v7.widget.CardView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,8 +18,6 @@ import android.widget.AbsListView.OnScrollListener;
 import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.ListView;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.RequestQueue;
@@ -38,20 +29,16 @@ import com.android.volley.toolbox.Volley;
 import org.json.JSONArray;
 
 import java.io.Serializable;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.HashMap;
-import java.util.Map;
 
-import geolab.dags.GraphiteDetailActivity;
+import geolab.dags.DB.DBHelper;
 import geolab.dags.DB.TableGraphite;
-import geolab.dags.MainActivity;
-import geolab.dags.model.GraphiteItemModel;
-import geolab.dags.parsers.MyResponseParser;
+import geolab.dags.GraphiteDetailActivity;
 import geolab.dags.R;
 import geolab.dags.adpaters.ListViewAdapter;
-import geolab.dags.DB.DBHelper;
+import geolab.dags.model.GraphiteItemModel;
+import geolab.dags.parsers.MyResponseParser;
 
 
 public class ViewPagerFragment extends android.support.v4.app.Fragment implements OnScrollListener {
