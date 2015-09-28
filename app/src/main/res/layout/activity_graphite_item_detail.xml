@@ -26,12 +26,12 @@
         android:layout_height="match_parent"
         android:id="@+id/scrollView"
         android:background="#f9f9f9"
-        android:layout_alignParentBottom="true">
+        android:layout_above="@+id/relativeLayout2">
 
                     <RelativeLayout
                         android:id="@+id/cardview"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_height="match_parent"
                         android:clickable="true"
                         android:focusable="true"
                         android:focusableInTouchMode="true">
@@ -188,7 +188,9 @@
                             android:layout_marginTop="5dp"
                             android:textColor="#000"
                             android:gravity="bottom"
-                            android:typeface="serif" />
+                            android:typeface="serif"
+                            android:layout_alignParentBottom="true"
+                            android:paddingBottom="20dp" />
 
                     </RelativeLayout>
 
@@ -204,7 +206,7 @@
         android:paddingTop="5dp"
         android:paddingBottom="5dp">
 
-    <!-- like icon-->
+    <!-- like imageView-->
     <ImageView
         android:id="@+id/like_icon"
         android:layout_width="28dp"
