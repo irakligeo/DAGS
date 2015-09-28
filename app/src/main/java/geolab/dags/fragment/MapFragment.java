@@ -117,7 +117,7 @@ public class MapFragment extends android.support.v4.app.Fragment implements OnMa
         }
         try {
             CameraPosition cameraPosition = new CameraPosition.Builder()
-                    .target(new LatLng(coordsList.get(0).getLatitude(), coordsList.get(0).getLongitude())).zoom(12).build();
+                    .target(new LatLng(44.7816541, 41.7186058)).zoom(12).build();
             googleMap.animateCamera(CameraUpdateFactory
                     .newCameraPosition(cameraPosition));
 

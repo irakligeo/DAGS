@@ -172,9 +172,6 @@ public class GraphiteDetailActivity extends ActionBarActivity implements Navigat
         commentImageView = (ImageView) findViewById(R.id.comments_icon);
         shareImageView = (ImageView) findViewById(R.id.share_icon);
         likesCountTextView = (TextView) findViewById(R.id.likes_countTextView);
-        likeTextView = (TextView) findViewById(R.id.like_Text_View);
-        commentsTextView = (TextView) findViewById(R.id.comments_text_view_id);
-        shareTextView = (TextView) findViewById(R.id.share_text_view_id);
         TextView imgTitle = (TextView) findViewById(R.id.imgTitle);
 
         ImageView imgView = (ImageView) findViewById(R.id.peaceOfArtImg);
