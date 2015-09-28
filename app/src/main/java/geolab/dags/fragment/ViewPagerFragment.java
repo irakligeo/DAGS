@@ -164,11 +164,11 @@ public class ViewPagerFragment extends android.support.v4.app.Fragment implement
         if(requestQueue == null){
             requestQueue = new Volley().newRequestQueue(getActivity());
         }
-            graphiteItems = new ArrayList<>();
 
-        if(hashTagsMap == null){
-            hashTagsMap = new HashMap<>();
-        }
+        //create and cleare old saved data
+        graphiteItems = new ArrayList<>();
+        hashTagsMap = new HashMap<>();
+
         if(imgArrayList == null){
             imgArrayList = new ArrayList<>();
         }
@@ -243,8 +243,6 @@ public class ViewPagerFragment extends android.support.v4.app.Fragment implement
                             db.insert(TableGraphite.TABLE_NAME, null, contentValues);
 
                         }
-
-
 
 
                         ListViewAdapter mListViewAdapter = new ListViewAdapter(getActivity(),graphiteItems);

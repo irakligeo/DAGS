@@ -196,7 +196,11 @@
                             android:layout_below="@+id/byTextViewId"
                             android:layout_marginLeft="20dp"
                             android:textColor="#ff1b66ac"
-                            android:paddingTop="5dp" />
+                            android:layout_marginTop="5dp"
+                            android:paddingLeft="4dp"
+                            android:paddingTop="1dp"
+                            android:paddingRight="4dp"
+                            android:paddingBottom="2dp" />
 
 
                         <!-- description text view-->

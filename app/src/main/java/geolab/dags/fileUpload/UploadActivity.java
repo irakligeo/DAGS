@@ -31,10 +31,15 @@ import org.apache.http.HttpResponse;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpPost;
+import org.apache.http.entity.StringEntity;
 import org.apache.http.entity.mime.content.ContentBody;
 import org.apache.http.entity.mime.content.FileBody;
 import org.apache.http.entity.mime.content.StringBody;
 import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.params.BasicHttpParams;
+import org.apache.http.params.HttpParams;
+import org.apache.http.params.HttpProtocolParams;
+import org.apache.http.protocol.HTTP;
 import org.apache.http.util.EntityUtils;
 
 import java.io.File;
@@ -61,6 +66,7 @@ public class UploadActivity extends ActionBarActivity{
 
     TextView longitude, latitude;
 
+    //get current location coordinates
     LocationListener locationListener = new LocationListener() {
         @Override
         public void onLocationChanged(Location location) {
@@ -83,6 +89,7 @@ public class UploadActivity extends ActionBarActivity{
 
         }
     };
+
     String userID;
     private EditText titleEditText,descriptionEditText;
     private TextInputLayout titleInputLayout,descriptionInputLayout;
@@ -91,12 +98,13 @@ public class UploadActivity extends ActionBarActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_upload);
 
+        //loads application settings choosed by user
         LoadSettings();
+        final Context context = this;
 
-        // loads pref data
+        // loads pref data (user_id)
         userID = LoadPreferences();
 
-        final Context context = this;
         longitude = (TextView) findViewById(R.id.longitude);
         latitude = (TextView) findViewById(R.id.latitude);
 
@@ -133,9 +141,6 @@ public class UploadActivity extends ActionBarActivity{
 
 
         LocationManager locationManager = (LocationManager)getSystemService(Context.LOCATION_SERVICE);
-
-//        locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER,1000L,500.0f, locationListener);
-
         locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0, 0, locationListener);
         locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER,0,0,locationListener);
 
@@ -145,9 +150,6 @@ public class UploadActivity extends ActionBarActivity{
 
         try {
             gps_enabled = locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER);
-        } catch(Exception ex) {}
-
-        try {
             network_enabled = locationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER);
         } catch(Exception ex) {}
 
@@ -160,15 +162,14 @@ public class UploadActivity extends ActionBarActivity{
                 public void onClick(DialogInterface paramDialogInterface, int paramInt) {
                     Intent myIntent = new Intent( Settings.ACTION_LOCATION_SOURCE_SETTINGS);
                     context.startActivity(myIntent);
-                    //get gps
+
                 }
             });
             dialog.setNegativeButton("გაუქმება", new DialogInterface.OnClickListener() {
 
                 @Override
                 public void onClick(DialogInterface paramDialogInterface, int paramInt) {
-                    // TODO Auto-generated method stub
-
+                    //
                 }
             });
             dialog.show();
@@ -284,10 +285,8 @@ public class UploadActivity extends ActionBarActivity{
         protected void onProgressUpdate(Integer... progress) {
             // Making progress bar visible
             progressBar.setVisibility(View.VISIBLE);
-
             // updating progress bar value
             progressBar.setProgress(progress[0]);
-
             // updating percentage value
             txtPercentage.setText(String.valueOf(progress[0]) + "%");
         }
@@ -297,11 +296,25 @@ public class UploadActivity extends ActionBarActivity{
             return uploadFile();
         }
 
+        @Override
+        protected void onPostExecute(String result) {
+            Log.e(TAG, "Response from server: " + result);
+            // showing the server response in an alert dialog
+            showAlert();
+            super.onPostExecute(result);
+        }
+
+
+
         @SuppressWarnings("deprecation")
         private String uploadFile() {
             String responseString = null;
 
-            HttpClient httpclient = new DefaultHttpClient();
+            HttpParams httpParameters = new BasicHttpParams();
+            HttpProtocolParams.setContentCharset(httpParameters, HTTP.UTF_8);
+            HttpProtocolParams.setHttpElementCharset(httpParameters, HTTP.UTF_8);
+
+            HttpClient httpclient = new DefaultHttpClient(httpParameters);
             HttpPost httppost = new HttpPost(Config.FILE_UPLOAD_URL);
 
             try {
@@ -376,18 +389,10 @@ public class UploadActivity extends ActionBarActivity{
 
         }
 
-        @Override
-        protected void onPostExecute(String result) {
-            Log.e(TAG, "Response from server: " + result);
-
-            // showing the server response in an alert dialog
-            showAlert();
-
-            super.onPostExecute(result);
-
-        }
 
     }
+
+
 
     /**
      * Method to show alert dialog

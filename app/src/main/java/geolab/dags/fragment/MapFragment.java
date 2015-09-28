@@ -98,6 +98,8 @@ public class MapFragment extends android.support.v4.app.Fragment implements OnMa
         coordsList = new ArrayList<>();
         coordsList = ViewPagerFragment.graphiteItems;
 
+        // Tbilisi Saburtalo's coords
+        double lat = 41.7186058,lng = 44.7816541;
         // create marker
         for( int i = 0; i < coordsList.size(); ++i ) {
 
@@ -114,15 +116,22 @@ public class MapFragment extends android.support.v4.app.Fragment implements OnMa
             //insert into hashMap
             mMarkersHashMap.put(marker.getTitle(), coordsList.get(i));
 
+
+            // camera target for given coordinates
+            setCameraPostion(lat,lng,11);
+
         }
+
+    }
+
+    public static void setCameraPostion(double lat,double lng, int zoom){
         try {
             CameraPosition cameraPosition = new CameraPosition.Builder()
-                    .target(new LatLng(44.7816541, 41.7186058)).zoom(12).build();
+                    .target(new LatLng(lat,lng)).zoom(zoom).build();
             googleMap.animateCamera(CameraUpdateFactory
                     .newCameraPosition(cameraPosition));
 
         }catch (IndexOutOfBoundsException e){
-//            new MapFragment().onCreateView(inflater,container,savedInstanceState);
         }
 
     }
@@ -223,7 +232,6 @@ public class MapFragment extends android.support.v4.app.Fragment implements OnMa
             TextView imgDescriptionView = (TextView) view.findViewById(R.id.little_description);
             TextView imgUploadDateTimeView = (TextView) view.findViewById(R.id.createDate);
             TextView authorTextView = (TextView) view.findViewById(R.id.author);
-            final TextView likeTextView = (TextView) view.findViewById(R.id.likes);
             final TextView likesCountTextView = (TextView) view.findViewById(R.id.likes_countTextView);
             ImageView imgView = (ImageView) view.findViewById(R.id.peaceOfArtImg);
 
@@ -234,8 +242,6 @@ public class MapFragment extends android.support.v4.app.Fragment implements OnMa
             Bundle bundle = this.getArguments();
             GraphiteItemModel graphiteItemModel = new GraphiteItemModel();
             graphiteItemModel = bundle.getParcelable("id");
-
-//            likesCountTextView.setText(graphiteItemModel.getLikesCount());
 
             String[] createDate = graphiteItemModel.getCreateDate().split(" ");
 
@@ -263,8 +269,6 @@ public class MapFragment extends android.support.v4.app.Fragment implements OnMa
                         likesCountTextView.setText(finalGraphiteItemModel.getLikesCount() + 1 + " ");
                         likeImageView.setImageResource(R.drawable.liked_icon);
                         likesCountTextView.startAnimation(textAnimation);
-                        likeTextView.setText("liked");
-                        likeTextView.startAnimation(textAnimation);
                         likesCountTextView.startAnimation(fadeIn);
                         clicked[0] = true;
                     } else {
@@ -295,6 +299,17 @@ public class MapFragment extends android.support.v4.app.Fragment implements OnMa
     }
 
     @Override
+    public void onSaveInstanceState(Bundle outState){
+        super.onSaveInstanceState(outState);
+    }
+
+    @Override
+    public void onViewStateRestored(Bundle savedInstance){
+        super.onViewStateRestored(savedInstance);
+        initMap();
+    }
+
+    @Override
     public void onDestroy() {
         super.onDestroy();
         mMapView.onDestroy();
@@ -308,7 +323,6 @@ public class MapFragment extends android.support.v4.app.Fragment implements OnMa
 
     @Override
     public boolean onMarkerClick(Marker marker) {
-        Toast.makeText(getActivity(),"sdf",Toast.LENGTH_LONG).show();
         return true;
     }
 
