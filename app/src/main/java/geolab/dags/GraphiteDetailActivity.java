@@ -18,6 +18,7 @@ import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -67,6 +68,7 @@ import geolab.dags.fileUpload.Config;
 import geolab.dags.fileUpload.UploadActivity;
 import geolab.dags.fragment.ViewPagerFragment;
 import geolab.dags.model.GraphiteItemModel;
+import geolab.dags.model.UserLikes;
 import geolab.dags.slider.CustomPagerAdapter;
 
 
@@ -93,7 +95,8 @@ public class GraphiteDetailActivity extends ActionBarActivity implements Navigat
     // filter dialog fragment
     public static FilterDialogFragment filterDialogFragment;
 
-
+    private ArrayList<UserLikes> likes;
+    private GraphiteItemModel  graphiteItem;
     public int toolbarColorResId, tabLayoutResColorId, statusBarColorResId;
 //    on Create View
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
@@ -105,10 +108,20 @@ public class GraphiteDetailActivity extends ActionBarActivity implements Navigat
         setContentView(R.layout.activity_graphite_item_detail);
 
         context = this;
+        //user liked data
+        likes = MainActivity.likesArrayList;
+
+
+
+        final String fb_user_id = AccessToken.getCurrentAccessToken().getUserId();
+
+
+
+
         //filter dialog
         filterDialogFragment = new FilterDialogFragment();
         //get selected item detail
-        final GraphiteItemModel  graphiteItem = (GraphiteItemModel) getIntent().getSerializableExtra("GraphiteItem");
+        graphiteItem = (GraphiteItemModel) getIntent().getSerializableExtra("GraphiteItem");
         fadeIn = new AlphaAnimation(0.0f , 1.0f ) ;
         fadeIn.setDuration(1200);
         fadeIn.setFillAfter(true);
@@ -167,7 +180,7 @@ public class GraphiteDetailActivity extends ActionBarActivity implements Navigat
 
 
         // init views
-        likeImageView = (ImageView) findViewById(R.id.like_icon);
+
         commentImageView = (ImageView) findViewById(R.id.comments_icon);
         shareImageView = (ImageView) findViewById(R.id.share_icon);
         likesCountTextView = (TextView) findViewById(R.id.likes_countTextView);
@@ -192,16 +205,25 @@ public class GraphiteDetailActivity extends ActionBarActivity implements Navigat
         descriptionView.setText(graphiteItem.getDescription());
         likesCountTextView.setText(graphiteItem.getLikesCount()+" ");
 
-        final String userID = LoadPreferences();
+        likeImageView = (ImageView) findViewById(R.id.like_icon);
+        if(checkPost(likes,fb_user_id)){
+            likeImageView.setImageResource(R.drawable.liked_icon);
+        }else{
+            likeImageView.setImageResource(R.drawable.like_heart_icon);
+        }
 
-        final boolean[] clicked = {false};
+
+        final String userID = LoadPreferences();
         //on like ImageView clikc
         likeImageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (!clicked[0]) {
-                    likesCountTextView.setText(graphiteItem.getLikesCount() + 1 + " ");
+                if(checkPost(likes, fb_user_id)){
+                    Toast.makeText(getApplicationContext(),"already liked", Toast.LENGTH_SHORT).show();
+                }
+                else{
                     likeImageView.setImageResource(R.drawable.liked_icon);
+                    likesCountTextView.setText(graphiteItem.getLikesCount() + 1 + " ");
                     likesCountTextView.startAnimation(textAnimation);
                     likesCountTextView.startAnimation(fadeIn);
 
@@ -210,11 +232,11 @@ public class GraphiteDetailActivity extends ActionBarActivity implements Navigat
                     final HttpPost httppost = new HttpPost("http://www.geolab.club/streetart/likemobile.php");
                     try {
                         List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(2);
-                        nameValuePairs.add(new BasicNameValuePair("marker_id", graphiteItem.getMarkerID()+""));
-                        nameValuePairs.add(new BasicNameValuePair("user_id", userID));
+                        nameValuePairs.add(new BasicNameValuePair("marker_id", graphiteItem.getMarkerID() + ""));
+                        nameValuePairs.add(new BasicNameValuePair("user_id", fb_user_id));
                         httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
 
-                        Thread thread = new Thread(new Runnable(){
+                        Thread thread = new Thread(new Runnable() {
                             @Override
                             public void run() {
                                 try {
@@ -226,14 +248,12 @@ public class GraphiteDetailActivity extends ActionBarActivity implements Navigat
                         });
 
                         thread.start();
-                        Toast.makeText(getBaseContext(),"Sent " + graphiteItem.getMarkerID() +" "+ userID,Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getBaseContext(), "Sent " + graphiteItem.getMarkerID() + " " + fb_user_id, Toast.LENGTH_SHORT).show();
+                        MainActivity.likesArrayList.get(index).setUserId(fb_user_id);
+
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
-
-                    clicked[0] = true;
-                }else {
-                    Toast.makeText(getApplicationContext(),"უკვე მოწონებულია", Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -315,6 +335,20 @@ public class GraphiteDetailActivity extends ActionBarActivity implements Navigat
                 .centerCrop()
                 .into(imgView);
 
+    }
+
+    int index = 0;
+    // check if userId is in liked user list
+    private boolean checkPost(ArrayList<UserLikes> data, String userId){
+        for(int i = 0; i < data.size(); ++i ) {
+//            Log.d("userID : "+data.get(i).getUserId()+" ---- ",data.get(i).getMarkerId());
+//            Log.d("მოდელი : "+userId+" ---- ",graphiteItem.getMarkerID()+"");
+            if (data.get(i).getUserId().equals(userId) && data.get(i).getMarkerId().equals(String.valueOf(graphiteItem.getMarkerID()))) {
+                index = i;
+                return true;
+            }
+        }
+        return false;
     }
 
 

@@ -113,6 +113,10 @@ public class MainActivity extends ActionBarActivity implements NavigationView.On
     public static FilterDialogFragment filterDialogFragment;
     public static final String MY_PREF_FOR_FB_USER_ID = "FB_USER_ID";
 
+    //user likes data
+    public static HashMap<String,UserLikes> userLikes;
+
+    private Activity mainActivity;
     public static String fbUserName;
     public static Toolbar toolbar;
     public int toolbarColorResId,tabLayoutResColorId,statusBarColorResId;
@@ -123,8 +127,8 @@ public class MainActivity extends ActionBarActivity implements NavigationView.On
         super.onCreate(savedInstanceState);
         FacebookSdk.sdkInitialize(getApplicationContext());
         setContentView(R.layout.activity_main);
-
-
+        mainActivity = this;
+        getUserLikedImages(URL);
 
         user_id = LoadPreferences();
 
@@ -240,20 +244,36 @@ public class MainActivity extends ActionBarActivity implements NavigationView.On
         return data;
     }
 
-    public void deleteFbPrefference(){
-        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
-        preferences.edit().remove("user_id").commit();
-        String key = preferences.getString("user_id","vervnaxe");
-        SharedPreferences.Editor editor = preferences.edit();
-        editor.clear();
-        editor.commit();
-    }
 
     //starting camera code
     public static CallbackManager callbackManager;
 
 
+    private String URL = "http://geolab.club/streetart/json/likes/";
+    public static ArrayList<UserLikes> likesArrayList;
+    private RequestQueue queue;
+    //function gets user liked images (data)
+    public void getUserLikedImages(String url){
+        JsonArrayRequest request;
+        if(queue == null) {
+            queue = new Volley().newRequestQueue(mainActivity);
+        }
+        likesArrayList = new ArrayList<>();
 
+        request = new JsonArrayRequest(url,new Response.Listener<JSONArray>() {
+            @Override
+            public void onResponse(JSONArray jsonArray) {
+                likesArrayList = MyLikesParser.parseLikesData(jsonArray);
+            }
+        },
+        new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError volleyError) {
+
+            }
+        });
+        queue.add(request);
+    }
 
     @Override
     public void onBackPressed() {
@@ -442,8 +462,8 @@ public class MainActivity extends ActionBarActivity implements NavigationView.On
             case R.id.navigation_item_1: // fotos gadageba
 
 //                closeDrawerFromUiThread();
-                if (user_id != "") {
-                    Toast.makeText(getApplicationContext(),user_id,Toast.LENGTH_SHORT).show();
+                if (AccessToken.getCurrentAccessToken() != null) {
+                    Toast.makeText(getApplicationContext(),AccessToken.getCurrentAccessToken().getUserId(),Toast.LENGTH_SHORT).show();
                     captureImage();
                     logged[0] = true;
                 }
@@ -636,32 +656,13 @@ public class MainActivity extends ActionBarActivity implements NavigationView.On
 
 
     private final String likesURL = "http://geolab.club/streetart/json/likes/";
-    private HashMap<String,ArrayList<UserLikes>> userLikesHashMap;
+    private HashMap<String,Boolean> userLikesHashMap;
     private ArrayList<UserLikes> userLikesArrayList;
 
     private JsonArrayRequest jsonArrayRequest;
     private RequestQueue likesQueue;
 
-    //on favorite icon click
-    private void onFavoriteClick(){
-        userLikesArrayList = new ArrayList<>();
-        userLikesHashMap = new HashMap<>();
-        likesQueue = new Volley().newRequestQueue(context);
-        jsonArrayRequest = new JsonArrayRequest(likesURL, new Response.Listener<JSONArray>() {
-            @Override
-            public void onResponse(JSONArray jsonArray) {
-                userLikesArrayList = MyLikesParser.parseLikesData(jsonArray);
-            }
-        },
-        new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError volleyError) {
 
-            }
-        });
-        likesQueue.add(jsonArrayRequest);
-
-    }
 
     private ArrayList<GraphiteItemModel> userFavouriteList;
 

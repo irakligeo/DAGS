@@ -21,7 +21,7 @@ public class MyLikesParser {
                 String markerId = jsonObject.getString("marker_id");
                 String userId = jsonObject.getString("user_id");
 
-                userLikes = new UserLikes(id,markerId,userId);
+                userLikes = new UserLikes(id,userId,markerId);
                 likesArrayList.add(userLikes);
 
 
