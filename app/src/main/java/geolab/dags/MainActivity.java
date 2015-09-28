@@ -250,19 +250,24 @@ public class MainActivity extends ActionBarActivity implements NavigationView.On
 
 
     private String URL = "http://geolab.club/streetart/json/likes/";
+    //users liked data
     public static ArrayList<UserLikes> likesArrayList;
+    //Request Queue
     private RequestQueue queue;
+
     //function gets user liked images (data)
     public void getUserLikedImages(String url){
         JsonArrayRequest request;
         if(queue == null) {
             queue = new Volley().newRequestQueue(mainActivity);
         }
+        //cleare and create new ArrayList for likes
         likesArrayList = new ArrayList<>();
 
         request = new JsonArrayRequest(url,new Response.Listener<JSONArray>() {
             @Override
             public void onResponse(JSONArray jsonArray) {
+                //assign parsed data the likesArrayList
                 likesArrayList = MyLikesParser.parseLikesData(jsonArray);
             }
         },

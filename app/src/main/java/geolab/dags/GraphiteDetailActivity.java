@@ -111,10 +111,13 @@ public class GraphiteDetailActivity extends ActionBarActivity implements Navigat
         //user liked data
         likes = MainActivity.likesArrayList;
 
+        String fb_user_id;
 
-
-        final String fb_user_id = AccessToken.getCurrentAccessToken().getUserId();
-
+        try {
+            fb_user_id = AccessToken.getCurrentAccessToken().getUserId();
+        }catch (NullPointerException e) {
+            fb_user_id = "";
+        }
 
 
 
@@ -203,9 +206,12 @@ public class GraphiteDetailActivity extends ActionBarActivity implements Navigat
         createDateView.setText(graphiteItem.getCreateDate());
         authorView.setText(graphiteItem.getAuthor());
         descriptionView.setText(graphiteItem.getDescription());
-        likesCountTextView.setText(graphiteItem.getLikesCount()+" ");
+        likesCountTextView.setText(graphiteItem.getLikesCount()+"");
 
         likeImageView = (ImageView) findViewById(R.id.like_icon);
+
+
+        //check if the likes ArrayList contains given facebook id
         if(checkPost(likes,fb_user_id)){
             likeImageView.setImageResource(R.drawable.liked_icon);
         }else{
@@ -214,46 +220,68 @@ public class GraphiteDetailActivity extends ActionBarActivity implements Navigat
 
 
         final String userID = LoadPreferences();
+
+
+
         //on like ImageView clikc
+        final String finalFb_user_id = fb_user_id;
         likeImageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(checkPost(likes, fb_user_id)){
-                    Toast.makeText(getApplicationContext(),"already liked", Toast.LENGTH_SHORT).show();
-                }
-                else{
-                    likeImageView.setImageResource(R.drawable.liked_icon);
-                    likesCountTextView.setText(graphiteItem.getLikesCount() + 1 + " ");
-                    likesCountTextView.startAnimation(textAnimation);
-                    likesCountTextView.startAnimation(fadeIn);
+                try {
+                    if (checkPost(likes, finalFb_user_id)) {
+                        Toast.makeText(getApplicationContext(), "already liked", Toast.LENGTH_SHORT).show();
+                    } else if (AccessToken.getCurrentAccessToken().getUserId() == null) {
+                        Toast.makeText(getApplicationContext(), "You must login at first", Toast.LENGTH_SHORT).show();
+                    } else {
+                        likeImageView.setImageResource(R.drawable.liked_icon);
+                        likesCountTextView.setText(graphiteItem.getLikesCount() + 1 + " ");
+                        likesCountTextView.startAnimation(textAnimation);
+                        likesCountTextView.startAnimation(fadeIn);
 
 
-                    final HttpClient httpclient = new DefaultHttpClient();
-                    final HttpPost httppost = new HttpPost("http://www.geolab.club/streetart/likemobile.php");
-                    try {
-                        List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(2);
-                        nameValuePairs.add(new BasicNameValuePair("marker_id", graphiteItem.getMarkerID() + ""));
-                        nameValuePairs.add(new BasicNameValuePair("user_id", fb_user_id));
-                        httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
+                        final HttpClient httpclient = new DefaultHttpClient();
+                        final HttpPost httppost = new HttpPost("http://www.geolab.club/streetart/likemobile.php");
+                        try {
+                            List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(2);
+                            nameValuePairs.add(new BasicNameValuePair("marker_id", graphiteItem.getMarkerID() + ""));
+                            nameValuePairs.add(new BasicNameValuePair("user_id", finalFb_user_id));
+                            httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
 
-                        Thread thread = new Thread(new Runnable() {
-                            @Override
-                            public void run() {
-                                try {
-                                    httpclient.execute(httppost);
-                                } catch (Exception e) {
-                                    e.printStackTrace();
+                            Thread thread = new Thread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    try {
+                                        httpclient.execute(httppost);
+                                    } catch (Exception e) {
+                                        e.printStackTrace();
+                                    }
+                                }
+                            });
+
+                            thread.start();
+                            Log.d("indextan user: *** ", MainActivity.likesArrayList.get(index).getUserId());
+                            Log.d("indextan mark: *** ", MainActivity.likesArrayList.get(index).getMarkerId());
+                            Toast.makeText(getBaseContext(), MainActivity.likesArrayList.get(index).getUserId() + " Sent " + graphiteItem.getMarkerID() + " " + finalFb_user_id, Toast.LENGTH_SHORT).show();
+
+                            int idx = 0;
+                            for (int i = 0; i < MainActivity.likesArrayList.size(); ++i) {
+                                if (MainActivity.likesArrayList.get(i).getMarkerId() == String.valueOf(graphiteItem.getMarkerID())) {
+                                    idx = i;
+                                    Log.d("user id : ---- ", MainActivity.likesArrayList.get(i).getUserId());
+                                    Log.d("marker id : ---- ", MainActivity.likesArrayList.get(i).getMarkerId());
+                                    break;
                                 }
                             }
-                        });
+                            MainActivity.likesArrayList.get(idx).setUserId(finalFb_user_id);
+                            likes.get(idx).setUserId(finalFb_user_id);
 
-                        thread.start();
-                        Toast.makeText(getBaseContext(), "Sent " + graphiteItem.getMarkerID() + " " + fb_user_id, Toast.LENGTH_SHORT).show();
-                        MainActivity.likesArrayList.get(index).setUserId(fb_user_id);
-
-                    } catch (IOException e) {
-                        e.printStackTrace();
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
                     }
+                }catch(NullPointerException e){
+                    Toast.makeText(getApplicationContext(), "You must login at first", Toast.LENGTH_SHORT).show();
                 }
             }
         });
