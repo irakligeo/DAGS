@@ -205,7 +205,7 @@ public class MapFragment extends android.support.v4.app.Fragment implements OnMa
 
                 Picasso.with(getActivity())
                         .load(myMarker.getImgURL())
-                        .resize(200, 300)
+                        .resize(300, 400)
                         .centerCrop()
                         .into(markerIcon);
 

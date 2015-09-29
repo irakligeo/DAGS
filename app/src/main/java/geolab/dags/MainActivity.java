@@ -663,7 +663,7 @@ public class MainActivity extends ActionBarActivity implements NavigationView.On
 
 
 
-    SettingsFragment palleteFrag;
+    public static SettingsFragment palleteFrag;
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -713,7 +713,7 @@ public class MainActivity extends ActionBarActivity implements NavigationView.On
 
 
     @SuppressLint("ValidFragment")
-    private class SettingsFragment extends DialogFragment implements View.OnClickListener {
+    public class SettingsFragment extends DialogFragment implements View.OnClickListener {
 
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,

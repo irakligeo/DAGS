@@ -115,7 +115,7 @@ public class GraphiteDetailActivity extends ActionBarActivity implements Navigat
         try {
             fb_user_id = AccessToken.getCurrentAccessToken().getUserId();
         }catch (NullPointerException e) {
-            Toast.makeText(getApplicationContext(),"null",Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(),"unautorized",Toast.LENGTH_SHORT).show();
             fb_user_id = "";
         }
 
@@ -219,7 +219,7 @@ public class GraphiteDetailActivity extends ActionBarActivity implements Navigat
         }
 
 
-        final String userID = LoadPreferences();
+//        final String userID = LoadPreferences();
 
 
 
@@ -275,6 +275,15 @@ public class GraphiteDetailActivity extends ActionBarActivity implements Navigat
                             }
                             MainActivity.likesArrayList.get(idx[0]).setUserId(finalFb_user_id);
                             likes.get(idx[0]).setUserId(finalFb_user_id);
+
+                            for (int i = 0; i < MainActivity.likesArrayList.size(); ++i) {
+                                if (MainActivity.likesArrayList.get(i).getMarkerId() == String.valueOf(graphiteItem.getMarkerID())) {
+                                    idx[0] = i;
+                                    Log.d("user id : ---- ", MainActivity.likesArrayList.get(i).getUserId());
+                                    Log.d("marker id : ---- ", MainActivity.likesArrayList.get(i).getMarkerId());
+                                    break;
+                                }
+                            }
 
                         } catch (IOException e) {
                             e.printStackTrace();
@@ -402,7 +411,7 @@ public class GraphiteDetailActivity extends ActionBarActivity implements Navigat
     }
 
 
-    // get user id pref
+    // get user facebook id pref
     private String LoadPreferences(){
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
         String  data = sharedPreferences.getString("user_id", "user id") ;
@@ -566,6 +575,8 @@ public class GraphiteDetailActivity extends ActionBarActivity implements Navigat
                             }).show();
                 } else {
                     callbackManager = CallbackManager.Factory.create();
+                    LoginManager.getInstance().logInWithReadPermissions(this, Arrays.asList("email", "user_photos", "public_profile"));
+
                     LoginManager.getInstance().registerCallback(callbackManager,
                             new FacebookCallback<LoginResult>() {
                                 @Override
@@ -603,7 +614,7 @@ public class GraphiteDetailActivity extends ActionBarActivity implements Navigat
                                     Toast.makeText(getApplicationContext(), "onError", Toast.LENGTH_SHORT).show();
                                 }
                             });
-                    LoginManager.getInstance().logInWithReadPermissions(this, Arrays.asList("public_profile", "user_friends"));
+
                 }
 
                 mDrawerLayout.closeDrawer(Gravity.LEFT);
@@ -627,8 +638,7 @@ public class GraphiteDetailActivity extends ActionBarActivity implements Navigat
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_graphite_item_detail, menu);
-
+        getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
     }
 
@@ -638,10 +648,10 @@ public class GraphiteDetailActivity extends ActionBarActivity implements Navigat
 
     @Override
     protected void onResume() {
-//        if(checkPost(likes,fb_user_id)){
-//            likeImageView.setImageResource(R.drawable.liked_icon);
-//        }
         super.onResume();
+        if(checkPost(likes,fb_user_id)){
+            likeImageView.setImageResource(R.drawable.liked_icon);
+        }
 //        AppEventsLogger.activateApp(this);
     }
     @Override
@@ -653,16 +663,17 @@ public class GraphiteDetailActivity extends ActionBarActivity implements Navigat
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        int id = item.getItemId();
+        switch (item.getItemId()) {
+            case R.id.action_settings:
 
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        if (id == R.id.menu_item_share) {
-
-            return true;
+                return true;
+            case R.id.action_filter:
+                filterDialogFragment = new FilterDialogFragment();
+                filterDialogFragment.show(GraphiteDetailActivity.this.getFragmentManager(),"filter_fragment");
+                return true;
+            case R.id.action_pallete:
+                MainActivity.palleteFrag.show(GraphiteDetailActivity.this.getFragmentManager(),"Pallete_fragment");
+                return true;
         }
 
         return super.onOptionsItemSelected(item);

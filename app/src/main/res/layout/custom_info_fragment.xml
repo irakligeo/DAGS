@@ -44,7 +44,7 @@
 
             <!-- graphite image view-->
             <ImageView
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="228dp"
                 android:id="@+id/peaceOfArtImg"
                 android:background="@color/tab_layout"
@@ -72,12 +72,13 @@
                 android:layout_height="wrap_content"
                 android:text="@string/createDate"
                 android:layout_alignRight="@+id/peaceOfArtImg"
-                android:layout_alignEnd="@+id/peaceOfArtImg"
                 android:textIsSelectable="false"
                 android:layout_below="@+id/author"
                 android:textSize="13sp"
                 android:layout_marginBottom="5dp"
-                android:textColor="#ff1de0da" />
+                android:textColor="#ff1de0da"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="5dp" />
 
 
 
@@ -208,7 +209,7 @@
             <ImageView
                 android:id="@+id/share_icon"
                 android:layout_width="28dp"
-                android:src="@drawable/share_icon"
+                android:src="@drawable/share_icon2"
                 android:layout_height="28dp"
                 android:layout_above="@+id/little_description"
                 android:layout_alignRight="@+id/peaceOfArtImg"
