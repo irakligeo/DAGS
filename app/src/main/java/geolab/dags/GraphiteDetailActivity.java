@@ -98,6 +98,7 @@ public class GraphiteDetailActivity extends ActionBarActivity implements Navigat
     private ArrayList<UserLikes> likes;
     private GraphiteItemModel  graphiteItem;
     public int toolbarColorResId, tabLayoutResColorId, statusBarColorResId;
+    private String fb_user_id;
 //    on Create View
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     @Override
@@ -111,11 +112,10 @@ public class GraphiteDetailActivity extends ActionBarActivity implements Navigat
         //user liked data
         likes = MainActivity.likesArrayList;
 
-        String fb_user_id;
-
         try {
             fb_user_id = AccessToken.getCurrentAccessToken().getUserId();
         }catch (NullPointerException e) {
+            Toast.makeText(getApplicationContext(),"null",Toast.LENGTH_SHORT).show();
             fb_user_id = "";
         }
 
@@ -225,6 +225,7 @@ public class GraphiteDetailActivity extends ActionBarActivity implements Navigat
 
         //on like ImageView clikc
         final String finalFb_user_id = fb_user_id;
+        final int[] idx = {0};
         likeImageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -264,17 +265,16 @@ public class GraphiteDetailActivity extends ActionBarActivity implements Navigat
                             Log.d("indextan mark: *** ", MainActivity.likesArrayList.get(index).getMarkerId());
                             Toast.makeText(getBaseContext(), MainActivity.likesArrayList.get(index).getUserId() + " Sent " + graphiteItem.getMarkerID() + " " + finalFb_user_id, Toast.LENGTH_SHORT).show();
 
-                            int idx = 0;
                             for (int i = 0; i < MainActivity.likesArrayList.size(); ++i) {
                                 if (MainActivity.likesArrayList.get(i).getMarkerId() == String.valueOf(graphiteItem.getMarkerID())) {
-                                    idx = i;
+                                    idx[0] = i;
                                     Log.d("user id : ---- ", MainActivity.likesArrayList.get(i).getUserId());
                                     Log.d("marker id : ---- ", MainActivity.likesArrayList.get(i).getMarkerId());
                                     break;
                                 }
                             }
-                            MainActivity.likesArrayList.get(idx).setUserId(finalFb_user_id);
-                            likes.get(idx).setUserId(finalFb_user_id);
+                            MainActivity.likesArrayList.get(idx[0]).setUserId(finalFb_user_id);
+                            likes.get(idx[0]).setUserId(finalFb_user_id);
 
                         } catch (IOException e) {
                             e.printStackTrace();
@@ -314,43 +314,20 @@ public class GraphiteDetailActivity extends ActionBarActivity implements Navigat
         });
 
 
-        hashMap = ViewPagerFragment.hashTagsMap;
+//        hashMap = ViewPagerFragment.hashTagsMap;
 
 
-        ArrayList<String> tmplist = new ArrayList<>();
+//        ArrayList<String> tmplist = new ArrayList<>();
+//
+//        String keys = "";
+//        for ( Map.Entry<String, ArrayList<String>> entry : hashMap.entrySet()) {
+//            String key = entry.getKey();
+//            keys += key + " ";
+//            tmplist = entry.getValue();
+//            System.out.println(key +" --- " +tmplist.toString());
+//        }
+        descriptionView.setText(graphiteItem.getDescription() + " " + graphiteItem.getDescription());
 
-        String keys = "";
-        for ( Map.Entry<String, ArrayList<String>> entry : hashMap.entrySet()) {
-            String key = entry.getKey();
-            keys += key + " ";
-            tmplist = entry.getValue();
-            System.out.println(key +" --- " +tmplist.toString());
-        }
-        descriptionView.setText(tmplist.toString());
-
-
-        String hashtag = graphiteItem.getHashtag();
-        char[] charArray;
-        charArray = hashtag.toCharArray();
-        String[] res;
-        String result = "";
-        if( hashtag != "" ) {
-
-            if (checkArray(charArray)) {
-                res = hashtag.split(",");
-                for (int k = 0; k < res.length; ++k) {
-                    if (hashMap.containsKey(res[k])) {
-                        result += hashMap.get(res[k]).toString();
-//                            descriptionView.setText(hashMap.get(res[k]).toString());
-                    }
-                }
-//                    descriptionView.setText(result);
-            }else{
-                if (hashMap.containsKey(hashtag)) {
-//                        descriptionView.setText(hashMap.get(hashtag).toString());
-                }
-            }
-        }
 
 
         //filter dialog
@@ -371,7 +348,7 @@ public class GraphiteDetailActivity extends ActionBarActivity implements Navigat
         for(int i = 0; i < data.size(); ++i ) {
 //            Log.d("userID : "+data.get(i).getUserId()+" ---- ",data.get(i).getMarkerId());
 //            Log.d("მოდელი : "+userId+" ---- ",graphiteItem.getMarkerID()+"");
-            if (data.get(i).getUserId().equals(userId) && data.get(i).getMarkerId().equals(String.valueOf(graphiteItem.getMarkerID()))) {
+            if (data.get(i).getUserId().equals(String.valueOf(userId)) && data.get(i).getMarkerId().equals(String.valueOf(graphiteItem.getMarkerID()))) {
                 index = i;
                 return true;
             }
@@ -655,6 +632,24 @@ public class GraphiteDetailActivity extends ActionBarActivity implements Navigat
         return true;
     }
 
+
+
+
+
+    @Override
+    protected void onResume() {
+//        if(checkPost(likes,fb_user_id)){
+//            likeImageView.setImageResource(R.drawable.liked_icon);
+//        }
+        super.onResume();
+//        AppEventsLogger.activateApp(this);
+    }
+    @Override
+    protected void onPause() {
+        super.onPause();
+        // Logs 'app deactivate' App Event.
+//        AppEventsLogger.deactivateApp(this);
+    }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {

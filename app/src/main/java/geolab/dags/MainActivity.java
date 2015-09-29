@@ -128,6 +128,7 @@ public class MainActivity extends ActionBarActivity implements NavigationView.On
         FacebookSdk.sdkInitialize(getApplicationContext());
         setContentView(R.layout.activity_main);
         mainActivity = this;
+
         getUserLikedImages(URL);
 
         user_id = LoadPreferences();
@@ -274,7 +275,7 @@ public class MainActivity extends ActionBarActivity implements NavigationView.On
         new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError volleyError) {
-
+                volleyError.getCause();
             }
         });
         queue.add(request);
@@ -647,11 +648,13 @@ public class MainActivity extends ActionBarActivity implements NavigationView.On
 
     @Override
     protected void onResume() {
+//        getUserLikedImages(URL);
         super.onResume();
 //        AppEventsLogger.activateApp(this);
     }
 
     @Override
+
     protected void onPause() {
         super.onPause();
         // Logs 'app deactivate' App Event.
@@ -659,27 +662,6 @@ public class MainActivity extends ActionBarActivity implements NavigationView.On
     }
 
 
-
-    private final String likesURL = "http://geolab.club/streetart/json/likes/";
-    private HashMap<String,Boolean> userLikesHashMap;
-    private ArrayList<UserLikes> userLikesArrayList;
-
-    private JsonArrayRequest jsonArrayRequest;
-    private RequestQueue likesQueue;
-
-
-
-    private ArrayList<GraphiteItemModel> userFavouriteList;
-
-    //get posts related current user id
-    private void fillFavouriteList(){
-        userFavouriteList = new ArrayList<>();
-        for(int i = 0; i < userLikesArrayList.size(); ++i){
-            if(MyResponseParser.postsHashMap.containsKey(userLikesArrayList.get(i).getUserId())){
-                userFavouriteList.add(MyResponseParser.postsHashMap.get(userLikesArrayList.get(i).getUserId()));
-            }
-        }
-    }
 
     SettingsFragment palleteFrag;
     @Override
