@@ -1,8 +1,6 @@
 package geolab.dags.adpaters;
 
 import android.content.Context;
-import android.graphics.Color;
-import android.support.v7.widget.CardView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -47,8 +45,6 @@ public class ListViewAdapter extends BaseAdapter {
         return i;
     }
 
-    CardView cardView;
-
     private int lastPosition = -1;
     @Override
     public View getView(int index, View convertView, ViewGroup parentView) {
@@ -59,10 +55,6 @@ public class ListViewAdapter extends BaseAdapter {
         if(convertView == null) {
             itemView = inflater.inflate(R.layout.graphite_cardview_layout,null);
             viewHolder = new ViewHolder();
-
-            cardView = (CardView) itemView.findViewById(R.id.cardview);
-//            cardView.setCardBackgroundColor(Color.GRAY);
-
 
             //scrolling animation
             Animation animation = AnimationUtils.loadAnimation(context, (index > lastPosition) ? R.anim.up_from_bottom : R.anim.down_from_top);

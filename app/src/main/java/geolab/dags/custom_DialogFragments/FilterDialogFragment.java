@@ -153,7 +153,7 @@ public class FilterDialogFragment extends DialogFragment implements AdapterView.
             if (distance <= radius) {
                 MapFragment.googleMap.addMarker(marker);
             } else {
-                Toast.makeText(getActivity(), "გაქრა " +  data.get(i).getTitle(), Toast.LENGTH_SHORT).show();
+//                Toast.makeText(getActivity(), "გაქრა " +  data.get(i).getTitle(), Toast.LENGTH_SHORT).show();
             }
 
         }

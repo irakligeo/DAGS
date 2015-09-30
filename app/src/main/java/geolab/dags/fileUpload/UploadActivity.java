@@ -228,7 +228,7 @@ public class UploadActivity extends ActionBarActivity{
         int tabLayoutResColor = sharedPreferences.getInt("tabLayoutColor", 2) ;
         int statusBarResColor = sharedPreferences.getInt("statusBarColor", 3) ;
 
-        Toast.makeText(this,toolbarResColor +" "+ tabLayoutResColor, Toast.LENGTH_LONG).show();
+//        Toast.makeText(this,toolbarResColor +" "+ tabLayoutResColor, Toast.LENGTH_LONG).show();
 
         MainActivity.SaveUserSettings(getApplicationContext(),toolbarResColor,tabLayoutResColor,statusBarResColor);
     }

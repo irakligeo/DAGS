@@ -115,7 +115,7 @@ public class GraphiteDetailActivity extends ActionBarActivity implements Navigat
         try {
             fb_user_id = AccessToken.getCurrentAccessToken().getUserId();
         }catch (NullPointerException e) {
-            Toast.makeText(getApplicationContext(),"unautorized",Toast.LENGTH_SHORT).show();
+//            Toast.makeText(getApplicationContext(),"unautorized",Toast.LENGTH_SHORT).show();
             fb_user_id = "";
         }
 
@@ -263,7 +263,7 @@ public class GraphiteDetailActivity extends ActionBarActivity implements Navigat
                             thread.start();
                             Log.d("indextan user: *** ", MainActivity.likesArrayList.get(index).getUserId());
                             Log.d("indextan mark: *** ", MainActivity.likesArrayList.get(index).getMarkerId());
-                            Toast.makeText(getBaseContext(), MainActivity.likesArrayList.get(index).getUserId() + " Sent " + graphiteItem.getMarkerID() + " " + finalFb_user_id, Toast.LENGTH_SHORT).show();
+//                            Toast.makeText(getBaseContext(), MainActivity.likesArrayList.get(index).getUserId() + " Sent " + graphiteItem.getMarkerID() + " " + finalFb_user_id, Toast.LENGTH_SHORT).show();
 
                             for (int i = 0; i < MainActivity.likesArrayList.size(); ++i) {
                                 if (MainActivity.likesArrayList.get(i).getMarkerId() == String.valueOf(graphiteItem.getMarkerID())) {
