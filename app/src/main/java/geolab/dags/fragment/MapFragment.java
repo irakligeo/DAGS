@@ -105,24 +105,22 @@ public class MapFragment extends android.support.v4.app.Fragment implements OnMa
             double latitude = coordsList.get(i).getLatitude();
             String title = coordsList.get(i).getTitle();
 
+
             MarkerOptions marker = new MarkerOptions().position(
                     new LatLng(latitude, longitude)).title(title)
                     .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_CYAN));
-
             // add marker
             googleMap.addMarker(marker);
             //insert into hashMap
             mMarkersHashMap.put(marker.getTitle(), coordsList.get(i));
-
-
             // camera target for given coordinates
-            setCameraPostion(lat,lng,11);
+            setCameraPosition(lat, lng, 11);
 
         }
 
     }
 
-    public static void setCameraPostion(double lat,double lng, int zoom){
+    public static void setCameraPosition(double lat, double lng, int zoom){
         try {
             CameraPosition cameraPosition = new CameraPosition.Builder()
                     .target(new LatLng(lat,lng)).zoom(zoom).build();

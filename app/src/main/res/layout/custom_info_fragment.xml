@@ -107,7 +107,7 @@
                     android:layout_alignTop="@+id/commentsTextViw"
                     android:layout_toRightOf="@+id/commentsTextViw"
                     android:layout_toEndOf="@+id/commentsTextViw"
-                    android:layout_marginLeft="70dp" />
+                    android:layout_marginLeft="60dp" />
 
                 <!-- line custom view-->
                 <LinearLayout
