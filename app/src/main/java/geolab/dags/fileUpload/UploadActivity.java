@@ -31,8 +31,6 @@ import org.apache.http.HttpResponse;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpPost;
-import org.apache.http.entity.StringEntity;
-import org.apache.http.entity.mime.content.ContentBody;
 import org.apache.http.entity.mime.content.FileBody;
 import org.apache.http.entity.mime.content.StringBody;
 import org.apache.http.impl.client.DefaultHttpClient;
@@ -45,7 +43,6 @@ import org.apache.http.util.EntityUtils;
 import java.io.File;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
-import java.util.Calendar;
 import java.util.Date;
 
 import geolab.dags.MainActivity;
@@ -98,12 +95,12 @@ public class UploadActivity extends ActionBarActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_upload);
 
-        //loads application settings choosed by user
+        //loads application settings, choosed by user
         LoadSettings();
         final Context context = this;
 
         // loads pref data (user_id)
-        userID = LoadPreferences();
+        userID = getUserIDFromPref();
 
         longitude = (TextView) findViewById(R.id.longitude);
         latitude = (TextView) findViewById(R.id.latitude);
@@ -221,7 +218,9 @@ public class UploadActivity extends ActionBarActivity{
 
     }
 
-
+    /**
+     * loads application settings, choosed by user
+     */
     private void LoadSettings(){
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
         int toolbarResColor = sharedPreferences.getInt("toolbarColor", 1) ;
@@ -233,7 +232,11 @@ public class UploadActivity extends ActionBarActivity{
         MainActivity.SaveUserSettings(getApplicationContext(),toolbarResColor,tabLayoutResColor,statusBarResColor);
     }
 
-    private String LoadPreferences(){
+    /**
+     * loads saved
+     * @return
+     */
+    private String getUserIDFromPref(){
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
         String  data = sharedPreferences.getString("user_id", "0") ;
 //        Toast.makeText(this,data, Toast.LENGTH_LONG).show();

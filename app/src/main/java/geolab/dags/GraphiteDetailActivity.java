@@ -672,7 +672,7 @@ public class GraphiteDetailActivity extends ActionBarActivity implements Navigat
                 filterDialogFragment.show(GraphiteDetailActivity.this.getFragmentManager(),"filter_fragment");
                 return true;
             case R.id.action_pallete:
-                MainActivity.palleteFrag.show(GraphiteDetailActivity.this.getFragmentManager(),"Pallete_fragment");
+                MainActivity.settingsFragment.show(GraphiteDetailActivity.this.getFragmentManager(),"Pallete_fragment");
                 return true;
         }
 

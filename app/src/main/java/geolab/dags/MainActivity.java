@@ -72,10 +72,8 @@ import geolab.dags.fileUpload.Config;
 import geolab.dags.fileUpload.UploadActivity;
 import geolab.dags.fragment.MapFragment;
 import geolab.dags.fragment.ViewPagerFragment;
-import geolab.dags.model.GraphiteItemModel;
 import geolab.dags.model.UserLikes;
 import geolab.dags.parsers.MyLikesParser;
-import geolab.dags.parsers.MyResponseParser;
 
 import static geolab.dags.fragment.MapFragment.newInstance;
 
@@ -101,7 +99,6 @@ public class MainActivity extends ActionBarActivity implements NavigationView.On
     private PagerAdapter mPagerAdapter;
     private Context context;
     private LayoutInflater inflater;
-    private View view;
     private TextView fbUserNameTextView;
     private ProfilePictureView profilePictureView;
 
@@ -131,7 +128,7 @@ public class MainActivity extends ActionBarActivity implements NavigationView.On
 
         getUserLikedImages(URL);
 
-        user_id = LoadPreferences();
+        user_id = getUserFbID();
 
 
         context = this;
@@ -206,7 +203,7 @@ public class MainActivity extends ActionBarActivity implements NavigationView.On
         mPager = (ViewPager) findViewById(R.id.pager);
 
         // animation styles
-//        mPager.setPageTransformer(true, new ZoomOutPageTransformer());
+        // mPager.setPageTransformer(true, new ZoomOutPageTransformer());
         mPager.setPageTransformer(true, new DepthPageTransformer());
 
 
@@ -231,17 +228,20 @@ public class MainActivity extends ActionBarActivity implements NavigationView.On
         //filter dialog
         filterDialogFragment = new FilterDialogFragment();
 
-        //laod old settings
+        //load saved settings
         LoadSettings();
         //set settings
         changeStyle(toolbar,tabLayout,window,toolbarColorResId,tabLayoutResColorId,statusBarColorResId);
 
     }
 
-    private String LoadPreferences(){
+    /**
+     * returns facebook user id
+     * @return
+     */
+    private String getUserFbID(){
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
         String  data = sharedPreferences.getString("user_id", "") ;
-//        Toast.makeText(this,data, Toast.LENGTH_LONG).show();
         return data;
     }
 
@@ -257,6 +257,11 @@ public class MainActivity extends ActionBarActivity implements NavigationView.On
     private RequestQueue queue;
 
     //function gets user liked images (data)
+
+    /**
+     * method gets user liked posts json data from server
+     * @param url
+     */
     public void getUserLikedImages(String url){
         JsonArrayRequest request;
         if(queue == null) {
@@ -281,6 +286,10 @@ public class MainActivity extends ActionBarActivity implements NavigationView.On
         queue.add(request);
     }
 
+
+    /**
+     * method onBackPressed
+     */
     @Override
     public void onBackPressed() {
         if (mPager.getCurrentItem() == 0) {
@@ -290,6 +299,9 @@ public class MainActivity extends ActionBarActivity implements NavigationView.On
             mPager.setCurrentItem(mPager.getCurrentItem() - 1);
         }
     }
+
+
+
     /**
      * Receiving activity result method will be called after closing the camera
      * */
@@ -324,8 +336,14 @@ public class MainActivity extends ActionBarActivity implements NavigationView.On
 
         }
     }
-    String UserID = "";
-    //launchUploadActivity
+    private String UserID = "";
+
+
+
+    /**
+     * method starts UploadActivity for taking picture
+     * @param isImage
+     */
     private void launchUploadActivity(boolean isImage){
         Intent i = new Intent(MainActivity.this, UploadActivity.class);
         i.putExtra("filePath", fileUri.getPath());
@@ -333,7 +351,10 @@ public class MainActivity extends ActionBarActivity implements NavigationView.On
         startActivity(i);
     }
 
-
+    /**
+     * method current activity state saves data
+     * @param outState
+     */
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
@@ -343,6 +364,10 @@ public class MainActivity extends ActionBarActivity implements NavigationView.On
         outState.putParcelable("file_uri", fileUri);
     }
 
+    /**
+     * method restores saved data
+     * @param savedInstanceState
+     */
     @Override
     protected void onRestoreInstanceState(Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
@@ -384,6 +409,11 @@ public class MainActivity extends ActionBarActivity implements NavigationView.On
         return mediaFile;
     }
 
+    /**
+     *
+     * @param type
+     * @return
+     */
     public static Uri getOutputMediaFileUri(int type) {
         return Uri.fromFile(getOutputMediaFile(type));
     }
@@ -402,7 +432,16 @@ public class MainActivity extends ActionBarActivity implements NavigationView.On
 
 
 
-    //change style
+    //
+    /**
+     * method changes style
+     * @param toolbar
+     * @param tabLayout
+     * @param window
+     * @param toolbarResID
+     * @param tablayoutResId
+     * @param statusbarResId
+     */
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     public void changeStyle(Toolbar toolbar,TabLayout tabLayout, Window window, int toolbarResID, int tablayoutResId, int statusbarResId){
 
@@ -422,7 +461,11 @@ public class MainActivity extends ActionBarActivity implements NavigationView.On
     }
 
 
-    // function loads saved settings
+
+
+    /**
+     *  method loads saved settings
+     */
     public void LoadSettings() {
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
 
@@ -432,7 +475,13 @@ public class MainActivity extends ActionBarActivity implements NavigationView.On
     }
 
 
-    //SharedPreferences for save
+    /**
+     * method for save user selected style. (args are for style parameters)
+     * @param context
+     * @param toolbarColorResId
+     * @param tabLayoutColorResId
+     * @param statusBarColorResId
+     */
     public static void SaveUserSettings(Context context, int toolbarColorResId, int tabLayoutColorResId, int statusBarColorResId){
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
 
@@ -443,7 +492,13 @@ public class MainActivity extends ActionBarActivity implements NavigationView.On
         editor.commit();
     }
 
-    //function saves user_id ( user id )
+
+
+    /**
+     * function saves user_id ( user id )
+     * @param key
+     * @param value
+     */
     private void SavePreferences(String key, String value){
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
         SharedPreferences.Editor editor = sharedPreferences.edit();
@@ -452,52 +507,31 @@ public class MainActivity extends ActionBarActivity implements NavigationView.On
         editor.commit();
     }
 
-    //   end of camera code
-    private ActionBarDrawerToggle mDrawerToggle;
 
+
+
+
+    private ActionBarDrawerToggle mDrawerToggle;
     private String str_firstname = "";
     private AccessToken accessToken;
-
-
     private String user_id = "";
-    //NavigationItemSelected
+
+    /**
+     * method onNavigationItemSelected
+     * @param menuItem
+     * @return
+     */
     @Override
     public boolean onNavigationItemSelected(MenuItem menuItem) {
 
         switch (menuItem.getItemId()) {
 
             case R.id.navigation_item_1: // fotos gadageba
-
-//                closeDrawerFromUiThread();
-                if (AccessToken.getCurrentAccessToken() != null) {
-                    Toast.makeText(getApplicationContext(),AccessToken.getCurrentAccessToken().getUserId(),Toast.LENGTH_SHORT).show();
-                    captureImage();
-                    logged[0] = true;
-                }
-                else {
-                    new AlertDialog.Builder(context)
-                            .setTitle("ფოტოს ატვირთვა")
-                            .setMessage("ფოტოს ასატვირთად საჭიროა ავტორიზაცია")
-                            .setCancelable(false)
-                            .setNegativeButton("არა", new DialogInterface.OnClickListener() {
-                                @Override
-                                public void onClick(DialogInterface dialogInterface, int i) {
-
-                                }
-                            })
-                            .setPositiveButton("კი", new DialogInterface.OnClickListener() {
-                                @Override
-                                public void onClick(DialogInterface dialogInterface, int i) {
-                                    loginToFB();
-                                }
-                            }).show();
-                }
-
+                checkUserLoginStatus();
                 break;
 
             case R.id.navigation_item_2:
-                // login
-                    loginToFB();
+                loginToFB();
                 break;
 
             case R.id.navigation_item_3: // filtracia
@@ -509,16 +543,14 @@ public class MainActivity extends ActionBarActivity implements NavigationView.On
                 }catch (NullPointerException e){
 
                 }
-
-
                 break;
 
             case R.id.navigation_item_favorites:
                 closeDrawerFromUiThread();
                 break;
             case R.id.navigation_item_style:
-                palleteFrag = new SettingsFragment();
-                palleteFrag.show(getFragmentManager(),"Pallete-Fragment");
+                settingsFragment = new SettingsFragment();
+                settingsFragment.show(getFragmentManager(), "Pallete-Fragment");
                 break;
 
             default:
@@ -526,7 +558,42 @@ public class MainActivity extends ActionBarActivity implements NavigationView.On
         }
         return true;
     }
-    //close drawarLayout on UI Thread
+
+
+
+    /**
+     * function checks if the user is logged or not
+     */
+    private void checkUserLoginStatus(){
+        if (AccessToken.getCurrentAccessToken() != null) {
+            Toast.makeText(getApplicationContext(),AccessToken.getCurrentAccessToken().getUserId(),Toast.LENGTH_SHORT).show();
+            captureImage();
+            logged[0] = true;
+        }
+        else {
+            new AlertDialog.Builder(context)
+                    .setTitle("ფოტოს ატვირთვა")
+                    .setMessage("ფოტოს ასატვირთად საჭიროა ავტორიზაცია")
+                    .setCancelable(false)
+                    .setNegativeButton("არა", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+
+                        }
+                    })
+                    .setPositiveButton("კი", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            loginToFB();
+                        }
+                    }).show();
+        }
+    }
+
+
+    /**
+     * close drawarLayout on UI Thread
+     */
     private void closeDrawerFromUiThread(){
         Thread thread = new Thread()
         {
@@ -546,9 +613,12 @@ public class MainActivity extends ActionBarActivity implements NavigationView.On
     }
 
     final boolean[] logged = {false};
+
+    /**
+     * function for facebook authorization
+     */
     public void loginToFB() {
 
-//        Toast.makeText(getApplicationContext(),"loginToFB() ",Toast.LENGTH_SHORT).show();
         accessToken = AccessToken.getCurrentAccessToken();
         if (logged[0]) {
             new AlertDialog.Builder(context)
@@ -587,14 +657,13 @@ public class MainActivity extends ActionBarActivity implements NavigationView.On
                                 public void onCompleted(JSONObject jsonObject, GraphResponse graphResponse) {
                                     if (graphResponse.getError() != null) {
                                         System.out.println("ERROR");
-                                    }
-                                    else {
+                                    } else {
                                         try {
                                             user_id = jsonObject.getString("id");
                                             str_firstname = jsonObject.getString("name");
                                             fbUserName = jsonObject.getString("name");
                                             fbUserNameTextView.setText(fbUserName);
-                                            SavePreferences("user_id",user_id);
+                                            SavePreferences("user_id", user_id);
 
                                         } catch (NullPointerException ex) {
                                             ex.getMessage();
@@ -647,6 +716,10 @@ public class MainActivity extends ActionBarActivity implements NavigationView.On
         }
     }
 
+
+    /**
+     * method onResume()
+     */
     @Override
     protected void onResume() {
 //        getUserLikedImages(URL);
@@ -654,8 +727,11 @@ public class MainActivity extends ActionBarActivity implements NavigationView.On
 //        AppEventsLogger.activateApp(this);
     }
 
-    @Override
 
+    /**
+     * method onPause()
+     */
+    @Override
     protected void onPause() {
         super.onPause();
         // Logs 'app deactivate' App Event.
@@ -664,12 +740,12 @@ public class MainActivity extends ActionBarActivity implements NavigationView.On
 
 
 
-    public static SettingsFragment palleteFrag;
+    public static SettingsFragment settingsFragment;
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
-        palleteFrag = new SettingsFragment();
+        settingsFragment = new SettingsFragment();
         return true;
     }
 
@@ -678,15 +754,16 @@ public class MainActivity extends ActionBarActivity implements NavigationView.On
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.action_settings:
-
                 return true;
+
             case R.id.action_filter:
                 filterDialogFragment = new FilterDialogFragment();
                 filterDialogFragment.show(MainActivity.this.getFragmentManager(),"filter_fragment");
                 return true;
+
             case R.id.action_pallete:
-                palleteFrag = new SettingsFragment();
-                palleteFrag.show(MainActivity.this.getFragmentManager(),"Pallete_fragment");
+                settingsFragment = new SettingsFragment();
+                settingsFragment.show(MainActivity.this.getFragmentManager(), "Pallete_fragment");
                 return true;
         }
 
@@ -713,6 +790,9 @@ public class MainActivity extends ActionBarActivity implements NavigationView.On
     }
 
 
+    /**
+     * class for style settings
+     */
     @SuppressLint("ValidFragment")
     public class SettingsFragment extends DialogFragment implements View.OnClickListener {
 
@@ -739,11 +819,6 @@ public class MainActivity extends ActionBarActivity implements NavigationView.On
         }
 
 
-
-
-
-
-
         int toolbarColor, tabLyoutColor,statusBarColor;
         public void initResColors(int a, int b, int c){
             toolbarColor = a; tabLyoutColor = b; statusBarColor = c;
@@ -757,31 +832,31 @@ public class MainActivity extends ActionBarActivity implements NavigationView.On
                     changeStyle(toolbar, tabLayout, activity.getWindow(), R.color.red_toolbar_color, R.color.red_tab_layout, R.color.red_status_bar_color);
                     initResColors(R.color.red_toolbar_color, R.color.red_tab_layout, R.color.red_status_bar_color);
                     SaveUserSettings(getApplicationContext(), R.color.red_toolbar_color, R.color.red_tab_layout, R.color.red_status_bar_color);
-                    palleteFrag.dismiss();
+                    settingsFragment.dismiss();
                     break;
                 case R.id.purpleStyleIamgeView:
                     changeStyle(toolbar,tabLayout, activity.getWindow(),R.color.purple_toolbar_color, R.color.purple_tab_layout, R.color.purple_status_bar_color);
                     initResColors(R.color.purple_toolbar_color, R.color.purple_tab_layout, R.color.purple_status_bar_color);
                     SaveUserSettings(getApplicationContext(), R.color.purple_toolbar_color, R.color.purple_tab_layout, R.color.purple_status_bar_color);
-                    palleteFrag.dismiss();
+                    settingsFragment.dismiss();
                     break;
                 case R.id.blueStyleImageView:
                     changeStyle(toolbar,tabLayout, activity.getWindow(),R.color.blue_toolbar_color, R.color.blue_tab_layout, R.color.blue_status_bar_color);
                     initResColors(R.color.blue_toolbar_color, R.color.blue_tab_layout, R.color.blue_status_bar_color);
                     SaveUserSettings(getApplicationContext(), R.color.blue_toolbar_color, R.color.blue_tab_layout, R.color.blue_status_bar_color);
-                    palleteFrag.dismiss();
+                    settingsFragment.dismiss();
                     break;
                 case R.id.darkStyleImageView:
                     changeStyle(toolbar,tabLayout, activity.getWindow(),R.color.dark_toolbar_color, R.color.dark_tab_layout, R.color.dark_status_bar_color);
                     initResColors(R.color.dark_toolbar_color, R.color.dark_tab_layout, R.color.dark_status_bar_color);
                     SaveUserSettings(getApplicationContext(), R.color.dark_toolbar_color, R.color.dark_tab_layout, R.color.dark_status_bar_color);
-                    palleteFrag.dismiss();
+                    settingsFragment.dismiss();
                     break;
                 case R.id.grayStyleImageView:
                     changeStyle(toolbar,tabLayout, activity.getWindow(),R.color.toolbar_color, R.color.tab_layout, R.color.status_bar_color);
                     initResColors(R.color.toolbar_color, R.color.tab_layout, R.color.status_bar_color);
                     SaveUserSettings(getApplicationContext(), R.color.toolbar_color, R.color.tab_layout, R.color.status_bar_color);
-                    palleteFrag.dismiss();
+                    settingsFragment.dismiss();
                     break;
                 default:
                     changeStyle(toolbar,tabLayout, activity.getWindow(),R.color.toolbar_color, R.color.tab_layout, R.color.status_bar_color);

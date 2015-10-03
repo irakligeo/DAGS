@@ -32,10 +32,17 @@
       <file leaf-file-name="MainActivity.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/geolab/dags/MainActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.3880597">
-              <caret line="461" column="12" selection-start-line="461" selection-start-column="12" selection-end-line="461" selection-end-column="12" />
+            <state vertical-scroll-proportion="0.6106095">
+              <caret line="209" column="18" selection-start-line="209" selection-start-column="18" selection-end-line="209" selection-end-column="18" />
               <folding>
+                <element signature="e#6569#6582#0" expanded="true" />
+                <element signature="e#6600#6614#0" expanded="true" />
+                <element signature="method#getUserFbID#0;class#MainActivity#0" expanded="false" />
                 <element signature="method#getUserLikedImages#0;class#MainActivity#0" expanded="false" />
+                <element signature="e#8977#9247#0" expanded="true" />
+                <element signature="e#9246#9247#0" expanded="true" />
+                <element signature="e#9257#9440#0" expanded="true" />
+                <element signature="e#9439#9440#0" expanded="true" />
                 <element signature="method#onBackPressed#0;class#MainActivity#0" expanded="false" />
                 <element signature="method#onActivityResult#0;class#MainActivity#0" expanded="false" />
                 <element signature="method#launchUploadActivity#0;class#MainActivity#0" expanded="false" />
@@ -48,19 +55,41 @@
                 <element signature="method#SaveUserSettings#0;class#MainActivity#0" expanded="false" />
                 <element signature="method#SavePreferences#0;class#MainActivity#0" expanded="false" />
                 <element signature="method#onNavigationItemSelected#0;class#MainActivity#0" expanded="false" />
+                <element signature="method#checkUserLoginStatus#0;class#MainActivity#0" expanded="false" />
+                <element signature="e#18686#18934#0" expanded="true" />
+                <element signature="e#18933#18934#0" expanded="true" />
                 <element signature="method#closeDrawerFromUiThread#0;class#MainActivity#0" expanded="false" />
+                <element signature="e#19085#19471#0" expanded="true" />
+                <element signature="e#19243#19416#0" expanded="true" />
+                <element signature="e#19415#19416#0" expanded="true" />
+                <element signature="e#19470#19471#0" expanded="true" />
                 <element signature="method#loginToFB#0;class#MainActivity#0" expanded="false" />
+                <element signature="e#19955#20433#0" expanded="true" />
+                <element signature="e#20432#20433#0" expanded="true" />
+                <element signature="e#20480#20733#0" expanded="true" />
+                <element signature="e#20732#20733#0" expanded="true" />
+                <element signature="e#21429#22815#0" expanded="true" />
+                <element signature="e#22814#22815#0" expanded="true" />
+                <element signature="class#ScreenSlidePagerAdapter#0;class#MainActivity#0" expanded="false" />
                 <element signature="method#getItem#0;class#ScreenSlidePagerAdapter#0;class#MainActivity#0" expanded="false" />
                 <element signature="method#onResume#0;class#MainActivity#0" expanded="false" />
                 <element signature="method#onPause#0;class#MainActivity#0" expanded="false" />
-                <element signature="method#onCreateOptionsMenu#0;class#MainActivity#0" expanded="false" />
                 <element signature="method#onOptionsItemSelected#0;class#MainActivity#0" expanded="false" />
                 <element signature="method#unbindDrawables#0;class#MainActivity#0" expanded="false" />
                 <element signature="method#onDestroy#0;class#MainActivity#0" expanded="false" />
                 <element signature="class#SettingsFragment#0;class#MainActivity#0" expanded="false" />
-                <element signature="method#onCreateView#0;class#SettingsFragment#0;class#MainActivity#0" expanded="false" />
                 <element signature="method#onClick#0;class#SettingsFragment#0;class#MainActivity#0" expanded="false" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="GraphiteDetailActivity.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/geolab/dags/GraphiteDetailActivity.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="674" column="45" selection-start-line="674" selection-start-column="45" selection-end-line="674" selection-end-column="45" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -82,33 +111,24 @@
         <entry file="file://$PROJECT_DIR$/app/src/main/java/geolab/dags/fileUpload/UploadActivity.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="81" column="17" selection-start-line="81" selection-start-column="17" selection-end-line="81" selection-end-column="17" />
+              <caret line="220" column="7" selection-start-line="220" selection-start-column="7" selection-end-line="220" selection-end-column="7" />
               <folding>
-                <element signature="e#3890#4219#0" expanded="true" />
-                <element signature="e#4218#4219#0" expanded="true" />
-                <element signature="e#4330#4671#0" expanded="true" />
-                <element signature="e#4670#4671#0" expanded="true" />
-                <element signature="e#5567#5901#0" expanded="true" />
-                <element signature="e#5900#5901#0" expanded="true" />
-                <element signature="e#5953#6164#0" expanded="true" />
-                <element signature="e#6163#6164#0" expanded="true" />
+                <element signature="e#3766#4095#0" expanded="true" />
+                <element signature="e#4094#4095#0" expanded="true" />
+                <element signature="e#4206#4547#0" expanded="true" />
+                <element signature="e#4546#4547#0" expanded="true" />
+                <element signature="e#5443#5777#0" expanded="true" />
+                <element signature="e#5776#5777#0" expanded="true" />
+                <element signature="e#5829#6040#0" expanded="true" />
+                <element signature="e#6039#6040#0" expanded="true" />
+                <element signature="e#7171#7388#0" expanded="true" />
+                <element signature="e#7387#7388#0" expanded="true" />
+                <element signature="e#7426#7669#0" expanded="true" />
+                <element signature="e#7668#7669#0" expanded="true" />
                 <element signature="method#previewMedia#0;class#UploadActivity#0" expanded="false" />
-                <element signature="e#10440#10441#0" expanded="true" />
-                <element signature="e#10483#10484#0" expanded="true" />
-                <element signature="e#10766#10798#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ViewPagerFragment.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/geolab/dags/fragment/ViewPagerFragment.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="162" column="0" selection-start-line="162" selection-start-column="0" selection-end-line="162" selection-end-column="0" />
-              <folding>
-                <element signature="e#5434#9934#0" expanded="true" />
-                <element signature="e#9933#9934#0" expanded="true" />
+                <element signature="e#10434#10435#0" expanded="true" />
+                <element signature="e#10477#10478#0" expanded="true" />
+                <element signature="e#10760#10792#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -1849,6 +1869,7 @@
       <list>
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_upload.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/geolab/dags/fileUpload/UploadActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/geolab/dags/GraphiteDetailActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/geolab/dags/MainActivity.java" />
       </list>
     </option>
@@ -2036,6 +2057,37 @@
       <option name="CLOUD_DEVICE_SERIAL_NUMBER" value="" />
       <method />
     </configuration>
+    <configuration default="true" type="AndroidTestRunConfigurationType" factoryName="Android Tests">
+      <module name="" />
+      <option name="TESTING_TYPE" value="0" />
+      <option name="INSTRUMENTATION_RUNNER_CLASS" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="CLASS_NAME" value="" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="TARGET_SELECTION_MODE" value="EMULATOR" />
+      <option name="USE_LAST_SELECTED_DEVICE" value="false" />
+      <option name="PREFERRED_AVD" value="" />
+      <option name="USE_COMMAND_LINE" value="true" />
+      <option name="COMMAND_LINE" value="" />
+      <option name="WIPE_USER_DATA" value="false" />
+      <option name="DISABLE_BOOT_ANIMATION" value="false" />
+      <option name="NETWORK_SPEED" value="full" />
+      <option name="NETWORK_LATENCY" value="none" />
+      <option name="CLEAR_LOGCAT" value="false" />
+      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="true" />
+      <option name="SKIP_NOOP_APK_INSTALLATIONS" value="true" />
+      <option name="FORCE_STOP_RUNNING_APP" value="true" />
+      <option name="SELECTED_CLOUD_MATRIX_CONFIGURATION_ID" value="0" />
+      <option name="SELECTED_CLOUD_MATRIX_PROJECT_ID" value="" />
+      <option name="SELECTED_CLOUD_DEVICE_CONFIGURATION_ID" value="0" />
+      <option name="SELECTED_CLOUD_DEVICE_PROJECT_ID" value="" />
+      <option name="IS_VALID_CLOUD_MATRIX_SELECTION" value="false" />
+      <option name="INVALID_CLOUD_MATRIX_SELECTION_ERROR" value="" />
+      <option name="IS_VALID_CLOUD_DEVICE_SELECTION" value="false" />
+      <option name="INVALID_CLOUD_DEVICE_SELECTION_ERROR" value="" />
+      <option name="CLOUD_DEVICE_SERIAL_NUMBER" value="" />
+      <method />
+    </configuration>
     <configuration default="true" type="Application" factoryName="Application">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <option name="MAIN_CLASS_NAME" />
@@ -2070,6 +2122,11 @@
       </option>
       <envs />
       <patterns />
+      <method />
+    </configuration>
+    <configuration default="true" type="JarApplication" factoryName="JAR Application">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <envs />
       <method />
     </configuration>
     <configuration default="true" type="Remote" factoryName="Remote">
@@ -2177,7 +2234,7 @@
       <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32960597" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Android Model" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Android Monitor" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32943678" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Android Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32943678" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Captures" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3995749" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
@@ -2185,7 +2242,7 @@
       <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
       <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32943678" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -2238,11 +2295,36 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/geolab/dags/fragment/ViewPagerFragment.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="162" column="0" selection-start-line="162" selection-start-column="0" selection-end-line="162" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.5323383">
+          <caret line="177" column="59" selection-start-line="177" selection-start-column="59" selection-end-line="177" selection-end-column="59" />
           <folding>
-            <element signature="e#5434#9934#0" expanded="true" />
-            <element signature="e#9933#9934#0" expanded="true" />
+            <element signature="e#5434#9934#0" expanded="false" />
+            <element signature="e#9933#9934#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/geolab/dags/fileUpload/UploadActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="220" column="7" selection-start-line="220" selection-start-column="7" selection-end-line="220" selection-end-column="7" />
+          <folding>
+            <element signature="e#3766#4095#0" expanded="true" />
+            <element signature="e#4094#4095#0" expanded="true" />
+            <element signature="e#4206#4547#0" expanded="true" />
+            <element signature="e#4546#4547#0" expanded="true" />
+            <element signature="e#5443#5777#0" expanded="true" />
+            <element signature="e#5776#5777#0" expanded="true" />
+            <element signature="e#5829#6040#0" expanded="true" />
+            <element signature="e#6039#6040#0" expanded="true" />
+            <element signature="e#7171#7388#0" expanded="true" />
+            <element signature="e#7387#7388#0" expanded="true" />
+            <element signature="e#7426#7669#0" expanded="true" />
+            <element signature="e#7668#7669#0" expanded="true" />
+            <element signature="method#previewMedia#0;class#UploadActivity#0" expanded="false" />
+            <element signature="e#10434#10435#0" expanded="true" />
+            <element signature="e#10477#10478#0" expanded="true" />
+            <element signature="e#10760#10792#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -2258,33 +2340,27 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/geolab/dags/fileUpload/UploadActivity.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/geolab/dags/GraphiteDetailActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="81" column="17" selection-start-line="81" selection-start-column="17" selection-end-line="81" selection-end-column="17" />
-          <folding>
-            <element signature="e#3890#4219#0" expanded="true" />
-            <element signature="e#4218#4219#0" expanded="true" />
-            <element signature="e#4330#4671#0" expanded="true" />
-            <element signature="e#4670#4671#0" expanded="true" />
-            <element signature="e#5567#5901#0" expanded="true" />
-            <element signature="e#5900#5901#0" expanded="true" />
-            <element signature="e#5953#6164#0" expanded="true" />
-            <element signature="e#6163#6164#0" expanded="true" />
-            <element signature="method#previewMedia#0;class#UploadActivity#0" expanded="false" />
-            <element signature="e#10440#10441#0" expanded="true" />
-            <element signature="e#10483#10484#0" expanded="true" />
-            <element signature="e#10766#10798#0" expanded="true" />
-          </folding>
+          <caret line="674" column="45" selection-start-line="674" selection-start-column="45" selection-end-line="674" selection-end-column="45" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/geolab/dags/MainActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3880597">
-          <caret line="461" column="12" selection-start-line="461" selection-start-column="12" selection-end-line="461" selection-end-column="12" />
+        <state vertical-scroll-proportion="0.6106095">
+          <caret line="209" column="18" selection-start-line="209" selection-start-column="18" selection-end-line="209" selection-end-column="18" />
           <folding>
+            <element signature="e#6569#6582#0" expanded="true" />
+            <element signature="e#6600#6614#0" expanded="true" />
+            <element signature="method#getUserFbID#0;class#MainActivity#0" expanded="false" />
             <element signature="method#getUserLikedImages#0;class#MainActivity#0" expanded="false" />
+            <element signature="e#8977#9247#0" expanded="true" />
+            <element signature="e#9246#9247#0" expanded="true" />
+            <element signature="e#9257#9440#0" expanded="true" />
+            <element signature="e#9439#9440#0" expanded="true" />
             <element signature="method#onBackPressed#0;class#MainActivity#0" expanded="false" />
             <element signature="method#onActivityResult#0;class#MainActivity#0" expanded="false" />
             <element signature="method#launchUploadActivity#0;class#MainActivity#0" expanded="false" />
@@ -2297,17 +2373,29 @@
             <element signature="method#SaveUserSettings#0;class#MainActivity#0" expanded="false" />
             <element signature="method#SavePreferences#0;class#MainActivity#0" expanded="false" />
             <element signature="method#onNavigationItemSelected#0;class#MainActivity#0" expanded="false" />
+            <element signature="method#checkUserLoginStatus#0;class#MainActivity#0" expanded="false" />
+            <element signature="e#18686#18934#0" expanded="true" />
+            <element signature="e#18933#18934#0" expanded="true" />
             <element signature="method#closeDrawerFromUiThread#0;class#MainActivity#0" expanded="false" />
+            <element signature="e#19085#19471#0" expanded="true" />
+            <element signature="e#19243#19416#0" expanded="true" />
+            <element signature="e#19415#19416#0" expanded="true" />
+            <element signature="e#19470#19471#0" expanded="true" />
             <element signature="method#loginToFB#0;class#MainActivity#0" expanded="false" />
+            <element signature="e#19955#20433#0" expanded="true" />
+            <element signature="e#20432#20433#0" expanded="true" />
+            <element signature="e#20480#20733#0" expanded="true" />
+            <element signature="e#20732#20733#0" expanded="true" />
+            <element signature="e#21429#22815#0" expanded="true" />
+            <element signature="e#22814#22815#0" expanded="true" />
+            <element signature="class#ScreenSlidePagerAdapter#0;class#MainActivity#0" expanded="false" />
             <element signature="method#getItem#0;class#ScreenSlidePagerAdapter#0;class#MainActivity#0" expanded="false" />
             <element signature="method#onResume#0;class#MainActivity#0" expanded="false" />
             <element signature="method#onPause#0;class#MainActivity#0" expanded="false" />
-            <element signature="method#onCreateOptionsMenu#0;class#MainActivity#0" expanded="false" />
             <element signature="method#onOptionsItemSelected#0;class#MainActivity#0" expanded="false" />
             <element signature="method#unbindDrawables#0;class#MainActivity#0" expanded="false" />
             <element signature="method#onDestroy#0;class#MainActivity#0" expanded="false" />
             <element signature="class#SettingsFragment#0;class#MainActivity#0" expanded="false" />
-            <element signature="method#onCreateView#0;class#SettingsFragment#0;class#MainActivity#0" expanded="false" />
             <element signature="method#onClick#0;class#SettingsFragment#0;class#MainActivity#0" expanded="false" />
           </folding>
         </state>
