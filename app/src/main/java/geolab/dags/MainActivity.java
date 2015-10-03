@@ -421,6 +421,8 @@ public class MainActivity extends ActionBarActivity implements NavigationView.On
 
     }
 
+
+    // function loads saved settings
     public void LoadSettings() {
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
 
@@ -441,8 +443,7 @@ public class MainActivity extends ActionBarActivity implements NavigationView.On
         editor.commit();
     }
 
-    //SavePref ( user id )
-
+    //function saves user_id ( user id )
     private void SavePreferences(String key, String value){
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
         SharedPreferences.Editor editor = sharedPreferences.edit();
@@ -454,11 +455,11 @@ public class MainActivity extends ActionBarActivity implements NavigationView.On
     //   end of camera code
     private ActionBarDrawerToggle mDrawerToggle;
 
-    String str_firstname = "";
-    AccessToken accessToken;
+    private String str_firstname = "";
+    private AccessToken accessToken;
 
 
-    String user_id = "";
+    private String user_id = "";
     //NavigationItemSelected
     @Override
     public boolean onNavigationItemSelected(MenuItem menuItem) {
