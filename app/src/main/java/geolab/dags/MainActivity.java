@@ -108,7 +108,6 @@ public class MainActivity extends ActionBarActivity implements NavigationView.On
     private Activity activity;
     public TabLayout tabLayout;
     public static FilterDialogFragment filterDialogFragment;
-    public static final String MY_PREF_FOR_FB_USER_ID = "FB_USER_ID";
 
     //user likes data
     public static HashMap<String,UserLikes> userLikes;
@@ -116,7 +115,9 @@ public class MainActivity extends ActionBarActivity implements NavigationView.On
     private Activity mainActivity;
     public static String fbUserName;
     public static Toolbar toolbar;
-    public int toolbarColorResId,tabLayoutResColorId,statusBarColorResId;
+
+    // for resource values
+    public static int toolbarColorResId,tabLayoutResColorId,statusBarColorResId;
 
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     @Override
@@ -126,6 +127,8 @@ public class MainActivity extends ActionBarActivity implements NavigationView.On
         setContentView(R.layout.activity_main);
         mainActivity = this;
 
+
+        //get liked json data
         getUserLikedImages(URL);
 
         user_id = getUserFbID();
@@ -510,7 +513,6 @@ public class MainActivity extends ActionBarActivity implements NavigationView.On
 
 
 
-
     private ActionBarDrawerToggle mDrawerToggle;
     private String str_firstname = "";
     private AccessToken accessToken;
@@ -692,6 +694,10 @@ public class MainActivity extends ActionBarActivity implements NavigationView.On
         }
     }
 
+
+
+
+
     /**
      * A simple pager adapter that represents 2 ScreenSlidePageFragment objects, in
      * sequence.
@@ -715,6 +721,12 @@ public class MainActivity extends ActionBarActivity implements NavigationView.On
             return NUM_PAGES;
         }
     }
+
+
+
+
+
+
 
 
     /**

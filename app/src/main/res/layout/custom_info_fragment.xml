@@ -1,165 +1,235 @@
-<?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent">
-
-
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    tools:context="geolab.dags.GraphiteDetailActivity"
-    android:background="#fff">
-
-    <include
-        layout="@layout/toolbar"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"/>
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/drawer_layout"
+    tools:context=".GraphiteDetailActivity"
+    android:fitsSystemWindows="true">
 
 
-    <ScrollView
-        android:layout_width="wrap_content"
-        android:orientation="vertical"
-        android:layout_below="@+id/toolbar"
-        android:layout_height="fill_parent"
-        android:id="@+id/scrollView">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".GraphiteDetailActivity">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:layout_below="@+id/toolbar"
+            android:layout_height="match_parent"
+            android:id="@+id/scrollView"
+            android:background="#f9f9f9"
+            android:scrollbars="none"
+            android:layout_above="@+id/relativeLayout2">
+
+            <RelativeLayout
+                android:id="@+id/cardview"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:clickable="true"
+                android:focusable="true"
+                android:focusableInTouchMode="true">
+
+                <!-- graphite image view-->
+                <ImageView
+                    android:id="@+id/peaceOfArtImg"
+                    android:layout_width="wrap_content"
+                    android:layout_height="290dp"
+                    android:scaleType="fitStart"
+                    android:adjustViewBounds="true"
+                    android:layout_centerHorizontal="true"
+                    android:background="@color/tab_layout" />
+
+
+
+                <!-- likes number-->
+                <TextView
+                    android:id="@+id/likes_countTextView"
+                    android:text="@string/likes_number"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/peaceOfArtImg"
+                    android:textSize="12sp"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginTop="10dp"
+                    android:textColor="#000" />
+
+                <!-- like text-->
+                <TextView
+                    android:id="@+id/likes"
+                    android:text="@string/likes"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/peaceOfArtImg"
+                    android:layout_toRightOf="@+id/likes_countTextView"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginLeft="8dp"
+                    android:textSize="12sp"
+                    android:textColor="#000" />
+
+                <!-- comments counts-->
+                <TextView
+                    android:id="@+id/comments_numberTextView"
+                    android:text="@string/comments_number"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/peaceOfArtImg"
+                    android:textSize="12sp"
+                    android:layout_marginTop="10dp"
+                    android:layout_toEndOf="@+id/likes"
+                    android:layout_marginLeft="15dp"
+                    android:textColor="#000" />
+
+                <!-- comments label-->
+                <TextView
+                    android:id="@+id/commentsTextViw"
+                    android:text="@string/comments"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignTop="@+id/comments_numberTextView"
+                    android:layout_toRightOf="@+id/comments_numberTextView"
+                    android:layout_toEndOf="@+id/comments_numberTextView"
+                    android:layout_marginLeft="8dp"
+                    android:textSize="12sp"
+                    android:textColor="#000" />
+
+                <!-- upload time text view-->
+                <TextView
+                    android:id="@+id/createDate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/createDate"
+                    android:textIsSelectable="false"
+                    android:textSize="13sp"
+                    android:textColor="#000"
+                    android:layout_alignTop="@+id/commentsTextViw"
+                    android:layout_toRightOf="@+id/commentsTextViw"
+                    android:layout_toEndOf="@+id/commentsTextViw"
+                    android:layout_marginLeft="70dp" />
+
+                <!-- line custom view-->
+                <LinearLayout
+                    android:id="@+id/customViewLinear"
+                    android:paddingLeft="50dp"
+                    android:paddingRight="50dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:divider="@drawable/abc_list_divider_mtrl_alpha"
+                    android:layout_below="@+id/likes"
+                    android:layout_centerHorizontal="true">
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:padding="20dp"
+                        android:background="#dddddd"
+                        android:layout_below="@+id/likes"
+                        android:layout_alignParentStart="true"
+                        android:layout_marginTop="10dp" />
+
+                </LinearLayout>
+
+
+
+                <!-- image title text view-->
+                <TextView
+                    android:id="@+id/imgTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/customViewLinear"
+                    android:textSize="25sp"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp"
+                    android:text="@string/imgTitle"
+                    android:textColor="#800080"
+                    android:textStyle="bold"
+                    android:layout_marginTop="10dp"
+                    android:paddingBottom="10dp" />
+
+
+                <!--Uploaded by text-->
+                <TextView
+                    android:id="@+id/byTextViewId"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/uploadBy"
+                    android:textSize="13sp"
+                    android:textColor="#000"
+                    android:layout_below="@+id/imgTitle"
+                    android:layout_alignLeft="@+id/hashTagId"
+                    android:layout_alignStart="@+id/hashTagId" />
+
+                <!-- author text view-->
+                <TextView
+                    android:id="@+id/author"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/author"
+                    android:textSize="13sp"
+                    android:textColor="#000"
+                    android:layout_below="@+id/imgTitle"
+                    android:layout_toRightOf="@+id/byTextViewId"
+                    android:layout_toEndOf="@+id/byTextViewId"
+                    android:paddingEnd="5dp"
+                    android:paddingTop="2dp"
+                    android:paddingBottom="2dp"
+                    android:layout_marginLeft="5dp"
+                    android:paddingLeft="5dp" />
+
+                <!--hash tag-->
+                <TextView
+                    android:id="@+id/hashTagId"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/hashTag"
+                    android:textSize="15sp"
+                    android:background="@drawable/myrect"
+                    android:layout_alignStart="@+id/little_description"
+                    android:layout_marginBottom="5dp"
+                    android:layout_below="@+id/byTextViewId"
+                    android:layout_marginLeft="20dp"
+                    android:textColor="#ff1b66ac"
+                    android:layout_marginTop="5dp"
+                    android:paddingLeft="4dp"
+                    android:paddingTop="1dp"
+                    android:paddingRight="4dp"
+                    android:paddingBottom="2dp" />
+
+
+                <!-- description text view-->
+                <TextView
+                    android:id="@+id/little_description"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/little_description"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp"
+                    android:layout_below="@id/hashTagId"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="5dp"
+                    android:textColor="#000"
+                    android:gravity="bottom"
+                    android:typeface="serif"
+                    android:layout_alignParentBottom="true"
+                    android:paddingBottom="20dp" />
+
+
+
+            </RelativeLayout>
+
+
+        </ScrollView>
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/RL"
-            android:paddingRight="20dp"
-            android:paddingLeft="20dp">
-
-            <!-- image title text view-->
-            <TextView
-                android:id="@+id/imgTitle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="20sp"
-                android:text="@string/imgTitle"
-                android:layout_marginBottom="5dp"
-                android:layout_centerHorizontal="true"
-                android:textColor="#000" />
-
-            <!-- graphite image view-->
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="228dp"
-                android:id="@+id/peaceOfArtImg"
-                android:background="@color/tab_layout"
-                android:layout_below="@+id/author"
-                android:scaleType="fitStart"
-                android:adjustViewBounds="true"
-                android:layout_centerHorizontal="true" />
-
-            <!-- author textview-->
-            <TextView
-                android:id="@+id/author"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/author"
-                android:textSize="13sp"
-                android:layout_below="@+id/imgTitle"
-                android:layout_alignStart="@+id/peaceOfArtImg"
-                android:layout_marginBottom="5dp"
-                android:textColor="#ff197fa0" />
-
-            <!-- upload time text view-->
-            <TextView
-                android:id="@+id/createDate"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/createDate"
-                android:layout_alignRight="@+id/peaceOfArtImg"
-                android:textIsSelectable="false"
-                android:layout_below="@+id/author"
-                android:textSize="13sp"
-                android:layout_marginBottom="5dp"
-                android:textColor="#ff1de0da"
-                android:layout_marginRight="10dp"
-                android:layout_marginTop="5dp" />
-
-
-
-
-
-
-            <!-- likes number-->
-            <TextView
-                android:id="@+id/likes_countTextView"
-                android:text="@string/likes_number"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/peaceOfArtImg"
-                android:textSize="12sp"
-                android:layout_alignParentStart="true"
-                android:layout_marginLeft="30dp"
-                android:layout_marginTop="10dp"
-                android:textColor="#000" />
-
-            <!-- like text-->
-            <TextView
-                android:id="@+id/likes"
-                android:text="@string/likes"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/peaceOfArtImg"
-                android:layout_toRightOf="@+id/likes_countTextView"
-                android:layout_marginTop="10dp"
-                android:layout_marginLeft="8dp"
-                android:textSize="12sp"
-                android:textColor="#000" />
-
-            <!-- comments number-->
-            <TextView
-                android:id="@+id/comments_numberTextView"
-                android:text="@string/comments_number"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="12sp"
-                android:layout_above="@+id/customViewLinear"
-                android:layout_toRightOf="@+id/likes"
-                android:layout_toEndOf="@+id/likes"
-                android:layout_marginLeft="15dp"
-                android:textColor="#000" />
-
-            <!-- comments text-->
-            <TextView
-                android:id="@+id/commentsTextViw"
-                android:text="@string/comments"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignTop="@+id/comments_numberTextView"
-                android:layout_toRightOf="@+id/comments_numberTextView"
-                android:layout_toEndOf="@+id/comments_numberTextView"
-                android:layout_marginLeft="8dp"
-                android:textSize="12sp"
-                android:textColor="#000" />
-
-
-            <!-- line custom view-->
-            <LinearLayout
-                android:id="@+id/customViewLinear"
-                android:paddingLeft="50dp"
-                android:paddingRight="50dp"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:divider="@drawable/abc_list_divider_mtrl_alpha"
-                android:layout_below="@+id/likes"
-                android:layout_centerHorizontal="true">
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:padding="20dp"
-                    android:background="#dddddd"
-                    android:layout_below="@+id/likes"
-                    android:layout_alignParentStart="true"
-                    android:layout_marginTop="10dp" />
-
-            </LinearLayout>
-
+            android:layout_alignParentBottom="true"
+            android:background="#000"
+            android:id="@+id/relativeLayout2"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp">
 
             <!-- like imageView-->
             <ImageView
@@ -167,105 +237,36 @@
                 android:layout_width="28dp"
                 android:src="@drawable/like_heart_icon"
                 android:layout_height="28dp"
-                android:layout_below="@+id/customViewLinear"
-                android:layout_marginTop="10dp"
+                android:layout_marginLeft="23dp"
+                android:layout_alignTop="@+id/share_icon"
+                android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
-                android:layout_marginLeft="25dp" />
+                android:layout_marginStart="23dp" />
 
-            <!-- like imageView text-->
-            <!--<TextView-->
-                <!--android:id="@+id/like_Text_View"-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:text="like"-->
-                <!--android:textSize="17sp"-->
-                <!--android:layout_marginTop="11dp"-->
-                <!--android:layout_toRightOf="@+id/like_icon"-->
-                <!--android:layout_below="@+id/customViewLinear"-->
-                <!--android:layout_marginLeft="4dp"-->
-                <!--android:textColor="#000" />-->
 
+            <!--comments icon-->
             <ImageView
                 android:id="@+id/comments_icon"
                 android:layout_width="28dp"
                 android:src="@drawable/comments_icon"
                 android:layout_height="28dp"
-                android:layout_marginTop="10dp"
-                android:layout_centerHorizontal="true"
-                android:layout_below="@+id/customViewLinear" />
+                android:nestedScrollingEnabled="false"
+                android:layout_centerVertical="true"
+                android:layout_centerHorizontal="true" />
 
-            <!--<TextView-->
-                <!--android:id="@+id/comments_text_view_id"-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:text="comments"-->
-                <!--android:textSize="17sp"-->
-                <!--android:layout_marginTop="10dp"-->
-                <!--android:layout_toRightOf="@+id/comments_icon"-->
-                <!--android:layout_below="@+id/customViewLinear"-->
-                <!--android:layout_marginLeft="4dp"-->
-                <!--android:textColor="#000" />-->
-
+            <!--share icon-->
             <ImageView
                 android:id="@+id/share_icon"
                 android:layout_width="28dp"
                 android:src="@drawable/share_icon2"
                 android:layout_height="28dp"
-                android:layout_above="@+id/little_description"
-                android:layout_alignRight="@+id/peaceOfArtImg"
-                android:layout_alignEnd="@+id/peaceOfArtImg" />
-
-            <!--<TextView-->
-                <!--android:id="@+id/share_text_view_id"-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:text="@string/share_text_view_id"-->
-                <!--android:textSize="17sp"-->
-                <!--android:layout_marginTop="10dp"-->
-                <!--android:layout_toEndOf="@+id/share_icon"-->
-                <!--android:layout_below="@+id/customViewLinear"-->
-                <!--android:layout_marginLeft="4dp"-->
-                <!--android:textColor="#000" />-->
-
-            <TextView
-                android:id="@+id/hashTagId"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="hashTag"
-                android:textSize="17sp"
-                android:layout_alignStart="@+id/little_description"
-                android:layout_marginTop="15dp"
-                android:layout_marginBottom="10dp"
-                android:layout_below="@+id/like_icon"
-                android:layout_marginLeft="20dp"
-                android:textColor="#ff0073ff" />
-            <!--<com.facebook.share.widget.ShareButton-->
-            <!--android:layout_below="@+id/createDate"-->
-            <!--android:id="@+id/fb_share_button"-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:gravity="right"-->
-            <!--android:layout_alignRight="@+id/createDate"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:text="share"-->
-            <!--android:visibility="gone"/>-->
-
-            <!-- description -->
-            <TextView
-                android:id="@+id/little_description"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:text="@string/little_description"
-                android:paddingLeft="20dp"
-                android:paddingRight="20dp"
-                android:layout_below="@id/like_icon"
-                android:layout_alignParentBottom="true"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="45dp"
-                android:textColor="#000" />
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginRight="23dp" />
 
         </RelativeLayout>
 
-    </ScrollView>
+    </RelativeLayout>
+
 
 </RelativeLayout>
-</FrameLayout>
