@@ -48,16 +48,28 @@ public class UploadStateFragment extends DialogFragment implements View.OnClickL
     public void onClick(View v){
         switch (v.getId()){
             case R.id.fromCameraID:
-                Toast.makeText(getActivity(),"from camera",Toast.LENGTH_SHORT).show();
                 captureImage();
                 break;
             case R.id.fromFileID:
-                Toast.makeText(getActivity(),"from file",Toast.LENGTH_SHORT).show();
+                chooseFromResource(fileUri);
                 break;
         }
     }
 
 
+    private static final int SELECT_PICTURE = 1;
+    /**
+     * choose image from resource
+     */
+    public void chooseFromResource(Uri imgPath){
+        Intent intent = new Intent();
+        intent.setType("image/*");
+        intent.setAction(Intent.ACTION_GET_CONTENT);
+        startActivityForResult(Intent.createChooser(intent,
+                "Select Picture"), SELECT_PICTURE);
+//        imgPath = Uri.parse(intent.getData().getPath());
+
+    }
     // Camera activity request codes
     private static final int CAMERA_CAPTURE_IMAGE_REQUEST_CODE = 100;
 
