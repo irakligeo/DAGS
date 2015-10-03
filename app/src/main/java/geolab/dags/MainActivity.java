@@ -67,7 +67,8 @@ import java.util.HashMap;
 import java.util.Locale;
 
 import geolab.dags.animation.DepthPageTransformer;
-import geolab.dags.custom_DialogFragments.FilterDialogFragment;
+import geolab.dags.dialogFragments.FilterDialogFragment;
+import geolab.dags.dialogFragments.UploadStateFragment;
 import geolab.dags.fileUpload.Config;
 import geolab.dags.fileUpload.UploadActivity;
 import geolab.dags.fragment.MapFragment;
@@ -305,54 +306,9 @@ public class MainActivity extends ActionBarActivity implements NavigationView.On
 
 
 
-    /**
-     * Receiving activity result method will be called after closing the camera
-     * */
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-
-        if(callbackManager == null){
-            callbackManager = CallbackManager.Factory.create();
-        }
-        callbackManager.onActivityResult(requestCode, resultCode, data);
-        // if the result is capturing Image
-        if (requestCode == CAMERA_CAPTURE_IMAGE_REQUEST_CODE) {
-            if (resultCode == RESULT_OK) {
-
-                // successfully captured the image
-                // launching upload activity
-                launchUploadActivity(true);
-
-            } else if (resultCode == RESULT_CANCELED) {
-
-                // user cancelled Image capture
-                Toast.makeText(getApplicationContext(),
-                        "User cancelled image capture", Toast.LENGTH_SHORT)
-                        .show();
-
-            } else {
-                // failed to capture image
-                Toast.makeText(getApplicationContext(),
-                        "Sorry! Failed to capture image", Toast.LENGTH_SHORT)
-                        .show();
-            }
-
-        }
-    }
     private String UserID = "";
 
 
-
-    /**
-     * method starts UploadActivity for taking picture
-     * @param isImage
-     */
-    private void launchUploadActivity(boolean isImage){
-        Intent i = new Intent(MainActivity.this, UploadActivity.class);
-        i.putExtra("filePath", fileUri.getPath());
-        i.putExtra("isImage", isImage);
-        startActivity(i);
-    }
 
     /**
      * method current activity state saves data
@@ -361,10 +317,6 @@ public class MainActivity extends ActionBarActivity implements NavigationView.On
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
-
-        // save file url in bundle as it will be null on screen orientation
-        // changes
-        outState.putParcelable("file_uri", fileUri);
     }
 
     /**
@@ -374,68 +326,13 @@ public class MainActivity extends ActionBarActivity implements NavigationView.On
     @Override
     protected void onRestoreInstanceState(Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
-
-        // get the file url
-        fileUri = savedInstanceState.getParcelable("file_uri");
-    }
-
-    /**
-     * returning image
-     */
-    private static File getOutputMediaFile(int type) {
-
-        // External sdcard location
-        File mediaStorageDir = new File(
-                Environment
-                        .getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES),
-                Config.IMAGE_DIRECTORY_NAME);
-
-        // Create the storage directory if it does not exist
-        if (!mediaStorageDir.exists()) {
-            if (!mediaStorageDir.mkdirs()) {
-
-                return null;
-            }
-        }
-
-        // Create toolbarColorResId media file name
-        String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss",
-                Locale.getDefault()).format(new Date());
-        File mediaFile;
-        if (type == MEDIA_TYPE_IMAGE) {
-            mediaFile = new File(mediaStorageDir.getPath() + File.separator
-                    + "IMG_" + timeStamp + ".jpg");
-        } else {
-            return null;
-        }
-
-        return mediaFile;
-    }
-
-    /**
-     *
-     * @param type
-     * @return
-     */
-    public static Uri getOutputMediaFileUri(int type) {
-        return Uri.fromFile(getOutputMediaFile(type));
-    }
-    private static Uri fileUri; // file url to store image/video
-
-    public void captureImage() {
-
-        Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-
-        fileUri = getOutputMediaFileUri(MEDIA_TYPE_IMAGE);
-        intent.putExtra(MediaStore.EXTRA_OUTPUT, fileUri);
-        overridePendingTransition(R.anim.slide_in_up, R.anim.slide_out_up);
-            // start the image capture Intent
-        startActivityForResult(intent, CAMERA_CAPTURE_IMAGE_REQUEST_CODE);
     }
 
 
 
-    //
+
+
+
     /**
      * method changes style
      * @param toolbar
@@ -529,6 +426,8 @@ public class MainActivity extends ActionBarActivity implements NavigationView.On
         switch (menuItem.getItemId()) {
 
             case R.id.navigation_item_1: // fotos gadageba
+//                UploadStateFragment uploadStateFragment = new UploadStateFragment();
+//                uploadStateFragment.show(getFragmentManager(), "uploadStateFragment");
                 checkUserLoginStatus();
                 break;
 
@@ -569,7 +468,8 @@ public class MainActivity extends ActionBarActivity implements NavigationView.On
     private void checkUserLoginStatus(){
         if (AccessToken.getCurrentAccessToken() != null) {
             Toast.makeText(getApplicationContext(),AccessToken.getCurrentAccessToken().getUserId(),Toast.LENGTH_SHORT).show();
-            captureImage();
+            UploadStateFragment uploadStateFragment = new UploadStateFragment();
+            uploadStateFragment.show(getFragmentManager(),"uploadFileStateFragment");
             logged[0] = true;
         }
         else {
@@ -588,7 +488,7 @@ public class MainActivity extends ActionBarActivity implements NavigationView.On
                         public void onClick(DialogInterface dialogInterface, int i) {
                             loginToFB();
                         }
-                    }).show();
+            }).show();
         }
     }
 

@@ -61,15 +61,12 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
-import java.util.Map;
 
-import geolab.dags.custom_DialogFragments.FilterDialogFragment;
+import geolab.dags.dialogFragments.FilterDialogFragment;
 import geolab.dags.fileUpload.Config;
 import geolab.dags.fileUpload.UploadActivity;
-import geolab.dags.fragment.ViewPagerFragment;
 import geolab.dags.model.GraphiteItemModel;
 import geolab.dags.model.UserLikes;
-import geolab.dags.slider.CustomPagerAdapter;
 
 
 public class GraphiteDetailActivity extends ActionBarActivity implements NavigationView.OnNavigationItemSelectedListener{

@@ -92,6 +92,10 @@ public class MapFragment extends android.support.v4.app.Fragment implements OnMa
 
 
     //init map
+
+    /**
+     * initialize markers on map
+     */
     public static void initMap(){
         coordsList = new ArrayList<>();
         coordsList = ViewPagerFragment.graphiteItems;
@@ -120,6 +124,12 @@ public class MapFragment extends android.support.v4.app.Fragment implements OnMa
 
     }
 
+    /**
+     * sets camera position given coordinates and zoom parameter
+     * @param lat
+     * @param lng
+     * @param zoom
+     */
     public static void setCameraPosition(double lat, double lng, int zoom){
         try {
             CameraPosition cameraPosition = new CameraPosition.Builder()
@@ -132,7 +142,11 @@ public class MapFragment extends android.support.v4.app.Fragment implements OnMa
 
     }
 
-    //function gets coordinates and title from database
+
+    /**
+     * method inserts data from database into the arrayList and returns it
+     * @return arrayList
+     */
     public static ArrayList<GraphiteItemModel> getCoordsFromDB(){
         ArrayList<GraphiteItemModel> tmpList = new ArrayList<>();
             Cursor cursor = ViewPagerFragment.db.rawQuery("SELECT * FROM " + TableGraphite.TABLE_NAME, null);
