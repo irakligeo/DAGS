@@ -296,6 +296,8 @@ public class MapFragment extends android.support.v4.app.Fragment implements OnMa
             return view;
         }
     }
+
+
     @Override
     public void onResume() {
         super.onResume();

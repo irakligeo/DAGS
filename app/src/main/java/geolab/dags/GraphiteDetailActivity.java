@@ -379,8 +379,9 @@ public class GraphiteDetailActivity extends ActionBarActivity implements Navigat
         window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
 
         // finally change the color
-        window.setStatusBarColor(this.getResources().getColor(statusbarResId));
-
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            window.setStatusBarColor(this.getResources().getColor(statusbarResId));
+        }
 
     }
 

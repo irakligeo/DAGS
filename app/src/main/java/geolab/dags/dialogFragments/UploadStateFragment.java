@@ -1,22 +1,37 @@
 package geolab.dags.dialogFragments;
 
 import android.app.DialogFragment;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
+import android.preference.PreferenceManager;
 import android.provider.MediaStore;
+import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.facebook.AccessToken;
 import com.facebook.CallbackManager;
+import com.facebook.FacebookCallback;
+import com.facebook.FacebookException;
+import com.facebook.GraphRequest;
+import com.facebook.GraphResponse;
+import com.facebook.login.LoginManager;
+import com.facebook.login.LoginResult;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.File;
 import java.text.SimpleDateFormat;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.Locale;
 
@@ -30,10 +45,14 @@ import geolab.dags.fileUpload.UploadActivity;
 public class UploadStateFragment extends DialogFragment implements View.OnClickListener {
 
     private ImageView fromCamera, fromFile;
-
+    TextView fbUserNameTextView;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
         View uploadStateView = inflater.inflate(R.layout.upload_state_dialog_frag,null);
+
+        View navView = inflater.inflate(R.layout.navigation,null);
+
+        fbUserNameTextView = (TextView) navView.findViewById(R.id.fb_user_name);
 
         fromCamera = (ImageView) uploadStateView.findViewById(R.id.fromCameraID);
         fromFile = (ImageView) uploadStateView.findViewById(R.id.fromFileID);
@@ -44,15 +63,19 @@ public class UploadStateFragment extends DialogFragment implements View.OnClickL
         return uploadStateView;
     }
 
+
+
+
     @Override
     public void onClick(View v){
         switch (v.getId()){
             case R.id.fromCameraID:
-                captureImage();
+                    captureImage();
                 break;
             case R.id.fromFileID:
                 chooseFromResource(fileUri);
                 break;
+
         }
     }
 

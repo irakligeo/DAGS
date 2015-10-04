@@ -8,12 +8,9 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
-import android.os.Environment;
 import android.preference.PreferenceManager;
-import android.provider.MediaStore;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
@@ -26,6 +23,7 @@ import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -58,19 +56,13 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.File;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Date;
 import java.util.HashMap;
-import java.util.Locale;
 
 import geolab.dags.animation.DepthPageTransformer;
 import geolab.dags.dialogFragments.FilterDialogFragment;
 import geolab.dags.dialogFragments.UploadStateFragment;
-import geolab.dags.fileUpload.Config;
-import geolab.dags.fileUpload.UploadActivity;
 import geolab.dags.fragment.MapFragment;
 import geolab.dags.fragment.ViewPagerFragment;
 import geolab.dags.model.UserLikes;
@@ -225,7 +217,9 @@ public class MainActivity extends ActionBarActivity implements NavigationView.On
         window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
 
         // finally change the color
-        window.setStatusBarColor(activity.getResources().getColor(R.color.status_bar_color));
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            window.setStatusBarColor(activity.getResources().getColor(R.color.status_bar_color));
+        }
 
 
 
@@ -235,7 +229,7 @@ public class MainActivity extends ActionBarActivity implements NavigationView.On
         //load saved settings
         LoadSettings();
         //set settings
-        changeStyle(toolbar,tabLayout,window,toolbarColorResId,tabLayoutResColorId,statusBarColorResId);
+        changeStyle(toolbar, tabLayout, window, toolbarColorResId, tabLayoutResColorId, statusBarColorResId);
 
     }
 
@@ -342,7 +336,6 @@ public class MainActivity extends ActionBarActivity implements NavigationView.On
      * @param tablayoutResId
      * @param statusbarResId
      */
-    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     public void changeStyle(Toolbar toolbar,TabLayout tabLayout, Window window, int toolbarResID, int tablayoutResId, int statusbarResId){
 
         toolbar.setBackgroundColor(activity.getResources().getColor(toolbarResID));
@@ -356,7 +349,9 @@ public class MainActivity extends ActionBarActivity implements NavigationView.On
         window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
 
         // finally change the color
-        window.setStatusBarColor(activity.getResources().getColor(statusbarResId));
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            window.setStatusBarColor(activity.getResources().getColor(statusbarResId));
+        }
 
     }
 
@@ -426,9 +421,10 @@ public class MainActivity extends ActionBarActivity implements NavigationView.On
         switch (menuItem.getItemId()) {
 
             case R.id.navigation_item_1: // fotos gadageba
-//                UploadStateFragment uploadStateFragment = new UploadStateFragment();
-//                uploadStateFragment.show(getFragmentManager(), "uploadStateFragment");
-                checkUserLoginStatus();
+                if(checkUserLoginStatus()) {
+                    UploadStateFragment uploadStateFragment = new UploadStateFragment();
+                    uploadStateFragment.show(getFragmentManager(), "uploadStateFragment");
+                }
                 break;
 
             case R.id.navigation_item_2:
@@ -465,12 +461,12 @@ public class MainActivity extends ActionBarActivity implements NavigationView.On
     /**
      * function checks if the user is logged or not
      */
-    private void checkUserLoginStatus(){
+    private boolean checkUserLoginStatus(){
         if (AccessToken.getCurrentAccessToken() != null) {
-            Toast.makeText(getApplicationContext(),AccessToken.getCurrentAccessToken().getUserId(),Toast.LENGTH_SHORT).show();
             UploadStateFragment uploadStateFragment = new UploadStateFragment();
             uploadStateFragment.show(getFragmentManager(),"uploadFileStateFragment");
             logged[0] = true;
+            return true;
         }
         else {
             new AlertDialog.Builder(context)
@@ -490,6 +486,7 @@ public class MainActivity extends ActionBarActivity implements NavigationView.On
                         }
             }).show();
         }
+        return false;
     }
 
 
@@ -534,7 +531,7 @@ public class MainActivity extends ActionBarActivity implements NavigationView.On
                             accessToken = null;
                             logged[0] = false;
                             user_id = "";
-                            fbUserNameTextView.setText("Loged out");
+                            fbUserNameTextView.setText("Logged out");
                         }
                     })
                     .setPositiveButton("კი", new DialogInterface.OnClickListener() {
@@ -588,12 +585,25 @@ public class MainActivity extends ActionBarActivity implements NavigationView.On
 
                         @Override
                         public void onError(FacebookException exception) {
+                            Log.d("FacebookException",exception.getMessage());
                             Toast.makeText(MainActivity.this, "onError", Toast.LENGTH_SHORT).show();
                         }
                     });
         }
     }
 
+
+    /**
+     * onActivityResult
+     * @param requestCode
+     * @param resultCode
+     * @param data
+     */
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        callbackManager.onActivityResult(requestCode, resultCode, data);
+    }
 
 
 
@@ -621,8 +631,6 @@ public class MainActivity extends ActionBarActivity implements NavigationView.On
             return NUM_PAGES;
         }
     }
-
-
 
 
 
