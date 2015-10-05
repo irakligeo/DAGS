@@ -112,7 +112,7 @@ public class GraphiteDetailActivity extends ActionBarActivity implements Navigat
         try {
             fb_user_id = AccessToken.getCurrentAccessToken().getUserId();
         }catch (NullPointerException e) {
-//            Toast.makeText(getApplicationContext(),"unautorized",Toast.LENGTH_SHORT).show();
+//            Toast.makeText(getApplicationContext(),"unauthorized",Toast.LENGTH_SHORT).show();
             fb_user_id = "";
         }
 

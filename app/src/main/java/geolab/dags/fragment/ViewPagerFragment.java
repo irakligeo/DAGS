@@ -177,7 +177,7 @@ public class ViewPagerFragment extends android.support.v4.app.Fragment implement
                 @Override
                 public void onResponse(JSONArray jsonArray) {
 
-
+                    // call parser method
                     graphiteItems = MyResponseParser.getData(jsonArray);
                     //check if the server had some changes
 //                    if(MyResponseParser.oldStatusCode != MyResponseParser.statusCode ) {
