@@ -1,6 +1,5 @@
 package geolab.dags.fragment;
 
-import android.annotation.TargetApi;
 import android.app.ActivityOptions;
 import android.app.ProgressDialog;
 import android.content.ContentValues;
@@ -41,7 +40,22 @@ import geolab.dags.model.GraphiteItemModel;
 import geolab.dags.parsers.MyResponseParser;
 
 
-public class ViewPagerFragment extends android.support.v4.app.Fragment implements OnScrollListener {
+public class ViewPagerFragment extends android.support.v4.app.Fragment implements OnScrollListener, AdapterView.OnItemClickListener {
+
+    private ProgressDialog progressDialog;
+
+    private ListView graphiteListView;
+    public static View rootView;
+    public ArrayList<GraphiteItemModel> favoriteItems;
+    public static SQLiteDatabase db;
+
+    public DBHelper dbHelper;
+    private SwipeRefreshLayout mSwipeRefreshLayout;
+
+    private ImageView backgroundImage;
+    private int lastTopValue = 0;
+
+
 
     @Override
     public void onActivityCreated(Bundle savedInstanceState){
@@ -54,18 +68,6 @@ public class ViewPagerFragment extends android.support.v4.app.Fragment implement
         dbHelper = new DBHelper(getActivity());
         db = dbHelper.getWritableDatabase();
     }
-
-    private ProgressDialog progressDialog;
-    private ListView graphiteListView;
-    public static View rootView;
-    public ArrayList<GraphiteItemModel> favoriteItems;
-
-    public static SQLiteDatabase db;
-    public DBHelper dbHelper;
-
-    private SwipeRefreshLayout mSwipeRefreshLayout;
-    private ImageView backgroundImage;
-    private int lastTopValue = 0;
     //onCreateView
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -74,42 +76,28 @@ public class ViewPagerFragment extends android.support.v4.app.Fragment implement
         rootView = inflater.inflate(R.layout.fragment_graphite_items_list, container, false);
 
 
-
         //swipe refresh
         mSwipeRefreshLayout = (SwipeRefreshLayout) rootView.findViewById(R.id.swipe_refresh_layout);
         mSwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
 
             @Override
             public void onRefresh() {
-                getGraphiteDatas(URL);
+                getGraphiteData(URL);
 
             }
         });
 
-
-
-        //Database instance
-
-
+        //favourite graphite items list
         favoriteItems = new ArrayList<>();
 
-        // get data from server
-        getGraphiteDatas(URL);
+        //call method for getting the graphite items data from server
+        getGraphiteData(URL);
 
+        //find listView
         graphiteListView = (ListView) rootView.findViewById(R.id.graphiteList);
 
-        graphiteListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent intent = new Intent(getActivity(), GraphiteDetailActivity.class);
-
-                GraphiteItemModel graphiteItem = (GraphiteItemModel) parent.getAdapter().getItem(position);
-                intent.putExtra("GraphiteItem", (Serializable) graphiteItem);
-                Bundle bundle = ActivityOptions.makeCustomAnimation(getActivity(), R.anim.slide_in_up, R.anim.slide_out_up).toBundle();
-                getActivity().startActivity(intent, bundle);
-            }
-        });
+        //set onItemClick listener
+        graphiteListView.setOnItemClickListener(this);
 
 
         graphiteListView = (ListView) rootView.findViewById(R.id.graphiteList);
@@ -124,7 +112,28 @@ public class ViewPagerFragment extends android.support.v4.app.Fragment implement
         return rootView;
     }
 
+    /**
+     * Ovveride onItemClick
+     * @param parent
+     * @param view
+     * @param position
+     * @param id
+     */
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        Intent intent = new Intent(getActivity(), GraphiteDetailActivity.class);
 
+        GraphiteItemModel graphiteItem = (GraphiteItemModel) parent.getAdapter().getItem(position);
+        intent.putExtra("GraphiteItem", (Serializable) graphiteItem);
+        Bundle bundle;
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+            bundle = ActivityOptions.makeCustomAnimation(getActivity(), R.anim.slide_in_up, R.anim.slide_out_up).toBundle();
+            getActivity().startActivity(intent, bundle);
+        }
+        else{
+            getActivity().startActivity(intent);
+        }
+    }
 
     private ContentValues contentValues;
 
@@ -136,8 +145,12 @@ public class ViewPagerFragment extends android.support.v4.app.Fragment implement
     String[] splitedHashtag;
     public static HashMap<String,ArrayList<String>> hashTagsMap;
     ArrayList<String> imgArrayList;
-    // function gets data from server
-    public void getGraphiteDatas(String url){
+
+    /**
+     * method gets data from server
+     * @param url
+     */
+    public void getGraphiteData(String url){
         // progressDialog for nice loading
         
         progressDialog = new ProgressDialog(getActivity());
@@ -152,7 +165,7 @@ public class ViewPagerFragment extends android.support.v4.app.Fragment implement
             requestQueue = new Volley().newRequestQueue(getActivity());
         }
 
-        //create and cleare old saved data
+        //create and clare old saved data
         graphiteItems = new ArrayList<>();
         hashTagsMap = new HashMap<>();
 
@@ -285,4 +298,5 @@ public class ViewPagerFragment extends android.support.v4.app.Fragment implement
             backgroundImage.setY((float) (rect.top / 2.0));
         }
     }
+
 }

@@ -491,7 +491,7 @@ public class MainActivity extends ActionBarActivity implements NavigationView.On
 
 
     /**
-     * close drawarLayout on UI Thread
+     * close drawerLayout on UI Thread
      */
     private void closeDrawerFromUiThread(){
         Thread thread = new Thread()
@@ -660,7 +660,14 @@ public class MainActivity extends ActionBarActivity implements NavigationView.On
 
 
 
+
     public static SettingsFragment settingsFragment;
+
+    /**
+     * method onCreateOptionsMenu for inflating menu
+     * @param menu
+     * @return
+     */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -670,6 +677,11 @@ public class MainActivity extends ActionBarActivity implements NavigationView.On
     }
 
 
+    /**
+     * method onOptionsItemSelected
+     * @param item
+     * @return
+     */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
@@ -702,6 +714,10 @@ public class MainActivity extends ActionBarActivity implements NavigationView.On
         }
     }
 
+
+    /**
+     * onDestroy
+     */
     @Override
     protected void onDestroy() {
         super.onDestroy();
@@ -711,7 +727,7 @@ public class MainActivity extends ActionBarActivity implements NavigationView.On
 
 
     /**
-     * class for style settings
+     * class for theme style settings
      */
     @SuppressLint("ValidFragment")
     public class SettingsFragment extends DialogFragment implements View.OnClickListener {

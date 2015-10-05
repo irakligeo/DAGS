@@ -41,6 +41,14 @@ public class MapFragment extends android.support.v4.app.Fragment implements OnMa
 
     public static ArrayList<GraphiteItemModel> coordsList;
 
+
+    /**
+     * method onCreateView returns inflated view
+     * @param inflater
+     * @param container
+     * @param savedInstanceState
+     * @return view
+     */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -191,6 +199,9 @@ public class MapFragment extends android.support.v4.app.Fragment implements OnMa
     public static HashMap<String,GraphiteItemModel> mMarkersHashMap;
 
 
+    /**
+     * class fro map marker
+     */
     public class MarkerInfoWindowAdapter implements GoogleMap.InfoWindowAdapter
     {
         public MarkerInfoWindowAdapter()
@@ -203,6 +214,12 @@ public class MapFragment extends android.support.v4.app.Fragment implements OnMa
             return null;
         }
 
+
+        /**
+         * onClick call this method
+         * @param marker
+         * @return
+         */
         @Override
         public View getInfoContents(Marker marker)
         {
@@ -230,7 +247,10 @@ public class MapFragment extends android.support.v4.app.Fragment implements OnMa
     }
 
 
-    //dialog
+
+    /**
+     * class for showing graphite data on map marker click
+     */
     public static class CustomDialogFragment extends DialogFragment {
 
         @Override

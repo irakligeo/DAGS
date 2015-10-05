@@ -20,6 +20,12 @@ public class MyResponseParser {
     public static HashMap<String, GraphiteItemModel> postsHashMap;
 
     //function
+
+    /**
+     * method for parse json data
+     * @param response
+     * @return
+     */
     public static ArrayList<GraphiteItemModel> getData(JSONArray response){
         ArrayList<GraphiteItemModel> data = new ArrayList<>();
         postsHashMap = new HashMap<>();
@@ -60,6 +66,11 @@ public class MyResponseParser {
     }
 
 
+    /**
+     * method for formatting image upload date and time
+     * @param uploadDate
+     * @return
+     */
     public static String formatUploadPostTime(String uploadDate){
         String dateStart = uploadDate;
         String res = "";

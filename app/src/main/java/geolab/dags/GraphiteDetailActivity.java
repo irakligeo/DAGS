@@ -332,7 +332,7 @@ public class GraphiteDetailActivity extends ActionBarActivity implements Navigat
 //            tmplist = entry.getValue();
 //            System.out.println(key +" --- " +tmplist.toString());
 //        }
-        descriptionView.setText(graphiteItem.getDescription() + " " + graphiteItem.getDescription());
+        descriptionView.setText(graphiteItem.getDescription());
 
 
 
